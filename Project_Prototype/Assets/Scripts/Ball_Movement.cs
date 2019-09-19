@@ -17,7 +17,7 @@ public class Ball_Movement : MonoBehaviour
     private bool isJumping = false;
 
     // Collider variables
-    private float distanceToGround = 0.5f;
+    public float distanceToGround = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -75,9 +75,15 @@ public class Ball_Movement : MonoBehaviour
         {
             GameObject targetHit = hit.transform.gameObject;
             if (targetHit && targetHit.tag == "Ground" && hit.distance <= distanceToGround)
+            {
+                Debug.Log("true: " + hit.distance);
                 return true;
+            }
             else
+            {
+                Debug.Log("false: " + hit.distance);
                 return false;
+            }
         }
         else
             return false;
