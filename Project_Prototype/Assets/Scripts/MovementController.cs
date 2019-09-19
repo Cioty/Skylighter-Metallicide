@@ -80,10 +80,12 @@ public class MovementController : MonoBehaviour
             GameObject targetHit = hit.transform.gameObject;
             if (targetHit && targetHit.tag == "Ground" && hit.distance <= distanceToGround)
             {
+                Debug.Log("true: " + hit.distance);
                 return true;
             }
             else
             {
+                Debug.Log("false: " + hit.distance);
                 return false;
             }
         }
