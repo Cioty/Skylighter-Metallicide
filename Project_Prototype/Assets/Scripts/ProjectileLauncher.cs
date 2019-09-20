@@ -5,9 +5,11 @@ using UnityEngine;
 public class ProjectileLauncher : MonoBehaviour
 {
     [Header("Attributes")]
-    public Transform firePoint;
+    public Transform projectileStartPoint;
     public GameObject projectilePrefab;
-    public float firePower = 10.0f;
+    public GameObject player;
+    public Camera firstPersonCamera;
+    public float projectileSpeed = 10.0f;
     public float fireThreshold = 1.0f;
 
     private bool readyToFire = true;
@@ -38,8 +40,25 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void FireProjectile()
     {
-        GameObject projectileGO = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation) as GameObject;
-        projectileGO.GetComponent<Rigidbody>().AddForce(firePoint.forward * firePower, ForceMode.Impulse);
+        Ray ray = firstPersonCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+        Vector3 direction = new Vector3();
+
+        if(Physics.Raycast(ray, out hit))
+        {
+            direction = (hit.point - projectileStartPoint.position).normalized;
+        }
+        else
+        {
+            direction = ray.direction;
+        }
+
+        Quaternion rotation = Quaternion.FromToRotation(projectilePrefab.transform.forward, direction);
+        GameObject projectile = Instantiate(projectilePrefab, projectileStartPoint.position, rotation);
+        projectile.GetComponent<Rigidbody>().AddForce(direction * projectileSpeed, ForceMode.Impulse);
+
     }
+
+
 }
 
