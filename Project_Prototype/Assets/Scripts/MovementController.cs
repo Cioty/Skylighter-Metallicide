@@ -12,17 +12,40 @@ public class MovementController : MonoBehaviour
     // General movement.
     public float movementSpeed = 10.0f;
 
+    [Header("Dashing parameters")]
+    // Dashing stuff
+    public float movementSpeedMin;
+    public float dashMultiplier = 2.0f;
+    private float dashSpeedMax;
+    private float acceleration;
+
+    [Header("Jumping parameters")]
     // Jump stuff.
     public float jumpForce = 10.0f;
     public float distanceToGround = 1.5f;
     private bool canJump = true;
     private bool isJumping = false;
 
+    // Particle stuff for Dash
+    public GameObject dashEffect;
+
+    // Time
+    private float startTime;
+
+    private void Awake()
+    {
+        startTime = Time.time;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         // Setting the body to the charaters rigidbody.
         this.body = this.GetComponent<Rigidbody>();
+
+        // Stores the original movement Speed
+        movementSpeedMin = movementSpeed;
+        dashSpeedMax = movementSpeed * dashMultiplier;
     }
 
     private void Update()
@@ -38,6 +61,9 @@ public class MovementController : MonoBehaviour
             if (IsGrounded())
                 canJump = true;
         }
+
+        // Dashing function: Hold right shift to dash
+        isDashing();
 
         // Movement.
         if (Input.GetKey(KeyCode.W))
@@ -92,4 +118,41 @@ public class MovementController : MonoBehaviour
         else
             return false;
     }
+
+    // Dashing function
+    private void isDashing()
+    {
+        // Dashing
+        if (Input.GetKey(KeyCode.RightShift))
+        {
+            // This updates the acceleration every frame if right shift is down.
+            acceleration = dashSpeedMax - movementSpeed;
+            if (movementSpeed < dashSpeedMax)
+            {
+                movementSpeed += (acceleration) / Time.time - startTime;
+            }
+
+            if (movementSpeed > dashSpeedMax)
+            {
+                // Movement Speed is set to what the max Dash is
+                movementSpeed = dashSpeedMax;
+            }
+        }
+        else
+        {
+            // This gets the deceleration rate
+            acceleration = movementSpeedMin - movementSpeed;
+            if (movementSpeed > movementSpeedMin)
+            {
+                movementSpeed += (acceleration) / Time.time - startTime;
+            }
+
+            if (movementSpeed < movementSpeedMin)
+            {
+                // Sets it back to the original movement speed
+                movementSpeed = movementSpeedMin;
+            }
+        }
+    }
+ 
 }
