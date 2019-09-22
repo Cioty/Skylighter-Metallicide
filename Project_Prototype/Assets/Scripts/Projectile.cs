@@ -8,22 +8,30 @@ public class Projectile : MonoBehaviour
     private float timer = 0.0f;
     public float maxTimer = 5.0f;
 
+    public GameObject explosionEffect;
+
     private void Update()
     {
         // Simple timer to destory the object after a certain time.
         timer += Time.deltaTime;
 
-        if(timer > maxTimer)
-            Destroy(this.gameObject);
+        if (timer > maxTimer)
+            Explode();
     }
 
     public void OnCollisionEnter(Collision collision)
     {
-        // Destorying the object.
-        Destroy(this.gameObject);
+        Explode();
 
         // Destorying the target cubes.
         if (collision.gameObject.tag == "TargetCube")
             Destroy(collision.gameObject);
+    }
+
+    private void Explode()
+    {
+        GameObject explosionObject = Instantiate(explosionEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
+        Destroy(explosionObject, 1.9f);
     }
 }

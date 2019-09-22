@@ -17,7 +17,7 @@ public class MovementController : MonoBehaviour
     public float movementSpeedMin;
     public float dashMultiplier = 2.0f;
     private float dashSpeedMax;
-    private float acceleration;
+    private float dashAcceleration;
 
     [Header("Jumping parameters")]
     // Jump stuff.
@@ -50,12 +50,14 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
+        // Jump keybind.
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             isJumping = true;
             canJump = false;
         }
 
+        // Checking if the character can jump again.
         if (!canJump)
         {
             if (IsGrounded())
@@ -65,7 +67,11 @@ public class MovementController : MonoBehaviour
         // Dashing function: Hold right shift to dash
         isDashing();
 
-        // Movement.
+        if(!canJump)
+            body.velocity = Vector3.zero;
+
+
+        // Movement keybinds. (Temp)
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += transform.forward * Time.deltaTime * movementSpeed;
@@ -95,6 +101,7 @@ public class MovementController : MonoBehaviour
             isJumping = false;
         }
     }
+
     // Checking if the player is grounded via raycast.
     private bool IsGrounded()
     {
@@ -105,15 +112,9 @@ public class MovementController : MonoBehaviour
         {
             GameObject targetHit = hit.transform.gameObject;
             if (targetHit && targetHit.tag == "Ground" && hit.distance <= distanceToGround)
-            {
-                Debug.Log("true: " + hit.distance);
                 return true;
-            }
             else
-            {
-                Debug.Log("false: " + hit.distance);
                 return false;
-            }
         }
         else
             return false;
@@ -126,10 +127,10 @@ public class MovementController : MonoBehaviour
         if (Input.GetKey(KeyCode.RightShift))
         {
             // This updates the acceleration every frame if right shift is down.
-            acceleration = dashSpeedMax - movementSpeed;
+            dashAcceleration = dashSpeedMax - movementSpeed;
             if (movementSpeed < dashSpeedMax)
             {
-                movementSpeed += (acceleration) / Time.time - startTime;
+                movementSpeed += (dashAcceleration) / Time.time - startTime;
             }
 
             if (movementSpeed > dashSpeedMax)
@@ -141,10 +142,10 @@ public class MovementController : MonoBehaviour
         else
         {
             // This gets the deceleration rate
-            acceleration = movementSpeedMin - movementSpeed;
+            dashAcceleration = movementSpeedMin - movementSpeed;
             if (movementSpeed > movementSpeedMin)
             {
-                movementSpeed += (acceleration) / Time.time - startTime;
+                movementSpeed += (dashAcceleration) / Time.time - startTime;
             }
 
             if (movementSpeed < movementSpeedMin)
@@ -154,5 +155,4 @@ public class MovementController : MonoBehaviour
             }
         }
     }
- 
 }
