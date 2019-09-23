@@ -79,28 +79,28 @@ public class MovementController : MonoBehaviour
 		// Movement keybinds.
 		if (Input.GetKey(KeyCode.W))
 		{
-			moveDirection += transform.forward * movementSpeed;
+			moveDirection += transform.forward;
 		}
 		if (Input.GetKey(KeyCode.A))
 		{
-			moveDirection += -transform.right * movementSpeed;
+			moveDirection += -transform.right;
 		}
 		if (Input.GetKey(KeyCode.S))
 		{
-			moveDirection += -transform.forward * movementSpeed;
+			moveDirection += -transform.forward;
 		}
 		if (Input.GetKey(KeyCode.D))
 		{
-			moveDirection += transform.right * movementSpeed;
+			moveDirection += transform.right;
 		}
 
 		// Normalising the direction vector.
 		moveDirection.Normalize();
 
 		// Moving the data into the velocity vector to maintain the rb y pos.
-		moveVelocity.x = moveDirection.x;
+		moveVelocity.x = moveDirection.x * movementSpeed;
 		moveVelocity.y = body.velocity.y;
-		moveVelocity.z = moveDirection.z;
+		moveVelocity.z = moveDirection.z * movementSpeed;
 
 		// Making the rb velocity the calculated velocity.
 		body.velocity = moveVelocity;
