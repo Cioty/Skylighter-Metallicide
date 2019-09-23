@@ -6,28 +6,31 @@ public class MovementController : MonoBehaviour
 {
     // References.
     private Rigidbody body;
-    private Vector3 moveDirection;
 
-    [Header("Attributes")]
-    // General movement.
-    public float movementSpeed = 10.0f;
+	[Header("Attributes")]
+	// General movement.
+	public float movementSpeed = 10.0f;
+	public float moveAcceleration = 5.0f;
+	private Vector3 moveDirection = new Vector3();
+	private Vector3 moveVelocity = new Vector3();
 
-    [Header("Dashing parameters")]
+
+    [Header("Dashing")]
     // Dashing stuff
     public float movementSpeedMin;
     public float dashMultiplier = 2.0f;
     private float dashSpeedMax;
     private float dashAcceleration;
 
-    [Header("Jumping parameters")]
+    [Header("Jumping")]
     // Jump stuff.
     public float jumpForce = 10.0f;
     public float distanceToGround = 1.5f;
     private bool canJump = true;
-    private bool isJumping = false;
 
-    // Particle stuff for Dash
-    public GameObject dashEffect;
+	[Header("Dashing")]
+	// Particle stuff for Dash
+	public GameObject dashEffect;
 
     // Time
     private float startTime;
@@ -46,17 +49,10 @@ public class MovementController : MonoBehaviour
         // Stores the original movement Speed
         movementSpeedMin = movementSpeed;
         dashSpeedMax = movementSpeed * dashMultiplier;
-    }
+	}
 
     private void Update()
     {
-        // Jump keybind.
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
-        {
-            isJumping = true;
-            canJump = false;
-        }
-
         // Checking if the character can jump again.
         if (!canJump)
         {
@@ -66,39 +62,54 @@ public class MovementController : MonoBehaviour
 
         // Dashing function: Hold right shift to dash
         isDashing();
-
-        if(!canJump)
-            body.velocity = Vector3.zero;
-
-
-        // Movement keybinds. (Temp)
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += transform.forward * Time.deltaTime * movementSpeed;
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += -transform.right * Time.deltaTime * movementSpeed;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += -transform.forward * Time.deltaTime * movementSpeed;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += transform.right * Time.deltaTime * movementSpeed;
-        }
-    }
+	}
 
     private void FixedUpdate()
     {
-        if (isJumping && canJump)
+
+		/*
+		 * TODO:
+		 *		- Add acceleration, max speed, turn speed and air control!
+		 */
+
+		// Resetting the movement vectors.
+		moveDirection = Vector3.zero;
+		moveVelocity = Vector3.zero;
+
+		// Movement keybinds.
+		if (Input.GetKey(KeyCode.W))
+		{
+			moveDirection += transform.forward * movementSpeed;
+		}
+		if (Input.GetKey(KeyCode.A))
+		{
+			moveDirection += -transform.right * movementSpeed;
+		}
+		if (Input.GetKey(KeyCode.S))
+		{
+			moveDirection += -transform.forward * movementSpeed;
+		}
+		if (Input.GetKey(KeyCode.D))
+		{
+			moveDirection += transform.right * movementSpeed;
+		}
+
+		// Normalising the direction vector.
+		moveDirection.Normalize();
+
+		// Moving the data into the velocity vector to maintain the rb y pos.
+		moveVelocity.x = moveDirection.x;
+		moveVelocity.y = body.velocity.y;
+		moveVelocity.z = moveDirection.z;
+
+		// Making the rb velocity the calculated velocity.
+		body.velocity = moveVelocity;
+
+		// Jumping.
+		if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             body.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isJumping = false;
+			canJump = false;
         }
     }
 
