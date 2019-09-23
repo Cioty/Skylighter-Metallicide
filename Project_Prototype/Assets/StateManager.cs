@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
-    private enum PLAYER_STATE
+    public enum PLAYER_STATE
     {
         Mech,
         Ball,
@@ -13,6 +13,7 @@ public class StateManager : MonoBehaviour
 
     public GameObject mechObject, ballObject;
     public GameObject firstPersonCamera, thirdPersonCamera;
+    public GameObject mechEjectEffect;
     public float ejectHeight = 10.0f, ejectForce = 10.0f;
     private PLAYER_STATE currentState;
 
@@ -34,7 +35,7 @@ public class StateManager : MonoBehaviour
         }
     }
 
-    void SetState(PLAYER_STATE state)
+    public void SetState(PLAYER_STATE state)
     {
         switch(state)
         {
@@ -43,6 +44,10 @@ public class StateManager : MonoBehaviour
                 // Disable the mech and fp camera object.
                 mechObject.SetActive(false);
                 firstPersonCamera.SetActive(false);
+
+                // Playing particle effect.
+                GameObject explosionObject = Instantiate(mechEjectEffect, transform.position, transform.rotation);
+                Destroy(explosionObject, 1.9f);
 
                 // Enable the ball and tp camera object.
                 ballObject.SetActive(true);
@@ -60,8 +65,6 @@ public class StateManager : MonoBehaviour
 
                 // Adding some force to the ball to shoot it up on switch.
                 ballRB.AddForce(Vector3.up * ejectForce, ForceMode.Impulse);
-
-                Debug.Log("Toggled ball");
                 break;
             
             case PLAYER_STATE.Mech:
@@ -79,8 +82,6 @@ public class StateManager : MonoBehaviour
 
                 // Updating the mechs postion.
                 mechObject.transform.position = ballObject.transform.position;
-
-                Debug.Log("Toggled mech");
                 break;
         }
     }

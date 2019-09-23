@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     public float maxTimer = 5.0f;
 
     public GameObject explosionEffect;
+    private StateManager playerStateManager;
 
     private void Update()
     {
@@ -26,12 +27,18 @@ public class Projectile : MonoBehaviour
         // Destorying the target cubes.
         if (collision.gameObject.tag == "TargetCube")
             Destroy(collision.gameObject);
+        else if (collision.gameObject.tag == "OtherMech")
+        {
+            playerStateManager = collision.gameObject.GetComponentInParent<StateManager>();
+            playerStateManager.SetState(StateManager.PLAYER_STATE.Ball);
+        }
+
+        Destroy(gameObject);
     }
 
     private void Explode()
     {
         GameObject explosionObject = Instantiate(explosionEffect, transform.position, transform.rotation);
-        Destroy(gameObject);
         Destroy(explosionObject, 1.9f);
     }
 }

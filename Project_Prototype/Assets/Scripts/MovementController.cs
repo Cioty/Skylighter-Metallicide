@@ -10,10 +10,6 @@ public class MovementController : MonoBehaviour
 	[Header("Attributes")]
 	// General movement.
 	public float movementSpeed = 10.0f;
-	public float moveAcceleration = 5.0f;
-	private Vector3 moveDirection = new Vector3();
-	private Vector3 moveVelocity = new Vector3();
-
 
     [Header("Dashing")]
     // Dashing stuff
@@ -62,51 +58,30 @@ public class MovementController : MonoBehaviour
 
         // Dashing function: Hold right shift to dash
         isDashing();
-	}
+
+        // Movement keybinds. (Reverted back to old movement for better gifs)
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position += transform.forward * movementSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position += -transform.right * movementSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position += -transform.forward * movementSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += transform.right * movementSpeed * Time.deltaTime;
+        }
+    }
 
     private void FixedUpdate()
     {
-
-		/*
-		 * TODO:
-		 *		- Add acceleration, max speed, turn speed and air control!
-		 */
-
-		// Resetting the movement vectors.
-		moveDirection = Vector3.zero;
-		moveVelocity = Vector3.zero;
-
-		// Movement keybinds.
-		if (Input.GetKey(KeyCode.W))
-		{
-			moveDirection += transform.forward;
-		}
-		if (Input.GetKey(KeyCode.A))
-		{
-			moveDirection += -transform.right;
-		}
-		if (Input.GetKey(KeyCode.S))
-		{
-			moveDirection += -transform.forward;
-		}
-		if (Input.GetKey(KeyCode.D))
-		{
-			moveDirection += transform.right;
-		}
-
-		// Normalising the direction vector.
-		moveDirection.Normalize();
-
-		// Moving the data into the velocity vector to maintain the rb y pos.
-		moveVelocity.x = moveDirection.x * movementSpeed;
-		moveVelocity.y = body.velocity.y;
-		moveVelocity.z = moveDirection.z * movementSpeed;
-
-		// Making the rb velocity the calculated velocity.
-		body.velocity = moveVelocity;
-
-		// Jumping.
-		if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        // Jumping.
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             body.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 			canJump = false;
