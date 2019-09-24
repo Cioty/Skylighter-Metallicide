@@ -43,12 +43,12 @@ public class TP_MouseLook : MonoBehaviour
     void Mouse_aiming()
     {
         mouse_x += Input.GetAxis("Mouse X") * rotationSpeed;
-        mouse_y -= Input.GetAxis("Mouse Y") * rotationSpeed;
+        mouse_y += Input.GetAxis("Mouse Y") * rotationSpeed;
 
         // This keeps the Y-rotation between that angles to prevent full 360 degrees orbit in the Y-Axis
         mouse_y = Mathf.Clamp(mouse_y, minY, maxY);
 
-        Quaternion rotation = Quaternion.Euler(mouse_y, mouse_x, 0.0f);
+        Quaternion rotation = Quaternion.Euler(-mouse_y, mouse_x, 0.0f);
         Vector3 position = rotation * offset + player.transform.position;
 
         transform.rotation = rotation;

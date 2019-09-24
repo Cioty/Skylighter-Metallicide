@@ -14,6 +14,7 @@ public class FP_MouseLook : MonoBehaviour
     public float minY = -60, maxY = 60;
     private Vector2 mouseLook, smoothV;
     private float rotationX, rotationY;
+    private Transform startPos, endPos;
 
     // Start is called before the first frame update
     void Start()
