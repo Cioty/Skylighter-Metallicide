@@ -5,8 +5,8 @@ using UnityEngine;
 public class Ball_Movement : MonoBehaviour
 {
     // References
-    private Rigidbody rb;
-    private SphereCollider sphereCollider;
+    public Rigidbody rigidBody;
+    public SphereCollider sphereCollider;
     public GameObject thirdPersonCamera;
 
     // Movement
@@ -22,7 +22,6 @@ public class Ball_Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         sphereCollider = GetComponent<SphereCollider>();
     }
 
@@ -41,7 +40,7 @@ public class Ball_Movement : MonoBehaviour
 
         if (isJumping)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isJumping = false;
         }
     }
@@ -63,7 +62,7 @@ public class Ball_Movement : MonoBehaviour
 
         Vector3 movement = (cam_forward * vertical_move + cam_right * horizontal_move);
 
-        rb.AddForce(movement * movementSpeed);
+        rigidBody.AddForce(movement * movementSpeed);
     }
 
     private bool IsGrounded()

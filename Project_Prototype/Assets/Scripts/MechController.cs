@@ -14,6 +14,7 @@ public class MechController : MonoBehaviour
     public float groundDrag = 20.0f;
     public float jumpForce = 6.0f;
     public float airAccelerationSpeed;
+    
     private Vector3 moveDirection;
     private Vector3 currentVelocity;
     private float horizontalAxis, verticalAxis;
@@ -41,6 +42,7 @@ public class MechController : MonoBehaviour
         }
     }
 
+    // Gets the axis values then applys it to the movement vector with the players direction.
     private void UpdateMoveVector()
     {
         horizontalAxis = Input.GetAxisRaw("Horizontal");
@@ -56,10 +58,13 @@ public class MechController : MonoBehaviour
 
         if (controller.isGrounded)
         {
-            // Calculating movement.
+            // Calculating fixed movement.
             currentVelocity = moveDirection * speed;
+
+            // Adding ground drag.
             currentVelocity.y -= groundDrag;
 
+            // Checking for jump input.
             if (Input.GetButton("Jump"))
                 currentVelocity = (playerObject.transform.forward + moveDirection * jumpForce) + Vector3.up * jumpForce;
         }
@@ -69,14 +74,16 @@ public class MechController : MonoBehaviour
             Vector3 gravityVector = Vector3.down * gravity * Time.deltaTime;
             currentVelocity += gravityVector;
 
+            // Calculating the in air movement.
             Vector3 inAirMoveVector = moveDirection * speed;
             inAirMoveVector -= currentVelocity;
 
+            // Applying the air movement and gravity vectors.
             Vector3 velocityDiff = Vector3.ProjectOnPlane(inAirMoveVector, gravityVector);
-
             currentVelocity += velocityDiff * airAccelerationSpeed * Time.deltaTime;
         }
-
+        
+        // Moving the player with the calculated velocity.
         controller.Move(currentVelocity * Time.deltaTime);
     }
 
