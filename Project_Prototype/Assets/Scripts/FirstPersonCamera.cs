@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FirstPersonCamera : MonoBehaviour
 {
-    [Header("Objects")]
+    [Header("References")]
     public GameObject playerObject;
+    public PlayerHandler playerHandler;
     public Transform mechHullTransform;
     public Transform mechHipTransform;
     public Transform mechCoreTransform;
@@ -41,8 +42,14 @@ public class FirstPersonCamera : MonoBehaviour
         // Locking the mouse Y.
         mouseLook.y = Mathf.Clamp(mouseLook.y, minY, maxY);
 
-        // Restraining the hip transform to prevent rotation.
-        //this.mechHipTransform.rotation = defaultHipRotation;
+        // Restraining the hip transform to prevent rotation, only if the player has no velocity.
+        if (playerHandler.CurrentVelocity.x == 0 || playerHandler.CurrentVelocity.z == 0)
+            this.mechHipTransform.rotation = defaultHipRotation;
+        else
+        {
+            this.mechHipTransform.rotation = playerObject.transform.localRotation;
+            this.defaultHipRotation = playerObject.transform.localRotation;
+        }
 
         // Applying rotation to the neck transform, and correcting the angle.
         mechCoreTransform.localRotation = (Quaternion.AngleAxis(-mouseLook.y, Vector3.right));

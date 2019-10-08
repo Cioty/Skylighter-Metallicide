@@ -6,6 +6,7 @@ public class MechController : MonoBehaviour
 {
     [Header("References")]
     public GameObject playerObject;
+    public PlayerHandler playerHandler;
     private CharacterController controller;
 
     [Header("Movement")]
@@ -82,7 +83,9 @@ public class MechController : MonoBehaviour
             Vector3 velocityDiff = Vector3.ProjectOnPlane(inAirMoveVector, gravityVector);
             currentVelocity += velocityDiff * airAccelerationSpeed * Time.deltaTime;
         }
-        
+
+        playerHandler.CurrentVelocity = currentVelocity;
+
         // Moving the player with the calculated velocity.
         controller.Move(currentVelocity * Time.deltaTime);
     }
