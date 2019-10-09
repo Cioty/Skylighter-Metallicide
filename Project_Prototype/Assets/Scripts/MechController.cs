@@ -1,5 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Alpha
+ * 
+ * Class:       MechController.cs
+ * Purpose:     To control the movement for the mech.
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ *             - Currently resets the acceleration after jump, working on a fix.
+ *             - ADD HERE IF YOU FIND BUGS, THEN LET ME KNOW!!!
+ *===========================================================================*/
 using UnityEngine;
 
 public class MechController : MonoBehaviour
@@ -10,15 +22,28 @@ public class MechController : MonoBehaviour
     private CharacterController controller;
 
     [Header("Movement")]
-    public float speed = 5.0f;
+    public float maxSpeed = 25.0f;
+    public float accelerationMultiplier = 1.0f;
+    public float decelerationMultiplier = 1.0f;
+    public float directionChangeMultiplier = 1.0f;
     public float gravity = 10.0f;
     public float groundDrag = 20.0f;
-    public float jumpForce = 6.0f;
-    public float airAccelerationSpeed;
-    
-    private Vector3 moveDirection;
+    public float jumpHeight = 6.0f;
+    public float airAccelerationSpeed = 1.0f;
+
+    [Header("Curves")]
+    public AnimationCurve accelerationRate;
+    public AnimationCurve decelerationRate;
+
+
+    // Private variables.
+    private Vector3 acceleration = Vector3.zero;
+    private Vector3 deceleration = Vector3.zero;
+    private Vector3 moveDirection = Vector3.zero;
+    private Vector3 lastDirection = Vector3.zero;
     private Vector3 currentVelocity;
     private float horizontalAxis, verticalAxis;
+    private float accelTimer, deccelTimer, directionalTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -59,15 +84,31 @@ public class MechController : MonoBehaviour
 
         if (controller.isGrounded)
         {
-            // Calculating fixed movement.
-            currentVelocity = moveDirection * speed;
+            // If the player is inputting a direction:
+            if (moveDirection.magnitude > 0)
+            {
+                accelTimer += accelerationRate.Evaluate(Time.fixedDeltaTime * accelerationMultiplier);
+                acceleration = Vector3.Lerp(acceleration, moveDirection * maxSpeed, accelTimer / 1.0f);
+            }
+            else
+            {
+                // If there is no user input, then lerp the acceleration to 0 by the deceleration rate.
+                deccelTimer += accelerationRate.Evaluate(Time.fixedDeltaTime * decelerationMultiplier);
+                acceleration = Vector3.Lerp(acceleration, new Vector3(0, 0, 0), deccelTimer / 1.0f);
+            }
+
+            // Applying direction and acceleration to the current velocity.
+            currentVelocity = lastDirection + acceleration;
 
             // Adding ground drag.
             currentVelocity.y -= groundDrag;
 
             // Checking for jump input.
             if (Input.GetButton("Jump"))
-                currentVelocity = (playerObject.transform.forward + moveDirection * jumpForce) + Vector3.up * jumpForce;
+            {
+                currentVelocity = (playerObject.transform.forward + moveDirection * jumpHeight) + acceleration.normalized + Vector3.up * jumpHeight;
+                acceleration = Vector3.zero;
+            }
         }
         else
         {
@@ -76,7 +117,7 @@ public class MechController : MonoBehaviour
             currentVelocity += gravityVector;
 
             // Calculating the in air movement.
-            Vector3 inAirMoveVector = moveDirection * speed;
+            Vector3 inAirMoveVector = moveDirection * maxSpeed;
             inAirMoveVector -= currentVelocity;
 
             // Applying the air movement and gravity vectors.
@@ -84,6 +125,7 @@ public class MechController : MonoBehaviour
             currentVelocity += velocityDiff * airAccelerationSpeed * Time.deltaTime;
         }
 
+        // Keeping track of the current velocity via the player handler.
         playerHandler.CurrentVelocity = currentVelocity;
 
         // Moving the player with the calculated velocity.
