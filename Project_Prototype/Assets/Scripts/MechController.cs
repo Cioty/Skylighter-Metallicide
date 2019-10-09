@@ -128,7 +128,12 @@ public class MechController : MonoBehaviour
         playerHandler.CurrentVelocity = currentVelocity;
 
         // Moving the player with the calculated velocity.
-        controller.Move(currentVelocity * Time.deltaTime);
+        controller.Move(playerHandler.CurrentVelocity * Time.deltaTime);
+    }
+
+    public void Move(Vector3 motion)
+    {
+        controller.Move(motion * Time.deltaTime);
     }
 
 }

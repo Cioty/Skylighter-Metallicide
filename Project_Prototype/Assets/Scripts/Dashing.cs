@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Dashing : MonoBehaviour
 {
+    private MechController mechController;
+    private PlayerHandler playerHandler;
+
     private MovementController movementDir;
     private Rigidbody rb;
 
@@ -41,8 +44,11 @@ public class Dashing : MonoBehaviour
   
     private void Awake()
     {
-       // Get the rigidbody of the Mech, or whatever
-        rb = this.GetComponent<Rigidbody>();
+        // Get the rigidbody of the Mech, or whatever
+        //rb = this.GetComponent<Rigidbody>(); 
+
+        playerHandler = GetComponent<PlayerHandler>();
+        mechController = GetComponent<MechController>();
 
         thrusterTimer = zero;                        
     }
@@ -72,7 +78,10 @@ public class Dashing : MonoBehaviour
             if (thrusterTimer < duration)
             {
                 thrusterTimer += Time.deltaTime;
-                rb.velocity = lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed;        
+                //rb.velocity = lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed;
+
+                // had to use the new controllers move function, i was wrong about the controller using a rigid body (if it does, you cant access it atleast)
+                mechController.Move(lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed);
             }
 
             if (thrusterTimer >= duration)
