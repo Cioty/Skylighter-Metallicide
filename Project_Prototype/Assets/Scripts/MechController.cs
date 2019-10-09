@@ -86,26 +86,32 @@ public class MechController : MonoBehaviour
             // If the player is inputting a direction:
             if (moveDirection.magnitude > 0)
             {
+                deccelTimer = 0.0f;
                 accelTimer += accelerationRate.Evaluate(Time.fixedDeltaTime * accelerationMultiplier);
                 acceleration = Vector3.Lerp(acceleration, moveDirection * maxSpeed, accelTimer / 1.0f);
             }
             else
             {
                 // If there is no user input, then lerp the acceleration to 0 by the deceleration rate.
+                accelTimer = 0.0f;
                 deccelTimer += accelerationRate.Evaluate(Time.fixedDeltaTime * decelerationMultiplier);
                 acceleration = Vector3.Lerp(acceleration, new Vector3(0, 0, 0), deccelTimer / 1.0f);
             }
 
             // Applying direction and acceleration to the current velocity.
             currentVelocity = lastDirection + acceleration;
+            currentVelocity = Vector3.ClampMagnitude(currentVelocity, 25);
+            Debug.Log(currentVelocity);
 
-            // Adding ground drag.
-            currentVelocity.y -= groundDrag;
+            // Removed ground drag.
+            //currentVelocity.y -= groundDrag;
 
             // Checking for jump input.
             if (Input.GetButton("Jump"))
             {
                 currentVelocity = (playerObject.transform.forward + moveDirection * jumpHeight) + acceleration.normalized + Vector3.up * jumpHeight;
+
+                // Currently just resetting the acceleration after using it for the jump, need a fix for a bug here.
                 acceleration = Vector3.zero;
             }
         }
