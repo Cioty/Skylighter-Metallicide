@@ -41,8 +41,8 @@ public class Dashing : MonoBehaviour
   
     private void Awake()
     {
-        // Get the rigidbody of the Mech, or whatever
-        rb = GetComponent<Rigidbody>();
+       // Get the rigidbody of the Mech, or whatever
+        rb = this.GetComponent<Rigidbody>();
 
         thrusterTimer = zero;                        
     }
@@ -72,7 +72,7 @@ public class Dashing : MonoBehaviour
             if (thrusterTimer < duration)
             {
                 thrusterTimer += Time.deltaTime;
-                rb.velocity = lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed;                
+                rb.velocity = lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed;        
             }
 
             if (thrusterTimer >= duration)

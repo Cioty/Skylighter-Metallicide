@@ -696,6 +696,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7360001967633157087, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: m_Name
+      value: Player_v3
+      objectReference: {fileID: 0}
     - target: {fileID: 6587416109238850279, guid: 65f1dd320b1853d419f4f04828d36abd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -751,10 +756,90 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7360001967633157087, guid: 65f1dd320b1853d419f4f04828d36abd,
+    - target: {fileID: 8460204989531102869, guid: 65f1dd320b1853d419f4f04828d36abd,
         type: 3}
-      propertyPath: m_Name
-      value: Player_v3
+      propertyPath: decelerationMultiplier
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460204989531102869, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: accelerationMultiplier
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460204989531102869, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460204989531102869, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: airAccelerationSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073178002007253317, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: characterController
+      value: 
+      objectReference: {fileID: 1510235742}
+    - target: {fileID: 8073178002007253317, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073178002007253317, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: speedGraph.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073178002007253317, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: speedGraph.m_Curve.Array.data[0].inSlope
+      value: -1.0046526
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073178002007253317, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: speedGraph.m_Curve.Array.data[0].outSlope
+      value: -1.0046526
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073178002007253317, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: speedGraph.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073178002007253317, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: speedGraph.m_Curve.Array.data[1].inSlope
+      value: -1.0046526
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073178002007253317, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: speedGraph.m_Curve.Array.data[1].outSlope
+      value: -1.0046526
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073178002007253317, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: speedGraph.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073178002007253317, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: speedGraph.m_Curve.Array.data[0].time
+      value: 0.0046310425
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073178002007253317, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: speedGraph.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073178002007253317, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: speedGraph.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 182120722127581269, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: projectileSpeed
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65f1dd320b1853d419f4f04828d36abd, type: 3}
@@ -1419,6 +1504,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b086132231fed14eafa2fd687ce76d6, type: 3}
+--- !u!143 &1510235742 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 7568312652193077413, guid: 65f1dd320b1853d419f4f04828d36abd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1012955022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1512324064 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100016, guid: 3b086132231fed14eafa2fd687ce76d6,
@@ -1667,15 +1758,15 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 100046, guid: c6b5acd0f842f8c45b172c09df5d178f, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: c6b5acd0f842f8c45b172c09df5d178f, type: 3}
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: c6b5acd0f842f8c45b172c09df5d178f, type: 3}
-      propertyPath: m_TagString
-      value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: 100046, guid: c6b5acd0f842f8c45b172c09df5d178f, type: 3}
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}

@@ -22,23 +22,17 @@ public class Projectile : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        Explode();
-
         // Destorying the target cubes.
         if (collision.gameObject.tag == "TargetCube")
             Destroy(collision.gameObject);
-        else if (collision.gameObject.tag == "OtherMech")
-        {
-            playerStateManager = collision.gameObject.GetComponentInParent<StateManager>();
-            playerStateManager.SetState(StateManager.PLAYER_STATE.Ball);
-        }
 
-        Destroy(gameObject);
+        Explode();
     }
 
     private void Explode()
     {
         GameObject explosionObject = Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(explosionObject, 1.9f);
+        Destroy(gameObject);
     }
 }

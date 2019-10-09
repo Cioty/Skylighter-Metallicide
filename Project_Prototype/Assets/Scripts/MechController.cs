@@ -25,7 +25,6 @@ public class MechController : MonoBehaviour
     public float maxSpeed = 25.0f;
     public float accelerationMultiplier = 1.0f;
     public float decelerationMultiplier = 1.0f;
-    public float directionChangeMultiplier = 1.0f;
     public float gravity = 10.0f;
     public float groundDrag = 20.0f;
     public float jumpHeight = 6.0f;
