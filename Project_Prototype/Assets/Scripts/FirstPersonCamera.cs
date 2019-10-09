@@ -43,7 +43,8 @@ public class FirstPersonCamera : MonoBehaviour
         mouseLook.y = Mathf.Clamp(mouseLook.y, minY, maxY);
 
         // Restraining the hip transform to prevent rotation, only if the player has no velocity.
-        if (playerHandler.CurrentVelocity.x == 0 || playerHandler.CurrentVelocity.z == 0)
+        if ((int)(playerHandler.CurrentVelocity.x) == 0 && 
+            (int)(playerHandler.CurrentVelocity.z) == 0)
             this.mechHipTransform.rotation = defaultHipRotation;
         else
         {
