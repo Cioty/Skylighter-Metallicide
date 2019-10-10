@@ -66,13 +66,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 7360001967633157087}
   playerHandler: {fileID: 4942984792048418344}
-  maxSpeed: 15
-  accelerationMultiplier: 1
-  decelerationMultiplier: 1
-  gravity: 10
-  groundDrag: 20
-  jumpHeight: 6
-  airAccelerationSpeed: 1
+  maxSpeed: 13
+  accelerationMultiplier: 6
+  decelerationMultiplier: 3
+  gravity: 25
+  groundDrag: 30
+  jumpHeight: 12
+  airAccelerationSpeed: 1.5
   accelerationRate:
     serializedVersion: 2
     m_Curve:
@@ -161,29 +161,38 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
+      value: -0.0047302246
+      inSlope: 5.2486434
+      outSlope: 5.2486434
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.139448
+      value: 0.7271826
+      inSlope: 3.3790731
+      outSlope: 3.3790731
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.23687485
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
+      value: 0.4929123
+      inSlope: -0.27223262
+      outSlope: -0.27223262
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  speed: 2
+  speed: 32
   dashKey: 304
-  duration: 3
-  boostRegen: 2
+  duration: 0.2
+  boostRegen: 1
 --- !u!114 &182120722127581269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,13 +458,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 3.674986
-  m_Radius: 1
+  m_Height: 3.5
+  m_Radius: 1.69
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.6
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.8, z: 0}
+  m_Center: {x: 0, y: 1.75, z: 0.49}
 --- !u!1 &8814701825088474299
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +675,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 100088, guid: 35e4f11356248c14184706e36746c901, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 100014, guid: 35e4f11356248c14184706e36746c901, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -722,6 +735,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 35e4f11356248c14184706e36746c901, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 100060, guid: 35e4f11356248c14184706e36746c901, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -758,15 +775,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 35e4f11356248c14184706e36746c901, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 100090, guid: 35e4f11356248c14184706e36746c901, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 100088, guid: 35e4f11356248c14184706e36746c901, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
