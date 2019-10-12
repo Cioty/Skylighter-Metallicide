@@ -26,7 +26,9 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.tag == "TargetCube")
             Destroy(collision.gameObject);
 
-        Explode();
+        // Preventing the player from damaging themselves.
+        if(collision.gameObject.tag != "External_Mech")
+            Explode();
     }
 
     private void Explode()

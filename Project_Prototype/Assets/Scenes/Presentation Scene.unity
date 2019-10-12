@@ -936,6 +936,11 @@ PrefabInstance:
       propertyPath: sensitivity
       value: 1.75
       objectReference: {fileID: 0}
+    - target: {fileID: 2124794962887729059, guid: 65f1dd320b1853d419f4f04828d36abd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.57
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65f1dd320b1853d419f4f04828d36abd, type: 3}
 --- !u!1 &1033755701 stripped

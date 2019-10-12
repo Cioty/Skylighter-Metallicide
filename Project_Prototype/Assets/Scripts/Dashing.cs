@@ -80,7 +80,7 @@ public class Dashing : MonoBehaviour
                 thrusterTimer += Time.deltaTime;
                 //rb.velocity = lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed;
 
-                // had to use the new controllers move function, i was wrong about the controller using a rigid body (if it does, you cant access it atleast)
+                // had to use the new controllers move function, i was wrong about the controller using a rigid body (if it does, you cant access it)
                 mechController.Move(lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed);
             }
 
