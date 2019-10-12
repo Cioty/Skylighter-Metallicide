@@ -1,5 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Alpha
+ * 
+ * Class:       StateManager.cs
+ * Purpose:     Manages the state of the player.
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
+
 using UnityEngine;
 
 public class StateManager : MonoBehaviour
@@ -11,17 +23,15 @@ public class StateManager : MonoBehaviour
         Count
     }
 
-    [Header("Camera")]
-    public Camera playerCamera;
-    public GameObject cameraGroup;
+    [Header("References")]
     public GameObject firstPersonCameraPos, thirdPersonCameraPos;
-
-
-    [Header("Camera")]
     public GameObject mechObject;
     public GameObject ballObject;
     public GameObject mechEjectEffect;
-    public float ejectHeight = 10.0f, ejectForce = 10.0f;
+
+    [Header("Eject Properties")]
+    public KeyCode debugEjectKey;
+    public float ejectHeight = 5.0f, ejectForce = 10.0f;
 
     // Private variables.
     private Vector3 targetPos = new Vector3();
@@ -33,14 +43,14 @@ public class StateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Setting the default state of the player.
         currentState = PLAYER_STATE.Mech;
-        cameraGroup.transform.parent = mechObject.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.LeftShift))
+        if(Input.GetKeyUp(debugEjectKey))
         {
             if(currentState == PLAYER_STATE.Ball)
                 SetState(PLAYER_STATE.Mech);
@@ -100,73 +110,34 @@ public class StateManager : MonoBehaviour
         switch(state)
         {
             case PLAYER_STATE.Ball:
-                if(!moveCamera)
-                {
-                    moveCamera = false;
+                //Playing particle effect.
+                GameObject explosionObject = Instantiate(mechEjectEffect, mechObject.transform.position, mechObject.transform.rotation);
+                Destroy(explosionObject, 1.9f);
 
-                    // Swapping camera controls.
-                    playerCamera.GetComponent<FP_MouseLook>().enabled = false;
-                    playerCamera.GetComponent<TP_MouseLook>().enabled = true;
+                // Swapping active objects.
+                this.gameObject.GetComponent<CharacterController>().enabled = false;
+                mechObject.SetActive(false);
+                ballObject.SetActive(true);
 
-                    // Setting the camera groups transform to be the ball.
-                    cameraGroup.transform.parent = ballObject.transform;
+                // Updating the current state.
+                currentState = PLAYER_STATE.Ball;
 
-                    // Swapping movement controls.
-                    mechObject.GetComponent<MovementController>().enabled = false;
-                    mechObject.gameObject.transform.parent = null;
-
-                    ballObject.SetActive(true);
-                    ballObject.GetComponent<Ball_Movement>().enabled = true;
-                    playerCamera.gameObject.transform.parent = ballObject.transform;
-
-                    // Turning on the external mech in the cameras culling mask.
-                    playerCamera.cullingMask |= 1 << LayerMask.NameToLayer("External_Mech");
-
-                    // Disabling the mechs HUD.
-                    mechObject.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
-
-                    // Updating the current state.
-                    currentState = PLAYER_STATE.Ball;
-
-                    // Updating the balls postion.
-                    ballObject.transform.position = mechObject.transform.position + (new Vector3(0, ejectHeight, 0));
-                }
-
-                // Disable the mech and fp camera object.
-                //mechObject.SetActive(false);
-                //firstPersonCamera.SetActive(false);
-
-                // Playing particle effect.
-                //GameObject explosionObject = Instantiate(mechEjectEffect, mechObject.transform.position, mechObject.transform.rotation);
-                //Destroy(explosionObject, 1.9f);
-
-                // Enable the ball and tp camera object.
-                //ballObject.SetActive(true);
-                //thirdPersonCamera.SetActive(true);
-
-                // Resetting the balls velocity.
-                //Rigidbody ballRB = ballObject.GetComponent<Rigidbody>();
-                //ballRB.velocity = Vector3.zero;
-
-                // Adding some force to the ball to shoot it up on switch.
-                //Vector3 ejectDirection = -transform.forward * 0.5f;
-                //ballRB.AddForce(ejectDirection * ejectForce, ForceMode.Impulse);
+                // Updating the balls postion.
+                //ballObject.transform.position = mechObject.transform.position + (new Vector3(0, ejectHeight, 0));
+                ballObject.GetComponentInChildren<Rigidbody>().AddForce(Vector3.up * ejectForce);
                 break;
             
             case PLAYER_STATE.Mech:
-                //// Disable the ball and tp camera object.
-                //ballObject.SetActive(false);
-                //thirdPersonCamera.SetActive(false);
+                // Swapping active objects.
+                this.gameObject.GetComponent<CharacterController>().enabled = true;
+                mechObject.SetActive(true);
+                ballObject.SetActive(false);
 
-                //// Enable the mech and fp camera object.
-                //mechObject.SetActive(true);
-                //firstPersonCamera.SetActive(true);
+                // Updating the current state.
+                currentState = PLAYER_STATE.Mech;
 
-                //// Updating the current state.
-                //currentState = PLAYER_STATE.Mech;
-
-                //// Updating the mechs postion.
-                //mechObject.transform.position = ballObject.transform.position;
+                // Updating the mechs postion.
+                this.gameObject.transform.position = ballObject.transform.position;
                 break;
         }
     }
@@ -175,8 +146,8 @@ public class StateManager : MonoBehaviour
     private bool LerpCamera(GameObject target, Vector3 posA, Vector3 posB, float time)
     {
         Vector3 smoothedPosition = Vector3.Lerp(posA, posB, time);
-        playerCamera.transform.position = smoothedPosition;
-        playerCamera.transform.LookAt(target.transform);
+        //playerCamera.transform.position = smoothedPosition;
+        //playerCamera.transform.LookAt(target.transform);
 
         if ((smoothedPosition - posB).magnitude <= 0)
             return true;

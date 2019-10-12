@@ -75,12 +75,12 @@ public class Ball_Movement : MonoBehaviour
             GameObject targetHit = hit.transform.gameObject;
             if (targetHit && targetHit.tag == "Ground" && hit.distance <= distanceToGround)
             {
-                Debug.Log("true: " + hit.distance);
+                Debug.Log("hit: " + hit.distance);
                 return true;
             }
             else
             {
-                Debug.Log("false: " + hit.distance);
+                Debug.Log("no: " + hit.distance);
                 return false;
             }
         }

@@ -3,14 +3,13 @@
  * Version:     Alpha
  * 
  * Class:       MechController.cs
- * Purpose:     To control the movement for the mech.
+ * Purpose:     To control the movement of the mech.
  * 
  * Author:      Lachlan Wernert
  * Team:        Skylighter
  * 
  * Deficiences:
- *             - Currently resets the acceleration after jump, working on a fix.
- *             - ADD HERE IF YOU FIND BUGS, THEN LET ME KNOW!!!
+ * 
  *===========================================================================*/
 using UnityEngine;
 
@@ -26,7 +25,7 @@ public class MechController : MonoBehaviour
     public float accelerationMultiplier = 1.0f;
     public float decelerationMultiplier = 1.0f;
     public float gravity = 10.0f;
-    public float groundDrag = 20.0f;
+    //public float groundDrag = 20.0f;
     public float jumpHeight = 6.0f;
     public float airAccelerationSpeed = 1.0f;
 
