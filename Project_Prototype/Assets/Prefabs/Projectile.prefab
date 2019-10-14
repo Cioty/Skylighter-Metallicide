@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8200958712033532058}
   - component: {fileID: 1329202985557151035}
   m_Layer: 0
-  m_Name: Projectile 1
+  m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8200958712033532059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.014, y: 2.344, z: 2.495}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -124,4 +124,3 @@ MonoBehaviour:
   maxTimer: 5
   explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
-  playerStateManager: {fileID: 0}

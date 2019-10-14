@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
             Destroy(collision.gameObject);
 
         // Preventing the player from damaging themselves.
-        if(collision.gameObject.tag != "External_Mech")
+        if(collision.gameObject.tag != "Player_Mech")
             Explode();
     }
 
