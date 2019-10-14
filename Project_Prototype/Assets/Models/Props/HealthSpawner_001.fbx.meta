@@ -1,0 +1,394 @@
+fileFormatVersion: 2
+guid: 2361578fa86f83d4d8757434cafd5d41
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: arm_BallPivot
+    100002: arm_BallPivot 1
+    100004: arm_Base
+    100006: arm_Base1
+    100008: arm_Cylinder
+    100010: arm_Cylinder 1
+    100012: arm_End
+    100014: arm_End 1
+    100016: arm_Length
+    100018: arm_Length 1
+    100020: arm_Materializer
+    100022: arm_Materializer 1
+    100024: arm_Materializer1
+    100026: arm_Materializer1 1
+    100028: arm_Materializer2
+    100030: arm_Materializer2 1
+    100032: arm_Swivel
+    100034: arm_Swivel 1
+    100036: base
+    100038: corner1
+    100040: corner2
+    100042: corner3
+    100044: corner4
+    100046: cornerLid
+    100048: cornerLid 1
+    100050: cornerLid 2
+    100052: cornerLid 3
+    100054: corners
+    100056: corners 1
+    100058: corners 2
+    100060: corners 3
+    100062: corners 4
+    100064: group14
+    100066: group15
+    100068: group16
+    100070: group17
+    100072: group18
+    100074: group19
+    100076: //RootNode
+    100078: innerBase
+    100080: movingParts
+    100082: pCube40
+    100084: pCube40 1
+    100086: pCube40 2
+    100088: pCube40 3
+    100090: pCylinder75
+    100092: pCylinder75 1
+    100094: pCylinder75 2
+    100096: pCylinder75 3
+    100098: plateRing
+    100100: repair_Green
+    100102: repairKit
+    100104: repairRail
+    100106: repairSpawner
+    100108: slidingPlate
+    100110: slidingPlate1
+    100112: slidingRing
+    100114: suspender3
+    100116: suspender3 1
+    100118: suspender3 2
+    100120: suspender3 3
+    100122: template3
+    100124: template3 1
+    100126: template3 2
+    100128: template3 3
+    100130: template3 4
+    100132: template3 5
+    100134: wormDoor
+    400000: arm_BallPivot
+    400002: arm_BallPivot 1
+    400004: arm_Base
+    400006: arm_Base1
+    400008: arm_Cylinder
+    400010: arm_Cylinder 1
+    400012: arm_End
+    400014: arm_End 1
+    400016: arm_Length
+    400018: arm_Length 1
+    400020: arm_Materializer
+    400022: arm_Materializer 1
+    400024: arm_Materializer1
+    400026: arm_Materializer1 1
+    400028: arm_Materializer2
+    400030: arm_Materializer2 1
+    400032: arm_Swivel
+    400034: arm_Swivel 1
+    400036: base
+    400038: corner1
+    400040: corner2
+    400042: corner3
+    400044: corner4
+    400046: cornerLid
+    400048: cornerLid 1
+    400050: cornerLid 2
+    400052: cornerLid 3
+    400054: corners
+    400056: corners 1
+    400058: corners 2
+    400060: corners 3
+    400062: corners 4
+    400064: group14
+    400066: group15
+    400068: group16
+    400070: group17
+    400072: group18
+    400074: group19
+    400076: //RootNode
+    400078: innerBase
+    400080: movingParts
+    400082: pCube40
+    400084: pCube40 1
+    400086: pCube40 2
+    400088: pCube40 3
+    400090: pCylinder75
+    400092: pCylinder75 1
+    400094: pCylinder75 2
+    400096: pCylinder75 3
+    400098: plateRing
+    400100: repair_Green
+    400102: repairKit
+    400104: repairRail
+    400106: repairSpawner
+    400108: slidingPlate
+    400110: slidingPlate1
+    400112: slidingRing
+    400114: suspender3
+    400116: suspender3 1
+    400118: suspender3 2
+    400120: suspender3 3
+    400122: template3
+    400124: template3 1
+    400126: template3 2
+    400128: template3 3
+    400130: template3 4
+    400132: template3 5
+    400134: wormDoor
+    2100000: lambert3
+    2100002: lambert1
+    2100004: lambert4
+    2100006: lambert9
+    2100008: lambert11
+    2100010: lambert6
+    2100012: lambert16
+    2300000: arm_BallPivot
+    2300002: arm_BallPivot 1
+    2300004: arm_Base
+    2300006: arm_Base1
+    2300008: arm_Cylinder
+    2300010: arm_Cylinder 1
+    2300012: arm_End
+    2300014: arm_End 1
+    2300016: arm_Length
+    2300018: arm_Length 1
+    2300020: arm_Materializer
+    2300022: arm_Materializer 1
+    2300024: arm_Materializer1
+    2300026: arm_Materializer1 1
+    2300028: arm_Materializer2
+    2300030: arm_Materializer2 1
+    2300032: arm_Swivel
+    2300034: arm_Swivel 1
+    2300036: base
+    2300038: cornerLid
+    2300040: cornerLid 1
+    2300042: cornerLid 2
+    2300044: cornerLid 3
+    2300046: corners 1
+    2300048: corners 2
+    2300050: corners 3
+    2300052: corners 4
+    2300054: innerBase
+    2300056: pCube40
+    2300058: pCube40 1
+    2300060: pCube40 2
+    2300062: pCube40 3
+    2300064: pCylinder75
+    2300066: pCylinder75 1
+    2300068: pCylinder75 2
+    2300070: pCylinder75 3
+    2300072: plateRing
+    2300074: repairKit
+    2300076: repairRail
+    2300078: slidingPlate
+    2300080: slidingPlate1
+    2300082: slidingRing
+    2300084: suspender3
+    2300086: suspender3 1
+    2300088: suspender3 2
+    2300090: suspender3 3
+    2300092: template3
+    2300094: template3 1
+    2300096: template3 2
+    2300098: template3 3
+    2300100: template3 4
+    2300102: template3 5
+    2300104: wormDoor
+    3300000: arm_BallPivot
+    3300002: arm_BallPivot 1
+    3300004: arm_Base
+    3300006: arm_Base1
+    3300008: arm_Cylinder
+    3300010: arm_Cylinder 1
+    3300012: arm_End
+    3300014: arm_End 1
+    3300016: arm_Length
+    3300018: arm_Length 1
+    3300020: arm_Materializer
+    3300022: arm_Materializer 1
+    3300024: arm_Materializer1
+    3300026: arm_Materializer1 1
+    3300028: arm_Materializer2
+    3300030: arm_Materializer2 1
+    3300032: arm_Swivel
+    3300034: arm_Swivel 1
+    3300036: base
+    3300038: cornerLid
+    3300040: cornerLid 1
+    3300042: cornerLid 2
+    3300044: cornerLid 3
+    3300046: corners 1
+    3300048: corners 2
+    3300050: corners 3
+    3300052: corners 4
+    3300054: innerBase
+    3300056: pCube40
+    3300058: pCube40 1
+    3300060: pCube40 2
+    3300062: pCube40 3
+    3300064: pCylinder75
+    3300066: pCylinder75 1
+    3300068: pCylinder75 2
+    3300070: pCylinder75 3
+    3300072: plateRing
+    3300074: repairKit
+    3300076: repairRail
+    3300078: slidingPlate
+    3300080: slidingPlate1
+    3300082: slidingRing
+    3300084: suspender3
+    3300086: suspender3 1
+    3300088: suspender3 2
+    3300090: suspender3 3
+    3300092: template3
+    3300094: template3 1
+    3300096: template3 2
+    3300098: template3 3
+    3300100: template3 4
+    3300102: template3 5
+    3300104: wormDoor
+    4300000: repairKit
+    4300002: wormDoor
+    4300004: template3
+    4300006: template3
+    4300008: template3
+    4300010: template3
+    4300012: template3
+    4300014: template3
+    4300016: slidingPlate
+    4300018: slidingPlate1
+    4300020: plateRing
+    4300022: repairRail
+    4300024: arm_Base
+    4300026: arm_Swivel
+    4300028: arm_Cylinder
+    4300030: arm_Length
+    4300032: arm_End
+    4300034: arm_BallPivot
+    4300036: arm_Materializer
+    4300038: arm_Materializer1
+    4300040: arm_Materializer2
+    4300042: arm_Base1
+    4300044: arm_Swivel
+    4300046: arm_Cylinder
+    4300048: arm_Length
+    4300050: arm_End
+    4300052: arm_BallPivot
+    4300054: arm_Materializer
+    4300056: arm_Materializer1
+    4300058: arm_Materializer2
+    4300060: slidingRing
+    4300062: base
+    4300064: innerBase
+    4300066: corners
+    4300068: cornerLid
+    4300070: suspender3
+    4300072: pCube40
+    4300074: pCylinder75
+    4300076: corners
+    4300078: cornerLid
+    4300080: suspender3
+    4300082: pCube40
+    4300084: pCylinder75
+    4300086: corners
+    4300088: cornerLid
+    4300090: suspender3
+    4300092: pCube40
+    4300094: pCylinder75
+    4300096: corners
+    4300098: cornerLid
+    4300100: suspender3
+    4300102: pCube40
+    4300104: pCylinder75
+    10800000: repair_Green
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
