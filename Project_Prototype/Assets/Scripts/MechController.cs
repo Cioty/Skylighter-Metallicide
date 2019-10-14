@@ -12,12 +12,12 @@
  * 
  *===========================================================================*/
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class MechController : MonoBehaviour
 {
-    [Header("References")]
-    public GameObject playerObject;
-    public PlayerHandler playerHandler;
+    private GameObject playerObject;
+    private PlayerHandler playerHandler;
     private CharacterController controller;
 
     [Header("Movement")]
@@ -44,12 +44,17 @@ public class MechController : MonoBehaviour
     private float accelTimer, deccelTimer, directionalTimer;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         // Setting the cursors lock state.
         Cursor.lockState = CursorLockMode.Locked;
+    }
 
-        // Get the character controller in the player.
+    void Awake()
+    {
+        // Gets the required compents from the player object.
+        playerObject = this.gameObject.transform.parent.gameObject;
+        playerHandler = GetComponent<PlayerHandler>();
         controller = playerObject.GetComponent<CharacterController>();
     }
 
@@ -106,13 +111,14 @@ public class MechController : MonoBehaviour
             //currentVelocity.y -= groundDrag;
 
             // Checking for jump input.
-            if (Input.GetButton("Jump"))
+            if (Input.GetButton("Jump") || XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController))
             {
                 currentVelocity = (playerObject.transform.forward + moveDirection * jumpHeight) + acceleration.normalized + Vector3.up * jumpHeight;
 
                 // Currently just resetting the acceleration after using it for the jump, need a fix for a bug here.
                 acceleration = Vector3.zero;
             }
+
         }
         else
         {

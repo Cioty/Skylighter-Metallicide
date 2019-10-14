@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class Dashing : MonoBehaviour
 {
@@ -60,7 +61,7 @@ public class Dashing : MonoBehaviour
         float vertical_move = Input.GetAxis("Vertical");
 
         // When dashKey press, temporarily stop movement (No falling, no nothing)
-        if (Input.GetKeyDown(dashKey) && boostPoints > 0)
+        if ((Input.GetKeyDown(dashKey) || XCI.GetButtonDown(XboxButton.B, playerHandler.AssignedController)) && boostPoints > 0)
         {
             // To get the Mech's last direction
             lastDir = transform.forward.normalized * vertical_move + transform.right.normalized * horizontal_move;

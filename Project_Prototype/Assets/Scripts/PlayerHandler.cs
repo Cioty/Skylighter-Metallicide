@@ -1,35 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class PlayerHandler : MonoBehaviour
 {
-    // Serialized to show the values in the inspector.
-    [SerializeField]
-    private int health;
-
-    [SerializeField]
-    private int damage;
-
-    [SerializeField]
-    private GameObject player;
-
+    public int health;
+    private XboxController assignedController;
     private Vector3 currentVelocity = Vector3.zero;
 
-    public void Start()
-    {
-        player = this.gameObject;
-    }
-    
     public int Health {
         get { return health; }
         set { health = value;}
-    }
-    
-    public int Damage
-    {
-        get { return Damage; }
-        set { Damage = value; }
     }
 
     public Vector3 CurrentVelocity
@@ -40,6 +22,13 @@ public class PlayerHandler : MonoBehaviour
 
     public GameObject GameObject
     {
-        get { return player; }
+        get { return this.gameObject; }
     }
+
+    public XboxController AssignedController
+    {
+        get { return assignedController; }
+        set { assignedController = value; }
+    }
+
 }

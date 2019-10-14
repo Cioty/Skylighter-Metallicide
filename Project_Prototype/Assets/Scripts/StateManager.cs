@@ -24,7 +24,8 @@ public class StateManager : MonoBehaviour
     }
 
     [Header("References")]
-    public GameObject firstPersonCameraPos, thirdPersonCameraPos;
+    public GameObject firstPersonCameraPos;
+    public GameObject thirdPersonCameraPos;
     public GameObject mechObject;
     public GameObject ballObject;
     public GameObject mechEjectEffect;

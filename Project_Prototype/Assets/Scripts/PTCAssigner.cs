@@ -18,6 +18,10 @@ public class PTCAssigner : MonoBehaviour
     private List<PlayerContainer> playerContainers = new List<PlayerContainer>();
     private bool allControllersConnected = false;
 
+    private void Awake()
+    {
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -80,7 +84,8 @@ public class PTCAssigner : MonoBehaviour
             {
                 if (XCI.GetButtonUp(XboxButton.A, XboxController.All))
                 {
-                    SceneManager.LoadScene("Map01", LoadSceneMode.Single);
+                    PlayerData.instance.Save();
+                    SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
                 }
 
                 if (XCI.GetButtonUp(XboxButton.B, XboxController.All))
@@ -112,7 +117,7 @@ public class PTCAssigner : MonoBehaviour
 
     private void AddController(int id, XboxController controller)
     {
-        // If there's a container empty, then add a player into it.
+        // If there's a container empty, then add a player into it. (Not sure if we should do this, or just match the ID to the connected controller).
         GameObject containerGO = this.FindNextEmptyContainer().gameObject;
         if (containerGO)
         {
@@ -130,15 +135,24 @@ public class PTCAssigner : MonoBehaviour
         }
     }
 
+    public List<PlayerContainer> GetPlayerContainers()
+    {
+        return playerContainers;
+    }
+
+    public int AssignedPlayers
+    {
+        get { return assignedPlayers; }
+    }
+
+    public int ConnectedControllers
+    {
+        get { return connectedControllers; }
+    }
+
     public bool IsAtConnectScreen
     {
-        get
-        {
-            return isAtConnectScreen;
-        }
-        set
-        {
-            isAtConnectScreen = value;
-        }
+        get { return isAtConnectScreen;  }
+        set { isAtConnectScreen = value; }
     }
 }

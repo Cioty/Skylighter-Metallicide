@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class FirstPersonCamera : MonoBehaviour
 {
+    private GameObject playerObject;
+    private PlayerHandler playerHandler;
+
     [Header("References")]
-    public GameObject playerObject;
-    public PlayerHandler playerHandler;
     public Transform mechHullTransform;
     public Transform mechHipTransform;
     public Transform mechCoreTransform;
@@ -19,18 +21,32 @@ public class FirstPersonCamera : MonoBehaviour
     public float minY = -60, maxY = 80;
     private Vector2 mouseLook, smoothV;
 
+    private void Awake()
+    {
+        // Getting the required components.
+        playerObject = this.gameObject.transform.parent.gameObject;
+        playerHandler = this.GetComponent<PlayerHandler>();
+    }
+
     private void Start()
     {
         // Setting up the default hip transform. (Current static, will implement direction on move soon).
         this.defaultHipRotation = mechHipTransform.rotation;
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        // Getting the mouse delta.
-        var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        // controller only atm:
+        float axisX = XCI.GetAxis(XboxAxis.RightStickX, playerHandler.AssignedController);
+        float axisY = XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController);
+        var mouseDelta = new Vector2(axisX, axisY);
         mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
+
+        // Getting the mouse delta.
+        //var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        //mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
 
         // Getting the interpolated result between the two float values.
         smoothV.x = Mathf.Lerp(smoothV.x, mouseDelta.x, 1f / smoothing);

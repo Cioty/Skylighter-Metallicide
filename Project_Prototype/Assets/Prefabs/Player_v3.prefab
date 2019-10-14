@@ -111,9 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f82b1ff80adb494a9c191531f7c8aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  damage: 0
-  player: {fileID: 2455254139509369771}
+  health: 100
 --- !u!114 &8460204989531102869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,8 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc6c77f7e412fd940a533c8871e43ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 7360001967633157087}
-  playerHandler: {fileID: 4942984792048418344}
   maxSpeed: 13
   accelerationMultiplier: 6
   decelerationMultiplier: 3
@@ -194,8 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82805543fbe179c44ac59df3fe400c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 7360001967633157087}
-  playerHandler: {fileID: 4942984792048418344}
   mechHullTransform: {fileID: 7996325456310848232}
   mechHipTransform: {fileID: 7996325456310848234}
   mechCoreTransform: {fileID: 7996325456310848214}
@@ -269,8 +263,6 @@ MonoBehaviour:
   projectileStartPoint: {fileID: 2124794962887729059}
   projectilePrefab: {fileID: 8200958712033532059, guid: 41d1ef769b2354d4b8b19b126f42fd4c,
     type: 3}
-  player: {fileID: 7360001967633157087}
-  firstPersonCamera: {fileID: 95157330912346771}
   projectileSpeed: 10
   fireThreshold: 1
 --- !u!1 &3941710791864528593
@@ -492,7 +484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3745637711274164788
 Transform:
   m_ObjectHideFlags: 0
@@ -537,6 +529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6587416109238850279}
   - component: {fileID: 7568312652193077413}
+  - component: {fileID: 6624649031373378489}
   m_Layer: 0
   m_Name: Player_v3
   m_TagString: Untagged
@@ -578,6 +571,27 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.75, z: 0.49}
+--- !u!114 &6624649031373378489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7360001967633157087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b540c0e99a6de0445ad767f5c0092381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstPersonCameraPos: {fileID: 8814701825088474299}
+  thirdPersonCameraPos: {fileID: 8695440268746367917}
+  mechObject: {fileID: 2455254139509369771}
+  ballObject: {fileID: 6546807099207435369}
+  mechEjectEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
+    type: 3}
+  debugEjectKey: 0
+  ejectHeight: 5
+  ejectForce: 10
 --- !u!1 &8695440268746367917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,15 +1090,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35e4f11356248c14184706e36746c901, type: 3}
---- !u!4 &7996325456310848214 stripped
+--- !u!4 &7996325456310848134 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400016, guid: 35e4f11356248c14184706e36746c901,
-    type: 3}
-  m_PrefabInstance: {fileID: 7996325456310980678}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7996325456310848234 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400044, guid: 35e4f11356248c14184706e36746c901,
+  m_CorrespondingSourceObject: {fileID: 400064, guid: 35e4f11356248c14184706e36746c901,
     type: 3}
   m_PrefabInstance: {fileID: 7996325456310980678}
   m_PrefabAsset: {fileID: 0}
@@ -1094,15 +1102,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7996325456310980678}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7996325456310848134 stripped
+--- !u!4 &7996325456310848234 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400064, guid: 35e4f11356248c14184706e36746c901,
+  m_CorrespondingSourceObject: {fileID: 400044, guid: 35e4f11356248c14184706e36746c901,
     type: 3}
   m_PrefabInstance: {fileID: 7996325456310980678}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7996325456310848158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400088, guid: 35e4f11356248c14184706e36746c901,
+    type: 3}
+  m_PrefabInstance: {fileID: 7996325456310980678}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7996325456310848214 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400016, guid: 35e4f11356248c14184706e36746c901,
     type: 3}
   m_PrefabInstance: {fileID: 7996325456310980678}
   m_PrefabAsset: {fileID: 0}
