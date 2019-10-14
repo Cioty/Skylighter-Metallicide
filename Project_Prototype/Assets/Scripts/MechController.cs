@@ -18,7 +18,6 @@ public class MechController : MonoBehaviour
     [Header("References")]
     public GameObject playerObject;
     public PlayerHandler playerHandler;
-    private PlayerController playerController;
     private CharacterController controller;
 
     [Header("Movement")]
@@ -26,12 +25,14 @@ public class MechController : MonoBehaviour
     public float accelerationMultiplier = 1.0f;
     public float decelerationMultiplier = 1.0f;
     public float gravity = 10.0f;
+    //public float groundDrag = 20.0f;
     public float jumpHeight = 6.0f;
     public float airAccelerationSpeed = 1.0f;
 
     [Header("Curves")]
     public AnimationCurve accelerationRate;
     public AnimationCurve decelerationRate;
+
 
     // Private variables.
     private Vector3 acceleration = Vector3.zero;
@@ -50,8 +51,6 @@ public class MechController : MonoBehaviour
 
         // Get the character controller in the player.
         controller = playerObject.GetComponent<CharacterController>();
-
-        playerController = playerObject.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -101,6 +100,10 @@ public class MechController : MonoBehaviour
             // Applying direction and acceleration to the current velocity.
             currentVelocity = lastDirection + acceleration;
             currentVelocity = Vector3.ClampMagnitude(currentVelocity, 25);
+            Debug.Log(currentVelocity);
+
+            // Removed ground drag.
+            //currentVelocity.y -= groundDrag;
 
             // Checking for jump input.
             if (Input.GetButton("Jump"))
