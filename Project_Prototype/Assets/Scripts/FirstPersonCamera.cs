@@ -26,7 +26,7 @@ public class FirstPersonCamera : MonoBehaviour
     {
         // Getting the required components.
         playerObject = this.gameObject.transform.parent.gameObject;
-        playerHandler = this.GetComponent<PlayerHandler>();
+        playerHandler = playerObject.GetComponent<PlayerHandler>();
     }
 
     private void Start()
@@ -50,16 +50,13 @@ public class FirstPersonCamera : MonoBehaviour
             axisX = Input.GetAxisRaw("Mouse X");
             axisY = Input.GetAxisRaw("Mouse Y");
         }
-        var mouseDelta = new Vector2(axisX, axisY);
-        mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
 
-        // Getting the mouse delta.
-        //var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        //mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
+        var lookDelta = new Vector2(axisX, axisY);
+        lookDelta = Vector2.Scale(lookDelta, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
 
         // Getting the interpolated result between the two float values.
-        smoothV.x = Mathf.Lerp(smoothV.x, mouseDelta.x, 1f / smoothing);
-        smoothV.y = Mathf.Lerp(smoothV.y, mouseDelta.y, 1f / smoothing);
+        smoothV.x = Mathf.Lerp(smoothV.x, lookDelta.x, 1f / smoothing);
+        smoothV.y = Mathf.Lerp(smoothV.y, lookDelta.y, 1f / smoothing);
 
         // Incrementally adding to the camera look.
         mouseLook += smoothV;

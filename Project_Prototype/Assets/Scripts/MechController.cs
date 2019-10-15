@@ -54,7 +54,7 @@ public class MechController : MonoBehaviour
     {
         // Gets the required compents from the player object.
         playerObject = this.gameObject.transform.parent.gameObject;
-        playerHandler = GetComponent<PlayerHandler>();
+        playerHandler = playerObject.GetComponent<PlayerHandler>();
         controller = playerObject.GetComponent<CharacterController>();
     }
 

@@ -5,15 +5,37 @@ using XboxCtrlrInput;
 
 public class PlayerHandler : MonoBehaviour
 {
-    public int health;
+    public int mechHealth;
+    public int coreHealth;
     public Camera firstPersonCamera;
     private XboxController assignedController;
     private Vector3 currentVelocity = Vector3.zero;
     private string defaultTag = "Player";
+    private int playerID;
+    private bool isAlive;
 
-    public int Health {
-        get { return health; }
-        set { health = value; }
+    public int MechHealth
+    {
+        get { return mechHealth; }
+        set { mechHealth = value; }
+    }
+
+    public int CoreHealth
+    {
+        get { return coreHealth; }
+        set { coreHealth = value; }
+    }
+
+    public bool IsAlive
+    {
+        get { return isAlive; }
+        set { isAlive = value; }
+    }
+
+    public int ID
+    {
+        get { return playerID; }
+        set { playerID = value; }
     }
 
     public string ObjectTag

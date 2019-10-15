@@ -5,7 +5,7 @@ using XboxCtrlrInput;
 
 public class ProjectileLauncher : MonoBehaviour
 {
-    private GameObject player;
+    private GameObject playerObject;
     private PlayerHandler playerHandler;
     private bool readyToFire = true;
     private float fireTimer = 0.0f;
@@ -20,8 +20,8 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void Awake()
     {
-        player = this.gameObject.transform.parent.gameObject;
-        playerHandler = this.GetComponent<PlayerHandler>();
+        playerObject = this.gameObject.transform.parent.gameObject;
+        playerHandler = playerObject.GetComponent<PlayerHandler>();
     }
 
     private void Update()

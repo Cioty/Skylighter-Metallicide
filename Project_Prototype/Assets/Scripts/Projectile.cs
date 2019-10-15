@@ -5,11 +5,11 @@ using UnityEngine;
 // Simple projectile script to control the behaviour of the object after being projected.
 public class Projectile : MonoBehaviour
 {
-    private float timer = 0.0f;
-    public float maxTimer = 5.0f;
-
-    public GameObject explosionEffect;
     private StateManager playerStateManager;
+    public GameObject explosionEffect;
+    public float maxTimer = 5.0f;
+    private float timer = 0.0f;
+    public GameObject playerObject;
 
     private void Update()
     {
@@ -22,16 +22,7 @@ public class Projectile : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        // Destorying the target cubes.
-        if (collision.gameObject.tag == "TargetCube")
-            Destroy(collision.gameObject);
-
-        // Preventing the player from damaging themselves.
-        if(collision.gameObject.tag != "Player_Mech")
-            Explode();
-
-        // Check if the tag equals any of the player tags.
-
+        Explode();
     }
 
     private void Explode()

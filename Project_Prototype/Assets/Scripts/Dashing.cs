@@ -5,6 +5,7 @@ using XboxCtrlrInput;
 
 public class Dashing : MonoBehaviour
 {
+    public GameObject playerObject;
     private MechController mechController;
     private PlayerHandler playerHandler;
 
@@ -48,7 +49,7 @@ public class Dashing : MonoBehaviour
         // Get the rigidbody of the Mech, or whatever
         //rb = this.GetComponent<Rigidbody>(); 
 
-        playerHandler = GetComponent<PlayerHandler>();
+        playerHandler = playerObject.GetComponent<PlayerHandler>();
         mechController = GetComponent<MechController>();
 
         thrusterTimer = zero;                        
@@ -60,8 +61,9 @@ public class Dashing : MonoBehaviour
         float horizontal_move = Input.GetAxis("Horizontal");
         float vertical_move = Input.GetAxis("Vertical");
 
+        float leftTrigHeight = XCI.GetAxis(XboxAxis.LeftTrigger, playerHandler.AssignedController);
         // When dashKey press, temporarily stop movement (No falling, no nothing)
-        if ((Input.GetKeyDown(dashKey) || XCI.GetButtonDown(XboxButton.B, playerHandler.AssignedController)) && boostPoints > 0)
+        if ((Input.GetKeyDown(dashKey) || XCI.GetButtonDown(XboxButton.LeftBumper, playerHandler.AssignedController) || leftTrigHeight >= 0.5f) && boostPoints > 0)
         {
             // To get the Mech's last direction
             lastDir = transform.forward.normalized * vertical_move + transform.right.normalized * horizontal_move;
