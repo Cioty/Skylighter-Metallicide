@@ -32,19 +32,20 @@ public class LoadPlayers : MonoBehaviour
                 GameObject player = Instantiate(playerPrefab, position, playerPrefab.transform.rotation);
                 PlayerHandler handler = player.GetComponentInChildren<PlayerHandler>();
                 handler.AssignedController = playerContainers[i].Controller;
+                handler.ObjectTag += i;
+                position.x += 20.0f;
+
+                // Hides the players mech from itself.
+                handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(handler.ObjectTag));
 
                 if (playerCount == 1 && i == 0)
                     continue;
 
                 if (playerCount == 2 && i == 0)
-                {
                     handler.FirstPersonCamera.rect = new Rect(twoPlayer[0].x, twoPlayer[0].y, twoPlayer[0].z, twoPlayer[0].w);
-                }
 
                 if (playerCount == 2 && i == 1)
-                {
                     handler.FirstPersonCamera.rect = new Rect(twoPlayer[1].x, twoPlayer[1].y, twoPlayer[1].z, twoPlayer[1].w);
-                }
             }
 
             // Destroys the kept data.

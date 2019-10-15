@@ -9,10 +9,17 @@ public class PlayerHandler : MonoBehaviour
     public Camera firstPersonCamera;
     private XboxController assignedController;
     private Vector3 currentVelocity = Vector3.zero;
+    private string defaultTag = "Player";
 
     public int Health {
         get { return health; }
-        set { health = value;}
+        set { health = value; }
+    }
+
+    public string ObjectTag
+    {
+        get { return defaultTag; }
+        set { defaultTag = value; }
     }
 
     public Camera FirstPersonCamera

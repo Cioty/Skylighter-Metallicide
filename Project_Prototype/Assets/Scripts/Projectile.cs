@@ -29,6 +29,9 @@ public class Projectile : MonoBehaviour
         // Preventing the player from damaging themselves.
         if(collision.gameObject.tag != "Player_Mech")
             Explode();
+
+        // Check if the tag equals any of the player tags.
+
     }
 
     private void Explode()
