@@ -7,13 +7,20 @@ public class PlayerHandler : MonoBehaviour
 {
     public int mechHealth;
     public int coreHealth;
+    private int mechMaxHealth, coreMaxHealth;
     public RectTransform crosshairTransform;
     public Camera firstPersonCamera;
     private XboxController assignedController;
     private Vector3 currentVelocity = Vector3.zero;
-    private string defaultTag = "Player";
     private int playerID;
     private bool isAlive;
+
+    private void Awake()
+    {
+        // Setting max values to inspector values.
+        mechMaxHealth = mechHealth;
+        coreMaxHealth = coreHealth;
+    }
 
     public RectTransform CrosshairTransform
     {
@@ -32,6 +39,18 @@ public class PlayerHandler : MonoBehaviour
         get { return coreHealth; }
         set { coreHealth = value; }
     }
+
+
+    public int MaxMechHealth
+    {
+        get { return mechHealth; }
+    }
+
+    public int MaxCoreHealth
+    {
+        get { return coreHealth; }
+    }
+
 
     public bool IsAlive
     {

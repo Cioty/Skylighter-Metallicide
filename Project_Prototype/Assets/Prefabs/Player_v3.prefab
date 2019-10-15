@@ -608,7 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mechHealth: 100
   coreHealth: 100
-  crosshairTransform: {fileID: 0}
+  crosshairTransform: {fileID: 2732953527418905957}
   firstPersonCamera: {fileID: 95157330912346771}
 --- !u!1 &8695440268746367917
 GameObject:

@@ -9,14 +9,33 @@ public class LoadPlayers : MonoBehaviour
     private int playerCount = 0;
     private Vector4[] onePlayer;
     private Vector4[] twoPlayer;
+    private Vector4[] threePlayer;
+    private Vector4[] fourPlayer;
     private List<GameObject> activePlayers = new List<GameObject>();
 
     private void Awake()
     {
+        // Singleplayer full screen.
         onePlayer = new Vector4[1];
-        twoPlayer = new Vector4[2];
+        onePlayer[0] = new Vector4(0, 0, 1, 1);
 
-        this.SetUpScreenSplit();
+        // Two player split screen.
+        twoPlayer = new Vector4[2];
+        twoPlayer[0] = new Vector4(0, 0.5f, 1, 0.5f);           // top half
+        twoPlayer[1] = new Vector4(0, 0, 1, 0.5f);              // bot half
+
+        // Three player split screen.
+        threePlayer = new Vector4[3];
+        threePlayer[0] = new Vector4(0, 0.5f, 1, 0.5f);         // top half
+        threePlayer[1] = new Vector4(0, 0, 0.5f, 0.5f);         // bot left
+        threePlayer[2] = new Vector4(0.5f, 0, 0.5f, 0.5f);      // bot right
+
+        // Four player split screen.
+        fourPlayer = new Vector4[4];
+        fourPlayer[0] = new Vector4(0, 0.5f, 0.5f, 0.5f);       // top left
+        fourPlayer[1] = new Vector4(0.5f, 0.5f, 0.5f, 0.5f);    // top right
+        fourPlayer[2] = new Vector4(0, 0, 0.5f, 0.5f);          // bot let
+        fourPlayer[3] = new Vector4(0.5f, 0, 0.5f, 0.5f);       // bot right
     }
 
     // Start is called before the first frame update
@@ -24,7 +43,6 @@ public class LoadPlayers : MonoBehaviour
     {
         if (PlayerData.instance != null)
         {
-            Vector3 position = Vector3.zero;
             playerCount = PlayerData.instance.AssignedPlayers;
             List<PlayerContainer> playerContainers = PlayerData.instance.GetTransferedPlayerContainers();
 
@@ -33,49 +51,51 @@ public class LoadPlayers : MonoBehaviour
                 Transform randomSpawn = respawnArray.GetRandomSpawnPoint();
                 GameObject player = Instantiate(playerPrefab, randomSpawn.position, randomSpawn.rotation, this.gameObject.transform);
                 PlayerHandler handler = player.GetComponent<PlayerHandler>();
-                handler.ID = i;
                 player.tag = "Player";
-                position.x += 20.0f;
+                handler.ID = i;
                 handler.AssignedController = playerContainers[i].Controller;
                 activePlayers.Add(player);
 
-                this.SetLayerRecursively(player, player.tag + i);
-
                 // Hides the players mech from itself.
+                this.SetLayerRecursively(player, player.tag + i);
                 handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(player.tag + i));
 
+                // If single player:
                 if (playerCount == 1 && i == 0)
                     continue;
 
-                if (playerCount == 2 && i == 0)
-                    handler.FirstPersonCamera.rect = new Rect(twoPlayer[0].x, twoPlayer[0].y, twoPlayer[0].z, twoPlayer[0].w);
+                Vector4 playerScreen = Vector4.zero;
+                switch (playerCount)
+                {
+                    case 2:
+                        playerScreen = twoPlayer[i];
+                        handler.FirstPersonCamera.rect = new Rect(playerScreen.x, playerScreen.y, playerScreen.z, playerScreen.w);
+                        break;
 
-                if (playerCount == 2 && i == 1)
-                    handler.FirstPersonCamera.rect = new Rect(twoPlayer[1].x, twoPlayer[1].y, twoPlayer[1].z, twoPlayer[1].w);
+                    case 3:
+                        playerScreen = threePlayer[i];
+                        handler.FirstPersonCamera.rect = new Rect(playerScreen.x, playerScreen.y, playerScreen.z, playerScreen.w);
+                        break;
+
+                    case 4:
+                        playerScreen = fourPlayer[i];
+                        handler.FirstPersonCamera.rect = new Rect(playerScreen.x, playerScreen.y, playerScreen.z, playerScreen.w);
+                        break;
+                }
             }
 
-            // Destroys the kept data.
+            // Destroys the transferd data.
             Destroy(PlayerData.instance.gameObject);
         }
     }
 
-    void SetLayerRecursively(GameObject gameObject, string gameTag)
+    void SetLayerRecursively(GameObject gameObject, string layerName)
     {
-        gameObject.layer = LayerMask.NameToLayer(gameTag);
+        gameObject.layer = LayerMask.NameToLayer(layerName);
         foreach(Transform child in gameObject.transform)
         {
-            SetLayerRecursively(child.gameObject, gameTag);
+            SetLayerRecursively(child.gameObject, layerName);
         }
-    }
-
-    void SetUpScreenSplit()
-    {
-        // Full screen.
-        onePlayer[0] = new Vector4(0, 0, 1, 1);
-
-        // Split screen.
-        twoPlayer[0] = new Vector4(0, 0.5f, 1, 0.5f);
-        twoPlayer[1] = new Vector4(0, 0, 1, 0.5f);
     }
 
     public List<GameObject> ActivePlayers
