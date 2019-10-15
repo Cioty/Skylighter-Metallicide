@@ -71,6 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6911334212723666610}
+  - component: {fileID: 2246218811595357337}
   - component: {fileID: 8460204989531102869}
   - component: {fileID: 9169172856048194562}
   - component: {fileID: 8073178002007253317}
@@ -98,6 +99,18 @@ Transform:
   m_Father: {fileID: 6587416109238850279}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2246218811595357337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2455254139509369771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc626589ce3caae498f5f7e37e9af476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8460204989531102869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,8 +606,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f82b1ff80adb494a9c191531f7c8aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mechHealth: 0
-  coreHealth: 0
+  mechHealth: 100
+  coreHealth: 100
+  crosshairTransform: {fileID: 0}
   firstPersonCamera: {fileID: 95157330912346771}
 --- !u!1 &8695440268746367917
 GameObject:
