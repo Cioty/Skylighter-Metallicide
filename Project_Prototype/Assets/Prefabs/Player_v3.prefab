@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  firstPersonCamera: {fileID: 95157330912346771}
 --- !u!114 &8460204989531102869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,10 +261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aecb769457f8de748ac9c168970871b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstPersonCamera: {fileID: 95157330912346771}
   projectileStartPoint: {fileID: 2124794962887729059}
   projectilePrefab: {fileID: 8200958712033532059, guid: 41d1ef769b2354d4b8b19b126f42fd4c,
     type: 3}
-  projectileSpeed: 10
+  projectileSpeed: 100
   fireThreshold: 1
 --- !u!1 &3941710791864528593
 GameObject:
@@ -781,10 +783,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4417991594781051804}
     m_Modifications:
-    - target: {fileID: 100002, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
-      propertyPath: m_Name
-      value: Mesh_Core_001
-      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -841,6 +839,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.6666665
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
+      propertyPath: m_Name
+      value: Mesh_Core_001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
 --- !u!4 &234422100294346214 stripped
@@ -856,26 +858,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6911334212723666610}
     m_Modifications:
-    - target: {fileID: 100064, guid: 35e4f11356248c14184706e36746c901, type: 3}
-      propertyPath: m_Name
-      value: Mech_Mesh_w'Animation_Rig_v5
-      objectReference: {fileID: 0}
-    - target: {fileID: 100064, guid: 35e4f11356248c14184706e36746c901, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 100018, guid: 35e4f11356248c14184706e36746c901, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 100052, guid: 35e4f11356248c14184706e36746c901, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 100062, guid: 35e4f11356248c14184706e36746c901, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: 35e4f11356248c14184706e36746c901, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -919,6 +901,26 @@ PrefabInstance:
     - target: {fileID: 400064, guid: 35e4f11356248c14184706e36746c901, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100064, guid: 35e4f11356248c14184706e36746c901, type: 3}
+      propertyPath: m_Name
+      value: Mech_Mesh_w'Animation_Rig_v5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100064, guid: 35e4f11356248c14184706e36746c901, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 35e4f11356248c14184706e36746c901, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100052, guid: 35e4f11356248c14184706e36746c901, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100062, guid: 35e4f11356248c14184706e36746c901, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 100034, guid: 35e4f11356248c14184706e36746c901, type: 3}
       propertyPath: m_Layer

@@ -20,6 +20,7 @@ public class FirstPersonCamera : MonoBehaviour
     public float minX = -360, maxX = 360;
     public float minY = -60, maxY = 80;
     private Vector2 mouseLook, smoothV;
+    private float axisX, axisY;
 
     private void Awake()
     {
@@ -39,8 +40,16 @@ public class FirstPersonCamera : MonoBehaviour
     void Update()
     {
         // controller only atm:
-        float axisX = XCI.GetAxis(XboxAxis.RightStickX, playerHandler.AssignedController);
-        float axisY = XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController);
+        if(playerHandler.AssignedController > 0)
+        {
+            axisX = XCI.GetAxis(XboxAxis.RightStickX, playerHandler.AssignedController);
+            axisY = XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController);
+        }
+        else
+        {
+            axisX = Input.GetAxisRaw("Mouse X");
+            axisY = Input.GetAxisRaw("Mouse Y");
+        }
         var mouseDelta = new Vector2(axisX, axisY);
         mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
 

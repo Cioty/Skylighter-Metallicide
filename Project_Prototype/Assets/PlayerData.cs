@@ -6,8 +6,7 @@ public class PlayerData : MonoBehaviour
 {
     public PTCAssigner ptcAssigner;
     private int assignedPlayers;
-    private List<int> playerOrder = new List<int>();
-
+    private List<PlayerContainer> transferedPlayerContainers = new List<PlayerContainer>();
     public static PlayerData instance;
 
     private void Awake()
@@ -20,19 +19,20 @@ public class PlayerData : MonoBehaviour
 
     public void Save()
     {
+        // Player containers from PTC assigner.
         List<PlayerContainer> playerContainers = ptcAssigner.GetPlayerContainers();
-        for (int i = 0; i < assignedPlayers; ++i)
-        {
-            PlayerContainer container = playerContainers[i];
-            PlayerOrder.Add(container.ID);
-        }
 
         assignedPlayers = ptcAssigner.AssignedPlayers;
+        for (int i = 0; i < assignedPlayers; ++i)
+        {
+            transferedPlayerContainers.Add(playerContainers[i]);
+        }
+
     }
 
-    public List<int> PlayerOrder
+    public List<PlayerContainer> GetTransferedPlayerContainers()
     {
-        get { return playerOrder; }
+        return transferedPlayerContainers;
     }
 
     public int AssignedPlayers

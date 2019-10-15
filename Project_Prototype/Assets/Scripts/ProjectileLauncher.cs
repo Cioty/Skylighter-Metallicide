@@ -7,12 +7,12 @@ public class ProjectileLauncher : MonoBehaviour
 {
     private GameObject player;
     private PlayerHandler playerHandler;
-    private Camera firstPersonCamera;
     private bool readyToFire = true;
     private float fireTimer = 0.0f;
     private const float MAX_TRG_SCL = 1.21f;
 
     [Header("Attributes")]
+    public Camera firstPersonCamera;
     public Transform projectileStartPoint;
     public GameObject projectilePrefab;
     public float projectileSpeed = 10.0f;
@@ -21,14 +21,12 @@ public class ProjectileLauncher : MonoBehaviour
     private void Awake()
     {
         player = this.gameObject.transform.parent.gameObject;
-        firstPersonCamera = GetComponent<Camera>();
         playerHandler = this.GetComponent<PlayerHandler>();
     }
 
     private void Update()
     {
         float rightTrigHeight = XCI.GetAxis(XboxAxis.RightTrigger, playerHandler.AssignedController);
-        Debug.Log(rightTrigHeight);
         if (Input.GetMouseButtonDown(0) || rightTrigHeight >= 0.5f)
         {
             if (readyToFire)

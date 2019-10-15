@@ -74,8 +74,16 @@ public class MechController : MonoBehaviour
     // Gets the axis values then applys it to the movement vector with the players direction.
     private void UpdateMoveVector()
     {
-        horizontalAxis = Input.GetAxisRaw("Horizontal");
-        verticalAxis = Input.GetAxisRaw("Vertical");
+        if(playerHandler.AssignedController > 0)
+        {
+            horizontalAxis = XCI.GetAxis(XboxAxis.LeftStickX, playerHandler.AssignedController);
+            verticalAxis = XCI.GetAxis(XboxAxis.LeftStickY, playerHandler.AssignedController);
+        }
+        else
+        {
+            horizontalAxis = Input.GetAxisRaw("Horizontal");
+            verticalAxis = Input.GetAxisRaw("Vertical");
+        }
         moveDirection = (horizontalAxis * playerObject.transform.right) + (verticalAxis * playerObject.transform.forward);
         moveDirection.Normalize();
     }
@@ -105,18 +113,11 @@ public class MechController : MonoBehaviour
             // Applying direction and acceleration to the current velocity.
             currentVelocity = lastDirection + acceleration;
             currentVelocity = Vector3.ClampMagnitude(currentVelocity, 25);
-            Debug.Log(currentVelocity);
-
-            // Removed ground drag.
-            //currentVelocity.y -= groundDrag;
 
             // Checking for jump input.
-            if (Input.GetButton("Jump") || XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController))
+            if (XCI.GetButton(XboxButton.A, playerHandler.AssignedController) || Input.GetButton("Jump"))
             {
-                currentVelocity = (playerObject.transform.forward + moveDirection * jumpHeight) + acceleration.normalized + Vector3.up * jumpHeight;
-
-                // Currently just resetting the acceleration after using it for the jump, need a fix for a bug here.
-                acceleration = Vector3.zero;
+                currentVelocity = Jump();
             }
 
         }
@@ -140,6 +141,14 @@ public class MechController : MonoBehaviour
 
         // Moving the player with the calculated velocity.
         controller.Move(playerHandler.CurrentVelocity * Time.deltaTime);
+    }
+
+    public Vector3 Jump()
+    {
+        // Currently just resetting the acceleration after using it for the jump, need a fix for a bug here.
+        acceleration = Vector3.zero;
+
+        return (playerObject.transform.forward + moveDirection * jumpHeight) + acceleration.normalized + Vector3.up * jumpHeight;
     }
 
     public void Move(Vector3 motion)

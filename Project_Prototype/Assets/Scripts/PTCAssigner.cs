@@ -14,7 +14,7 @@ public class PTCAssigner : MonoBehaviour
     private int assignedPlayers = 0;
     private bool isAtConnectScreen = false;
     private bool hasSearchedForControllers = false;
-    private List<int> yetToBeConnectedList = new List<int>();
+    private List<XboxController> yetToBeConnectedList = new List<XboxController>();
     private List<PlayerContainer> playerContainers = new List<PlayerContainer>();
     private bool allControllersConnected = false;
 
@@ -53,8 +53,15 @@ public class PTCAssigner : MonoBehaviour
             playerContainers.Add(playerContainersGroup.transform.GetChild(i).transform.gameObject.GetComponent<PlayerContainer>());
 
         // Adding to the yet to bed added list
-        for (int i = 0; i < connectedControllers; ++i)
-            yetToBeConnectedList.Add(i);
+        for (int c = 1; c < connectedControllers + 1; ++c)
+        {
+            XboxController xboxController = ((XboxController)c);
+
+            if (xboxController == XboxController.All)
+                continue;
+
+            yetToBeConnectedList.Add(xboxController);
+        }
     }
 
     // Update is called once per frame
@@ -65,16 +72,21 @@ public class PTCAssigner : MonoBehaviour
             // check for input
             if (!allControllersConnected)
             {
-                for (int c = 0; c < yetToBeConnectedList.Count; ++c)
+                if(yetToBeConnectedList.Count > 0)
                 {
-                    XboxController controller = (XboxController)c;
-                    if (XCI.GetButtonUp(XboxButton.A, controller))
+                    for (int c = 0; c < yetToBeConnectedList.Count; ++c)
                     {
-                        this.AddController(c, controller);
+                        XboxController xboxController = yetToBeConnectedList[c];
+                        if (xboxController == XboxController.All)
+                            continue;
+
+                        if (XCI.GetButtonUp(XboxButton.A, xboxController))
+                        {
+                            this.AddController(c, xboxController);
+                        }
                     }
                 }
-
-                if (yetToBeConnectedList.Count == 0 && assignedPlayers > 0)
+                else if (assignedPlayers > 0)
                 {
                     allControllersConnectedScreen.SetActive(true);
                     allControllersConnected = true;
@@ -126,7 +138,7 @@ public class PTCAssigner : MonoBehaviour
             container.ID = id;
             container.Controller = controller;
             container.HasPlayer = true;
-            yetToBeConnectedList.Remove(id);
+            yetToBeConnectedList.Remove(controller);
             ++assignedPlayers;
         }
         else
