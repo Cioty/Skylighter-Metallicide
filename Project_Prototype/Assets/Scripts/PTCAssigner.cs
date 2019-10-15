@@ -18,11 +18,6 @@ public class PTCAssigner : MonoBehaviour
     private List<PlayerContainer> playerContainers = new List<PlayerContainer>();
     private bool allControllersConnected = false;
 
-    private void Awake()
-    {
-
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -97,7 +92,7 @@ public class PTCAssigner : MonoBehaviour
                 if (XCI.GetButtonUp(XboxButton.A, XboxController.All))
                 {
                     PlayerData.instance.Save();
-                    SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+                    SceneManager.LoadScene("Map01", LoadSceneMode.Single);
                 }
 
                 if (XCI.GetButtonUp(XboxButton.B, XboxController.All))

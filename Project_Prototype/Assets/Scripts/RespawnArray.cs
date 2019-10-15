@@ -47,7 +47,7 @@ public class RespawnArray : MonoBehaviour
     void Start()
     {
         Random.InitState((int)System.DateTimeOffset.UtcNow.ToUnixTimeSeconds());
-        Spawn();
+        // Spawn();
     }
 
     // Update is called once per frame
@@ -101,5 +101,11 @@ public class RespawnArray : MonoBehaviour
         playerHandler.mechHealth = 2;
         deathTimer = 3;
         Debug.Log("End");
+    }
+
+    public Transform GetRandomSpawnPoint()
+    {
+        randNumber = Random.Range(0, respawnPoints.Count);
+        return respawnPoints[randNumber].transform;
     }
 }

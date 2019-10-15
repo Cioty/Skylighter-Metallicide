@@ -1,0 +1,387 @@
+fileFormatVersion: 2
+guid: 113eb9ad03577e140bd1fa414ea44415
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Attachments
+    100002: Attachments 1
+    100004: Barrel_01
+    100006: Barrel_01 1
+    100008: Barrel_second_part
+    100010: Barrel_second_part 1
+    100012: Blastfin_01
+    100014: Blastfin_01 1
+    100016: Blastfin_02
+    100018: Blastfin_02 1
+    100020: Blastfin_03
+    100022: Blastfin_03 1
+    100024: Blastfin_04
+    100026: Blastfin_04 1
+    100028: Breach
+    100030: Breach 1
+    100032: Connector
+    100034: Connector 1
+    100036: Grip
+    100038: Grip 1
+    100040: group2
+    100042: Gun_body_01
+    100044: Gun_body_01 1
+    100046: Gun_body_04
+    100048: Gun_body_04 1
+    100050: Inner_casing
+    100052: Inner_casing 1
+    100054: Joint
+    100056: Joint 1
+    100058: Light
+    100060: Light 1
+    100062: PowerPack
+    100064: PowerPack 1
+    100066: PowerPack_mesh
+    100068: PowerPack_mesh 1
+    100070: Projectile_loader
+    100072: Projectile_loader 1
+    100074: Rail_01
+    100076: Rail_01 1
+    100078: Rail_02
+    100080: Rail_02 1
+    100082: Rail_Left
+    100084: Rail_Left 1
+    100086: Rocket_Laucher
+    100088: Rocket_Laucher 1
+    100090: Rocket_Projectile
+    100092: Rocket_Projectile 1
+    100094: //RootNode
+    100096: Rotator
+    100098: Rotator 1
+    100100: slot
+    100102: slot 1
+    100104: transform6
+    100106: Tube
+    100108: Tube 1
+    100110: Underbarrel
+    100112: Underbarrel 1
+    400000: Attachments
+    400002: Attachments 1
+    400004: Barrel_01
+    400006: Barrel_01 1
+    400008: Barrel_second_part
+    400010: Barrel_second_part 1
+    400012: Blastfin_01
+    400014: Blastfin_01 1
+    400016: Blastfin_02
+    400018: Blastfin_02 1
+    400020: Blastfin_03
+    400022: Blastfin_03 1
+    400024: Blastfin_04
+    400026: Blastfin_04 1
+    400028: Breach
+    400030: Breach 1
+    400032: Connector
+    400034: Connector 1
+    400036: Grip
+    400038: Grip 1
+    400040: group2
+    400042: Gun_body_01
+    400044: Gun_body_01 1
+    400046: Gun_body_04
+    400048: Gun_body_04 1
+    400050: Inner_casing
+    400052: Inner_casing 1
+    400054: Joint
+    400056: Joint 1
+    400058: Light
+    400060: Light 1
+    400062: PowerPack
+    400064: PowerPack 1
+    400066: PowerPack_mesh
+    400068: PowerPack_mesh 1
+    400070: Projectile_loader
+    400072: Projectile_loader 1
+    400074: Rail_01
+    400076: Rail_01 1
+    400078: Rail_02
+    400080: Rail_02 1
+    400082: Rail_Left
+    400084: Rail_Left 1
+    400086: Rocket_Laucher
+    400088: Rocket_Laucher 1
+    400090: Rocket_Projectile
+    400092: Rocket_Projectile 1
+    400094: //RootNode
+    400096: Rotator
+    400098: Rotator 1
+    400100: slot
+    400102: slot 1
+    400104: transform6
+    400106: Tube
+    400108: Tube 1
+    400110: Underbarrel
+    400112: Underbarrel 1
+    2100000: Rough_metal
+    2100002: lambert1
+    2100004: blinn1
+    2100006: Smooth_Metal1
+    2100008: Smooth_Metal
+    2100010: Highlight
+    2100012: Rough_metal1
+    2100014: Rough_metal2
+    2300000: Barrel_01
+    2300002: Barrel_01 1
+    2300004: Barrel_second_part
+    2300006: Barrel_second_part 1
+    2300008: Blastfin_01
+    2300010: Blastfin_01 1
+    2300012: Blastfin_02
+    2300014: Blastfin_02 1
+    2300016: Blastfin_03
+    2300018: Blastfin_03 1
+    2300020: Blastfin_04
+    2300022: Blastfin_04 1
+    2300024: Breach
+    2300026: Breach 1
+    2300028: Connector
+    2300030: Connector 1
+    2300032: Grip
+    2300034: Grip 1
+    2300036: Gun_body_01
+    2300038: Gun_body_01 1
+    2300040: Gun_body_04
+    2300042: Gun_body_04 1
+    2300044: Inner_casing
+    2300046: Inner_casing 1
+    2300048: Joint
+    2300050: Joint 1
+    2300052: Light
+    2300054: Light 1
+    2300056: PowerPack_mesh
+    2300058: PowerPack_mesh 1
+    2300060: Projectile_loader
+    2300062: Projectile_loader 1
+    2300064: Rail_01
+    2300066: Rail_01 1
+    2300068: Rail_02
+    2300070: Rail_02 1
+    2300072: Rail_Left
+    2300074: Rail_Left 1
+    2300076: Rocket_Projectile
+    2300078: Rocket_Projectile 1
+    2300080: Rotator
+    2300082: Rotator 1
+    2300084: slot
+    2300086: slot 1
+    2300088: Tube
+    2300090: Tube 1
+    2300092: Underbarrel
+    2300094: Underbarrel 1
+    3300000: Barrel_01
+    3300002: Barrel_01 1
+    3300004: Barrel_second_part
+    3300006: Barrel_second_part 1
+    3300008: Blastfin_01
+    3300010: Blastfin_01 1
+    3300012: Blastfin_02
+    3300014: Blastfin_02 1
+    3300016: Blastfin_03
+    3300018: Blastfin_03 1
+    3300020: Blastfin_04
+    3300022: Blastfin_04 1
+    3300024: Breach
+    3300026: Breach 1
+    3300028: Connector
+    3300030: Connector 1
+    3300032: Grip
+    3300034: Grip 1
+    3300036: Gun_body_01
+    3300038: Gun_body_01 1
+    3300040: Gun_body_04
+    3300042: Gun_body_04 1
+    3300044: Inner_casing
+    3300046: Inner_casing 1
+    3300048: Joint
+    3300050: Joint 1
+    3300052: Light
+    3300054: Light 1
+    3300056: PowerPack_mesh
+    3300058: PowerPack_mesh 1
+    3300060: Projectile_loader
+    3300062: Projectile_loader 1
+    3300064: Rail_01
+    3300066: Rail_01 1
+    3300068: Rail_02
+    3300070: Rail_02 1
+    3300072: Rail_Left
+    3300074: Rail_Left 1
+    3300076: Rocket_Projectile
+    3300078: Rocket_Projectile 1
+    3300080: Rotator
+    3300082: Rotator 1
+    3300084: slot
+    3300086: slot 1
+    3300088: Tube
+    3300090: Tube 1
+    3300092: Underbarrel
+    3300094: Underbarrel 1
+    4300000: Blastfin_01
+    4300002: Blastfin_02
+    4300004: Blastfin_03
+    4300006: Blastfin_04
+    4300008: Rail_01
+    4300010: Barrel_second_part
+    4300012: Barrel_01
+    4300014: Gun_body_01
+    4300016: Underbarrel
+    4300018: Grip
+    4300020: Rail_02
+    4300022: Joint
+    4300024: Inner_casing
+    4300026: Breach
+    4300028: slot
+    4300030: Projectile_loader
+    4300032: Rotator
+    4300034: Light
+    4300036: Tube
+    4300038: Connector
+    4300040: Rail_Left
+    4300042: PowerPack_mesh
+    4300044: Rocket_Projectile
+    4300046: Gun_body_04
+    4300048: Blastfin_01
+    4300050: Blastfin_02
+    4300052: Blastfin_03
+    4300054: Blastfin_04
+    4300056: Rail_01
+    4300058: Barrel_second_part
+    4300060: Barrel_01
+    4300062: Gun_body_01
+    4300064: Underbarrel
+    4300066: Grip
+    4300068: Rail_02
+    4300070: Joint
+    4300072: Inner_casing
+    4300074: Breach
+    4300076: slot
+    4300078: Projectile_loader
+    4300080: Rotator
+    4300082: Light
+    4300084: Tube
+    4300086: Connector
+    4300088: Rail_Left
+    4300090: PowerPack_mesh
+    4300092: Rocket_Projectile
+    4300094: Gun_body_04
+    7400000: RocketLauncher_001_Fire_001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: RocketLauncher_001_Fire_001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

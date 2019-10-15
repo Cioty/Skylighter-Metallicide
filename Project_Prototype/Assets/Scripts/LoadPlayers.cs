@@ -5,6 +5,7 @@ using UnityEngine;
 public class LoadPlayers : MonoBehaviour
 {
     public GameObject playerPrefab;
+    public RespawnArray respawnArray;
     private int playerCount = 0;
     private Vector4[] onePlayer;
     private Vector4[] twoPlayer;
@@ -29,7 +30,8 @@ public class LoadPlayers : MonoBehaviour
 
             for (int i = 0; i < playerCount; ++i)
             {
-                GameObject player = Instantiate(playerPrefab, position, playerPrefab.transform.rotation, this.gameObject.transform);
+                Transform randomSpawn = respawnArray.GetRandomSpawnPoint();
+                GameObject player = Instantiate(playerPrefab, randomSpawn.position, randomSpawn.rotation, this.gameObject.transform);
                 PlayerHandler handler = player.GetComponent<PlayerHandler>();
                 handler.ID = i;
                 player.tag = "Player";
@@ -38,7 +40,7 @@ public class LoadPlayers : MonoBehaviour
                 activePlayers.Add(player);
 
                 this.SetLayerRecursively(player, player.tag + i);
-          
+
                 // Hides the players mech from itself.
                 handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(player.tag + i));
 
