@@ -51,8 +51,14 @@ public class FirstPersonCamera : MonoBehaviour
             axisY = Input.GetAxisRaw("Mouse Y");
         }
 
+
+        // Getting the mouse delta.
+        //var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        //mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
+
         var lookDelta = new Vector2(axisX, axisY);
         lookDelta = Vector2.Scale(lookDelta, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
+
 
         // Getting the interpolated result between the two float values.
         smoothV.x = Mathf.Lerp(smoothV.x, lookDelta.x, 1f / smoothing);

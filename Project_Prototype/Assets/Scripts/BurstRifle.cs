@@ -19,22 +19,40 @@ public class BurstRifle : MonoBehaviour
     public float charge = 0f;
     public float delay = 0.6f;
 
+    //Burst rifle Charger
     public float burstCharge = 0f;
     public float burstDelay = 0.6f;
+    public float burstDuration = 0.5f;
 
     public Camera fpsCambr;
+
+    private IEnumerator firingCoroutine;
 
     private void Awake()
     {
         bulletsShot = burstBullets;
+    }
+
+
+    private void StartShooting()
+    {
+        firingCoroutine = Shoot();
+        StartCoroutine(firingCoroutine);
+    }
+
+    private void StopShooting()
+    {
+        firingCoroutine = Shoot();
+        StopCoroutine(firingCoroutine);
+
     }
     // Update is called once per frame
     void Update()
     {  //fire is pressed then increase Timer.
         //burstCharge += Time.deltaTime;
 
-        if (Input.GetButton("Fire2") && burstCharge <= Time.deltaTime)
-            burstCharge++;
+        if (Input.GetButton("Fire2") && burstCharge <= burstDelay)
+            burstCharge += Time.deltaTime;
             if (burstCharge > burstDelay)
             {
                 charge += Time.deltaTime;
@@ -43,8 +61,9 @@ public class BurstRifle : MonoBehaviour
                 {
                     if (Input.GetButtonDown("Fire2"))
                     {
-                        // BurstFireRifle.Emit(1);
-                        StartCoroutine(Shoot());
+                        //BurstFireRifle.Emit(1);
+                        IEnumerator firingCoroutine = Shoot();
+                        StartCoroutine(firingCoroutine);
                         bulletsShot = 1;
                         charge = 0;
                     }
