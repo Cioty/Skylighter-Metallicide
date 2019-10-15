@@ -28,7 +28,7 @@ public class RespawnArray : MonoBehaviour
     CharacterController enabler;
 
     // Keeps track of all the spawn points
-    public List<Mech_Recovery> respawnPoints = new List<Mech_Recovery>();
+    public List<GameObject> respawnPoints = new List<GameObject>();
 
     // Random Number to pick a random spawn point
     int randNumber;
@@ -40,7 +40,6 @@ public class RespawnArray : MonoBehaviour
         
         playerHandler = playerObject.GetComponent<PlayerHandler>();
         
-
         enabler = inGameMech.GetComponentInParent<CharacterController>();
     }
 
@@ -48,6 +47,7 @@ public class RespawnArray : MonoBehaviour
     void Start()
     {
         Random.InitState((int)System.DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+        Spawn();
     }
 
     // Update is called once per frame
@@ -77,13 +77,10 @@ public class RespawnArray : MonoBehaviour
             if(playerHandler.mechHealth < 0)
                 playerHandler.mechHealth = 0;
             
-            randNumber = Random.Range(0, respawnPoints.Count);
+            
             if (deathTimer <= 0)
-            {  
-                inGameMech.transform.parent.position = respawnPoints[randNumber].transform.position;
-                enabler.enabled = true;
-                playerHandler.mechHealth = 2;
-                deathTimer = 3;
+            {
+                Spawn();
             }
             else if (deathTimer > 0)
             {
@@ -91,5 +88,18 @@ public class RespawnArray : MonoBehaviour
                 Debug.Log("Time til respawn " + deathTimer.ToString());
             }
         }
+    }
+
+    void Spawn()
+    {
+        enabler.enabled = false;
+        Debug.Log("Start");
+        randNumber = Random.Range(0, respawnPoints.Count);
+
+        playerObject.transform.position = respawnPoints[randNumber].transform.position;
+        enabler.enabled = true;
+        playerHandler.mechHealth = 2;
+        deathTimer = 3;
+        Debug.Log("End");
     }
 }
