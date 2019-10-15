@@ -4,12 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - TargetCube
   - Player0
   - Player1
   - Player2
   - Player3
+  - Projectile
   layers:
   - Default
   - TransparentFX
