@@ -45,12 +45,6 @@ public class PlayerHandler : MonoBehaviour
         set { playerID = value; }
     }
 
-    public string ObjectTag
-    {
-        get { return defaultTag; }
-        set { defaultTag = value; }
-    }
-
     public Camera FirstPersonCamera
     {
         get { return firstPersonCamera; }

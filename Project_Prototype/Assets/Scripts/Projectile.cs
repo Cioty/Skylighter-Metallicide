@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 {
     private StateManager playerStateManager;
     public GameObject explosionEffect;
+    public int damage = 25;
     public float maxTimer = 5.0f;
     private float timer = 0.0f;
     public GameObject playerObject;
@@ -22,6 +23,13 @@ public class Projectile : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.tag == "Player")
+        {
+            PlayerHandler handler = collision.gameObject.GetComponent<PlayerHandler>();
+            handler.mechHealth -= damage;
+            Debug.Log(collision.gameObject.layer.ToString() + " health at: " + handler.mechHealth);
+        }
+
         Explode();
     }
 

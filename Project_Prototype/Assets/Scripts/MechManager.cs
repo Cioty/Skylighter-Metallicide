@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class MechManager : MonoBehaviour
 {
-    public void OnCollisionEnter(Collision collision)
+    private PlayerHandler playerHandler;
+    private StateManager stateManager;
+
+    private void Awake()
     {
-        if(collision.gameObject.tag == "Projectile")
+        playerHandler = GetComponentInParent<PlayerHandler>();
+        stateManager = GetComponentInParent<StateManager>();
+    }
+
+    private void Update()
+    {
+        if(playerHandler.mechHealth <= 0)
         {
-            Debug.Log("Hit! " + this.gameObject.tag);
+            // death screen
         }
     }
 }

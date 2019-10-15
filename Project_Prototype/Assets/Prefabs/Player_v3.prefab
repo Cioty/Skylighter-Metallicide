@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 4368871162249488053}
   m_Layer: 0
   m_Name: Player_v3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -706,6 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1743114027690889788}
+  playerHandler: {fileID: 4368871162249488053}
   rotationSpeed: 5
   minY: -35
   maxY: 60

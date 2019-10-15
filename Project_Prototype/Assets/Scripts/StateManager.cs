@@ -51,9 +51,9 @@ public class StateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(debugEjectKey))
+        if (Input.GetKeyUp(debugEjectKey))
         {
-            if(currentState == PLAYER_STATE.Ball)
+            if (currentState == PLAYER_STATE.Ball)
                 SetState(PLAYER_STATE.Mech);
             else
                 SetState(PLAYER_STATE.Ball);
@@ -75,7 +75,7 @@ public class StateManager : MonoBehaviour
                     cameraSmoothTime = 1;
 
                 bool result = LerpCamera(ballObject, currentPos, targetPos, cameraSmoothTime);
-                if(result)
+                if (result)
                 {
                     Debug.Log("Completed camera transition.");
                     moveCamera = false;
@@ -108,7 +108,7 @@ public class StateManager : MonoBehaviour
 
     public void SetState(PLAYER_STATE state)
     {
-        switch(state)
+        switch (state)
         {
             case PLAYER_STATE.Ball:
                 //Playing particle effect.
@@ -127,7 +127,7 @@ public class StateManager : MonoBehaviour
                 //ballObject.transform.position = mechObject.transform.position + (new Vector3(0, ejectHeight, 0));
                 ballObject.GetComponentInChildren<Rigidbody>().AddForce(Vector3.up * ejectForce);
                 break;
-            
+
             case PLAYER_STATE.Mech:
                 // Swapping active objects.
                 this.gameObject.GetComponent<CharacterController>().enabled = true;
@@ -154,5 +154,11 @@ public class StateManager : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    public PLAYER_STATE CurrentState
+    {
+        get { return currentState;  }
+        set { currentState = value; }
     }
 }

@@ -8,6 +8,7 @@ public class LoadPlayers : MonoBehaviour
     private int playerCount = 0;
     private Vector4[] onePlayer;
     private Vector4[] twoPlayer;
+    private List<GameObject> activePlayers = new List<GameObject>();
 
     private void Awake()
     {
@@ -28,17 +29,18 @@ public class LoadPlayers : MonoBehaviour
 
             for (int i = 0; i < playerCount; ++i)
             {
-                GameObject player = Instantiate(playerPrefab, position, playerPrefab.transform.rotation);
+                GameObject player = Instantiate(playerPrefab, position, playerPrefab.transform.rotation, this.gameObject.transform);
                 PlayerHandler handler = player.GetComponent<PlayerHandler>();
                 handler.ID = i;
-                player.tag = (handler.ObjectTag += i);
+                player.tag = "Player";
                 position.x += 20.0f;
                 handler.AssignedController = playerContainers[i].Controller;
+                activePlayers.Add(player);
 
-                this.SetLayerRecursively(player, handler.ObjectTag);
+                this.SetLayerRecursively(player, player.tag + i);
           
                 // Hides the players mech from itself.
-                handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(handler.ObjectTag));
+                handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(player.tag + i));
 
                 if (playerCount == 1 && i == 0)
                     continue;
@@ -72,6 +74,12 @@ public class LoadPlayers : MonoBehaviour
         // Split screen.
         twoPlayer[0] = new Vector4(0, 0.5f, 1, 0.5f);
         twoPlayer[1] = new Vector4(0, 0, 1, 0.5f);
+    }
+
+    public List<GameObject> ActivePlayers
+    {
+        get { return activePlayers; }
+        set { activePlayers = value; }
     }
 
 }

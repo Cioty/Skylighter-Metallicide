@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class TP_MouseLook : MonoBehaviour
 {
     public GameObject player;
+    public PlayerHandler playerHandler;
 
     public float rotationSpeed = 5.0f;
     public float minY = -35.0f, maxY = 60.0f;
@@ -42,8 +44,17 @@ public class TP_MouseLook : MonoBehaviour
     // Purpose: Handles the X & Y axis rotation for camera orbit around the player
     void Mouse_aiming()
     {
-        mouse_x += Input.GetAxis("Mouse X") * rotationSpeed;
-        mouse_y += Input.GetAxis("Mouse Y") * rotationSpeed;
+        // controller only atm:
+        if (playerHandler.AssignedController > 0)
+        {
+            mouse_x += XCI.GetAxis(XboxAxis.RightStickX, playerHandler.AssignedController) * rotationSpeed;
+            mouse_y += XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController) * rotationSpeed;
+        }
+        else
+        {
+            mouse_x += Input.GetAxis("Mouse X") * rotationSpeed;
+            mouse_y += Input.GetAxis("Mouse Y") * rotationSpeed;
+        }
 
         // This keeps the Y-rotation between that angles to prevent full 360 degrees orbit in the Y-Axis
         mouse_y = Mathf.Clamp(mouse_y, minY, maxY);
