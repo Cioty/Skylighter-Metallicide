@@ -74,8 +74,10 @@ public class RespawnArray : MonoBehaviour
         }
     }
 
+    // The batch of code that handles respawning players
     void Spawn(GameObject playerObject)
     {
+        // Character Controller must be disabled, else the respawn won't work
         controller.enabled = false;
         Debug.Log("Start");
         randNumber = Random.Range(0, respawnPoints.Count);
