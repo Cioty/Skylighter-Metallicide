@@ -63,8 +63,9 @@ public class ProjectileLauncher : MonoBehaviour
         }
 
         Quaternion rotation = Quaternion.FromToRotation(projectilePrefab.transform.forward, direction);
-        GameObject projectile = Instantiate(projectilePrefab, projectileStartPoint.position, rotation);
-        projectile.GetComponent<Rigidbody>().AddForce(direction * projectileSpeed, ForceMode.Impulse);
+        Projectile projectile = Instantiate(projectilePrefab, projectileStartPoint.position, rotation).GetComponent<Projectile>();
+        projectile.SetupPlayerObject(this.gameObject);
+        projectile.RigidBody.AddForce(direction * projectileSpeed, ForceMode.Impulse);
 
     }
 

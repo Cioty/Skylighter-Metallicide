@@ -10,7 +10,18 @@ public class Projectile : MonoBehaviour
     public int damage = 25;
     public float maxTimer = 5.0f;
     private float timer = 0.0f;
-    public GameObject playerObject;
+    private GameObject playerObject;
+    private Rigidbody rb;
+
+    private void Awake()
+    {
+        rb = this.GetComponent<Rigidbody>();
+    }
+
+    public void SetupPlayerObject(GameObject player)
+    {
+        playerObject = player;
+    }
 
     private void Update()
     {
@@ -23,7 +34,7 @@ public class Projectile : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.layer != playerObject.layer)
         {
             PlayerHandler handler = collision.gameObject.GetComponent<PlayerHandler>();
             handler.mechHealth -= damage;
@@ -39,4 +50,10 @@ public class Projectile : MonoBehaviour
         Destroy(explosionObject, 1.9f);
         Destroy(gameObject);
     }
+
+    public Rigidbody RigidBody
+    {
+        get { return rb; }
+    }
+
 }
