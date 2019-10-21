@@ -5,68 +5,42 @@ using UnityEngine;
 
 public class JumpPad : MonoBehaviour
 {
-    //public PlayerHandler playerHandler;
-    public float Launch;
-    public MechController mechController;
-    bool islaunched = false;
-    //public GameObject gameObject;
-    //private CharacterController cc;
-    //public Rigidbody Rigidbody;
-
-    //// this function:
-    //private void OnControllerColliderHit(ControllerColliderHit hit)
-    //{
-    //    mechController.Move(Vector3.up * Launch);
-    //}
-
-    //public void Awake()
-    //{
-    //    cc = gameObject.GetComponent<CharacterController>();
-    //}
+    public Transform forceDirection;
+    public float launchForce;
+    private bool hasLaunched = false;
+    private CharacterController controller;
+    private Trigger trigger;
+    private Animator animator;
 
 
+    public void Awake()
+    {
+       animator = GetComponentInChildren<Animator>();
+       trigger = GetComponentInChildren<Trigger>();
+    }
 
     public void FixedUpdate()
     {
-        //if ()
-            //islaunched = false;
+        if(trigger.CollidedGameObject() && trigger.CollidedGameObject().tag == "Player")
+        {
+            controller = trigger.CollidedGameObject().GetComponentInParent<CharacterController>();
 
-        if (islaunched)
-        {
-            mechController.Move(Vector3.up * Launch * Time.deltaTime);
-        }
-        
-        else
-        {
-            
-        }
-            
-    }
-    
-    void OnTriggerEnter(Collider other)
-    {
-        if (islaunched == false)
-        {
-            int connecteControllers = 1;
-            for (int i = 0; i < connecteControllers; ++i)
+            if (controller.isGrounded)
             {
-                string tag = "Player";
-                if (other.gameObject.CompareTag(tag))
-                {
-                    islaunched = true;
-                }
+                hasLaunched = false;
+                return;
+            }
+
+            if (trigger.IsEnabled())
+            {
+                hasLaunched = true;
+            }
+
+            if (hasLaunched)
+            {
+                animator.SetTrigger("Jump");
+                controller.Move((forceDirection.eulerAngles.normalized) * launchForce * Time.deltaTime);
             }
         }
     }
-    /*private void OnTriggerExit(Collider other)
-    {
-        if (islaunched)
-        {
-            string tag = "Player";
-            if (other.gameObject.CompareTag(tag))
-            {
-                islaunched = false;
-            }
-        }
-    }*/
 }

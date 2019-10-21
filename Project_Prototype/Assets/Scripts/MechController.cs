@@ -119,7 +119,6 @@ public class MechController : MonoBehaviour
             {
                 currentVelocity = Jump();
             }
-
         }
         else
         {
