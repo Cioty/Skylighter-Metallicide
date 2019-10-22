@@ -57,13 +57,14 @@ public class LoadPlayers : MonoBehaviour
                 activePlayers.Add(player);
 
                 // Hides the players mech from itself.
-                this.SetLayerRecursively(player, player.tag + i);
+                this.SetLayerRecursively(player, player.tag + i, "HUD");
                 handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(player.tag + i));
 
                 // If single player:
                 if (playerCount == 1 && i == 0)
                     continue;
 
+                // If more then one player:
                 Vector4 screenPos = Vector4.zero;
                 switch (playerCount)
                 {
@@ -89,12 +90,15 @@ public class LoadPlayers : MonoBehaviour
         }
     }
 
-    void SetLayerRecursively(GameObject gameObject, string layerName)
+    void SetLayerRecursively(GameObject gameObject, string layerName, string objectToSkip = "")
     {
         gameObject.layer = LayerMask.NameToLayer(layerName);
         foreach(Transform child in gameObject.transform)
         {
-            SetLayerRecursively(child.gameObject, layerName);
+            if (child.gameObject.name == objectToSkip)
+                continue;
+
+            SetLayerRecursively(child.gameObject, layerName, objectToSkip);
         }
     }
 
