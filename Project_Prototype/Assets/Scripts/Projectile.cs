@@ -12,10 +12,12 @@ public class Projectile : MonoBehaviour
     private float timer = 0.0f;
     private GameObject playerObject;
     private Rigidbody rb;
+    private Trigger trigger;
 
     private void Awake()
     {
-        rb = this.GetComponent<Rigidbody>();
+        rb = this.GetComponentInChildren<Rigidbody>();
+        trigger = this.GetComponentInChildren<Trigger>();
     }
 
     public void SetupPlayerObject(GameObject player)
@@ -23,25 +25,22 @@ public class Projectile : MonoBehaviour
         playerObject = player;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // Simple timer to destory the object after a certain time.
         timer += Time.deltaTime;
 
         if (timer > maxTimer)
             Explode();
-    }
 
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer != playerObject.layer)
+        if(trigger.CollidedGameObject())
         {
-            PlayerHandler handler = collision.gameObject.GetComponent<PlayerHandler>();
-            handler.mechHealth -= damage;
-            Debug.Log(collision.gameObject.layer.ToString() + " health at: " + handler.mechHealth);
+            if(trigger.CollidedGameObject().tag == "Player")
+            {
+                trigger.CollidedGameObject().GetComponentInParent<PlayerHandler>().MechHealth -= damage;
+            }
+            Explode();
         }
-
-        Explode();
     }
 
     private void Explode()

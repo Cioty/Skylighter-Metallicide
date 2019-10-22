@@ -99,19 +99,19 @@ public class MechController : MonoBehaviour
             if (moveDirection.magnitude > 0)
             {
                 deccelTimer = 0.0f;
-                accelTimer += accelerationRate.Evaluate(Time.fixedDeltaTime * accelerationMultiplier);
+                accelTimer += accelerationRate.Evaluate(accelerationMultiplier * Time.fixedDeltaTime);
                 acceleration = Vector3.Lerp(acceleration, moveDirection * maxSpeed, accelTimer / 1.0f);
             }
             else
             {
                 // If there is no user input, then lerp the acceleration to 0 by the deceleration rate.
                 accelTimer = 0.0f;
-                deccelTimer += accelerationRate.Evaluate(Time.fixedDeltaTime * decelerationMultiplier);
+                deccelTimer += accelerationRate.Evaluate(decelerationMultiplier * Time.fixedDeltaTime);
                 acceleration = Vector3.Lerp(acceleration, new Vector3(0, 0, 0), deccelTimer / 1.0f);
             }
 
             // Applying direction and acceleration to the current velocity.
-            currentVelocity = lastDirection + acceleration;
+            currentVelocity = acceleration;
             currentVelocity = Vector3.ClampMagnitude(currentVelocity, 25);
 
             // Checking for jump input.
@@ -133,6 +133,9 @@ public class MechController : MonoBehaviour
             // Applying the air movement and gravity vectors.
             Vector3 velocityDiff = Vector3.ProjectOnPlane(inAirMoveVector, gravityVector);
             currentVelocity += velocityDiff * airAccelerationSpeed * Time.deltaTime;
+
+            // Setting acceleration to be the velocity to prevent boosted movement on ground.
+            acceleration = currentVelocity;
         }
 
         // Keeping track of the current velocity via the player handler.
@@ -144,9 +147,6 @@ public class MechController : MonoBehaviour
 
     public Vector3 Jump()
     {
-        // Currently just resetting the acceleration after using it for the jump, need a fix for a bug here.
-        acceleration = Vector3.zero;
-
         return (playerObject.transform.forward + moveDirection * jumpHeight) + acceleration.normalized + Vector3.up * jumpHeight;
     }
 

@@ -64,22 +64,22 @@ public class LoadPlayers : MonoBehaviour
                 if (playerCount == 1 && i == 0)
                     continue;
 
-                Vector4 playerScreen = Vector4.zero;
+                Vector4 screenPos = Vector4.zero;
                 switch (playerCount)
                 {
                     case 2:
-                        playerScreen = twoPlayer[i];
-                        handler.FirstPersonCamera.rect = new Rect(playerScreen.x, playerScreen.y, playerScreen.z, playerScreen.w);
+                        screenPos = twoPlayer[i];
+                        handler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
                         break;
 
                     case 3:
-                        playerScreen = threePlayer[i];
-                        handler.FirstPersonCamera.rect = new Rect(playerScreen.x, playerScreen.y, playerScreen.z, playerScreen.w);
+                        screenPos = threePlayer[i];
+                        handler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
                         break;
 
                     case 4:
-                        playerScreen = fourPlayer[i];
-                        handler.FirstPersonCamera.rect = new Rect(playerScreen.x, playerScreen.y, playerScreen.z, playerScreen.w);
+                        screenPos = fourPlayer[i];
+                        handler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
                         break;
                 }
             }

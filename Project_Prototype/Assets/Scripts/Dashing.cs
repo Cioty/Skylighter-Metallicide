@@ -113,5 +113,10 @@ public class Dashing : MonoBehaviour
     private void Update()
     {
         isDashing();
-    }  
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Debug.Log("Hit " + hit.gameObject.name);
+    }
 }

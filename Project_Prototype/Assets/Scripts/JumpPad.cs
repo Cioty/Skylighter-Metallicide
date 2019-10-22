@@ -8,7 +8,6 @@ public class JumpPad : MonoBehaviour
     public Transform forceDirection;
     public float launchForce;
     private bool hasLaunched = false;
-    private CharacterController controller;
     private Trigger trigger;
     private Animator animator;
 
@@ -21,26 +20,22 @@ public class JumpPad : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if(trigger.CollidedGameObject() && trigger.CollidedGameObject().tag == "Player")
+        GameObject collidedObject = trigger.CollidedGameObject();
+        if (collidedObject && collidedObject.tag == "Player")
         {
-            controller = trigger.CollidedGameObject().GetComponentInParent<CharacterController>();
+            CharacterController controller = collidedObject.GetComponentInParent<CharacterController>();
 
             if (controller.isGrounded)
-            {
                 hasLaunched = false;
-                return;
-            }
 
             if (trigger.IsEnabled())
             {
                 hasLaunched = true;
+                animator.SetTrigger("Jump");
             }
 
             if (hasLaunched)
-            {
-                animator.SetTrigger("Jump");
                 controller.Move((forceDirection.eulerAngles.normalized) * launchForce * Time.deltaTime);
-            }
         }
     }
 }
