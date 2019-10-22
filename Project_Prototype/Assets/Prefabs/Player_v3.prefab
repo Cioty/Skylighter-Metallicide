@@ -517,6 +517,7 @@ GameObject:
   - component: {fileID: 9169172856048194562}
   - component: {fileID: 8073178002007253317}
   - component: {fileID: 182120722127581269}
+  - component: {fileID: 4648235759154412318}
   m_Layer: 9
   m_Name: Mech
   m_TagString: Player
@@ -709,6 +710,21 @@ MonoBehaviour:
     type: 3}
   projectileSpeed: 50
   fireThreshold: 1
+--- !u!114 &4648235759154412318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2455254139509369771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba2fbb6d25855f47b37ddcbb7db4348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewModel: {fileID: 7825432987037397658}
+  player: {fileID: 7360001967633157087}
+  Camera: {fileID: 8814701825088474299}
 --- !u!1 &2508927982089325017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,7 +1597,7 @@ GameObject:
   - component: {fileID: 7825432987037298352}
   - component: {fileID: 7825432987034398354}
   - component: {fileID: 7825432987035397202}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: claw_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1656,7 +1672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7825432987037298354}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: claw_group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1692,7 +1708,7 @@ GameObject:
   - component: {fileID: 7825432987037298356}
   - component: {fileID: 7825432987034398356}
   - component: {fileID: 7825432987035397204}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: claw_bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1767,7 +1783,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7825432987037298362}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Mech_Viewmodel_Prototype1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1800,7 +1816,7 @@ GameObject:
   - component: {fileID: 7825432987037298364}
   - component: {fileID: 7825432987034398366}
   - component: {fileID: 7825432987035397214}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: claw_top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1877,7 +1893,7 @@ GameObject:
   - component: {fileID: 7825432987037298366}
   - component: {fileID: 7825432987034398352}
   - component: {fileID: 7825432987035397200}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: claw_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3917,7 +3933,23 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
+      propertyPath: m_Name
+      value: Mesh_Core_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
@@ -3980,22 +4012,6 @@ PrefabInstance:
     - target: {fileID: 400002, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.6666665
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
-      propertyPath: m_Name
-      value: Mesh_Core_001
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 978a0f07616960149a49cb97a79ac25d, type: 3}
