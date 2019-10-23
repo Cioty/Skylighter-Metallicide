@@ -1,9 +1,11 @@
 ﻿
 using UnityEngine;
 using System.Collections;
+using XboxCtrlrInput;
 
 public class BurstRifle : MonoBehaviour
 {
+    public PlayerHandler playerHandler; 
 
     public ParticleSystem BurstFireRifle;
     public float damage = 10f;
@@ -18,6 +20,7 @@ public class BurstRifle : MonoBehaviour
     private int  bulletsShot = 0;
     public float charge = 0f;
     public float delay = 0.6f;
+    private bool isShooting = false;
 
     //Burst rifle Charger
     public float burstCharge = 0f;
@@ -27,12 +30,6 @@ public class BurstRifle : MonoBehaviour
     public Camera fpsCambr;
 
     private IEnumerator firingCoroutine;
-
-    private void Awake()
-    {
-        bulletsShot = burstBullets;
-    }
-
 
     private void StartShooting()
     {
@@ -48,34 +45,31 @@ public class BurstRifle : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {  //fire is pressed then increase Timer.
-        //burstCharge += Time.deltaTime;
+    {
+        float leftTrigHeight = XCI.GetAxis(XboxAxis.LeftTrigger, playerHandler.AssignedController);
+        if (Input.GetButton("Fire2") || leftTrigHeight >= 0.5f && burstCharge == 0.0f)
+        {
+            isShooting = true;
+        }
 
-        if (Input.GetButton("Fire2") && burstCharge <= burstDelay)
+        if(isShooting)
+        {
             burstCharge += Time.deltaTime;
             if (burstCharge > burstDelay)
             {
-                charge += Time.deltaTime;
-
-                if (charge > delay)
+                if (bulletsShot < burstBullets)
                 {
-                    if (Input.GetButtonDown("Fire2"))
-                    {
-                        //BurstFireRifle.Emit(1);
-                        IEnumerator firingCoroutine = Shoot();
-                        StartCoroutine(firingCoroutine);
-                        bulletsShot = 1;
-                        charge = 0;
-                    }
-
-                    else if (bulletsShot < burstBullets)
-                    {
-                        StartCoroutine(Shoot());
-                        bulletsShot++;
-                        charge = 0.0f;
-                    }
+                    StartCoroutine(Shoot());
+                    bulletsShot++;
+                }
+                else
+                {
+                    isShooting = false;
+                    burstCharge = 0.0f;
+                    bulletsShot = 0;
                 }
             }
+        }
     }
 
     IEnumerator Shoot()
