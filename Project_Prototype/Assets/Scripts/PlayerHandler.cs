@@ -39,10 +39,27 @@ public class PlayerHandler : MonoBehaviour
     private void Update()
     {
         if (mechTransform.position.y < -30)
+        {
+            // respawn
             this.mechHealth = 0;
+        }
 
         if (coreTransform.position.y < -30)
+        {
+            // respawn
             this.coreHealth = 0;
+        }
+        
+        if(mechHealth <= 0)
+        {
+            stateManager.SetState(StateManager.PLAYER_STATE.Core);
+            mechHealth = mechMaxHealth;
+        }
+        
+        if (coreHealth <= 0)
+        {
+            // respawn
+        }
     }
 
     public StateManager.PLAYER_STATE CurrentState

@@ -1,45 +1,44 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-// Simple projectile script to control the behaviour of the object after being projected.
+// Projectile script to control the behaviour of the object after being projected.
 public class Projectile : MonoBehaviour
 {
-    private StateManager playerStateManager;
-    public GameObject explosionEffect;
+    [Header("Properties")]
     public int damage = 25;
-    public float maxTimer = 5.0f;
+    public float lifeLength = 5.0f;
     private float timer = 0.0f;
-    private GameObject playerObject;
-    private Rigidbody rb;
-    private Trigger trigger;
 
-    private void Awake()
-    {
-        rb = this.GetComponentInChildren<Rigidbody>();
-        trigger = this.GetComponentInChildren<Trigger>();
-    }
-
-    public void SetupPlayerObject(GameObject player)
-    {
-        playerObject = player;
-    }
+    [Header("References")]
+    public GameObject explosionEffect;
+    public Rigidbody rigidBody;
 
     private void FixedUpdate()
     {
-        // Simple timer to destory the object after a certain time.
+        // Timer to destory the object after a certain time.
         timer += Time.deltaTime;
 
-        if (timer > maxTimer)
+        if (timer > lifeLength)
             Explode();
+    }
 
-        if(trigger.CollidedGameObject())
+    private void OnTriggerEnter(Collider other)
+    {
+        Explode();
+
+        if(other.gameObject.tag == "Player")
         {
-            if(trigger.CollidedGameObject().tag == "Player")
+            PlayerHandler handler = other.gameObject.GetComponentInParent<PlayerHandler>();
+
+            if(handler.CurrentState == StateManager.PLAYER_STATE.Mech)
             {
-                trigger.CollidedGameObject().GetComponentInParent<PlayerHandler>().MechHealth -= damage;
+                float mechHealth = handler.mechHealth -= damage;
+                Debug.Log(other.gameObject.name + " at " + mechHealth + " health!");
             }
-            Explode();
+            else
+            {
+                float coreHealth = handler.coreHealth -= damage;
+                Debug.Log(other.gameObject.name + " at " + coreHealth + " health!");
+            }
         }
     }
 
@@ -52,7 +51,7 @@ public class Projectile : MonoBehaviour
 
     public Rigidbody RigidBody
     {
-        get { return rb; }
+        get { return rigidBody; }
     }
 
 }

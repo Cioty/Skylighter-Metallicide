@@ -51,20 +51,15 @@ public class ProjectileLauncher : MonoBehaviour
     {
         Ray ray = firstPersonCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
-        Vector3 direction = new Vector3();
+        Vector3 direction = Vector3.zero;
 
         if(Physics.Raycast(ray, out hit))
-        {
             direction = (hit.point - projectileStartPoint.position).normalized;
-        }
         else
-        {
             direction = ray.direction;
-        }
 
         Quaternion rotation = Quaternion.FromToRotation(projectilePrefab.transform.forward, direction);
         Projectile projectile = Instantiate(projectilePrefab, projectileStartPoint.position, rotation).GetComponent<Projectile>();
-        projectile.SetupPlayerObject(this.gameObject);
         projectile.RigidBody.AddForce(direction * projectileSpeed, ForceMode.Impulse);
 
     }

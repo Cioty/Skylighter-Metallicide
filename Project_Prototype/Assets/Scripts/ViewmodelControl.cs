@@ -68,7 +68,7 @@ public class ViewmodelControl : MonoBehaviour
     {
         mouseRotation = GetComponent<FirstPersonCamera>();
 
-        controller = GetComponentInParent<CharacterController>();
+        //controller = GetComponentInParent<CharacterController>();
         playerStats = player.GetComponent<PlayerHandler>();
 
         // Camera's transform

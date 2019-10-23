@@ -11,14 +11,13 @@ GameObject:
   - component: {fileID: 4207934408023142521}
   - component: {fileID: 683128513274495306}
   - component: {fileID: 7643549305292159566}
-  - component: {fileID: 5952118630540428033}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4207934408023142521
 Transform:
   m_ObjectHideFlags: 0
@@ -42,7 +41,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 4331911252703462937}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.066
   m_Height: 0.66
   m_Direction: 1
@@ -63,18 +62,68 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5952118630540428033
-MonoBehaviour:
+--- !u!1 &6579796632221102684
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_PrefabInstance: {fileID: 6881256644416040759}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4331911252703462937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec3099ca86bca4342a0319c56f3f9679, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2917159165874756203}
+  m_Layer: 0
+  m_Name: PS_Rocket_Flame_003 (Missing Prefab)
+  m_TagString: Projectile
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2917159165874756203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 6881256644416040759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6579796632221102684}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7764965633002130482}
+  m_Father: {fileID: 8200958712033532134}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7036415246333729624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 6881256644416040759}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7764965633002130482}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Projectile
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7764965633002130482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6881256644416040759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7036415246333729624}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2917159165874756203}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8200958712033532059
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,8 +133,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8200958712033532134}
-  - component: {fileID: 8200958712033532058}
   - component: {fileID: 1329202985557151035}
+  - component: {fileID: 8492234093809181069}
+  - component: {fileID: 1720737915752188110}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Projectile
@@ -106,12 +156,43 @@ Transform:
   m_Children:
   - {fileID: 905049037995029899}
   - {fileID: 8348947244899171915}
-  - {fileID: 7764965633002130482}
+  - {fileID: 2917159165874756203}
   - {fileID: 4207934408023142521}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &8200958712033532058
+--- !u!114 &1329202985557151035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8200958712033532059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf0adbc06d4fb044a18a3e47ea2a933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 25
+  lifeLength: 5
+  explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
+    type: 3}
+  rigidBody: {fileID: 1720737915752188110}
+--- !u!136 &8492234093809181069
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8200958712033532059}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.066
+  m_Height: 0.66
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.2}
+--- !u!54 &1720737915752188110
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,22 +208,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1329202985557151035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8200958712033532059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf0adbc06d4fb044a18a3e47ea2a933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
-    type: 3}
-  damage: 25
-  maxTimer: 5
 --- !u!1001 &905049037995421451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,6 +215,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8200958712033532134}
     m_Modifications:
+    - target: {fileID: 100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
+      propertyPath: m_Name
+      value: Rocket_Projectile_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
+      propertyPath: m_TagString
+      value: Projectile
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.881784e-18
@@ -206,10 +279,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.018462636
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
-      propertyPath: m_Name
-      value: Rocket_Projectile_Mesh
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
 --- !u!4 &905049037995029899 stripped
@@ -233,7 +302,12 @@ PrefabInstance:
     - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 4150931063429688018, guid: e38fc447f9857c04192d04b0ad3c2d86,
         type: 3}
@@ -305,10 +379,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8200958712033532134}
     m_Modifications:
-    - target: {fileID: 3800353570298241818, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_Name
-      value: PS_Rocket_Flame_003
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
         type: 3}
@@ -365,11 +442,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
       objectReference: {fileID: 0}
+    - target: {fileID: 3800353570298241818, guid: cc71e27e7832c254abfe7dfdd30d577e,
+        type: 3}
+      propertyPath: m_Name
+      value: PS_Rocket_Flame_003
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc71e27e7832c254abfe7dfdd30d577e, type: 3}
---- !u!4 &7764965633002130482 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6881256644416040759}
-  m_PrefabAsset: {fileID: 0}

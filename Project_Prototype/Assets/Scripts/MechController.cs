@@ -163,6 +163,6 @@ public class MechController : MonoBehaviour
         startPos.y += 1.8f;
 
         // Returning a condition if we hit the ground or not.
-        return (Physics.Raycast(new Ray(startPos, -Vector3.up), distanceToGround + 0.1f, LayerMask.NameToLayer("PlayerMovement")));
+        return (Physics.Raycast(new Ray(startPos, -Vector3.up), distanceToGround + 0.1f, this.gameObject.layer));
     }
 }
