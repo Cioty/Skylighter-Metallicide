@@ -16,16 +16,21 @@ using XboxCtrlrInput;
 
 public class MechController : MonoBehaviour
 {
-    private GameObject playerObject;
+    //private GameObject playerObject;
     private PlayerHandler playerHandler;
-    private CharacterController controller;
+    private Transform mechObjectTransform;
+    private Rigidbody rb;
+    private float distanceToGround;
+
+    [Header("References")]
+    public CapsuleCollider capsuleCollider;
+    public GameObject mechObject;
 
     [Header("Movement")]
     public float maxSpeed = 25.0f;
     public float accelerationMultiplier = 1.0f;
     public float decelerationMultiplier = 1.0f;
     public float gravity = 10.0f;
-    //public float groundDrag = 20.0f;
     public float jumpHeight = 6.0f;
     public float airAccelerationSpeed = 1.0f;
 
@@ -43,19 +48,19 @@ public class MechController : MonoBehaviour
     private float horizontalAxis, verticalAxis;
     private float accelTimer, deccelTimer, directionalTimer;
 
+    void Awake()
+    {
+        playerHandler = GetComponentInParent<PlayerHandler>();
+        rb = GetComponent<Rigidbody>();
+        mechObjectTransform = GetComponent<Transform>();
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
         // Setting the cursors lock state.
         Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    void Awake()
-    {
-        // Gets the required compents from the player object.
-        playerObject = this.gameObject.transform.parent.gameObject;
-        playerHandler = playerObject.GetComponent<PlayerHandler>();
-        controller = playerObject.GetComponent<CharacterController>();
+        distanceToGround = capsuleCollider.bounds.extents.y;
     }
 
     // Update is called once per frame
@@ -84,7 +89,7 @@ public class MechController : MonoBehaviour
             horizontalAxis = Input.GetAxisRaw("Horizontal");
             verticalAxis = Input.GetAxisRaw("Vertical");
         }
-        moveDirection = (horizontalAxis * playerObject.transform.right) + (verticalAxis * playerObject.transform.forward);
+        moveDirection = (horizontalAxis * transform.right) + (verticalAxis * transform.forward);
         moveDirection.Normalize();
     }
 
@@ -93,7 +98,11 @@ public class MechController : MonoBehaviour
         // Update the move vector.
         this.UpdateMoveVector();
 
-        if (controller.isGrounded)
+        bool grounded = IsGrounded();
+        playerHandler.IsGrounded = grounded;
+
+        // If the player is on the ground:
+        if (grounded)
         {
             // If the player is inputting a direction:
             if (moveDirection.magnitude > 0)
@@ -117,7 +126,7 @@ public class MechController : MonoBehaviour
             // Checking for jump input.
             if (XCI.GetButton(XboxButton.A, playerHandler.AssignedController) || Input.GetButton("Jump"))
             {
-                currentVelocity = Jump();
+                currentVelocity += (acceleration.normalized + Vector3.up) * jumpHeight;
             }
         }
         else
@@ -141,18 +150,19 @@ public class MechController : MonoBehaviour
         // Keeping track of the current velocity via the player handler.
         playerHandler.CurrentVelocity = currentVelocity;
 
-        // Moving the player with the calculated velocity.
-        controller.Move(playerHandler.CurrentVelocity * Time.deltaTime);
+        //Debug.Log(currentVelocity);
+
+        // Making the rigid bodies velocity equal the calculated velocity.
+        rb.velocity = currentVelocity;
     }
 
-    public Vector3 Jump()
+    private bool IsGrounded()
     {
-        return (playerObject.transform.forward + moveDirection * jumpHeight) + acceleration.normalized + Vector3.up * jumpHeight;
-    }
+        // Correcting the start position of the ray.
+        Vector3 startPos = transform.position;
+        startPos.y += 1.8f;
 
-    public void Move(Vector3 motion)
-    {
-        controller.Move(motion * Time.deltaTime);
+        // Returning a condition if we hit the ground or not.
+        return (Physics.Raycast(new Ray(startPos, -Vector3.up), distanceToGround + 0.1f, LayerMask.NameToLayer("PlayerMovement")));
     }
-
 }

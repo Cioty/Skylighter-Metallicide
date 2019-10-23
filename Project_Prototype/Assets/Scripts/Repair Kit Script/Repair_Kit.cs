@@ -55,7 +55,7 @@ public class Repair_Kit : MonoBehaviour
        }
 
        // If the player is a core
-       if (playerState.CurrentState == StateManager.PLAYER_STATE.Ball)
+       if (playerState.CurrentState == StateManager.PLAYER_STATE.Core)
        {
            playerHandler.CoreHealth += 10;
            if (playerHandler.CoreHealth > playerHandler.MaxCoreHealth)

@@ -23,9 +23,9 @@ public class JumpPad : MonoBehaviour
         GameObject collidedObject = trigger.CollidedGameObject();
         if (collidedObject && collidedObject.tag == "Player")
         {
-            CharacterController controller = collidedObject.GetComponentInParent<CharacterController>();
+            PlayerHandler playerHandler = collidedObject.GetComponentInParent<PlayerHandler>();
 
-            if (controller.isGrounded)
+            if (playerHandler.IsGrounded)
                 hasLaunched = false;
 
             if (trigger.IsEnabled())
@@ -35,7 +35,7 @@ public class JumpPad : MonoBehaviour
             }
 
             if (hasLaunched)
-                controller.Move((forceDirection.eulerAngles.normalized) * launchForce * Time.deltaTime);
+                playerHandler.GetCurrentRigidBody().AddForce((forceDirection.eulerAngles.normalized) * launchForce, ForceMode.Impulse);
         }
     }
 }

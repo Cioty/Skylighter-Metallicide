@@ -17,9 +17,6 @@ public class RespawnArray : MonoBehaviour
     // For the Ball/Player dies
     private PlayerHandler playerHandler;
 
-    // Character controller
-    CharacterController controller;
-
     // Keeps track of all the spawn points
     public List<GameObject> respawnPoints = new List<GameObject>();
 
@@ -49,15 +46,9 @@ public class RespawnArray : MonoBehaviour
         {
             playerHandler = player.GetComponent<PlayerHandler>();
 
+
             if (playerHandler.mechHealth <= 0)
             {
-                controller = player.GetComponent<CharacterController>();
-
-                if (controller.enabled)
-                {
-                    controller.enabled = false;
-                }
-
                 if (playerHandler.mechHealth < 0)
                     playerHandler.mechHealth = 0;
 
@@ -77,14 +68,15 @@ public class RespawnArray : MonoBehaviour
     // The batch of code that handles respawning players
     void Spawn(GameObject playerObject)
     {
-        // Character Controller must be disabled, else the respawn won't work
-        controller.enabled = false;
         Debug.Log("Start");
         randNumber = Random.Range(0, respawnPoints.Count);
+        playerHandler.CurrentState = StateManager.PLAYER_STATE.Mech;
 
-        playerObject.transform.position = respawnPoints[randNumber].transform.position;
-        playerObject.transform.rotation = respawnPoints[randNumber].transform.rotation;
-        controller.enabled = true;
+        Vector3 random = respawnPoints[randNumber].transform.position;
+        random.y += 2.5f;
+
+        playerHandler.mechObject.transform.position = random;
+        playerHandler.mechObject.transform.rotation = respawnPoints[randNumber].transform.rotation;
         playerHandler.MechHealth = playerHandler.MaxCoreHealth;
         deathTimer = 3;
         Debug.Log("End");

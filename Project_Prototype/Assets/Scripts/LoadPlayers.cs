@@ -49,8 +49,10 @@ public class LoadPlayers : MonoBehaviour
             for (int i = 0; i < playerCount; ++i)
             {
                 Transform randomSpawn = respawnArray.GetRandomSpawnPoint();
-                GameObject player = Instantiate(playerPrefab, randomSpawn.position, randomSpawn.rotation, this.gameObject.transform);
+                GameObject player = Instantiate(playerPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation, this.gameObject.transform);
                 PlayerHandler handler = player.GetComponent<PlayerHandler>();
+                handler.MechTransform.position = randomSpawn.position;
+                handler.MechTransform.rotation = randomSpawn.rotation;
                 player.tag = "Player";
                 handler.ID = i;
                 handler.AssignedController = playerContainers[i].Controller;
@@ -95,6 +97,9 @@ public class LoadPlayers : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer(layerName);
         foreach(Transform child in gameObject.transform)
         {
+            if (child.gameObject.layer == LayerMask.NameToLayer("PlayerMovement"))
+                continue;
+
             if (child.gameObject.name == objectToSkip)
                 continue;
 

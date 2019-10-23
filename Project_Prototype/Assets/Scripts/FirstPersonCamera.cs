@@ -5,10 +5,12 @@ using XboxCtrlrInput;
 
 public class FirstPersonCamera : MonoBehaviour
 {
-    private GameObject playerObject;
+    private Transform mechObjectTransform;
     private PlayerHandler playerHandler;
 
     [Header("References")]
+    public GameObject playerObject;
+    public GameObject mechObject;
     public Transform mechHullTransform;
     public Transform mechHipTransform;
     public Transform mechCoreTransform;
@@ -25,8 +27,9 @@ public class FirstPersonCamera : MonoBehaviour
     private void Awake()
     {
         // Getting the required components.
-        playerObject = this.gameObject.transform.parent.gameObject;
-        playerHandler = playerObject.GetComponent<PlayerHandler>();
+        //playerObject = this.gameObject.transform.parent.gameObject;
+        mechObjectTransform = GetComponent<Transform>();
+        playerHandler = GetComponentInParent<PlayerHandler>();
     }
 
     private void Start()
@@ -71,19 +74,20 @@ public class FirstPersonCamera : MonoBehaviour
         mouseLook.y = Mathf.Clamp(mouseLook.y, minY, maxY);
 
         // Restraining the hip transform to prevent rotation, only if the player has no velocity.
-        if ((int)(playerHandler.CurrentVelocity.x) == 0 && 
+        if ((int)(playerHandler.CurrentVelocity.x) == 0 &&
             (int)(playerHandler.CurrentVelocity.z) == 0)
             this.mechHipTransform.rotation = defaultHipRotation;
         else
         {
-            this.mechHipTransform.rotation = playerObject.transform.localRotation;
-            this.defaultHipRotation = playerObject.transform.localRotation;
+            this.mechHipTransform.rotation = this.transform.localRotation;
+            this.defaultHipRotation = this.transform.localRotation;
         }
 
-        // Applying rotation to the neck transform, and correcting the angle.
+        //Applying rotation to the neck transform, and correcting the angle.
         mechCoreTransform.localRotation = (Quaternion.AngleAxis(-mouseLook.y, Vector3.right));
 
         // Applying rotation to the player transform.
-        playerObject.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, playerObject.transform.up);
+        mechObjectTransform.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, playerObject.transform.up);
+        //mechObjectTransform.GetComponent<Rigidbody>().transform.localRotation = Quaternion.AngleAxis(mouseLook.x, playerObject.transform.up);
     }
 }

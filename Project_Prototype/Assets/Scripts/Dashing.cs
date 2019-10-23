@@ -5,12 +5,13 @@ using XboxCtrlrInput;
 
 public class Dashing : MonoBehaviour
 {
-    public GameObject playerObject;
+    //public GameObject playerObject;
+    public GameObject mechObject;
+    private Rigidbody rb;
     private MechController mechController;
     private PlayerHandler playerHandler;
 
-    private MovementController movementDir;
-    private Rigidbody rb;
+    //private MovementController movementDir;
 
     [Header("Dashing")]
     // Dashing stuff
@@ -46,12 +47,9 @@ public class Dashing : MonoBehaviour
   
     private void Awake()
     {
-        // Get the rigidbody of the Mech, or whatever
-        //rb = this.GetComponent<Rigidbody>(); 
-
-        playerHandler = playerObject.GetComponent<PlayerHandler>();
-        mechController = GetComponent<MechController>();
-
+        playerHandler = mechObject.GetComponentInParent<PlayerHandler>();
+        mechController = mechObject.GetComponent<MechController>();
+        rb = mechObject.GetComponent<Rigidbody>();
         thrusterTimer = zero;                        
     }
 
@@ -73,7 +71,6 @@ public class Dashing : MonoBehaviour
             dashTrig = true;
             
             --boostPoints;
-            Debug.Log(boostPoints);
         }
 
         if (dashTrig)
@@ -81,10 +78,7 @@ public class Dashing : MonoBehaviour
             if (thrusterTimer < duration)
             {
                 thrusterTimer += Time.deltaTime;
-                //rb.velocity = lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed;
-
-                // had to use the new controllers move function, i was wrong about the controller using a rigid body (if it does, you cant access it)
-                mechController.Move(lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed);
+                rb.AddForce(lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed, ForceMode.Impulse);
             }
 
             if (thrusterTimer >= duration)
@@ -105,7 +99,6 @@ public class Dashing : MonoBehaviour
             {
                 boostTime = zero;
                 boostPoints++;
-                Debug.Log(boostPoints);
             }
         }
     }

@@ -19,7 +19,7 @@ public class StateManager : MonoBehaviour
     public enum PLAYER_STATE
     {
         Mech,
-        Ball,
+        Core,
         Count
     }
 
@@ -27,7 +27,8 @@ public class StateManager : MonoBehaviour
     public GameObject firstPersonCameraPos;
     public GameObject thirdPersonCameraPos;
     public GameObject mechObject;
-    public GameObject ballObject;
+    public GameObject coreManager;
+    public GameObject coreGraphic;
     public GameObject mechEjectEffect;
 
     [Header("Eject Properties")]
@@ -40,12 +41,15 @@ public class StateManager : MonoBehaviour
     private bool moveCamera = false;
     private float cameraSmoothTime = 0;
     private PLAYER_STATE currentState;
+    private PlayerHandler playerHandler;
 
     // Start is called before the first frame update
     void Start()
     {
         // Setting the default state of the player.
         currentState = PLAYER_STATE.Mech;
+
+        playerHandler = this.GetComponent<PlayerHandler>();
     }
 
     // Update is called once per frame
@@ -53,10 +57,10 @@ public class StateManager : MonoBehaviour
     {
         if (Input.GetKeyUp(debugEjectKey))
         {
-            if (currentState == PLAYER_STATE.Ball)
+            if (currentState == PLAYER_STATE.Core)
                 SetState(PLAYER_STATE.Mech);
             else
-                SetState(PLAYER_STATE.Ball);
+                SetState(PLAYER_STATE.Core);
         }
     }
 
@@ -74,18 +78,18 @@ public class StateManager : MonoBehaviour
                 if (cameraSmoothTime > 1)
                     cameraSmoothTime = 1;
 
-                bool result = LerpCamera(ballObject, currentPos, targetPos, cameraSmoothTime);
+                bool result = LerpCamera(coreManager, currentPos, targetPos, cameraSmoothTime);
                 if (result)
                 {
                     Debug.Log("Completed camera transition.");
                     moveCamera = false;
                 }
 
-                SetState(PLAYER_STATE.Ball);
+                SetState(PLAYER_STATE.Core);
 
             }
             // Going back to first person.
-            else if (currentState == PLAYER_STATE.Ball)
+            else if (currentState == PLAYER_STATE.Core)
             {
                 targetPos = firstPersonCameraPos.transform.position;
                 currentPos = thirdPersonCameraPos.transform.position;
@@ -108,37 +112,31 @@ public class StateManager : MonoBehaviour
 
     public void SetState(PLAYER_STATE state)
     {
+        currentState = state;
         switch (state)
         {
-            case PLAYER_STATE.Ball:
+            case PLAYER_STATE.Core:
                 //Playing particle effect.
                 GameObject explosionObject = Instantiate(mechEjectEffect, mechObject.transform.position, mechObject.transform.rotation);
                 Destroy(explosionObject, 1.9f);
 
                 // Swapping active objects.
-                this.gameObject.GetComponent<CharacterController>().enabled = false;
+
+                // Updating the core postion.
+                playerHandler.CoreRigidbody.velocity = playerHandler.MechRigidbody.velocity;
+                coreManager.SetActive(true);
+                coreManager.transform.position = mechObject.transform.position;
                 mechObject.SetActive(false);
-                ballObject.SetActive(true);
-
-                // Updating the current state.
-                currentState = PLAYER_STATE.Ball;
-
-                // Updating the balls postion.
-                //ballObject.transform.position = mechObject.transform.position + (new Vector3(0, ejectHeight, 0));
-                ballObject.GetComponentInChildren<Rigidbody>().AddForce(Vector3.up * ejectForce);
+                playerHandler.CoreRigidbody.AddForce(Vector3.up * ejectForce, ForceMode.Impulse);
                 break;
 
             case PLAYER_STATE.Mech:
                 // Swapping active objects.
-                this.gameObject.GetComponent<CharacterController>().enabled = true;
-                mechObject.SetActive(true);
-                ballObject.SetActive(false);
-
-                // Updating the current state.
-                currentState = PLAYER_STATE.Mech;
+                coreManager.SetActive(false);
 
                 // Updating the mechs postion.
-                this.gameObject.transform.position = ballObject.transform.position;
+                mechObject.SetActive(true);
+                mechObject.transform.position = coreGraphic.transform.position;
                 break;
         }
     }
@@ -147,9 +145,6 @@ public class StateManager : MonoBehaviour
     private bool LerpCamera(GameObject target, Vector3 posA, Vector3 posB, float time)
     {
         Vector3 smoothedPosition = Vector3.Lerp(posA, posB, time);
-        //playerCamera.transform.position = smoothedPosition;
-        //playerCamera.transform.LookAt(target.transform);
-
         if ((smoothedPosition - posB).magnitude <= 0)
             return true;
         else

@@ -89,16 +89,16 @@ public class ViewmodelControl : MonoBehaviour
     // When the Mech moves
     void ApplyBob()
     {
-        if (controller.velocity.magnitude > 0.0f)
-        {
-            camOsillation = Mathf.Sin(timer * (2 * Mathf.PI));          
-            calcPosition.y = camOsillation * 0.5f;            
-        }
-        else
-        {            
-            calcPosition.y = InitY;
-        }
-        camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, calcPosition, Time.deltaTime);
+        //if (controller.velocity.magnitude > 0.0f)
+        //{
+        //    camOsillation = Mathf.Sin(timer * (2 * Mathf.PI));          
+        //    calcPosition.y = camOsillation * 0.5f;            
+        //}
+        //else
+        //{            
+        //    calcPosition.y = InitY;
+        //}
+        //camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, calcPosition, Time.deltaTime);
     }
 
     // Camera sway
