@@ -90,4 +90,9 @@ public class FirstPersonCamera : MonoBehaviour
         mechObjectTransform.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, playerObject.transform.up);
         //mechObjectTransform.GetComponent<Rigidbody>().transform.localRotation = Quaternion.AngleAxis(mouseLook.x, playerObject.transform.up);
     }
+
+    public Vector2 MouseLook
+    {
+        get { return mouseLook; }        
+    }
 }
