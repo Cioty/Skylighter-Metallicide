@@ -28,7 +28,8 @@ public class ViewmodelControl : MonoBehaviour
     Vector3 camDirNormal;
 
     // Player's velocity
-    CharacterController controller;
+    // CharacterController controller;
+    Rigidbody rb;
 
     // Bobbing curve
     float camOsillation;
@@ -68,7 +69,7 @@ public class ViewmodelControl : MonoBehaviour
     {
         mouseRotation = GetComponent<FirstPersonCamera>();
 
-        //controller = GetComponentInParent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         playerStats = player.GetComponent<PlayerHandler>();
 
         // Camera's transform
@@ -104,13 +105,13 @@ public class ViewmodelControl : MonoBehaviour
 
         ApplyBob();
         CameraSway();
-        CameraDrag();
+        // CameraDrag();
     }
 
     // When the Mech moves
     void ApplyBob()
     {
-        if (controller.velocity.magnitude > 0.0f)
+        if (rb.velocity.magnitude > 0.3f)
         {
             // It's just a Sine wave the goes back and forth from -1 to +1
             camOsillation = Mathf.Sin(timer * (2 * Mathf.PI));
@@ -173,24 +174,24 @@ public class ViewmodelControl : MonoBehaviour
 
     // Ever been in a car that accelerated too fast?
     // Your head gets blown back
-    void CameraDrag()
-    {
-        // The current velocity
-        currentVelocity = playerStats.CurrentVelocity;
+    //void CameraDrag()
+    //{
+    //    // The current velocity
+    //    currentVelocity = playerStats.CurrentVelocity;
 
-        // The direction the camera is thrown back (always opposite of where you're heading)
-        directionThrowBack = -(currentVelocity - lastVelocity).normalized;
+    //    // The direction the camera is thrown back (always opposite of where you're heading)
+    //    directionThrowBack = -(currentVelocity - lastVelocity).normalized;
 
-        // Scale the normalised vector by a set distance.
-        directionThrowBack = directionThrowBack * 2;
+    //    // Scale the normalised vector by a set distance.
+    //    directionThrowBack = directionThrowBack * 2;
 
-        Vector3 tempPosition = camTransform.position - directionThrowBack;
+    //    Vector3 tempPosition = camTransform.position - directionThrowBack;
 
-        // Lerp towards the new position at the rate of the speed.
-        camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, tempPosition, Time.deltaTime * (currentVelocity - lastVelocity).magnitude);
+    //    // Lerp towards the new position at the rate of the speed.
+    //    camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, tempPosition, Time.deltaTime * (currentVelocity - lastVelocity).magnitude);
 
 
-        // The last frame's velocity
-        lastVelocity = currentVelocity;
-    }
+    //    // The last frame's velocity
+    //    lastVelocity = currentVelocity;
+    //}
 }
