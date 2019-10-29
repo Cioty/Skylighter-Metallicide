@@ -11,6 +11,9 @@ public class ProjectileLauncher : MonoBehaviour
     private float fireTimer = 0.0f;
     private const float MAX_TRG_SCL = 1.21f;
 
+    public GameObject rocketLauncher;
+    private Animator RLAnimator;
+
     [Header("Attributes")]
     public Camera firstPersonCamera;
     public Transform projectileStartPoint;
@@ -22,6 +25,7 @@ public class ProjectileLauncher : MonoBehaviour
     {
         playerObject = this.gameObject.transform.parent.gameObject;
         playerHandler = playerObject.GetComponent<PlayerHandler>();
+        RLAnimator = rocketLauncher.GetComponent<Animator>();
     }
 
     private void Update()
@@ -49,6 +53,8 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void FireProjectile()
     {
+        RLAnimator.SetTrigger("Fire");
+
         Ray ray = firstPersonCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
         Vector3 direction = Vector3.zero;
