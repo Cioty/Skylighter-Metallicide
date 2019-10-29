@@ -12,6 +12,16 @@ public class Projectile : MonoBehaviour
     public GameObject explosionEffect;
     public Rigidbody rigidBody;
 
+    // Player that fires the projectile:
+    private PlayerHandler shooterHandler;
+
+    // Assigns the shooter variable and the correct layermask.
+    public void Setup(GameObject shooter, string layerMask)
+    {
+        shooterHandler = shooter.GetComponent<PlayerHandler>();
+        gameObject.layer = LayerMask.NameToLayer(layerMask);
+    }
+
     private void FixedUpdate()
     {
         // Timer to destory the object after a certain time.
@@ -27,17 +37,34 @@ public class Projectile : MonoBehaviour
 
         if(other.gameObject.tag == "Player")
         {
+            // Handler of the other player.
             PlayerHandler handler = other.gameObject.GetComponentInParent<PlayerHandler>();
 
+            // Check what state the player is in:
             if(handler.CurrentState == StateManager.PLAYER_STATE.Mech)
             {
                 float mechHealth = handler.mechHealth -= damage;
-                Debug.Log(other.gameObject.name + " at " + mechHealth + " health!");
+                ///Debug.Log(other.gameObject.name + " at " + mechHealth + " health!");
+
+                if(mechHealth == 0)
+                {
+                    // Adding a kill to the player stats:
+                    shooterHandler.PlayerStats.KilledMech();
+                }
             }
             else
             {
                 float coreHealth = handler.coreHealth -= damage;
-                Debug.Log(other.gameObject.name + " at " + coreHealth + " health!");
+                ///Debug.Log(other.gameObject.name + " at " + coreHealth + " health!");
+
+                if(coreHealth == 0)
+                {
+                    // Adjusting the other players score on death:
+                    handler.PlayerStats.HasDied();
+
+                    // Adding a kill to the core stats:
+                    shooterHandler.PlayerStats.KilledCore();
+                }
             }
         }
     }

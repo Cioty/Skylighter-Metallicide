@@ -9,9 +9,9 @@ public class PlayerHandler : MonoBehaviour
     public int coreHealth;
     public GameObject mechObject;
     public GameObject coreObject;
-    private int mechMaxHealth, coreMaxHealth;
     public RectTransform crosshairTransform;
     public Camera firstPersonCamera;
+    private int mechMaxHealth, coreMaxHealth;
     private XboxController assignedController;
     private Vector3 currentVelocity = Vector3.zero;
     private Rigidbody mechRB, coreRB;
@@ -20,6 +20,7 @@ public class PlayerHandler : MonoBehaviour
     private bool isAlive;
     private bool isGrounded;
     private StateManager stateManager;
+    private PlayerStatistics playerStats;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class PlayerHandler : MonoBehaviour
         coreMaxHealth = coreHealth;
 
         stateManager = GetComponent<StateManager>();
+        playerStats = GetComponent<PlayerStatistics>();
 
         coreRB = coreObject.GetComponentInChildren<Rigidbody>();
         coreTransform = coreObject.GetComponent<Transform>();
@@ -38,24 +40,14 @@ public class PlayerHandler : MonoBehaviour
 
     private void Update()
     {
-        if (mechTransform.position.y < -30)
-        {
-            // respawn
-            this.mechHealth = 0;
-        }
-
-        if (coreTransform.position.y < -30)
-        {
-            // respawn
-            this.coreHealth = 0;
-        }
-        
-        if(mechHealth <= 0)
+        // Checking the mechs health:
+        if (mechHealth <= 0)
         {
             stateManager.SetState(StateManager.PLAYER_STATE.Core);
             mechHealth = mechMaxHealth;
         }
-        
+
+        // Checking the balls health:
         if (coreHealth <= 0)
         {
             // respawn
@@ -70,7 +62,7 @@ public class PlayerHandler : MonoBehaviour
 
     public Rigidbody GetCurrentRigidBody()
     {
-        switch(stateManager.CurrentState)
+        switch (stateManager.CurrentState)
         {
             case StateManager.PLAYER_STATE.Core:
                 return coreRB;
@@ -154,11 +146,6 @@ public class PlayerHandler : MonoBehaviour
         set { currentVelocity = value; }
     }
 
-    public GameObject GameObject
-    {
-        get { return this.gameObject; }
-    }
-
     public XboxController AssignedController
     {
         get { return assignedController; }
@@ -167,8 +154,18 @@ public class PlayerHandler : MonoBehaviour
 
     public bool IsGrounded
     {
-        get { return isGrounded;  }
+        get { return isGrounded; }
         set { isGrounded = value; }
+    }
+
+    public bool HasAssignedController
+    {
+        get { return assignedController > 0; }
+    }
+
+    public PlayerStatistics PlayerStats
+    {
+        get { return playerStats; }
     }
 
 }

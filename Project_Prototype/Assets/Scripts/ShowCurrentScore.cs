@@ -1,0 +1,63 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using XboxCtrlrInput;
+
+public class ShowCurrentScore : MonoBehaviour
+{
+    public PlayerHandler handler;
+    public GameObject currentScoreUI;
+    public GameObject playerHUD;
+    public KeyCode keybind;
+    public XboxButton buttonBind;
+    private bool isVisible = false;
+
+    public Text score;
+    public Text timeLeftInMatch;
+
+    // Update is called once per frame
+    void Update()
+    {
+        // If player has an xbox controllor, then handle input with controller buttons:
+        if(handler.HasAssignedController)
+        {
+            if(XCI.GetButtonDown(buttonBind, handler.AssignedController))
+            {
+                currentScoreUI.SetActive(true);
+                playerHUD.SetActive(false);
+            }
+
+            if (XCI.GetButtonUp(buttonBind, handler.AssignedController))
+            {
+                currentScoreUI.SetActive(false);
+                playerHUD.SetActive(true);
+            }
+        }
+        else
+        {
+            // If no xbox controller connected, fallback to keyboard input.
+            if (Input.GetKeyDown(keybind))
+            {
+                currentScoreUI.SetActive(true);
+                playerHUD.SetActive(false);
+            }
+
+            if (Input.GetKeyUp(keybind))
+            {
+                currentScoreUI.SetActive(false);
+                playerHUD.SetActive(true);
+            }
+        }
+
+
+        if(score != null)
+        {
+            score.text = handler.PlayerStats.TotalScore.ToString();
+        }
+
+        if (timeLeftInMatch != null)
+        {
+          //  timeLeftInMatch.text = handler.PlayerStats.TotalScore.ToString();
+        }
+
+    }
+}

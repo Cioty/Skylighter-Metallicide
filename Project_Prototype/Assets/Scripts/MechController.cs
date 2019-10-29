@@ -126,7 +126,7 @@ public class MechController : MonoBehaviour
             // Checking for jump input.
             if (XCI.GetButton(XboxButton.A, playerHandler.AssignedController) || Input.GetButton("Jump"))
             {
-                currentVelocity += (acceleration.normalized + Vector3.up) * jumpHeight;
+                currentVelocity += Vector3.up * jumpHeight;
             }
         }
         else
