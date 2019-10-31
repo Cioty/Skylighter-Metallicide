@@ -11,6 +11,8 @@ public class PlayerHandler : MonoBehaviour
     public GameObject coreObject;
     public RectTransform crosshairTransform;
     public Camera firstPersonCamera;
+    public GameObject viewModelObject;
+    public GameObject mechModelObject;
     private int mechMaxHealth, coreMaxHealth;
     private XboxController assignedController;
     private Vector3 currentVelocity = Vector3.zero;
@@ -21,6 +23,7 @@ public class PlayerHandler : MonoBehaviour
     private bool isGrounded;
     private StateManager stateManager;
     private PlayerStatistics playerStats;
+    private bool isControllable = true;
 
     private void Awake()
     {
@@ -166,6 +169,12 @@ public class PlayerHandler : MonoBehaviour
     public PlayerStatistics PlayerStats
     {
         get { return playerStats; }
+    }
+
+    public bool IsControllable
+    {
+        get { return isControllable; }
+        set { isControllable = value; }
     }
 
 }

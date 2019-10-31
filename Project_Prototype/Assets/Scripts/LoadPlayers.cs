@@ -67,8 +67,12 @@ public class LoadPlayers : MonoBehaviour
                 handler.AssignedController = playerContainers[i].Controller;
                 activePlayers.Add(player);
 
+                // Assigns the correct view model layer.
                 // Hides the players mech from itself.
                 this.SetLayerRecursively(player, player.tag + i, "HUD");
+                this.SetLayerRecursively(handler.mechModelObject, player.tag + i, "HUD");
+                this.SetLayerRecursively(handler.viewModelObject, player.tag + i + "View");
+                handler.FirstPersonCamera.cullingMask |= 1 << LayerMask.NameToLayer(player.tag + i + "View");
                 handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(player.tag + i));
 
                 // If single player:
@@ -113,20 +117,25 @@ public class LoadPlayers : MonoBehaviour
                 handler.AssignedController = ((XboxController)i);
                 activePlayers.Add(player);
 
+                // Assigns the correct view model layer.
                 // Hides the players mech from itself.
                 this.SetLayerRecursively(player, player.tag + i, "HUD");
+                this.SetLayerRecursively(handler.mechModelObject, player.tag + i, "HUD");
+                this.SetLayerRecursively(handler.viewModelObject, player.tag + i + "View");
+                handler.FirstPersonCamera.cullingMask |= 1 << LayerMask.NameToLayer(player.tag + i + "View");
                 handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(player.tag + i));
 
-                // Assigns the correct view model layer.
-                GameObject.FindGameObjectWithTag("View Model").layer = LayerMask.NameToLayer(player.tag + i + "View");
+                // Deactivating controls from other players:
+                if (i > 0)
+                    handler.IsControllable = false;
 
                 // If single player:
-                if (playerCount == 1 && i == 0)
+                if (debugPlayerCount == 1 && i == 0)
                     continue;
 
                 // If more then one player:
                 Vector4 screenPos = Vector4.zero;
-                switch (playerCount)
+                switch (debugPlayerCount)
                 {
                     case 2:
                         screenPos = twoPlayer[i];
