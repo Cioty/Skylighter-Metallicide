@@ -1174,12 +1174,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocketLauncher: {fileID: 5347453562097496730}
+  SFX_RocketFire: {fileID: 3996638170130617427}
   firstPersonCamera: {fileID: 1124765532386062779}
   projectileStartPoint: {fileID: 1420077122910760075}
   projectilePrefab: {fileID: 8200958712033532059, guid: 41d1ef769b2354d4b8b19b126f42fd4c,
     type: 3}
   projectileSpeed: 50
-  fireThreshold: 1
+  fireThreshold: 0.8
 --- !u!114 &5640811962391447606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1233,10 +1234,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 6b0ee5bb1c6a6e24580ddcd387595098, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.1
+  m_Radius: 1.35
   m_Height: 3.5
   m_Direction: 1
-  m_Center: {x: 0, y: 1.8, z: 0}
+  m_Center: {x: 0, y: 1.76, z: 0.31}
 --- !u!1 &3300493348328833035
 GameObject:
   m_ObjectHideFlags: 0
@@ -4377,15 +4378,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d74df346131f93d42919cdf93a2672ab, type: 3}
---- !u!4 &1289639470209633650 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2952557971727687650, guid: d74df346131f93d42919cdf93a2672ab,
-    type: 3}
-  m_PrefabInstance: {fileID: 4115216485460775568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1289639470209732946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2952557971727713218, guid: d74df346131f93d42919cdf93a2672ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 4115216485460775568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1289639470209633650 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2952557971727687650, guid: d74df346131f93d42919cdf93a2672ab,
     type: 3}
   m_PrefabInstance: {fileID: 4115216485460775568}
   m_PrefabAsset: {fileID: 0}
@@ -4598,6 +4599,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e30ad2f4a4c9bf24890db82915e05147, type: 3}
+--- !u!82 &3996638170130617427 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7704046005921327197, guid: e30ad2f4a4c9bf24890db82915e05147,
+    type: 3}
+  m_PrefabInstance: {fileID: 6745455714892921870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5347453562097004218 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1704986933196903092, guid: e30ad2f4a4c9bf24890db82915e05147,

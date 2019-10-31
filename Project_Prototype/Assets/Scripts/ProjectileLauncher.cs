@@ -14,6 +14,8 @@ public class ProjectileLauncher : MonoBehaviour
     public GameObject rocketLauncher;
     private Animator RLAnimator;
 
+    public AudioSource SFX_RocketFire;
+
     [Header("Attributes")]
     public Camera firstPersonCamera;
     public Transform projectileStartPoint;
@@ -54,6 +56,7 @@ public class ProjectileLauncher : MonoBehaviour
     private void FireProjectile()
     {
         RLAnimator.SetTrigger("Fire");
+        SFX_RocketFire.Play();
 
         Ray ray = firstPersonCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
