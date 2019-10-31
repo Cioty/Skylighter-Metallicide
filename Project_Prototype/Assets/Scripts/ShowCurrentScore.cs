@@ -7,10 +7,9 @@ public class ShowCurrentScore : MonoBehaviour
     public PlayerHandler handler;
     public GameObject currentScoreUI;
     public GameObject playerHUD;
+    public GameManager gameManager;
     public KeyCode keybind;
     public XboxButton buttonBind;
-    private bool isVisible = false;
-
     public Text score;
     public Text timeLeftInMatch;
 
@@ -56,7 +55,7 @@ public class ShowCurrentScore : MonoBehaviour
 
         if (timeLeftInMatch != null)
         {
-          //  timeLeftInMatch.text = handler.PlayerStats.TotalScore.ToString();
+            timeLeftInMatch.text = "Time left: " + (gameManager.gameRoundTimer / 60).ToString();
         }
 
     }

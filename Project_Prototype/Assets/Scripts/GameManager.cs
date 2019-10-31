@@ -6,14 +6,22 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public float gameRoundTimer = 300;
+    public GameObject playerManager;
+    public GameObject postMatchScoreBoard;
+    private bool shouldTime = true;
 
     // Update is called once per frame
     void Update()
     {
-        gameRoundTimer -= Time.deltaTime;
-        if(gameRoundTimer <= 0)
+        if(shouldTime)
         {
-            SceneManager.LoadScene("Main-Menu");
+            gameRoundTimer -= Time.deltaTime;
+            if(gameRoundTimer <= 0)
+            {
+                playerManager.SetActive(false);
+                postMatchScoreBoard.SetActive(true);
+                shouldTime = false;
+            }
         }
     }
 }

@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class LoadPlayers : MonoBehaviour
 {
+    public static LoadPlayers instance;
+
+    public bool debugMode = false;
     public GameObject playerPrefab;
     public RespawnArray respawnArray;
     private int playerCount = 0;
+
     private Vector4[] onePlayer;
     private Vector4[] twoPlayer;
     private Vector4[] threePlayer;
@@ -15,6 +19,9 @@ public class LoadPlayers : MonoBehaviour
 
     private void Awake()
     {
+        // Singleton instance.
+        instance = this;
+
         // Singleplayer full screen.
         onePlayer = new Vector4[1];
         onePlayer[0] = new Vector4(0, 0, 1, 1);
@@ -86,9 +93,25 @@ public class LoadPlayers : MonoBehaviour
                         break;
                 }
             }
-
             // Destroys the transferd data.
             Destroy(PlayerData.instance.gameObject);
+        }
+        else if(debugMode)
+        {
+            /* temp hard code c/p, will clean this spawning code up along with this whole class soon*/
+            Transform randomSpawn = respawnArray.GetRandomSpawnPoint();
+            GameObject player = Instantiate(playerPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation, this.gameObject.transform);
+            PlayerHandler handler = player.GetComponent<PlayerHandler>();
+            handler.MechTransform.position = randomSpawn.position;
+            handler.MechTransform.rotation = randomSpawn.rotation;
+            player.tag = "Player";
+            handler.ID = 0;
+            handler.AssignedController = 0;
+            activePlayers.Add(player);
+
+            // Hides the players mech from itself.
+            this.SetLayerRecursively(player, player.tag + 0, "HUD");
+            handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(player.tag + 0));
         }
     }
 
