@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class LoadPlayers : MonoBehaviour
 {
     public static LoadPlayers instance;
 
     public bool debugMode = false;
+    public int debugPlayerCount = 1;
     public GameObject playerPrefab;
     public RespawnArray respawnArray;
     private int playerCount = 0;
@@ -99,19 +101,49 @@ public class LoadPlayers : MonoBehaviour
         else if(debugMode)
         {
             /* temp hard code c/p, will clean this spawning code up along with this whole class soon*/
-            Transform randomSpawn = respawnArray.GetRandomSpawnPoint();
-            GameObject player = Instantiate(playerPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation, this.gameObject.transform);
-            PlayerHandler handler = player.GetComponent<PlayerHandler>();
-            handler.MechTransform.position = randomSpawn.position;
-            handler.MechTransform.rotation = randomSpawn.rotation;
-            player.tag = "Player";
-            handler.ID = 0;
-            handler.AssignedController = 0;
-            activePlayers.Add(player);
+            for(int i = 0; i < debugPlayerCount; ++i)
+            {
+                Transform randomSpawn = respawnArray.GetRandomSpawnPoint();
+                GameObject player = Instantiate(playerPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation, this.gameObject.transform);
+                PlayerHandler handler = player.GetComponent<PlayerHandler>();
+                handler.MechTransform.position = randomSpawn.position;
+                handler.MechTransform.rotation = randomSpawn.rotation;
+                player.tag = "Player";
+                handler.ID = i;
+                handler.AssignedController = ((XboxController)i);
+                activePlayers.Add(player);
 
-            // Hides the players mech from itself.
-            this.SetLayerRecursively(player, player.tag + 0, "HUD");
-            handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(player.tag + 0));
+                // Hides the players mech from itself.
+                this.SetLayerRecursively(player, player.tag + i, "HUD");
+                handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(player.tag + i));
+
+                // Assigns the correct view model layer.
+                GameObject.FindGameObjectWithTag("View Model").layer = LayerMask.NameToLayer(player.tag + i + "View");
+
+                // If single player:
+                if (playerCount == 1 && i == 0)
+                    continue;
+
+                // If more then one player:
+                Vector4 screenPos = Vector4.zero;
+                switch (playerCount)
+                {
+                    case 2:
+                        screenPos = twoPlayer[i];
+                        handler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
+                        break;
+
+                    case 3:
+                        screenPos = threePlayer[i];
+                        handler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
+                        break;
+
+                    case 4:
+                        screenPos = fourPlayer[i];
+                        handler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
+                        break;
+                }
+            }
         }
     }
 
