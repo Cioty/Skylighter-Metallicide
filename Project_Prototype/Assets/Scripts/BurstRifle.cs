@@ -7,7 +7,7 @@ public class BurstRifle : MonoBehaviour
 {
     public PlayerHandler playerHandler;
 
-    public ParticleSystem BurstFireRifle;
+    public GameObject BurstFireRifle;
 
     public Camera fpsCamBr;
 
@@ -51,11 +51,11 @@ public class BurstRifle : MonoBehaviour
                 {
                     Shoot();
                     gunAmmoShot++;
-
+                    
                 }
                 else
                 {
-                    
+                 
                     isGunShooting = false;
                     gunCharge = 0.0f;
                     gunAmmoShot = 0;

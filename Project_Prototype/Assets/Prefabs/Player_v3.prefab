@@ -517,6 +517,7 @@ GameObject:
   - component: {fileID: 9169172856048194562}
   - component: {fileID: 8073178002007253317}
   - component: {fileID: 182120722127581269}
+  - component: {fileID: 3074033354985086514}
   - component: {fileID: 4648235759154412318}
   m_Layer: 9
   m_Name: Mech
@@ -713,6 +714,33 @@ MonoBehaviour:
     type: 3}
   projectileSpeed: 50
   fireThreshold: 1
+--- !u!114 &3074033354985086514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2455254139509369771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1c4e9612001c2e4084fabf8bf92e35f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHandler: {fileID: 4368871162249488053}
+  BurstFireRifle: {fileID: 0}
+  damage: 10
+  range: 100
+  randXRange: 0.1
+  randYRange: 0.1
+  randZRange: 0.1
+  halfAngle: 1
+  burstBullets: 30
+  charge: 0
+  delay: 0.6
+  burstCharge: 0
+  burstDelay: 0.6
+  burstDuration: 0.5
+  fpsCambr: {fileID: 95157330912346771}
 --- !u!114 &4648235759154412318
 MonoBehaviour:
   m_ObjectHideFlags: 0
