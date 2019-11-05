@@ -1,5 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       PlayerHandler.cs
+ * Purpose:     Holds all the components and information relative to the player.
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
 using UnityEngine;
 using XboxCtrlrInput;
 

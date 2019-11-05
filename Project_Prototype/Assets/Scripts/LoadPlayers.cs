@@ -1,22 +1,44 @@
-﻿using System.Collections;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       LoadPlayers.cs
+ * Purpose:     Loads the players into the game either active with the contollers,
+ *              or in debug mode. (All players movement disabled besides player0)
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
 public class LoadPlayers : MonoBehaviour
 {
+    // Singleton instance:
     public static LoadPlayers instance;
 
-    public bool debugMode = false;
-    public int debugPlayerCount = 1;
+    [Header("References")]
     public GameObject playerPrefab;
     public RespawnArray respawnArray;
-    private int playerCount = 0;
 
+    [Header("Force Debug Mode")]
+    public bool debugMode = false;
+
+    [Tooltip("Keep this at 0 to prevent weird stuff from happening!")]
+    public int debugPlayerCount = 0;
+
+    // Screen locations:
+    private int playerCount = 0;
     private Vector4[] onePlayer;
     private Vector4[] twoPlayer;
     private Vector4[] threePlayer;
     private Vector4[] fourPlayer;
+
+    // Player lists:
     private List<GameObject> activePlayers = new List<GameObject>();
     private List<PlayerContainer> playerContainers;
 
@@ -53,12 +75,20 @@ public class LoadPlayers : MonoBehaviour
     {
         if (PlayerData.instance != null || debugMode)
         {
-            if (PlayerData.instance.isDebugMode)
+            // Turning on debug mode if the count is greater than 0:
+            if(debugPlayerCount > 0)
             {
                 debugMode = true;
-                debugPlayerCount = PlayerData.instance.debugPlayerCount;
             }
 
+            // Checking the StartInDebugMode flag in the PlayerData class.
+            if (PlayerData.instance != null && PlayerData.instance.StartInDebugMode)
+            {
+                debugMode = true;
+                debugPlayerCount = PlayerData.instance.DebugPlayerCount;
+            }
+
+            // Getting the correct players, either from the assigned containers or the debug count:
             if(!debugMode)
             {
                 playerCount = PlayerData.instance.AssignedPlayers;
@@ -67,34 +97,38 @@ public class LoadPlayers : MonoBehaviour
             else
                 playerCount = debugPlayerCount;
 
+            // Looping through each player and setting up the correct settings:
             for (int i = 0; i < playerCount; ++i)
             {
+                // Getting random mech respawn station:
                 Transform randomSpawn = respawnArray.GetRandomSpawnPoint();
                 Vector3 fixedPosition = randomSpawn.position;
                 fixedPosition.y += 0.5f;
-                GameObject playerGO = Instantiate(playerPrefab, fixedPosition, randomSpawn.rotation, this.gameObject.transform);
+
+                // Instantiating the player at that location and getting the playerHandler component from it:
+                GameObject playerGO = Instantiate(playerPrefab, fixedPosition, randomSpawn.rotation, gameObject.transform);
                 PlayerHandler playerHandler = playerGO.GetComponent<PlayerHandler>();
 
-                // Assigning the player's ID.
+                // Assigning the player's ID:
                 playerHandler.ID = i;
 
-                // Assigning the correct controller.
+                // Assigning the correct controller:
                 if(!debugMode)
                     playerHandler.AssignedController = playerContainers[i].Controller;
                 else
                     playerHandler.AssignedController = ((XboxController)i);
 
-                // Adding the player to the active players list.
+                // Adding the player to the active players list:
                 activePlayers.Add(playerGO);
 
-                // Assigns the correct view model layer.
-                this.SetLayerRecursively(playerGO, playerGO.tag + i, "HUD");
-                this.SetLayerRecursively(playerHandler.mechModelObject, playerGO.tag + i, "HUD");
-                this.SetLayerRecursively(playerHandler.viewModelObject, playerGO.tag + i + "View");
+                // Assigns the correct view model layer:
+                SetLayerRecursively(playerGO, playerGO.tag + i, "HUD");
+                SetLayerRecursively(playerHandler.mechModelObject, playerGO.tag + i, "HUD");
+                SetLayerRecursively(playerHandler.viewModelObject, playerGO.tag + i + "View");
                 playerHandler.FirstPersonCamera.cullingMask |= 1 << LayerMask.NameToLayer(playerGO.tag + i + "View");
                 playerHandler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(playerGO.tag + i));
 
-                // Deactivating controls from other players:
+                // Deactivating controls from all players other than player0:
                 if(debugMode)
                 {
                     if (i > 0)
@@ -135,6 +169,9 @@ public class LoadPlayers : MonoBehaviour
         }
     }
 
+    /*
+     Setting the specified gameobject's layer recursively via string. String checking to skip a layer:
+         */
     void SetLayerRecursively(GameObject gameObject, string layerName, string objectToSkip = "")
     {
         gameObject.layer = LayerMask.NameToLayer(layerName);

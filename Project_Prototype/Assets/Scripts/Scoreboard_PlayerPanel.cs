@@ -1,4 +1,17 @@
-﻿using System.Collections;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       Scoreboard_PlayerPanel.cs
+ * Purpose:     Holds the strings relating to the stats.
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +23,7 @@ public class Scoreboard_PlayerPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Dodgy finds here, might need to find a better way:
         statisticStrings[0] = GameObject.Find("mechKills").GetComponent<Text>();
         statisticStrings[1] = GameObject.Find("ballKills").GetComponent<Text>();
         statisticStrings[2] = GameObject.Find("escaped").GetComponent<Text>();

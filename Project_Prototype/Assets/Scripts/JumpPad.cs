@@ -1,6 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       JumpPad.cs
+ * Purpose:     Launches the player either in Mech or Core in a specified
+ *              force and direction.
+ * 
+ * Author:      Lachlan Wernert & Daniel Cox
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
 using UnityEngine;
 
 public class JumpPad : MonoBehaviour

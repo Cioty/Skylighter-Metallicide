@@ -1,4 +1,17 @@
-﻿using System.Collections;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       Trigger.cs
+ * Purpose:     To turn a trigger into a component.
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

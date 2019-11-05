@@ -1,6 +1,18 @@
-﻿using UnityEngine;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       Projectile.cs
+ * Purpose:     To represent a rocket.
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
+using UnityEngine;
 
-// Projectile script to control the behaviour of the object after being projected.
 public class Projectile : MonoBehaviour
 {
     [Header("Properties")]

@@ -1,4 +1,17 @@
-﻿using UnityEngine;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       ButtonManager.cs
+ * Purpose:     Manages the button input form the main menu:
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using XboxCtrlrInput;
 

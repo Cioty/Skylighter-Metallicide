@@ -1,10 +1,24 @@
-﻿using System.Collections;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       SplashScreen.cs
+ * Purpose:     To show a scene before starting the game:
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SplashScreen : MonoBehaviour
 {
+    [Header("Attributes")]
     public RawImage splashImage;
     public string nextScene;
     public float timeToFadeIn;

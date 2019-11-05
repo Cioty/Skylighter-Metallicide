@@ -1,17 +1,37 @@
-﻿using System.Collections.Generic;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       PTCAssigner.cs (Player To Controller Assigner)
+ * Purpose:     Uses XInput to search for connected controllers, and handles
+ *              the input of the controller selection screen.
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ *             - Currently assigns the controllers in any screen other. 
+ *             - (eg, controller 4 can player in the topleft screen in 4 player)
+ * 
+ *===========================================================================*/
+using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
 
 public class PTCAssigner : MonoBehaviour
 {
+    [Header("References")]
     public GameObject playerContainersGroup;
     public GameObject allControllersConnectedScreen;
-    public static bool controllerFound = false;
+
+    [Header("Debug Mode")]
+    [Tooltip("Keep this off to start game normally!")]
+    public bool startInDebugMode = false;
     public KeyCode debugStartKey;
-    public int debugPlayerCount = 2;
+    public int debugPlayerCount = 0;
 
-
+    // Private variables:
     private int connectedControllers = 0;
     private int assignedPlayers = 0;
     private bool isAtConnectScreen = false;
@@ -19,12 +39,13 @@ public class PTCAssigner : MonoBehaviour
     private List<XboxController> yetToBeConnectedList = new List<XboxController>();
     private List<PlayerContainer> playerContainers = new List<PlayerContainer>();
     private bool allControllersConnected = false;
+    public static bool controllerFound = false;
 
     // Start is called before the first frame update
     void Start()
     {
         // Search for controllers:
-        if (!hasSearchedForControllers)
+        if (!hasSearchedForControllers && !startInDebugMode)
         {
             hasSearchedForControllers = true;
 
@@ -64,9 +85,11 @@ public class PTCAssigner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(debugStartKey))
+        // Quick the game in debug mode.
+        if (Input.GetKeyDown(debugStartKey) && startInDebugMode)
         {
-            PlayerData.instance.debugPlayerCount = debugPlayerCount;
+            PlayerData.instance.DebugPlayerCount = debugPlayerCount;
+            PlayerData.instance.StartInDebugMode = true;
             StartGame();
         }
 

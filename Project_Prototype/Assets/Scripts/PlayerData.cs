@@ -1,4 +1,19 @@
-﻿using System.Collections;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       PlayerData.cs
+ * Purpose:     Serves as a packet of data that the next loaded scene can read
+ *              from. This holds the information about the players that we'll
+ *              need to spawn them in.
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +23,8 @@ public class PlayerData : MonoBehaviour
     private int assignedPlayers;
     private List<PlayerContainer> transferedPlayerContainers = new List<PlayerContainer>();
     public static PlayerData instance;
-    public bool isDebugMode = false;
-    public int debugPlayerCount = 2;
+    private bool startInDebugMode = false;
+    private int debugPlayerCount = 0;
 
     private void Awake()
     {
@@ -40,5 +55,17 @@ public class PlayerData : MonoBehaviour
     public int AssignedPlayers
     {
         get { return assignedPlayers; }
+    }
+
+    public bool StartInDebugMode
+    {
+        get { return startInDebugMode; }
+        set { startInDebugMode = value; }
+    }
+
+    public int DebugPlayerCount
+    {
+        get { return debugPlayerCount; }
+        set { debugPlayerCount = value; }
     }
 }

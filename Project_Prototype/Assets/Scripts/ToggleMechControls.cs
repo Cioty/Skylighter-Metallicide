@@ -1,4 +1,17 @@
-﻿using System.Collections;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       ToggleMechControls.cs
+ * Purpose:     Toggles the mech controls. (Used in debug mode)
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

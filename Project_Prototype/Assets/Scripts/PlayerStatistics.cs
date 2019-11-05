@@ -1,4 +1,18 @@
-﻿using System.Collections;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       PlayerStatistics.cs
+ * Purpose:     Holds all the statistics relative to the player
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

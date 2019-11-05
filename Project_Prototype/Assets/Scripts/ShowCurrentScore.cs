@@ -1,9 +1,24 @@
-﻿using UnityEngine;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       ShowCurrentScore.cs
+ * Purpose:     Displays the current match time and the users score on the
+ *              first person camera.
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
+using UnityEngine;
 using UnityEngine.UI;
 using XboxCtrlrInput;
 
 public class ShowCurrentScore : MonoBehaviour
 {
+    [Header("References")]
     public PlayerHandler handler;
     public GameObject currentScoreUI;
     public GameObject playerHUD;

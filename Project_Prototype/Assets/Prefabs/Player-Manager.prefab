@@ -43,5 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb1e7093c11e614690c4acf09d2b338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 7360001967633157087, guid: 65f1dd320b1853d419f4f04828d36abd,
+  playerPrefab: {fileID: 7559876464515234039, guid: 4d6b0ff5366358c42938782cd2307579,
     type: 3}
+  respawnArray: {fileID: 0}
+  debugMode: 0
+  debugPlayerCount: 0
