@@ -7,7 +7,7 @@ public class Dashing : MonoBehaviour
 {
     //public GameObject playerObject;
     public GameObject mechObject;
-    private Rigidbody rb;
+    //private Rigidbody rb;
     private MechController mechController;
     private PlayerHandler playerHandler;
 
@@ -48,8 +48,7 @@ public class Dashing : MonoBehaviour
     private void Awake()
     {
         playerHandler = mechObject.GetComponentInParent<PlayerHandler>();
-        mechController = mechObject.GetComponent<MechController>();
-        rb = mechObject.GetComponent<Rigidbody>();
+        mechController = playerHandler.MechController;
         thrusterTimer = zero;                        
     }
 
@@ -78,7 +77,9 @@ public class Dashing : MonoBehaviour
             if (thrusterTimer < duration)
             {
                 thrusterTimer += Time.deltaTime;
-                rb.AddForce(lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed, ForceMode.Impulse);
+
+                playerHandler.MechImpactRecevier.AddImpact(lastDir * speedGraph.Evaluate(thrusterTimer / duration), speed);
+                //rb.AddForce(lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed, ForceMode.Impulse);
             }
 
             if (thrusterTimer >= duration)
@@ -110,6 +111,6 @@ public class Dashing : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Debug.Log("Hit " + hit.gameObject.name);
+       // Debug.Log("Hit " + hit.gameObject.name);
     }
 }

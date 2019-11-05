@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class Ball_Movement : MonoBehaviour
 {
     // References
+    public GameObject coreObject;
     public Rigidbody rigidBody;
     public SphereCollider sphereCollider;
     public GameObject thirdPersonCamera;
+    public PlayerHandler playerHandler;
 
     // Movement
     public float movementSpeed = 5.0f;
@@ -27,9 +30,19 @@ public class Ball_Movement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if(playerHandler.HasAssignedController)
         {
-            isJumping = true;
+            if (XCI.GetButton(XboxButton.A, playerHandler.AssignedController) && IsGrounded())
+            {
+                isJumping = true;
+            }
+        }
+        else
+        {
+            if (Input.GetButtonDown("Jump") && IsGrounded())
+            {
+                isJumping = true;
+            }
         }
     }
 
@@ -49,8 +62,18 @@ public class Ball_Movement : MonoBehaviour
     // Making the ball move in the direction the camera is facing
     void ball_roll()
     {
-        float horizontal_move = Input.GetAxis("Horizontal");
-        float vertical_move = Input.GetAxis("Vertical");
+        float horizontal_move = 0f;
+        float vertical_move = 0f;
+        if (playerHandler.HasAssignedController)
+        {
+            horizontal_move = XCI.GetAxis(XboxAxis.LeftStickX, playerHandler.AssignedController);
+            vertical_move = XCI.GetAxis(XboxAxis.LeftStickY, playerHandler.AssignedController);
+        }
+        else
+        {
+            horizontal_move = Input.GetAxis("Horizontal");
+            vertical_move = Input.GetAxis("Vertical");
+        }
 
         Vector3 cam_forward = thirdPersonCamera.transform.forward;
         Vector3 cam_right = thirdPersonCamera.transform.right;
@@ -68,21 +91,15 @@ public class Ball_Movement : MonoBehaviour
     private bool IsGrounded()
     {
         RaycastHit hit;
-        Ray ray = new Ray(transform.position, -Vector3.up);
+        Ray ray = new Ray(coreObject.transform.position, -Vector3.up);
 
         if (Physics.Raycast(ray, out hit))
         {
             GameObject targetHit = hit.transform.gameObject;
-            if (targetHit && targetHit.tag == "Ground" && hit.distance <= distanceToGround)
-            {
-                Debug.Log("hit: " + hit.distance);
+            if (hit.distance <= distanceToGround)
                 return true;
-            }
             else
-            {
-                Debug.Log("no: " + hit.distance);
                 return false;
-            }
         }
         else
             return false;

@@ -8,6 +8,8 @@ public class PTCAssigner : MonoBehaviour
     public GameObject playerContainersGroup;
     public GameObject allControllersConnectedScreen;
     public static bool controllerFound = false;
+    public KeyCode debugStartKey;
+    public int debugPlayerCount = 2;
 
 
     private int connectedControllers = 0;
@@ -62,6 +64,12 @@ public class PTCAssigner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(debugStartKey))
+        {
+            PlayerData.instance.debugPlayerCount = debugPlayerCount;
+            StartGame();
+        }
+
         if (isAtConnectScreen)
         {
             // check for input
@@ -91,8 +99,7 @@ public class PTCAssigner : MonoBehaviour
             {
                 if (XCI.GetButtonUp(XboxButton.A, XboxController.All))
                 {
-                    PlayerData.instance.Save();
-                    SceneManager.LoadScene("Map01", LoadSceneMode.Single);
+                    StartGame();
                 }
 
                 if (XCI.GetButtonUp(XboxButton.B, XboxController.All))
@@ -102,6 +109,12 @@ public class PTCAssigner : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void StartGame()
+    {
+        PlayerData.instance.Save();
+        SceneManager.LoadScene("Map01", LoadSceneMode.Single);
     }
 
     // Loops through the container list and returns the first container without a player.

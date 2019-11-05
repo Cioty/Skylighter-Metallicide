@@ -550,6 +550,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ptcAssigner: {fileID: 2041836053}
+  isDebugMode: 0
+  debugPlayerCount: 2
 --- !u!1 &591263310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,6 +2153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerContainersGroup: {fileID: 432639404}
   allControllersConnectedScreen: {fileID: 832017972}
+  debugStartKey: 13
+  debugPlayerCount: 2
 --- !u!1 &2074280155
 GameObject:
   m_ObjectHideFlags: 0

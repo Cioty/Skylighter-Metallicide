@@ -45,7 +45,7 @@ public class TP_MouseLook : MonoBehaviour
     void Mouse_aiming()
     {
         // controller only atm:
-        if (playerHandler.AssignedController > 0)
+        if (playerHandler.HasAssignedController)
         {
             mouse_x += XCI.GetAxis(XboxAxis.RightStickX, playerHandler.AssignedController) * rotationSpeed;
             mouse_y += XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController) * rotationSpeed;

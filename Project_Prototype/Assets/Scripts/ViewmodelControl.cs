@@ -28,8 +28,8 @@ public class ViewmodelControl : MonoBehaviour
     Vector3 camDirNormal;
 
     // Player's velocity
-    // CharacterController controller;
-    Rigidbody rb;
+    CharacterController controller;
+    // Rigidbody rb;
 
     // Bobbing curve
     float camOsillation;
@@ -69,8 +69,9 @@ public class ViewmodelControl : MonoBehaviour
     {
         mouseRotation = GetComponent<FirstPersonCamera>();
 
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         playerStats = player.GetComponent<PlayerHandler>();
+        controller = this.GetComponent<CharacterController>();
 
         // Camera's transform
         camTransform = Camera.transform;
@@ -111,7 +112,7 @@ public class ViewmodelControl : MonoBehaviour
     // When the Mech moves
     void ApplyBob()
     {
-        if (rb.velocity.magnitude > 0.3f)
+        if (controller.velocity.magnitude > 0.3f)
         {
             // It's just a Sine wave the goes back and forth from -1 to +1
             camOsillation = Mathf.Sin(timer * (2 * Mathf.PI));

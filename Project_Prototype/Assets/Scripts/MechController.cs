@@ -11,21 +11,12 @@
  * Deficiences:
  * 
  *===========================================================================*/
+using UnityEditor;
 using UnityEngine;
 using XboxCtrlrInput;
 
 public class MechController : MonoBehaviour
 {
-    //private GameObject playerObject;
-    private PlayerHandler playerHandler;
-    private Transform mechObjectTransform;
-    private Rigidbody rb;
-    private float distanceToGround;
-
-    [Header("References")]
-    public CapsuleCollider capsuleCollider;
-    public GameObject mechObject;
-
     [Header("Movement")]
     public float maxSpeed = 25.0f;
     public float accelerationMultiplier = 1.0f;
@@ -38,8 +29,11 @@ public class MechController : MonoBehaviour
     public AnimationCurve accelerationRate;
     public AnimationCurve decelerationRate;
 
-
     // Private variables.
+    private PlayerHandler playerHandler;
+    private Transform mechObjectTransform;
+    private CharacterController controller;
+    private float distanceToGround;
     private Vector3 acceleration = Vector3.zero;
     private Vector3 deceleration = Vector3.zero;
     private Vector3 moveDirection = Vector3.zero;
@@ -50,9 +44,9 @@ public class MechController : MonoBehaviour
 
     void Awake()
     {
-        playerHandler = GetComponentInParent<PlayerHandler>();
-        rb = GetComponent<Rigidbody>();
         mechObjectTransform = GetComponent<Transform>();
+        playerHandler = GetComponentInParent<PlayerHandler>();
+        controller = mechObjectTransform.GetComponent<CharacterController>();
     }
 
     // Start is called before the first frame update
@@ -60,7 +54,8 @@ public class MechController : MonoBehaviour
     {
         // Setting the cursors lock state.
         Cursor.lockState = CursorLockMode.Locked;
-        distanceToGround = capsuleCollider.bounds.extents.y;
+        distanceToGround = controller.bounds.extents.y;
+        //distanceToGround = capsuleCollider.bounds.extents.y;
     }
 
     // Update is called once per frame
@@ -124,8 +119,10 @@ public class MechController : MonoBehaviour
             currentVelocity = Vector3.ClampMagnitude(currentVelocity, 25);
 
             // Checking for jump input.
+
             if (XCI.GetButton(XboxButton.A, playerHandler.AssignedController) || Input.GetButton("Jump"))
             {
+                //currentVelocity = (transform.forward + moveDirection * jumpHeight) + Vector3.up * jumpHeight;
                 currentVelocity += Vector3.up * jumpHeight;
             }
         }
@@ -153,16 +150,46 @@ public class MechController : MonoBehaviour
         //Debug.Log(currentVelocity);
 
         // Making the rigid bodies velocity equal the calculated velocity.
-        rb.velocity = currentVelocity;
+        controller.Move(currentVelocity * Time.deltaTime);
     }
 
     private bool IsGrounded()
     {
-        // Correcting the start position of the ray.
-        Vector3 startPos = transform.position;
-        startPos.y += 1.8f;
+        Vector3 startPos = controller.bounds.center;
+        Vector3 endPos = new Vector3(controller.bounds.center.x, controller.bounds.min.y + 1.1f, controller.bounds.center.z);
+        return Physics.CheckCapsule(startPos, endPos, 1.45f, this.gameObject.layer);
+    }
 
-        // Returning a condition if we hit the ground or not.
-        return (Physics.Raycast(new Ray(startPos, -Vector3.up), distanceToGround + 0.1f, this.gameObject.layer));
+    public static void DrawWireCapsule(Vector3 _pos, Vector3 _pos2, float _radius, float _height, Color _color = default)
+    {
+        if (_color != default) Handles.color = _color;
+
+        var forward = _pos2 - _pos;
+        var _rot = Quaternion.LookRotation(forward);
+        var pointOffset = _radius / 2f;
+        var length = forward.magnitude;
+        var center2 = new Vector3(0f, 0, length);
+
+        Matrix4x4 angleMatrix = Matrix4x4.TRS(_pos, _rot, Handles.matrix.lossyScale);
+
+        using (new Handles.DrawingScope(angleMatrix))
+        {
+            Handles.DrawWireDisc(Vector3.zero, Vector3.forward, _radius);
+            Handles.DrawWireArc(Vector3.zero, Vector3.up, Vector3.left * pointOffset, -180f, _radius);
+            Handles.DrawWireArc(Vector3.zero, Vector3.left, Vector3.down * pointOffset, -180f, _radius);
+            Handles.DrawWireDisc(center2, Vector3.forward, _radius);
+            Handles.DrawWireArc(center2, Vector3.up, Vector3.right * pointOffset, -180f, _radius);
+            Handles.DrawWireArc(center2, Vector3.left, Vector3.up * pointOffset, -180f, _radius);
+
+            DrawLine(_radius, 0f, length);
+            DrawLine(-_radius, 0f, length);
+            DrawLine(0f, _radius, length);
+            DrawLine(0f, -_radius, length);
+        }
+    }
+
+    private static void DrawLine(float arg1, float arg2, float forward)
+    {
+        Handles.DrawLine(new Vector3(arg1, arg2, 0f), new Vector3(arg1, arg2, forward));
     }
 }

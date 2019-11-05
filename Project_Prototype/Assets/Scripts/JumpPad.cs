@@ -6,11 +6,13 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour
 {
     public Transform forceDirection;
+    public float maxCooldown = 2.0f;
     public float launchForce;
     private bool hasLaunched = false;
     private Trigger trigger;
     private Animator animator;
-
+    private float cooldownTimer = 0f;
+    private bool canLaunch = true;
 
     public void Awake()
     {
@@ -20,22 +22,44 @@ public class JumpPad : MonoBehaviour
 
     public void FixedUpdate()
     {
-        GameObject collidedObject = trigger.CollidedGameObject();
-        if (collidedObject && collidedObject.tag == "Player")
+        if (canLaunch)
         {
-            PlayerHandler playerHandler = collidedObject.GetComponentInParent<PlayerHandler>();
-
-            if (playerHandler.IsGrounded)
-                hasLaunched = false;
-
-            if (trigger.IsEnabled())
+            GameObject collidedObject = trigger.CollidedGameObject();
+            if (collidedObject && collidedObject.tag == "Player")
             {
-                hasLaunched = true;
-                animator.SetTrigger("Jump");
-            }
+                PlayerHandler playerHandler = collidedObject.GetComponentInParent<PlayerHandler>();
 
-            if (hasLaunched)
-                playerHandler.GetCurrentRigidBody().AddForce((forceDirection.eulerAngles.normalized) * launchForce, ForceMode.Impulse);
+                if (playerHandler.IsGrounded)
+                    hasLaunched = false;
+
+                if (trigger.IsEnabled())
+                {
+                    hasLaunched = true;
+                    animator.SetTrigger("Jump");
+                }
+
+                if (hasLaunched)
+                {
+                    if (playerHandler.CurrentState == StateManager.PLAYER_STATE.Mech)
+                        playerHandler.MechImpactRecevier.AddImpact(forceDirection.eulerAngles, (launchForce * 16));
+                    else
+                        playerHandler.CoreRigidbody.AddForce((forceDirection.eulerAngles.normalized) * launchForce, ForceMode.Impulse);
+
+                    hasLaunched = false;
+                    canLaunch = false;
+                }
+                //playerHandler.GetCurrentRigidBody().AddForce((forceDirection.eulerAngles.normalized) * launchForce, ForceMode.Impulse);
+            }
+        }
+        else
+        {
+            // Cool down timer to prevent constant launch:
+            cooldownTimer += Time.deltaTime;
+            if(cooldownTimer >= maxCooldown)
+            {
+                cooldownTimer = 0f;
+                canLaunch = true;
+            }
         }
     }
 }

@@ -55,7 +55,7 @@ public class StateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(debugEjectKey))
+        if (Input.GetKeyUp(debugEjectKey) && playerHandler.IsControllable)
         {
             if (currentState == PLAYER_STATE.Core)
                 SetState(PLAYER_STATE.Mech);
@@ -123,7 +123,7 @@ public class StateManager : MonoBehaviour
                 // Swapping active objects.
 
                 // Updating the core postion.
-                playerHandler.CoreRigidbody.velocity = playerHandler.MechRigidbody.velocity;
+                //playerHandler.CoreRigidbody.velocity = playerHandler.MechCharacterController.velocity;
                 coreManager.SetActive(true);
                 coreManager.transform.position = mechObject.transform.position;
                 mechObject.SetActive(false);

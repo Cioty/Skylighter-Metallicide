@@ -8,6 +8,8 @@ public class PlayerData : MonoBehaviour
     private int assignedPlayers;
     private List<PlayerContainer> transferedPlayerContainers = new List<PlayerContainer>();
     public static PlayerData instance;
+    public bool isDebugMode = false;
+    public int debugPlayerCount = 2;
 
     private void Awake()
     {

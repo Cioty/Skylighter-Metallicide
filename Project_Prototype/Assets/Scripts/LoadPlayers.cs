@@ -18,6 +18,7 @@ public class LoadPlayers : MonoBehaviour
     private Vector4[] threePlayer;
     private Vector4[] fourPlayer;
     private List<GameObject> activePlayers = new List<GameObject>();
+    private List<PlayerContainer> playerContainers;
 
     private void Awake()
     {
@@ -50,30 +51,55 @@ public class LoadPlayers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerData.instance != null)
+        if (PlayerData.instance != null || debugMode)
         {
-            playerCount = PlayerData.instance.AssignedPlayers;
-            List<PlayerContainer> playerContainers = PlayerData.instance.GetTransferedPlayerContainers();
+            if (PlayerData.instance.isDebugMode)
+            {
+                debugMode = true;
+                debugPlayerCount = PlayerData.instance.debugPlayerCount;
+            }
+
+            if(!debugMode)
+            {
+                playerCount = PlayerData.instance.AssignedPlayers;
+                playerContainers = PlayerData.instance.GetTransferedPlayerContainers();
+            }
+            else
+                playerCount = debugPlayerCount;
 
             for (int i = 0; i < playerCount; ++i)
             {
                 Transform randomSpawn = respawnArray.GetRandomSpawnPoint();
-                GameObject player = Instantiate(playerPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation, this.gameObject.transform);
-                PlayerHandler handler = player.GetComponent<PlayerHandler>();
-                handler.MechTransform.position = randomSpawn.position;
-                handler.MechTransform.rotation = randomSpawn.rotation;
-                player.tag = "Player";
-                handler.ID = i;
-                handler.AssignedController = playerContainers[i].Controller;
-                activePlayers.Add(player);
+                Vector3 fixedPosition = randomSpawn.position;
+                fixedPosition.y += 0.5f;
+                GameObject playerGO = Instantiate(playerPrefab, fixedPosition, randomSpawn.rotation, this.gameObject.transform);
+                PlayerHandler playerHandler = playerGO.GetComponent<PlayerHandler>();
+
+                // Assigning the player's ID.
+                playerHandler.ID = i;
+
+                // Assigning the correct controller.
+                if(!debugMode)
+                    playerHandler.AssignedController = playerContainers[i].Controller;
+                else
+                    playerHandler.AssignedController = ((XboxController)i);
+
+                // Adding the player to the active players list.
+                activePlayers.Add(playerGO);
 
                 // Assigns the correct view model layer.
-                // Hides the players mech from itself.
-                this.SetLayerRecursively(player, player.tag + i, "HUD");
-                this.SetLayerRecursively(handler.mechModelObject, player.tag + i, "HUD");
-                this.SetLayerRecursively(handler.viewModelObject, player.tag + i + "View");
-                handler.FirstPersonCamera.cullingMask |= 1 << LayerMask.NameToLayer(player.tag + i + "View");
-                handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(player.tag + i));
+                this.SetLayerRecursively(playerGO, playerGO.tag + i, "HUD");
+                this.SetLayerRecursively(playerHandler.mechModelObject, playerGO.tag + i, "HUD");
+                this.SetLayerRecursively(playerHandler.viewModelObject, playerGO.tag + i + "View");
+                playerHandler.FirstPersonCamera.cullingMask |= 1 << LayerMask.NameToLayer(playerGO.tag + i + "View");
+                playerHandler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(playerGO.tag + i));
+
+                // Deactivating controls from other players:
+                if(debugMode)
+                {
+                    if (i > 0)
+                        playerHandler.IsControllable = false;
+                }
 
                 // If single player:
                 if (playerCount == 1 && i == 0)
@@ -85,74 +111,27 @@ public class LoadPlayers : MonoBehaviour
                 {
                     case 2:
                         screenPos = twoPlayer[i];
-                        handler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
+                        playerHandler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
+                        playerHandler.ThirdPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
                         break;
 
                     case 3:
                         screenPos = threePlayer[i];
-                        handler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
+                        playerHandler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
+                        playerHandler.ThirdPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
                         break;
 
                     case 4:
                         screenPos = fourPlayer[i];
-                        handler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
+                        playerHandler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
+                        playerHandler.ThirdPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
                         break;
                 }
             }
+            
             // Destroys the transferd data.
-            Destroy(PlayerData.instance.gameObject);
-        }
-        else if(debugMode)
-        {
-            /* temp hard code c/p, will clean this spawning code up along with this whole class soon*/
-            for(int i = 0; i < debugPlayerCount; ++i)
-            {
-                Transform randomSpawn = respawnArray.GetRandomSpawnPoint();
-                GameObject player = Instantiate(playerPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation, this.gameObject.transform);
-                PlayerHandler handler = player.GetComponent<PlayerHandler>();
-                handler.MechTransform.position = randomSpawn.position;
-                handler.MechTransform.rotation = randomSpawn.rotation;
-                player.tag = "Player";
-                handler.ID = i;
-                handler.AssignedController = ((XboxController)i);
-                activePlayers.Add(player);
-
-                // Assigns the correct view model layer.
-                // Hides the players mech from itself.
-                this.SetLayerRecursively(player, player.tag + i, "HUD");
-                this.SetLayerRecursively(handler.mechModelObject, player.tag + i, "HUD");
-                this.SetLayerRecursively(handler.viewModelObject, player.tag + i + "View");
-                handler.FirstPersonCamera.cullingMask |= 1 << LayerMask.NameToLayer(player.tag + i + "View");
-                handler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(player.tag + i));
-
-                // Deactivating controls from other players:
-                if (i > 0)
-                    handler.IsControllable = false;
-
-                // If single player:
-                if (debugPlayerCount == 1 && i == 0)
-                    continue;
-
-                // If more then one player:
-                Vector4 screenPos = Vector4.zero;
-                switch (debugPlayerCount)
-                {
-                    case 2:
-                        screenPos = twoPlayer[i];
-                        handler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
-                        break;
-
-                    case 3:
-                        screenPos = threePlayer[i];
-                        handler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
-                        break;
-
-                    case 4:
-                        screenPos = fourPlayer[i];
-                        handler.FirstPersonCamera.rect = new Rect(screenPos.x, screenPos.y, screenPos.z, screenPos.w);
-                        break;
-                }
-            }
+            if (!debugMode)
+                Destroy(PlayerData.instance.gameObject);
         }
     }
 

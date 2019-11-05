@@ -5,18 +5,27 @@ using XboxCtrlrInput;
 
 public class PlayerHandler : MonoBehaviour
 {
+    [Header("Attributes")]
     public int mechHealth;
     public int coreHealth;
+
+    [Header("References")]
     public GameObject mechObject;
     public GameObject coreObject;
     public RectTransform crosshairTransform;
     public Camera firstPersonCamera;
+    public Camera thirdPersonCamera;
     public GameObject viewModelObject;
     public GameObject mechModelObject;
+
+    // ----------------------------------------------- //
+    private MechController mechController;
     private int mechMaxHealth, coreMaxHealth;
     private XboxController assignedController;
     private Vector3 currentVelocity = Vector3.zero;
-    private Rigidbody mechRB, coreRB;
+    private CharacterController characterController;
+    private ImpactReceiver impactReceiver;
+    private Rigidbody coreRB;
     private Transform mechTransform, coreTransform;
     private int playerID;
     private bool isAlive;
@@ -24,6 +33,7 @@ public class PlayerHandler : MonoBehaviour
     private StateManager stateManager;
     private PlayerStatistics playerStats;
     private bool isControllable = true;
+    // ----------------------------------------------- //
 
     private void Awake()
     {
@@ -37,8 +47,10 @@ public class PlayerHandler : MonoBehaviour
         coreRB = coreObject.GetComponentInChildren<Rigidbody>();
         coreTransform = coreObject.GetComponent<Transform>();
 
-        mechRB = mechObject.GetComponent<Rigidbody>();
+        mechController = mechObject.GetComponent<MechController>();
+        characterController = mechObject.GetComponent<CharacterController>();
         mechTransform = mechObject.GetComponent<Transform>();
+        impactReceiver = mechObject.GetComponent<ImpactReceiver>();
     }
 
     private void Update()
@@ -63,23 +75,9 @@ public class PlayerHandler : MonoBehaviour
         set { stateManager.SetState(value); }
     }
 
-    public Rigidbody GetCurrentRigidBody()
+    public CharacterController MechCharacterController
     {
-        switch (stateManager.CurrentState)
-        {
-            case StateManager.PLAYER_STATE.Core:
-                return coreRB;
-
-            case StateManager.PLAYER_STATE.Mech:
-                return mechRB;
-        }
-
-        return null;
-    }
-
-    public Rigidbody MechRigidbody
-    {
-        get { return mechRB; }
+        get { return MechCharacterController; }
     }
 
     public Rigidbody CoreRigidbody
@@ -177,4 +175,18 @@ public class PlayerHandler : MonoBehaviour
         set { isControllable = value; }
     }
 
+    public MechController MechController
+    {
+        get { return mechController; }
+    }
+
+    public ImpactReceiver MechImpactRecevier
+    {
+        get { return impactReceiver; }
+    }
+
+    public Camera ThirdPersonCamera
+    {
+        get { return thirdPersonCamera; }
+    }
 }

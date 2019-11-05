@@ -55,7 +55,7 @@ public class ShowCurrentScore : MonoBehaviour
 
         if (timeLeftInMatch != null)
         {
-            timeLeftInMatch.text = "Time left: " + (gameManager.gameRoundTimer / 60).ToString();
+            timeLeftInMatch.text = "Time left: " + gameManager.gameRoundTimer.ToString();
         }
 
     }
