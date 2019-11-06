@@ -75,12 +75,6 @@ public class LoadPlayers : MonoBehaviour
     {
         if (PlayerData.instance != null || debugMode)
         {
-            // Turning on debug mode if the count is greater than 0:
-            if(debugPlayerCount > 0)
-            {
-                debugMode = true;
-            }
-
             // Checking the StartInDebugMode flag in the PlayerData class.
             if (PlayerData.instance != null && PlayerData.instance.StartInDebugMode)
             {

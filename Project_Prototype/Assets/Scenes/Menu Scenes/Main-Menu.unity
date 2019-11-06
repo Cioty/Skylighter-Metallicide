@@ -2153,7 +2153,7 @@ MonoBehaviour:
   allControllersConnectedScreen: {fileID: 832017972}
   startInDebugMode: 0
   debugStartKey: 13
-  debugPlayerCount: 4
+  debugPlayerCount: 0
 --- !u!1 &2074280155
 GameObject:
   m_ObjectHideFlags: 0
