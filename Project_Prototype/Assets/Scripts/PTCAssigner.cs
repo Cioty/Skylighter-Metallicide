@@ -137,7 +137,7 @@ public class PTCAssigner : MonoBehaviour
     private void StartGame()
     {
         PlayerData.instance.Save();
-        SceneManager.LoadScene("Map01", LoadSceneMode.Single);
+        SceneManager.LoadScene("Map02", LoadSceneMode.Single);
     }
 
     // Loops through the container list and returns the first container without a player.

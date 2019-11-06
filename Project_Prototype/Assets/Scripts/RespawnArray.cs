@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class RespawnArray : MonoBehaviour
 {
+    public static RespawnArray instance;
+
     //public GameObject playerObject;
     public GameObject playerManager;
+    public GameManager gameManager;
     private LoadPlayers playerLoader;
 
     // This will be used for onTriggerCollisions
@@ -28,6 +31,7 @@ public class RespawnArray : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         playerLoader = playerManager.GetComponent<LoadPlayers>();
     }
 
@@ -107,7 +111,7 @@ public class RespawnArray : MonoBehaviour
     public Transform GetRandomSpawnPoint()
     {
         // Getting random mech station.
-        randNumber = Random.Range(0, mechRespawnStations.Count);
+        randNumber = Random.Range(0, mechRespawnStations.Count - 1);
         Mech_Recovery randomSpawnPoint = mechRespawnStations[randNumber];
 
         // Checking if it is occupied.

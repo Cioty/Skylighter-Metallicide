@@ -11,13 +11,21 @@
  * Deficiences:
  * 
  *===========================================================================*/
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Properties")]
     public float gameRoundTimer = 300;
+
+    [Header("References")]
     public GameObject playerManager;
     public GameObject postMatchScoreBoard;
+    public TextMeshProUGUI matchTime;
+
+    // Private:
     private bool shouldTime = true;
 
     // Update is called once per frame
@@ -32,6 +40,11 @@ public class GameManager : MonoBehaviour
                 postMatchScoreBoard.SetActive(true);
                 shouldTime = false;
             }
+
+            if(gameRoundTimer > 60)
+                matchTime.text = (gameRoundTimer / 60).ToString("0.00") + " mins";
+            else
+                matchTime.text = gameRoundTimer.ToString() + " secs";
         }
     }
 }

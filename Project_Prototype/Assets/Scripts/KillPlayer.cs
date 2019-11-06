@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class KillPlayer : MonoBehaviour
 {
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnTriggerEnter(Collider other)
     {
-        if (hit.gameObject.tag == "Player")
-            hit.gameObject.GetComponent<PlayerHandler>().MechHealth = 0;
+        if(other.gameObject.tag == "Player")
+        {
+            PlayerHandler playerHandler = other.gameObject.GetComponentInParent<PlayerHandler>();
+            playerHandler.RespawnAtRandomStation();
+        }
     }
 }

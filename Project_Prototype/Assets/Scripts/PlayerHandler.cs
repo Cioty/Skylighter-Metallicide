@@ -28,6 +28,7 @@ public class PlayerHandler : MonoBehaviour
     public Camera thirdPersonCamera;
     public GameObject viewModelObject;
     public GameObject mechModelObject;
+    public GameManager gameManager;
 
     // ----------------------------------------------- //
     private MechController mechController;
@@ -45,17 +46,8 @@ public class PlayerHandler : MonoBehaviour
     private StateManager stateManager;
     private PlayerStatistics playerStats;
     private bool isControllable = true;
+    private int randomStationIndex = 0;
     // ----------------------------------------------- //
-
-    [Header("Boost Meter")]
-    public float boostRegen = 2.0f;
-
-    // Three is the only amount they'll get
-    private int boostPoints = 3;
-
-    private float boostTime = 0.0f;
-
-    private float zero = 0.0f;
 
     private void Awake()
     {
@@ -87,22 +79,22 @@ public class PlayerHandler : MonoBehaviour
         // Checking the balls health:
         if (coreHealth <= 0)
         {
-            
+            // Respawning player at random location.
+            RespawnAtRandomStation();
         }
+    }
+    
+    // A function to respawn the player at a random respawn staion.
+    public void RespawnAtRandomStation()
+    {
+        // Setting the core to the death state.
+        playerStats.HasDied();
 
-        if (boostPoints < 3)
-        {
-            if (boostTime < boostRegen)
-            {
-                boostTime += 1.0f * Time.deltaTime;
-            }
+        // Getting the random mech station.
+        randomStationIndex = Random.Range(0, RespawnArray.instance.mechRespawnStations.Count - 1);
 
-            if (boostTime > boostRegen)
-            {
-                boostTime = zero;
-                boostPoints++;
-            }
-        }
+        // Spawning the player at that location.
+        RespawnArray.instance.mechRespawnStations[randomStationIndex].SpawnPlayer(this);
     }
 
     public StateManager.PLAYER_STATE CurrentState
@@ -113,7 +105,7 @@ public class PlayerHandler : MonoBehaviour
 
     public CharacterController MechCharacterController
     {
-        get { return MechCharacterController; }
+        get { return characterController; }
     }
 
     public Rigidbody CoreRigidbody
@@ -237,9 +229,9 @@ public class PlayerHandler : MonoBehaviour
         set { isInvulnerable = value; }
     }
 
-    public int BoostPoints
+    public GameManager GameManager
     {
-        get { return boostPoints; }
-        set { boostPoints = value; }
+        get { return gameManager; }
+        set { gameManager = value; }
     }
 }
