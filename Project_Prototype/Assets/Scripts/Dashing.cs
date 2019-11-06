@@ -7,9 +7,12 @@ public class Dashing : MonoBehaviour
 {
     //public GameObject playerObject;
     public GameObject mechObject;
+    private CharacterController characterController;
     //private Rigidbody rb;
     private MechController mechController;
     private PlayerHandler playerHandler;
+
+    private RocketJump rocketJump;
 
     //private MovementController movementDir;
 
@@ -49,7 +52,8 @@ public class Dashing : MonoBehaviour
     {
         playerHandler = mechObject.GetComponentInParent<PlayerHandler>();
         mechController = playerHandler.MechController;
-        thrusterTimer = zero;                        
+        thrusterTimer = zero;        
+        rocketJump = GetComponent<RocketJump>();
     }
 
     // Dashing function
@@ -68,8 +72,9 @@ public class Dashing : MonoBehaviour
             thrusterTimer = zero;
           
             dashTrig = true;
-            
-            --boostPoints;
+            rocketJump.IsBoosting = false;
+
+            --playerHandler.BoostPoints;
         }
 
         if (dashTrig)
@@ -112,5 +117,11 @@ public class Dashing : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
        // Debug.Log("Hit " + hit.gameObject.name);
+    }
+
+    public bool IsDashing
+    { 
+        get { return dashTrig; }
+        set { dashTrig = value; }
     }
 }

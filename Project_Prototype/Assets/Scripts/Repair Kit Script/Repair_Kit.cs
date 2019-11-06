@@ -6,17 +6,13 @@ public class Repair_Kit : MonoBehaviour
 {   
     public Transform platform;
 
-    [SerializeField] private GameObject Mech;
-    [SerializeField] private GameObject Ball;
-
     private PlayerHandler playerHandler;
-    private StateManager playerState;
-
+   
     LoadPlayers players;
 
     // The actual object this script affects
     private Renderer thisBox;
-
+   
     bool isInteractable = true;
 
     public float coolDown;
@@ -39,31 +35,40 @@ public class Repair_Kit : MonoBehaviour
     {
         GameObject playerCollided = other.gameObject;
 
-        playerHandler = playerCollided.GetComponent<PlayerHandler>();
-        playerState = playerCollided.GetComponent<StateManager>();
+        if(playerCollided.gameObject.tag == "Player")
+        {
+            playerHandler = playerCollided.GetComponentInParent<PlayerHandler>();
 
-
-        // If the player is a Mech
-       if (playerState.CurrentState == StateManager.PLAYER_STATE.Mech)
-       {
-            playerHandler.MechHealth += 10;
-            if (playerHandler.MechHealth > playerHandler.MaxMechHealth)
-            {
-                playerHandler.MechHealth = playerHandler.MaxMechHealth;
+            // If the player is a Mech
+            if (playerHandler.CurrentState == StateManager.PLAYER_STATE.Mech)
+            {             
+                if (playerHandler.MechHealth >= playerHandler.MaxMechHealth)
+                {
+                    playerHandler.MechHealth = playerHandler.MaxMechHealth;
+                }
+                else
+                {
+                    playerHandler.MechHealth += 10;
+                    isInteractable = false;
+                }
+                
             }
-            isInteractable = false;
-       }
 
-       // If the player is a core
-       if (playerState.CurrentState == StateManager.PLAYER_STATE.Core)
-       {
-           playerHandler.CoreHealth += 10;
-           if (playerHandler.CoreHealth > playerHandler.MaxCoreHealth)
-           {
-               playerHandler.CoreHealth = playerHandler.MaxCoreHealth;
-           }
-           isInteractable = false;
-       }
+            // If the player is a core
+            if (playerHandler.CurrentState == StateManager.PLAYER_STATE.Core)
+            {             
+                if (playerHandler.CoreHealth >= playerHandler.MaxCoreHealth)
+                {
+                    playerHandler.CoreHealth = playerHandler.MaxCoreHealth;
+                }
+                else
+                {
+                    playerHandler.CoreHealth += 10;
+                    isInteractable = false;
+                }
+                
+            }
+        }
     }
 
     // Update is called once per frame
@@ -76,13 +81,11 @@ public class Repair_Kit : MonoBehaviour
 
 
             coolDownCounter += Time.deltaTime;
-            //Debug.Log("Cooldown is: " + coolDownCounter.ToString());
+            
             if (coolDownCounter >= coolDown)
             {
-                isInteractable = true;
-                //Debug.Log("Repair kit can be used again: " + isInteractable.ToString());
-                coolDownCounter = timerReset;
-                //Debug.Log("Cooldown is reset: " + coolDownCounter.ToString());
+                isInteractable = true;               
+                coolDownCounter = timerReset;              
             }
        }
        

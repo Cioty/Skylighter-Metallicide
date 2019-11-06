@@ -6,14 +6,25 @@ using XboxCtrlrInput;
 public class Ball_Movement : MonoBehaviour
 {
     // References
+    [Header("This object's children components")]
     public GameObject coreObject;
     public Rigidbody rigidBody;
     public SphereCollider sphereCollider;
+
     public GameObject thirdPersonCamera;
-    public PlayerHandler playerHandler;
+    private PlayerHandler playerHandler;
 
     // Movement
+    [Header("Movement")]
     public float movementSpeed = 5.0f;
+    private float currentSpeed;
+    public float maxSpeed = 10.0f;
+
+    // Creating acceleration
+    Vector3 currentVelocity = Vector3.zero;
+    Vector3 newVelocity = Vector3.zero;
+    Vector3 acceleration = Vector3.zero;
+    Vector3 movementDirection;
 
     // Jumping 
     public float jumpForce = 5.0f;
@@ -21,10 +32,10 @@ public class Ball_Movement : MonoBehaviour
 
     // Collider variables
     public float distanceToGround = 0.5f;
-
-    // Start is called before the first frame update
-    void Start()
+  
+    private void Start()
     {
+        playerHandler = GetComponentInParent<PlayerHandler>();
         sphereCollider = GetComponent<SphereCollider>();
     }
 
@@ -64,6 +75,7 @@ public class Ball_Movement : MonoBehaviour
     {
         float horizontal_move = 0f;
         float vertical_move = 0f;
+
         if (playerHandler.HasAssignedController)
         {
             horizontal_move = XCI.GetAxis(XboxAxis.LeftStickX, playerHandler.AssignedController);
@@ -80,12 +92,37 @@ public class Ball_Movement : MonoBehaviour
 
         cam_forward.y = 0.0f;
         cam_right.y = 0.0f;
-        cam_forward = cam_forward.normalized;
-        cam_right = cam_right.normalized;
+        
+        // Getting the Ball's movement direction
+        movementDirection = (cam_forward * vertical_move + cam_right * horizontal_move);
+        movementDirection.Normalize();
 
-        Vector3 movement = (cam_forward * vertical_move + cam_right * horizontal_move);
+        // Check for player input
+        if (movementDirection.magnitude > 0)
+        {
+            if (currentSpeed < maxSpeed)
+                currentSpeed += (maxSpeed - movementSpeed);
+            else
+            {
+                currentSpeed = maxSpeed;
+            }
 
-        rigidBody.AddForce(movement * movementSpeed);
+            acceleration = Vector3.Lerp(acceleration, movementDirection * maxSpeed, currentSpeed / maxSpeed);
+        }
+        else
+        {
+            if (currentSpeed > 0)
+                currentSpeed -= (maxSpeed - movementSpeed);
+            else
+                currentSpeed = 0.0f;
+
+            acceleration = Vector3.Lerp(acceleration, Vector3.zero, currentSpeed / maxSpeed);
+        }
+
+        currentVelocity = acceleration;
+        currentVelocity = Vector3.ClampMagnitude(acceleration, maxSpeed);
+
+        rigidBody.AddForce(currentVelocity);
     }
 
     private bool IsGrounded()

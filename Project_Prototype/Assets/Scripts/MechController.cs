@@ -42,11 +42,15 @@ public class MechController : MonoBehaviour
     private float horizontalAxis, verticalAxis;
     private float accelTimer, deccelTimer, directionalTimer;
 
+    // Double/rocket Jump
+    private RocketJump rocketJump;
+
     void Awake()
     {
         mechObjectTransform = GetComponent<Transform>();
         playerHandler = GetComponentInParent<PlayerHandler>();
         controller = mechObjectTransform.GetComponent<CharacterController>();
+        rocketJump = GetComponent<RocketJump>();
     }
 
     // Start is called before the first frame update
@@ -142,6 +146,13 @@ public class MechController : MonoBehaviour
 
             // Setting acceleration to be the velocity to prevent boosted movement on ground.
             acceleration = currentVelocity;
+
+            // Check for jump boost
+            if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump"))
+            {
+                rocketJump.IsBoosting = true;
+                --playerHandler.BoostPoints;
+            }
         }
 
         // Keeping track of the current velocity via the player handler.
