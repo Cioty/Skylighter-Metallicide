@@ -51,7 +51,7 @@ public class ViewmodelControl : MonoBehaviour
     float maxSwayX = 30.0f;
     float sway = 4.0f;
     float smooth = 3.0f;
-    float maxSwayY = 80f;
+    float maxSwayY = 5.0f;
 
 
     // Get the first person Camera script
@@ -105,8 +105,7 @@ public class ViewmodelControl : MonoBehaviour
         timer += Time.deltaTime;
 
         ApplyBob();
-        CameraSway();
-        // CameraDrag();
+        CameraSway();        
     }
 
     // When the Mech moves
@@ -147,17 +146,17 @@ public class ViewmodelControl : MonoBehaviour
             rotationDifference.x = -maxSwayX;
         }
 
-        //if (rotationDifference.y > maxSwayY)
-        //{
-        //    rotationDifference.y = maxSwayY;
-        //}
-        //if (rotationDifference.y < -maxSwayY)
-        //{
-        //    rotationDifference.y = -maxSwayY;
-        //}
+        if (rotationDifference.y > maxSwayY)
+        {
+            rotationDifference.y = maxSwayY;
+        }
+        if (rotationDifference.y < -maxSwayY)
+        {
+            rotationDifference.y = -maxSwayY;
+        }
 
         // New rotation to lerp towards || Rotation Y is used to set the Vertical axis.
-        // Horizontal rotation uses rotation differents to slowly iter back to normal
+        // Horizontal rotation uses rotation difference to slowly iter back to normal
         Quaternion rotateView = Quaternion.Euler(0.0f, viewModelTransform.localRotation.x + -rotationDifference.x, 0.0f) * (Quaternion.AngleAxis(-newRotation.y + -rotationDifference.y, Vector3.right));
       
         viewModelTransform.localRotation = Quaternion.Slerp(viewModelTransform.localRotation, rotateView, Time.deltaTime * smooth);       

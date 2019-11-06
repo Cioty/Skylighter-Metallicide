@@ -64,7 +64,7 @@ public class Dashing : MonoBehaviour
 
         float leftTrigHeight = XCI.GetAxis(XboxAxis.LeftTrigger, playerHandler.AssignedController);
         // When dashKey press, temporarily stop movement (No falling, no nothing)
-        if ((Input.GetKeyDown(dashKey) || XCI.GetButtonDown(XboxButton.LeftBumper, playerHandler.AssignedController) || leftTrigHeight >= 0.5f) && boostPoints > 0)
+        if ((Input.GetKeyDown(dashKey) || XCI.GetButtonDown(XboxButton.LeftBumper, playerHandler.AssignedController) || leftTrigHeight >= 0.5f) && playerHandler.BoostPoints > 0)
         {
             // To get the Mech's last direction
             lastDir = transform.forward.normalized * vertical_move + transform.right.normalized * horizontal_move;
@@ -94,19 +94,6 @@ public class Dashing : MonoBehaviour
             }
         }
                   
-        if (boostPoints < 3)
-        {
-            if (boostTime < boostRegen)
-            {
-                boostTime += 1.0f * Time.deltaTime;
-            }
-
-            if (boostTime > boostRegen)
-            {
-                boostTime = zero;
-                boostPoints++;
-            }
-        }
     }
 
     private void Update()

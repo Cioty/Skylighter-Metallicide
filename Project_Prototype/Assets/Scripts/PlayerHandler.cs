@@ -47,6 +47,16 @@ public class PlayerHandler : MonoBehaviour
     private bool isControllable = true;
     // ----------------------------------------------- //
 
+    [Header("Boost Meter")]
+    public float boostRegen = 2.0f;
+
+    // Three is the only amount they'll get
+    private int boostPoints = 3;
+
+    private float boostTime = 0.0f;
+
+    private float zero = 0.0f;
+
     private void Awake()
     {
         // Setting max values to inspector values.
@@ -77,7 +87,21 @@ public class PlayerHandler : MonoBehaviour
         // Checking the balls health:
         if (coreHealth <= 0)
         {
-            // respawn
+            
+        }
+
+        if (boostPoints < 3)
+        {
+            if (boostTime < boostRegen)
+            {
+                boostTime += 1.0f * Time.deltaTime;
+            }
+
+            if (boostTime > boostRegen)
+            {
+                boostTime = zero;
+                boostPoints++;
+            }
         }
     }
 
@@ -211,5 +235,11 @@ public class PlayerHandler : MonoBehaviour
     {
         get { return isInvulnerable; }
         set { isInvulnerable = value; }
+    }
+
+    public int BoostPoints
+    {
+        get { return boostPoints; }
+        set { boostPoints = value; }
     }
 }
