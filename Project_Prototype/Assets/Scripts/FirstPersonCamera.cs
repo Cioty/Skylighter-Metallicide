@@ -87,14 +87,14 @@ public class FirstPersonCamera : MonoBehaviour
         mouseLook.y = Mathf.Clamp(mouseLook.y, minY, maxY);
 
         // Restraining the hip transform to prevent rotation, only if the player has no velocity.
-        if ((int)(playerHandler.CurrentVelocity.x) == 0 &&
-            (int)(playerHandler.CurrentVelocity.z) == 0)
-            this.mechHipTransform.rotation = defaultHipRotation;
-        else
+        Debug.Log(defaultHipRotation);
+        if (playerHandler.CurrentVelocity.magnitude > 0.5f)
         {
-            this.mechHipTransform.rotation = this.transform.localRotation;
-            this.defaultHipRotation = this.transform.localRotation;
+            mechHipTransform.rotation = mechObjectTransform.rotation;
+            defaultHipRotation = this.transform.rotation;
         }
+        else
+            mechHipTransform.rotation = defaultHipRotation;
 
         //Applying rotation to the neck transform, and correcting the angle.
         mechCoreTransform.localRotation = (Quaternion.AngleAxis(-mouseLook.y, Vector3.right));

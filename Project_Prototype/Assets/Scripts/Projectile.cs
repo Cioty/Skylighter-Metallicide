@@ -53,7 +53,7 @@ public class Projectile : MonoBehaviour
             PlayerHandler handler = other.gameObject.GetComponentInParent<PlayerHandler>();
 
             // Check what state the player is in:
-            if(handler.CurrentState == StateManager.PLAYER_STATE.Mech)
+            if(handler.CurrentState == StateManager.PLAYER_STATE.Mech && !handler.IsInvulnerable)
             {
                 float mechHealth = handler.mechHealth -= damage;
                 ///Debug.Log(other.gameObject.name + " at " + mechHealth + " health!");
@@ -71,6 +71,8 @@ public class Projectile : MonoBehaviour
 
                 if(coreHealth == 0)
                 {
+                    handler.IsAlive = false;
+
                     // Adjusting the other players score on death:
                     handler.PlayerStats.HasDied();
 

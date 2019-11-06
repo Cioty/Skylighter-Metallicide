@@ -5,99 +5,58 @@
  * Class:       Mech_Recovery.cs
  * Purpose:     Manages the respawing and recovery of the Mech player state.
  * 
- * Author:      Nixon Sok
+ * Author:      Nixon Sok & Lachlan Wernert
  * Team:        Skylighter
  * 
  * Deficiences:
  * 
  *===========================================================================*/
-
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Mech_Recovery : MonoBehaviour
 {
-    // The Player in Ball state
-    public GameObject inGameBall;
-    public GameObject inGameMech;
-    private GameObject ball;
+    // Is the recovery station occupied?
+    private bool isOccupied = false;
+    private bool isActive = true;
 
-    // This will be used for onTriggerCollisions
-    private StateManager playerState;
+    // A trigger to detect the ball collision.
+    public Trigger respawnTrigger;
 
-    // Respawn timer
-    public float deathTimer = 5;
-
-    // For the Ball/Player dies
-    private PlayerHandler ballHandler;
-    private PlayerHandler mechHandler;
-
-    // Character controller
-    CharacterController enabler;
-
-    // Death Screen
-    // public Canvas deathScreenEnabler;
-
-    private void Awake()
+    private void Update()
     {
-        
-        playerState = inGameBall.GetComponentInParent<StateManager>();
-        ballHandler = inGameBall.GetComponent<PlayerHandler>();
-        mechHandler = inGameMech.GetComponent<PlayerHandler>();
-
-        enabler = inGameMech.GetComponentInParent<CharacterController>();
-    }
-
-    
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        ball = collision.gameObject;
-
-        //if (ball == inGameBall)
-        //{
-        //    playerState.SetState(StateManager.PLAYER_STATE.Mech);
-        //}
-        //else if (ballHandler.Health <= 0)
-        //{
-        //    playerState.SetState(StateManager.PLAYER_STATE.Mech);
-        //    inGameMech.transform.position = transform.position;
-        //    ballHandler.Health = 10;
-        //}
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // MechRespawn();
-    }
-
-    void MechRespawn()
-    {
-        // If Mech's health is below zero
-        if (mechHandler.mechHealth <= 0.0f)
+        GameObject collidedObject = respawnTrigger.CollidedGameObject();
+        if (collidedObject && collidedObject.tag == "Player")
         {
-            mechHandler.mechHealth = 0;
-            enabler.enabled = false;
-            //deathScreenEnabler.enabled = true;
-        }
+            // Getting the player's handler from the collided game object.
+            PlayerHandler playerHandler = collidedObject.GetComponentInParent<PlayerHandler>();
+            if (respawnTrigger.IsEnabled())
+            {
+                // Adding a point for respawning.
+                playerHandler.PlayerStats.HasEscaped();
 
-        if (mechHandler.mechHealth == 0)
-        {
-            if (deathTimer <= 0)
-            {
-                inGameMech.transform.parent.position = transform.position;
-                enabler.enabled = true;
-                mechHandler.mechHealth = 2;
-                deathTimer = 5;
-            }
-            else if (deathTimer > 0)
-            {
-                deathTimer -= 1 * Time.deltaTime;
-                Debug.Log("Time til respawn " + deathTimer.ToString());
+                // Resetting the player's stats.
+                playerHandler.MechHealth = playerHandler.MaxMechHealth;
+                playerHandler.CoreHealth = playerHandler.MaxCoreHealth;
+                playerHandler.mechObject.transform.position = this.transform.position;
+                playerHandler.mechObject.transform.rotation = this.transform.rotation;
+
+                // Setting the player's state to the mech state.
+                playerHandler.StateManager.SetState(StateManager.PLAYER_STATE.Mech);
             }
         }
+    }
+
+    // A property for the occupied boolean.
+    public bool IsOccupied
+    {
+        set { isOccupied = value;}
+        get { return isOccupied; }
+    }
+
+    // A property for the active boolean.
+    public bool IsActive
+    {
+        set { isActive = value;}
+        get { return isActive; }
     }
 }

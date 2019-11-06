@@ -18,10 +18,13 @@ public class RespawnArray : MonoBehaviour
     private PlayerHandler playerHandler;
 
     // Keeps track of all the spawn points
-    public List<GameObject> respawnPoints = new List<GameObject>();
+    public List<Mech_Recovery> mechRespawnStations = new List<Mech_Recovery>();
 
     // Random Number to pick a random spawn point
-    int randNumber;
+    int randNumber = 0;
+
+    // A bool to determine if we want to reset the mech stations or not.
+    private bool shouldResetMechStations = false;
 
     private void Awake()
     {
@@ -38,11 +41,29 @@ public class RespawnArray : MonoBehaviour
     void Update()
     {
         MechRespawn();
+        ResetOccupiedMechStations();
     }
 
+    // A function to handle resetting the occupied mech stations.
+    void ResetOccupiedMechStations()
+    {
+        if (shouldResetMechStations)
+        {
+            // Looping through each station and setting the occupied status to false.
+            foreach (Mech_Recovery station in mechRespawnStations)
+            {
+                station.IsOccupied = false;
+            }
+            
+            // Turning off the should resetMechStations flag.
+            shouldResetMechStations = false;
+        }
+    }
+
+    // A function to handle respawning the player in their mech.
     void MechRespawn()
     {
-        foreach(GameObject player in playerLoader.ActivePlayers)
+        foreach (GameObject player in playerLoader.ActivePlayers)
         {
             playerHandler = player.GetComponent<PlayerHandler>();
 
@@ -69,22 +90,41 @@ public class RespawnArray : MonoBehaviour
     void Spawn(GameObject playerObject)
     {
         Debug.Log("Start");
-        randNumber = Random.Range(0, respawnPoints.Count);
+        randNumber = Random.Range(0, mechRespawnStations.Count);
         playerHandler.CurrentState = StateManager.PLAYER_STATE.Mech;
 
-        Vector3 random = respawnPoints[randNumber].transform.position;
+        Vector3 random = mechRespawnStations[randNumber].transform.position;
         random.y += 2.5f;
 
         playerHandler.mechObject.transform.position = random;
-        playerHandler.mechObject.transform.rotation = respawnPoints[randNumber].transform.rotation;
-        playerHandler.MechHealth = playerHandler.MaxCoreHealth;
+        playerHandler.mechObject.transform.rotation = mechRespawnStations[randNumber].transform.rotation;
+        playerHandler.MechHealth = playerHandler.MaxMechHealth;
         deathTimer = 3;
         Debug.Log("End");
     }
 
+    // A function to get a random spawn point.
     public Transform GetRandomSpawnPoint()
     {
-        randNumber = Random.Range(0, respawnPoints.Count);
-        return respawnPoints[randNumber].transform;
+        // Getting random mech station.
+        randNumber = Random.Range(0, mechRespawnStations.Count);
+        Mech_Recovery randomSpawnPoint = mechRespawnStations[randNumber];
+
+        // Checking if it is occupied.
+        if (!randomSpawnPoint.IsOccupied)
+        {
+            randomSpawnPoint.IsOccupied = true;
+            return randomSpawnPoint.transform;
+        }
+
+        // Recursively searching for an avaliable mech station.
+        return GetRandomSpawnPoint();
+    }
+
+    // A property for the reset mech repsawn stations flag.
+    public bool ResetMechRespawnStations
+    {
+        get { return shouldResetMechStations; }
+        set { shouldResetMechStations = value; }
     }
 }

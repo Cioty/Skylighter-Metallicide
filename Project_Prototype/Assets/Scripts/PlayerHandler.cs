@@ -41,6 +41,7 @@ public class PlayerHandler : MonoBehaviour
     private int playerID;
     private bool isAlive;
     private bool isGrounded;
+    private bool isInvulnerable = false;
     private StateManager stateManager;
     private PlayerStatistics playerStats;
     private bool isControllable = true;
@@ -199,5 +200,16 @@ public class PlayerHandler : MonoBehaviour
     public Camera ThirdPersonCamera
     {
         get { return thirdPersonCamera; }
+    }
+
+    public StateManager StateManager
+    {
+        get { return stateManager; }
+    }
+
+    public bool IsInvulnerable
+    {
+        get { return isInvulnerable; }
+        set { isInvulnerable = value; }
     }
 }
