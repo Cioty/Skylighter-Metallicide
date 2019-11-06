@@ -49,6 +49,16 @@ public class PlayerHandler : MonoBehaviour
     private int randomStationIndex = 0;
     // ----------------------------------------------- //
 
+    [Header("Boost Meter")]
+    // Amount of times you can boost
+    private int boostPoints = 3;
+
+    // The things that will be used to regenerate boost uses
+    public float boostRegen = 2.0f;
+    private float boostTime;
+
+
+
     private void Awake()
     {
         // Setting max values to inspector values.
@@ -81,6 +91,17 @@ public class PlayerHandler : MonoBehaviour
         {
             // Respawning player at random location.
             RespawnAtRandomStation();
+        }
+
+        // Regenerate Boost Meter
+        if (boostPoints < 3)
+        {
+            boostTime += 1 * Time.deltaTime;
+        }
+        if (boostTime > boostRegen)
+        {
+            boostTime = 0.0f;
+            boostPoints++;
         }
     }
     
@@ -233,5 +254,11 @@ public class PlayerHandler : MonoBehaviour
     {
         get { return gameManager; }
         set { gameManager = value; }
+    }
+
+    public int BoostPoints
+    {
+        get { return boostPoints; }
+        set { boostPoints = value; }
     }
 }

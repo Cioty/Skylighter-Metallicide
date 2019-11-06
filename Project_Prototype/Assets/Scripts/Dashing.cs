@@ -34,16 +34,9 @@ public class Dashing : MonoBehaviour
     // Last direction that constantly obtains Mech/Player direction
     private Vector3 lastDir;
 
-    // Amount of times you can boost
-    private int boostPoints = 3;
-
     // Dashing duration
     public float duration = 3.0f;
     private float thrusterTimer;
-
-    // The things that will be used to regenerate boost uses
-    public float boostRegen = 2.0f;
-    private float boostTime;
 
     // Almighty Zero!!!
     private float zero = 0.0f;
