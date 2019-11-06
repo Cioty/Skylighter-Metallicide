@@ -93,7 +93,7 @@ public class PlayerHandler : MonoBehaviour
             RespawnAtRandomStation();
         }
 
-        // Regenerate Boost Meter
+        // Regenerate Boost Meter ---
         if (boostPoints < 3)
         {
             boostTime += 1 * Time.deltaTime;
