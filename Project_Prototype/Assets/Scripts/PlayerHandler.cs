@@ -69,7 +69,7 @@ public class PlayerHandler : MonoBehaviour
 
     private void Update()
     {
-        // Checking the mechs health:
+        // Checking the mechs health ----
         if (mechHealth <= 0)
         {
             stateManager.SetState(StateManager.PLAYER_STATE.Core);
