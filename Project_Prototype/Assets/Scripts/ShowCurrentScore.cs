@@ -22,11 +22,9 @@ public class ShowCurrentScore : MonoBehaviour
     public PlayerHandler handler;
     public GameObject currentScoreUI;
     public GameObject playerHUD;
-    public GameManager gameManager;
     public KeyCode keybind;
     public XboxButton buttonBind;
     public Text score;
-    public Text timeLeftInMatch;
 
     // Update is called once per frame
     void Update()
@@ -67,11 +65,5 @@ public class ShowCurrentScore : MonoBehaviour
         {
             score.text = handler.PlayerStats.TotalScore.ToString();
         }
-
-        if (timeLeftInMatch != null)
-        {
-            timeLeftInMatch.text = "Time left: " + gameManager.gameRoundTimer.ToString();
-        }
-
     }
 }

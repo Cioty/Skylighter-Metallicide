@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
 
     // Player that fires the projectile:
     private PlayerHandler shooterHandler;
+    private bool hasExploded = false;
 
     // Assigns the shooter variable and the correct layermask.
     public void Setup(GameObject shooter, string layerMask)
@@ -45,9 +46,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Explode();
-
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             // Handler of the other player.
             PlayerHandler handler = other.gameObject.GetComponentInParent<PlayerHandler>();
@@ -81,13 +80,19 @@ public class Projectile : MonoBehaviour
                 }
             }
         }
+
+        if (!hasExploded)
+        {
+            Explode();
+            hasExploded = true;
+        }
     }
 
     private void Explode()
     {
         GameObject explosionObject = Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(explosionObject, 1.9f);
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
     public Rigidbody RigidBody

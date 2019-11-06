@@ -58,7 +58,6 @@ public class PlayerHandler : MonoBehaviour
     private float boostTime;
 
 
-
     private void Awake()
     {
         // Setting max values to inspector values.

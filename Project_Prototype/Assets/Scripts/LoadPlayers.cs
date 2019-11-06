@@ -27,8 +27,6 @@ public class LoadPlayers : MonoBehaviour
 
     [Header("Force Debug Mode")]
     public bool debugMode = false;
-
-    [Tooltip("Keep this at 0 to prevent weird stuff from happening!")]
     public int debugPlayerCount = 0;
 
     // Screen locations:

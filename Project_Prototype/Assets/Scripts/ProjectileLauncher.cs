@@ -11,6 +11,7 @@
  * Deficiences:
  * 
  *===========================================================================*/
+using Assets.MultiAudioListener;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +28,8 @@ public class ProjectileLauncher : MonoBehaviour
     public GameObject rocketLauncher;
     private Animator RLAnimator;
 
-    public AudioSource SFX_RocketFire;
+    //public AudioSource SFX_RocketFire;
+    public MultiAudioSource SFX_RocketFire;
 
     [Header("Attributes")]
     public Camera firstPersonCamera;
