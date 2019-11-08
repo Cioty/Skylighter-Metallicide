@@ -1,51 +1,14 @@
 fileFormatVersion: 2
-guid: 81aaf1260f0950d40bd1699bc2d498e5
+guid: e3d811a61d2ac134aaf26a7d83982071
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: ballDoorA
-    100002: ballDoorB
-    100004: barrier
-    100006: ceiling
-    100008: ceilingGear
-    100010: charger_Extend
-    100012: charger_Module
-    100014: charger_Turn
-    100016: elevator
-    100018: gear1A
-    100020: gear1B
-    100022: gear2A
-    100024: //RootNode
-    100026: mechStationGeo
-    100028: refuelerA_Base
-    100030: refuelerA_Probe
-    100032: refuelerB_Base
-    100034: refuelerB_Probe
-    100036: root
-    400000: ballDoorA
-    400002: ballDoorB
-    400004: barrier
-    400006: ceiling
-    400008: ceilingGear
-    400010: charger_Extend
-    400012: charger_Module
-    400014: charger_Turn
-    400016: elevator
-    400018: gear1A
-    400020: gear1B
-    400022: gear2A
-    400024: //RootNode
-    400026: mechStationGeo
-    400028: refuelerA_Base
-    400030: refuelerA_Probe
-    400032: refuelerB_Base
-    400034: refuelerB_Probe
-    400036: root
-    2100000: Respawn_Station
-    4300000: mechStationGeo
-    7400000: Take 001
-    9500000: //RootNode
-    13700000: mechStationGeo
+    100000: //RootNode
+    400000: //RootNode
+    2100000: lambert17
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: repairKit
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -99,7 +62,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -126,7 +89,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
