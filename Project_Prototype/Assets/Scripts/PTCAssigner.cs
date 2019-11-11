@@ -38,7 +38,6 @@ public class PTCAssigner : MonoBehaviour
     private bool hasSearchedForControllers = false;
     private List<XboxController> connectedControllerList = new List<XboxController>();
     private List<PlayerContainer> playerContainers = new List<PlayerContainer>();
-    private bool gameReadyScreen = false;
     public static bool controllerFound = false;
 
     // Start is called before the first frame update
@@ -85,7 +84,7 @@ public class PTCAssigner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Quick the game in debug mode.
+        // Quick start the game in debug mode.
         if (Input.GetKeyDown(debugStartKey) && startInDebugMode)
         {
             PlayerData.instance.DebugPlayerCount = debugPlayerCount;
@@ -104,6 +103,12 @@ public class PTCAssigner : MonoBehaviour
                     // If xbox controller is all then skip:
                     if (xboxController == XboxController.All)
                         continue;
+
+                    // Listening to avalible controllers that have yet to be connected:
+                    if (XCI.GetButtonUp(XboxButton.B, xboxController))
+                    {
+                        this.RemoveController(xboxController);
+                    }
 
                     // If the container already has a player, then skip:
                     if (playerContainers[c].HasPlayer)
@@ -125,12 +130,6 @@ public class PTCAssigner : MonoBehaviour
                 if (XCI.GetButtonUp(XboxButton.Start, XboxController.All))
                 {
                     StartGame();
-                }
-
-                if (XCI.GetButtonUp(XboxButton.B, XboxController.All))
-                {
-                    gameReadyScreen = false;
-                    allControllersConnectedScreen.SetActive(false);
                 }
             }
         }
@@ -178,6 +177,25 @@ public class PTCAssigner : MonoBehaviour
             container.HasPlayer = true;
             container.ToggleMech();
             ++assignedPlayers;
+        }
+        else
+        {
+            Debug.Log("Can't find an empty container.");
+        }
+    }
+
+    private void RemoveController(XboxController controller)
+    {
+        int id = ((int)controller) - 1;
+        GameObject containerGO = this.GetContainerByID(id).gameObject;
+        if (containerGO)
+        {
+            PlayerContainer container = containerGO.GetComponent<PlayerContainer>();
+            container.ID = -1;
+            container.Controller = ((XboxController)0);
+            container.HasPlayer = false;
+            container.ToggleMech();
+            --assignedPlayers;
         }
         else
         {

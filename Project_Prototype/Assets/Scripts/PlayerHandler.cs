@@ -31,7 +31,7 @@ public class PlayerHandler : MonoBehaviour
     public GameManager gameManager;
     public ScreenShake firstPersonScreenShake;
     public RocketJump rocketJump;
-    public LayerMask playerViewMask;
+    public string playerViewMask;
 
     [Header("Screen Shake")]
     public float shakeDuration = 0.5f;
@@ -85,10 +85,13 @@ public class PlayerHandler : MonoBehaviour
 
     private void Update()
     {
-        // Checking the mechs health ----
+        // Checking the mechs health:
         if (mechHealth <= 0)
         {
+            // Changing the state of the player to the core:
             stateManager.SetState(StateManager.PLAYER_STATE.Core);
+
+            // Resetting the mech's health:
             mechHealth = mechMaxHealth;
         }
 
@@ -96,10 +99,10 @@ public class PlayerHandler : MonoBehaviour
         if (coreHealth <= 0)
         {
             // Respawning player at random location.
-            RespawnFromDeath();
+            RandomSpawn_FromDeath();
         }
 
-        // Regenerate Boost Meter ---
+        // Regenerate Boost Meter:
         if (boostPoints < 3)
         {
             boostTime += 1 * Time.deltaTime;
@@ -111,7 +114,7 @@ public class PlayerHandler : MonoBehaviour
         }
     }
 
-    public void SpawnAsUnactive()
+    public void RandomSpawn_Unactive()
     {
         // Getting the random mech station.
         randomStationIndex = Random.Range(0, RespawnArray.instance.mechRespawnStations.Count);
@@ -121,11 +124,12 @@ public class PlayerHandler : MonoBehaviour
     }
 
     // A function to respawn the player at a random respawn staion.
-    public void RespawnFromDeath()
+    public void RandomSpawn_FromDeath()
     {
         // Setting the core to the death state.
         playerStats.HasDied();
 
+        // Resetting player's health.
         this.mechHealth = MaxMechHealth;
         this.coreHealth = MaxCoreHealth;
 
@@ -280,15 +284,18 @@ public class PlayerHandler : MonoBehaviour
         set { boostPoints = value; }
     }
 
-    public void Mech_TakeDamage(int damage)
+    // Returns mech health:
+    public int Mech_TakeDamage(int damage)
     {
         StartCoroutine(firstPersonScreenShake.Shake(shakeDuration, shakeForce));
         this.mechHealth -= damage;
+        return this.mechHealth;
     }
 
-    public void Core_TakeDamage(int damage)
+    public int Core_TakeDamage(int damage)
     {
         this.coreHealth -= damage;
+        return this.coreHealth;
     }
 
     public bool IsInMech()

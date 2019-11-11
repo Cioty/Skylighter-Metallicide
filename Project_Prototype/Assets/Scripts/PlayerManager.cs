@@ -90,24 +90,27 @@ public class PlayerManager : MonoBehaviour
             //Assigning the correct controller:
             if (!forceDebugMode)
             {
+                // Checking if the players have been loaded correctly:
                 if (containersValid)
                 {
+                    // Assigning the players controller to the controller saved in the playerContainer: 
                     playerHandler.AssignedController = playerContainers[i].Controller;
                 }
                 else
                 {
-                    playerHandler.AssignedController = ((XboxController)i);
-                    Debug.LogWarning("Containers are not valid! Assigning xbox controller and forcing a player to spawn!");
+                    // Logging an error to the user to let them know the player hasn't loaded properly:
                     Debug.LogError("Player container " + "'" + i + "'" + " is null! " +
                         "Make sure you're loading the player from the Player-Manager and one doesn't already exist in the scene.");
                 }
             }
             else
+                // Converting index 'i' into an xbox controller, then setting it to the indexed player handler:
                 playerHandler.AssignedController = ((XboxController)i);
 
             //Deactivating controls from all players other than player0:
             if (forceDebugMode)
             {
+                // If not player0
                 if (i > 0)
                     playerHandler.IsControllable = false;
             }
@@ -116,7 +119,7 @@ public class PlayerManager : MonoBehaviour
             activePlayers.Add(playerHandler);
 
             // Spawning the player in.
-            playerHandler.SpawnAsUnactive();
+            playerHandler.RandomSpawn_Unactive();
         }
     }
 }

@@ -1225,6 +1225,7 @@ MonoBehaviour:
   BurstFireRifle: {fileID: 8819332555472136991, guid: e154cc2da97a3fd49b8e769c6cc3fc4d,
     type: 3}
   fpsCamBr: {fileID: 1124765532386062779}
+  firePoint2: {fileID: 0}
   gunDamage: 10
   gunRange: 100
   gunAmmo: 30
@@ -11153,7 +11154,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6637014968880651173}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 5c430c3549c8b084f8bfdc5d0242b951, type: 3}
   m_Controller: {fileID: 9100000, guid: 282e754109bf4734d8d67ad0c10d6920, type: 2}
   m_CullingMode: 1
@@ -14633,9 +14634,7 @@ MonoBehaviour:
     type: 3}
   firstPersonScreenShake: {fileID: 6441342126070727123}
   rocketJump: {fileID: 1053266593890537742}
-  playerViewMask:
-    serializedVersion: 2
-    m_Bits: 8192
+  playerViewMask: Player0View
   shakeDuration: 0.5
   shakeForce: 0.1
   boostRegen: 2
@@ -16067,6 +16066,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: View Model
       objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 7b4eb96cc8543dd4ba2870e4adef05b1, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 7b4eb96cc8543dd4ba2870e4adef05b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -16110,6 +16113,22 @@ PrefabInstance:
     - target: {fileID: 400008, guid: 7b4eb96cc8543dd4ba2870e4adef05b1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7b4eb96cc8543dd4ba2870e4adef05b1, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 7b4eb96cc8543dd4ba2870e4adef05b1, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 7b4eb96cc8543dd4ba2870e4adef05b1, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 7b4eb96cc8543dd4ba2870e4adef05b1, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b4eb96cc8543dd4ba2870e4adef05b1, type: 3}

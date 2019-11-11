@@ -3,7 +3,7 @@
  * Version:     Beta
  * 
  * Class:       Projectile.cs
- * Purpose:     To represent a rocket.
+ * Purpose:     Represents a rocket.
  * 
  * Author:      Lachlan Wernert
  * Team:        Skylighter
@@ -16,13 +16,19 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [Header("Properties")]
-    public int damage = 25;
+    public int directHitDamage = 20;
+    public int splashDamage = 10;
+    public float splashDamageRadius = 3f;
     public float lifeLength = 5.0f;
     private float timer = 0.0f;
 
     [Header("References")]
     public GameObject explosionEffect;
     public Rigidbody rigidBody;
+
+    [Header("Debug Options")]
+    public bool showGizmos = true;
+    public Color color;
 
     // Player that fires the projectile:
     private PlayerHandler shooterHandler;
@@ -32,7 +38,7 @@ public class Projectile : MonoBehaviour
     public void Setup(GameObject shooter)
     {
         shooterHandler = shooter.GetComponent<PlayerHandler>();
-        gameObject.layer = shooterHandler.playerViewMask;
+        gameObject.layer = LayerMask.NameToLayer(shooterHandler.playerViewMask);
     }
 
     private void FixedUpdate()
@@ -54,23 +60,19 @@ public class Projectile : MonoBehaviour
             // Check what state the player is in:
             if(handler.CurrentState == StateManager.PLAYER_STATE.Mech && !handler.IsInvulnerable)
             {
-                float mechHealth = handler.mechHealth - damage;
-                handler.Mech_TakeDamage(damage);
-                ///Debug.Log(other.gameObject.name + " at " + mechHealth + " health!");
-
-                if(mechHealth == 0)
+                // Dealing damage to the player, then checking if their health is 0:
+                if(handler.Mech_TakeDamage(directHitDamage) == 0)
                 {
-                    // Adding a kill to the player stats:
+                    // Adding a mech kill to the player stats:
                     shooterHandler.PlayerStats.KilledMech();
                 }
             }
             else
             {
-                float coreHealth = handler.coreHealth -= damage;
-                ///Debug.Log(other.gameObject.name + " at " + coreHealth + " health!");
-
-                if(coreHealth == 0)
+                // Dealing damage to the player, then checking if their health is 0:
+                if (handler.Core_TakeDamage(directHitDamage) == 0)
                 {
+                    // Killing the player:
                     handler.IsAlive = false;
 
                     // Adjusting the other players score on death:
@@ -82,6 +84,7 @@ public class Projectile : MonoBehaviour
             }
         }
 
+        // If the projectile hasn't exploded yet, then explode:
         if (!hasExploded)
         {
             Explode();
@@ -91,14 +94,39 @@ public class Projectile : MonoBehaviour
 
     private void Explode()
     {
+        // Create particle effect at hit position:
         GameObject explosionObject = Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(explosionObject, 1.9f);
+
+        // Checking for splash damage:
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, splashDamageRadius, gameObject.layer);
+        int i = 0;
+        while (i < hitColliders.Length)
+        {
+            if (hitColliders[i].gameObject.tag == "Player")
+            {
+                // Handler of the other player.
+                PlayerHandler handler = hitColliders[i].gameObject.GetComponentInParent<PlayerHandler>();
+
+                // Making that mech take damage.
+                handler.Mech_TakeDamage(splashDamage);
+            }
+            i++;
+        }
+
+        // Last:
         Destroy(this.gameObject);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = color;
+        Gizmos.DrawSphere(transform.position, splashDamageRadius);
     }
 
     public Rigidbody RigidBody
     {
         get { return rigidBody; }
     }
-
 }
