@@ -111,7 +111,7 @@ public class PlayerHandler : MonoBehaviour
         playerStats.HasDied();
 
         // Getting the random mech station.
-        randomStationIndex = Random.Range(0, RespawnArray.instance.mechRespawnStations.Count - 1);
+        randomStationIndex = Random.Range(0, RespawnArray.instance.mechRespawnStations.Count);
 
         // Spawning the player at that location.
         RespawnArray.instance.mechRespawnStations[randomStationIndex].SpawnPlayer(this);

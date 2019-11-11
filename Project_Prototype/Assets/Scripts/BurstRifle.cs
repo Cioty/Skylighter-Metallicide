@@ -11,22 +11,24 @@ public class BurstRifle : MonoBehaviour
 
     public Camera fpsCamBr;
 
+    public GameObject firePoint2;
+
     //Gun
-    public float gunDamage = 0;
-    public float gunRange = 0;
+    public float gunDamage = 10;
+    public float gunRange = 100;
 
     //Gun's Fire
-    public int gunAmmo = 0;
+    public int gunAmmo = 30;
     private int gunAmmoShot = 0;
-    public float gunCharge = 0.0f;
-    public float gunDelay = 0.0f;
+    public float gunCharge = 0.6f;
+    public float gunDelay = 0.5f;
     private bool isGunShooting = false;
 
     //Gun Spread //Shooting function
     public float randXRange = 0.1f;
     public float randYRange = 0.1f;
     public float randZRange = 0.1f;
-    public float halfAngle = 1f;
+    public float halfAngle = 0.5f;
     //public float delay = 0.5f;
 
     void Update()

@@ -111,7 +111,7 @@ public class RespawnArray : MonoBehaviour
     public Transform GetRandomSpawnPoint()
     {
         // Getting random mech station.
-        randNumber = Random.Range(0, mechRespawnStations.Count - 1);
+        randNumber = Random.Range(0, mechRespawnStations.Count);
         Mech_Recovery randomSpawnPoint = mechRespawnStations[randNumber];
 
         // Checking if it is occupied.
