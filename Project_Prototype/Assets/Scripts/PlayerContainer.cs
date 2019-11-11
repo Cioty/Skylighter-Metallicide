@@ -3,6 +3,9 @@ using XboxCtrlrInput;
 
 public class PlayerContainer : MonoBehaviour
 {
+    public GameObject mechModel;
+    private bool isActive = false;
+
     private int id;
     public int ID { get { return id; } set { id = value; } }
 
@@ -11,4 +14,10 @@ public class PlayerContainer : MonoBehaviour
 
     private bool hasPlayer = false;
     public bool HasPlayer { get { return hasPlayer; } set { hasPlayer = value; } }
+
+    public void ToggleMech()
+    {
+        isActive = !isActive;
+        mechModel.SetActive(isActive);
+    }
 }

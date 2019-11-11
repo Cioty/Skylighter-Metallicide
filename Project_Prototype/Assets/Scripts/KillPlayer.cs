@@ -9,7 +9,7 @@ public class KillPlayer : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             PlayerHandler playerHandler = other.gameObject.GetComponentInParent<PlayerHandler>();
-            playerHandler.RespawnAtRandomStation();
+            playerHandler.RespawnFromDeath();
         }
     }
 }

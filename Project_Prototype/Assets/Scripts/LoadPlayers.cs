@@ -21,12 +21,15 @@ public class LoadPlayers : MonoBehaviour
     // Singleton instance:
     public static LoadPlayers instance;
 
+    // Scene object references:
     [Header("References")]
     public GameObject playerPrefab;
     public RespawnArray respawnArray;
 
-    [Header("Force Debug Mode")]
-    public bool debugMode = false;
+    // Debug mode settings:
+    [Header("Debug Mode")]
+    public bool forceDebugMode = false;
+    [Range(0, 4)]
     public int debugPlayerCount = 0;
 
     // Screen locations:
@@ -71,17 +74,17 @@ public class LoadPlayers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerData.instance != null || debugMode)
+        if (PlayerData.instance != null || forceDebugMode)
         {
             // Checking the StartInDebugMode flag in the PlayerData class.
             if (PlayerData.instance != null && PlayerData.instance.StartInDebugMode)
             {
-                debugMode = true;
+                forceDebugMode = true;
                 debugPlayerCount = PlayerData.instance.DebugPlayerCount;
             }
 
             // Getting the correct players, either from the assigned containers or the debug count:
-            if(!debugMode)
+            if(!forceDebugMode)
             {
                 playerCount = PlayerData.instance.AssignedPlayers;
                 playerContainers = PlayerData.instance.GetTransferedPlayerContainers();
@@ -105,7 +108,7 @@ public class LoadPlayers : MonoBehaviour
                 playerHandler.ID = i;
 
                 // Assigning the correct controller:
-                if(!debugMode)
+                if(!forceDebugMode)
                     playerHandler.AssignedController = playerContainers[i].Controller;
                 else
                     playerHandler.AssignedController = ((XboxController)i);
@@ -121,7 +124,7 @@ public class LoadPlayers : MonoBehaviour
                 playerHandler.FirstPersonCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(playerGO.tag + i));
 
                 // Deactivating controls from all players other than player0:
-                if(debugMode)
+                if(forceDebugMode)
                 {
                     if (i > 0)
                         playerHandler.IsControllable = false;
@@ -156,7 +159,7 @@ public class LoadPlayers : MonoBehaviour
             }
             
             // Destroys the transferd data.
-            if (!debugMode)
+            if (!forceDebugMode)
                 Destroy(PlayerData.instance.gameObject);
         }
     }

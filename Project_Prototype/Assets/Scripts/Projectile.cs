@@ -29,10 +29,10 @@ public class Projectile : MonoBehaviour
     private bool hasExploded = false;
 
     // Assigns the shooter variable and the correct layermask.
-    public void Setup(GameObject shooter, string layerMask)
+    public void Setup(GameObject shooter)
     {
         shooterHandler = shooter.GetComponent<PlayerHandler>();
-        gameObject.layer = LayerMask.NameToLayer(layerMask);
+        gameObject.layer = shooterHandler.playerViewMask;
     }
 
     private void FixedUpdate()
@@ -54,7 +54,8 @@ public class Projectile : MonoBehaviour
             // Check what state the player is in:
             if(handler.CurrentState == StateManager.PLAYER_STATE.Mech && !handler.IsInvulnerable)
             {
-                float mechHealth = handler.mechHealth -= damage;
+                float mechHealth = handler.mechHealth - damage;
+                handler.Mech_TakeDamage(damage);
                 ///Debug.Log(other.gameObject.name + " at " + mechHealth + " health!");
 
                 if(mechHealth == 0)

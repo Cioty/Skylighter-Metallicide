@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class Ball_Movement : MonoBehaviour
 {
@@ -76,8 +77,18 @@ public class Ball_Movement : MonoBehaviour
     // Making the ball move in the direction the camera is facing
     void ball_roll()
     {
-        float horizontal_move = Input.GetAxis("Horizontal");
-        float vertical_move = Input.GetAxis("Vertical");
+        float horizontal_move = 0f;
+        float vertical_move = 0f;
+        if(playerHandler.HasAssignedController)
+        {
+            horizontal_move = XCI.GetAxis(XboxAxis.LeftStickX, playerHandler.AssignedController);
+            vertical_move = XCI.GetAxis(XboxAxis.LeftStickY, playerHandler.AssignedController);
+        }
+        else
+        {
+            horizontal_move = Input.GetAxis("Horizontal");
+            vertical_move = Input.GetAxis("Vertical");
+        }
 
         // So the ball moves where the Camera faces
         Vector3 cam_forward = thirdPersonCamera.transform.forward;

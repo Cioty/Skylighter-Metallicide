@@ -28,7 +28,6 @@ public class RocketJump : MonoBehaviour
         boostDirection = transform.up;
         playerHandler = GetComponentInParent<PlayerHandler>();
         mechDash = GetComponent<Dashing>();
-
     }
 
     private void Start()

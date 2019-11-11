@@ -41,6 +41,7 @@ public class MechController : MonoBehaviour
     private Vector3 currentVelocity;
     private float horizontalAxis, verticalAxis;
     private float accelTimer, deccelTimer, directionalTimer;
+    private bool justBoosted = false;
 
     // Double/rocket Jump
     private RocketJump rocketJump;
@@ -103,6 +104,8 @@ public class MechController : MonoBehaviour
         // If the player is on the ground:
         if (grounded)
         {
+            justBoosted = false;
+
             // If the player is inputting a direction:
             if (moveDirection.magnitude > 0)
             {
@@ -133,8 +136,12 @@ public class MechController : MonoBehaviour
         else
         {
             // Calculating gravity.
-            Vector3 gravityVector = Vector3.down * gravity * Time.deltaTime;
-            currentVelocity += gravityVector;
+            Vector3 gravityVector = Vector3.zero;
+            if (!playerHandler.Mech_RocketJump.IsBoosting)
+            {
+                gravityVector = Vector3.down* gravity *Time.deltaTime;
+                currentVelocity += gravityVector;
+            }
 
             // Calculating the in air movement.
             Vector3 inAirMoveVector = moveDirection * maxSpeed;
@@ -148,10 +155,14 @@ public class MechController : MonoBehaviour
             acceleration = currentVelocity;
 
             // Check for jump boost
-            if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump"))
+            if(!justBoosted)
             {
-                rocketJump.IsBoosting = true;
-                --playerHandler.BoostPoints;
+                if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump"))
+                {
+                    rocketJump.IsBoosting = true;
+                    justBoosted = true;
+                    --playerHandler.BoostPoints;
+                }
             }
         }
 

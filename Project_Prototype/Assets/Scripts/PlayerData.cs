@@ -25,10 +25,21 @@ public class PlayerData : MonoBehaviour
     public static PlayerData instance;
     private bool startInDebugMode = false;
     private int debugPlayerCount = 0;
+    private SplitScreenMode currentSplitScreenMode;
+
+    public enum SplitScreenMode
+    {
+        SINGLE,
+        DOUBLE,
+        TRIPLE,
+        QUAD,
+    }
 
     private void Awake()
     {
-        instance = GetComponent<PlayerData>();
+        instance = this;
+
+        currentSplitScreenMode = SplitScreenMode.SINGLE;
 
         // Making sure we don't destory the data on load of the game.
         DontDestroyOnLoad(this.gameObject);
@@ -67,5 +78,11 @@ public class PlayerData : MonoBehaviour
     {
         get { return debugPlayerCount; }
         set { debugPlayerCount = value; }
+    }
+
+    public SplitScreenMode CurrentSplitScreenMode
+    {
+        get { return currentSplitScreenMode; }
+        set { currentSplitScreenMode = value; }
     }
 }

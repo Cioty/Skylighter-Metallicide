@@ -36,9 +36,9 @@ public class PTCAssigner : MonoBehaviour
     private int assignedPlayers = 0;
     private bool isAtConnectScreen = false;
     private bool hasSearchedForControllers = false;
-    private List<XboxController> yetToBeConnectedList = new List<XboxController>();
+    private List<XboxController> connectedControllerList = new List<XboxController>();
     private List<PlayerContainer> playerContainers = new List<PlayerContainer>();
-    private bool allControllersConnected = false;
+    private bool gameReadyScreen = false;
     public static bool controllerFound = false;
 
     // Start is called before the first frame update
@@ -78,7 +78,7 @@ public class PTCAssigner : MonoBehaviour
             if (xboxController == XboxController.All)
                 continue;
 
-            yetToBeConnectedList.Add(xboxController);
+            connectedControllerList.Add(xboxController);
         }
     }
 
@@ -95,39 +95,41 @@ public class PTCAssigner : MonoBehaviour
 
         if (isAtConnectScreen)
         {
-            // check for input
-            if (!allControllersConnected)
+            if (connectedControllerList.Count > 0)
             {
-                if(yetToBeConnectedList.Count > 0)
+                for (int c = 0; c < connectedControllerList.Count; ++c)
                 {
-                    for (int c = 0; c < yetToBeConnectedList.Count; ++c)
-                    {
-                        XboxController xboxController = yetToBeConnectedList[c];
-                        if (xboxController == XboxController.All)
-                            continue;
+                    XboxController xboxController = connectedControllerList[c];
 
-                        if (XCI.GetButtonUp(XboxButton.A, xboxController))
-                        {
-                            this.AddController(c, xboxController);
-                        }
+                    // If xbox controller is all then skip:
+                    if (xboxController == XboxController.All)
+                        continue;
+
+                    // If the container already has a player, then skip:
+                    if (playerContainers[c].HasPlayer)
+                        continue;
+
+                    // Listening to avalible controllers that have yet to be connected:
+                    if (XCI.GetButtonUp(XboxButton.A, xboxController))
+                    {
+                        this.AddController(xboxController);
                     }
                 }
-                else if (assignedPlayers > 0)
-                {
-                    allControllersConnectedScreen.SetActive(true);
-                    allControllersConnected = true;
-                }
             }
-            else
+
+            if (assignedPlayers > 1)
             {
-                if (XCI.GetButtonUp(XboxButton.A, XboxController.All))
+                PlayerData.instance.CurrentSplitScreenMode = ((PlayerData.SplitScreenMode)assignedPlayers - 1);
+                allControllersConnectedScreen.SetActive(true);
+
+                if (XCI.GetButtonUp(XboxButton.Start, XboxController.All))
                 {
                     StartGame();
                 }
 
                 if (XCI.GetButtonUp(XboxButton.B, XboxController.All))
                 {
-                    allControllersConnected = false;
+                    gameReadyScreen = false;
                     allControllersConnectedScreen.SetActive(false);
                 }
             }
@@ -138,6 +140,11 @@ public class PTCAssigner : MonoBehaviour
     {
         PlayerData.instance.Save();
         SceneManager.LoadScene("Map02", LoadSceneMode.Single);
+    }
+
+    private PlayerContainer GetContainerByID(int ID)
+    {
+        return playerContainers[ID];
     }
 
     // Loops through the container list and returns the first container without a player.
@@ -158,18 +165,18 @@ public class PTCAssigner : MonoBehaviour
         return null;
     }
 
-    private void AddController(int id, XboxController controller)
+    private void AddController(XboxController controller)
     {
+        int id = ((int)controller) - 1;
         // If there's a container empty, then add a player into it. (Not sure if we should do this, or just match the ID to the connected controller).
-        GameObject containerGO = this.FindNextEmptyContainer().gameObject;
+        GameObject containerGO = this.GetContainerByID(id).gameObject;
         if (containerGO)
         {
             PlayerContainer container = containerGO.GetComponent<PlayerContainer>();
-            containerGO.GetComponent<Renderer>().material.color = Color.green;
             container.ID = id;
             container.Controller = controller;
             container.HasPlayer = true;
-            yetToBeConnectedList.Remove(controller);
+            container.ToggleMech();
             ++assignedPlayers;
         }
         else

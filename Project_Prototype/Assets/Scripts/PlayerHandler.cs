@@ -20,7 +20,7 @@ public class PlayerHandler : MonoBehaviour
     public int mechHealth;
     public int coreHealth;
 
-    [Header("References")]
+    [Header("Object References")]
     public GameObject mechObject;
     public GameObject coreObject;
     public RectTransform crosshairTransform;
@@ -29,6 +29,13 @@ public class PlayerHandler : MonoBehaviour
     public GameObject viewModelObject;
     public GameObject mechModelObject;
     public GameManager gameManager;
+    public ScreenShake firstPersonScreenShake;
+    public RocketJump rocketJump;
+    public LayerMask playerViewMask;
+
+    [Header("Screen Shake")]
+    public float shakeDuration = 0.5f;
+    public float shakeForce = 0.1f;
 
     // ----------------------------------------------- //
     private MechController mechController;
@@ -89,7 +96,7 @@ public class PlayerHandler : MonoBehaviour
         if (coreHealth <= 0)
         {
             // Respawning player at random location.
-            RespawnAtRandomStation();
+            RespawnFromDeath();
         }
 
         // Regenerate Boost Meter ---
@@ -103,12 +110,24 @@ public class PlayerHandler : MonoBehaviour
             boostPoints++;
         }
     }
-    
+
+    public void SpawnAsUnactive()
+    {
+        // Getting the random mech station.
+        randomStationIndex = Random.Range(0, RespawnArray.instance.mechRespawnStations.Count);
+
+        // Spawning the player at that location.
+        RespawnArray.instance.mechRespawnStations[randomStationIndex].SpawnPlayer(this);
+    }
+
     // A function to respawn the player at a random respawn staion.
-    public void RespawnAtRandomStation()
+    public void RespawnFromDeath()
     {
         // Setting the core to the death state.
         playerStats.HasDied();
+
+        this.mechHealth = MaxMechHealth;
+        this.coreHealth = MaxCoreHealth;
 
         // Getting the random mech station.
         randomStationIndex = Random.Range(0, RespawnArray.instance.mechRespawnStations.Count);
@@ -259,5 +278,36 @@ public class PlayerHandler : MonoBehaviour
     {
         get { return boostPoints; }
         set { boostPoints = value; }
+    }
+
+    public void Mech_TakeDamage(int damage)
+    {
+        StartCoroutine(firstPersonScreenShake.Shake(shakeDuration, shakeForce));
+        this.mechHealth -= damage;
+    }
+
+    public void Core_TakeDamage(int damage)
+    {
+        this.coreHealth -= damage;
+    }
+
+    public bool IsInMech()
+    {
+        return CurrentState == StateManager.PLAYER_STATE.Mech;
+    }
+
+    public bool IsInCore()
+    {
+        return CurrentState == StateManager.PLAYER_STATE.Core;
+    }
+
+    public ScreenShake Mech_ScreenShake
+    {
+        get { return firstPersonScreenShake; }
+    }
+
+    public RocketJump Mech_RocketJump
+    {
+        get { return rocketJump; }
     }
 }

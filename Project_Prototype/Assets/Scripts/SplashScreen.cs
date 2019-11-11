@@ -20,11 +20,10 @@ public class SplashScreen : MonoBehaviour
 {
     [Header("Attributes")]
     public RawImage splashImage;
-    public string nextScene;
+    public Image panel;
     public float timeToFadeIn;
     public float timeTillFadeOut;
     public float timeToFadeOut;
-    public float timeTillNextScene;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -33,8 +32,6 @@ public class SplashScreen : MonoBehaviour
         FadeIn();
         yield return new WaitForSeconds(timeTillFadeOut);
         FadeOut();
-        yield return new WaitForSeconds(timeTillNextScene);
-        SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
     }
 
     void FadeIn()
@@ -45,5 +42,6 @@ public class SplashScreen : MonoBehaviour
     void FadeOut()
     {
         splashImage.CrossFadeAlpha(0.0f, timeToFadeOut, false);
+        panel.CrossFadeAlpha(0.0f, timeToFadeOut, false);
     }
 }

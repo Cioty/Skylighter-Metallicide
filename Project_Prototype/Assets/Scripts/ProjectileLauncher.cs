@@ -20,7 +20,7 @@ using XboxCtrlrInput;
 public class ProjectileLauncher : MonoBehaviour
 {
     private GameObject playerObject;
-    private PlayerHandler playerHandler;
+    public PlayerHandler playerHandler;
     private bool readyToFire = true;
     private float fireTimer = 0.0f;
     private const float MAX_TRG_SCL = 1.21f;
@@ -41,7 +41,6 @@ public class ProjectileLauncher : MonoBehaviour
     private void Awake()
     {
         playerObject = this.gameObject.transform.parent.gameObject;
-        playerHandler = playerObject.GetComponent<PlayerHandler>();
         RLAnimator = rocketLauncher.GetComponent<Animator>();
     }
 
@@ -70,8 +69,8 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void FireProjectile()
     {
-        RLAnimator.SetTrigger("Fire");
-        SFX_RocketFire.Play();
+        // RLAnimator.SetTrigger("Fire");
+        // SFX_RocketFire.Play();
 
         Ray ray = firstPersonCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
@@ -84,7 +83,7 @@ public class ProjectileLauncher : MonoBehaviour
 
         Quaternion rotation = Quaternion.FromToRotation(projectilePrefab.transform.forward, direction);
         Projectile projectile = Instantiate(projectilePrefab, projectileStartPoint.position, rotation).GetComponent<Projectile>();
-        projectile.Setup(playerObject, "Player" + playerHandler.ID + "View");
+        projectile.Setup(playerObject);
         projectile.RigidBody.AddForce(direction * projectileSpeed, ForceMode.Impulse);
     }
 
