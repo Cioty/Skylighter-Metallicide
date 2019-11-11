@@ -30,6 +30,7 @@ public class StateManager : MonoBehaviour
     public GameObject coreManager;
     public GameObject coreGraphic;
     public GameObject mechEjectEffect;
+    public PlayerHandler playerHandler;
 
     [Header("Eject Properties")]
     public KeyCode debugEjectKey;
@@ -41,15 +42,12 @@ public class StateManager : MonoBehaviour
     private bool moveCamera = false;
     private float cameraSmoothTime = 0;
     private PLAYER_STATE currentState;
-    private PlayerHandler playerHandler;
 
     // Start is called before the first frame update
     void Start()
     {
         // Setting the default state of the player.
         currentState = PLAYER_STATE.Mech;
-
-        playerHandler = this.GetComponent<PlayerHandler>();
     }
 
     // Update is called once per frame
@@ -136,7 +134,11 @@ public class StateManager : MonoBehaviour
 
                 // Updating the mechs postion.
                 mechObject.SetActive(true);
+
+                //playerHandler.MechCharacterController.enabled = false;
                 mechObject.transform.position = coreGraphic.transform.position;
+                //playerHandler.MechCharacterController.enabled = true;
+
                 break;
         }
     }

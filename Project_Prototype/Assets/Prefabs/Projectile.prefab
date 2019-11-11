@@ -175,13 +175,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directHitDamage: 20
   splashDamage: 10
-  splashDamageRadius: 100
-  lifeLength: 5
+  splashDamageRadius: 250
+  lifeLength: 2.5
   explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
   rigidBody: {fileID: 1720737915752188110}
-  showGizmos: 1
-  color: {r: 1, g: 0.504717, b: 0.504717, a: 0}
+  showGizmos: 0
+  color: {r: 1, g: 0, b: 0, a: 0}
 --- !u!136 &8492234093809181069
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -219,14 +219,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8200958712033532134}
     m_Modifications:
-    - target: {fileID: 100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
-      propertyPath: m_Name
-      value: Rocket_Projectile_Mesh
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
-      propertyPath: m_TagString
-      value: Projectile
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.881784e-18
@@ -282,6 +274,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.018462636
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
+      propertyPath: m_Name
+      value: Rocket_Projectile_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}

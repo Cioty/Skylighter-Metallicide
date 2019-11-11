@@ -2333,7 +2333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerContainersGroup: {fileID: 432639404}
   allControllersConnectedScreen: {fileID: 832017972}
-  startInDebugMode: 1
+  startInDebugMode: 0
   debugStartKey: 13
   debugPlayerCount: 4
 --- !u!1 &2074280155

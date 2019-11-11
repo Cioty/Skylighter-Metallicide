@@ -110,9 +110,9 @@ public class PTCAssigner : MonoBehaviour
                         this.RemoveController(xboxController);
                     }
 
-                    // If the container already has a player, then skip:
-                    if (playerContainers[c].HasPlayer)
-                        continue;
+                    //// If the container already has a player, then skip:
+                    //if (playerContainers[c].HasPlayer)
+                    //    continue;
 
                     // Listening to avalible controllers that have yet to be connected:
                     if (XCI.GetButtonUp(XboxButton.A, xboxController))

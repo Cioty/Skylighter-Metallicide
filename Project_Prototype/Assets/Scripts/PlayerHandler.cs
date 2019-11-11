@@ -54,6 +54,7 @@ public class PlayerHandler : MonoBehaviour
     private PlayerStatistics playerStats;
     private bool isControllable = true;
     private int randomStationIndex = 0;
+    private bool hasBeenAddedToSplashCheck = false;
     // ----------------------------------------------- //
 
     [Header("Boost Meter")]
@@ -316,5 +317,11 @@ public class PlayerHandler : MonoBehaviour
     public RocketJump Mech_RocketJump
     {
         get { return rocketJump; }
+    }
+
+    public bool HasBeenAddedToSplashCheck
+    {
+        get { return hasBeenAddedToSplashCheck; }
+        set { hasBeenAddedToSplashCheck = value; }
     }
 }
