@@ -23,13 +23,10 @@ public class RespawnArray : MonoBehaviour
     // Random Number to pick a random spawn point
     int randNumber = 0;
 
-    // A bool to determine if we want to reset the mech stations or not.
-    private bool shouldResetMechStations = false;
-
     private void Awake()
     {
         instance = this;
-        playerLoader = playerManager.GetComponent<LoadPlayers>();
+        //playerLoader = playerManager.GetComponent<LoadPlayers>();
     }
 
     // Start is called before the first frame update
@@ -38,25 +35,14 @@ public class RespawnArray : MonoBehaviour
         Random.InitState((int)System.DateTimeOffset.UtcNow.ToUnixTimeSeconds());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        ResetOccupiedMechStations();
-    }
-
     // A function to handle resetting the occupied mech stations.
-    void ResetOccupiedMechStations()
+    public void ResetOccupiedMechStations()
     {
-        if (shouldResetMechStations)
+        // Looping through each station and setting the occupied status to false.
+        foreach (Mech_Recovery station in mechRespawnStations)
         {
-            // Looping through each station and setting the occupied status to false.
-            foreach (Mech_Recovery station in mechRespawnStations)
-            {
+            if (station.IsOccupied)
                 station.IsOccupied = false;
-            }
-            
-            // Turning off the should resetMechStations flag.
-            shouldResetMechStations = false;
         }
     }
 
@@ -76,12 +62,5 @@ public class RespawnArray : MonoBehaviour
 
         // Recursively searching for an avaliable mech station.
         return GetRandomSpawnPoint();
-    }
-
-    // A property for the reset mech repsawn stations flag.
-    public bool ResetMechRespawnStations
-    {
-        get { return shouldResetMechStations; }
-        set { shouldResetMechStations = value; }
     }
 }

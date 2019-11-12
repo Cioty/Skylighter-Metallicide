@@ -66,9 +66,9 @@ public class PlayerManager : MonoBehaviour
     {
         ActivateCorrectScreenView();
         ActivateAndPositionAllPlayers();
-        
+
         // Resets the occupancy of the mech station:
-        RespawnArray.instance.ResetMechRespawnStations = true;
+        RespawnArray.instance.ResetOccupiedMechStations();
 
         // Destroys the transferd data.
         if (!forceDebugMode && PlayerData.instance != null)
@@ -133,6 +133,9 @@ public class PlayerManager : MonoBehaviour
             // Spawning the player in.
             playerHandler.RandomSpawn_Unactive();
         }
+
+        // Resetting the occupied flag in the respawn stations to prevent overflows:
+        RespawnArray.instance.ResetOccupiedMechStations();
     }
 
     public List<PlayerHandler> ActivePlayers

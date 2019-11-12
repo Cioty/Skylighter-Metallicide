@@ -25,8 +25,9 @@ public class Projectile : MonoBehaviour
 
     [Header("References")]
     public GameObject explosionEffect;
+    public ParticleSystem trailEffect;
+    public GameObject projectileMesh;
     public Rigidbody rigidBody;
-    public GameObject projectileModel;
 
     [Header("Debug Options")]
     public bool showGizmos = true;
@@ -144,7 +145,10 @@ public class Projectile : MonoBehaviour
         GameObject explosionObject = Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(explosionObject, 1.9f);
         this.rigidBody.velocity = Vector3.zero;
-        projectileModel.SetActive(false);
+        projectileMesh.SetActive(false);
+
+        trailEffect.Stop(); // Stopping the particle effect here?
+
         hasExploded = true;
     }
 

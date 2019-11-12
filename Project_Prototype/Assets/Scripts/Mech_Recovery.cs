@@ -16,14 +16,19 @@ using UnityEngine;
 public class Mech_Recovery : MonoBehaviour
 {
     // Is the recovery station occupied?
+    [SerializeField]
     private bool isOccupied = false;
     private bool isActive = true;
 
     // A trigger to detect the ball collision.
     public Trigger respawnTrigger;
 
+    // A trigger to detect a player ontop of the station.
+    public Trigger occupiedTrigger;
+
     private void Update()
     {
+        // Checking for core collision:
         GameObject collidedObject = respawnTrigger.CollidedGameObject();
         if (collidedObject && collidedObject.tag == "Player")
         {
@@ -38,6 +43,12 @@ public class Mech_Recovery : MonoBehaviour
                 SpawnPlayer(playerHandler);
             }
         }
+
+        // Checking if a player is ontop of the station:
+        GameObject occupied = occupiedTrigger.CollidedGameObject();
+
+        // Setting the occupied flag based on the trigger state:
+        this.isOccupied = (occupiedTrigger.IsEnabled()) ? true : false;
     }
 
     // A function to spawn a player at this stations location.

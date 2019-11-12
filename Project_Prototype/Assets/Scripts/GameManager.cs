@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
             if(gameRoundTimer > 60)
                 matchTime.text = (gameRoundTimer / 60).ToString("0.00") + " mins";
             else
-                matchTime.text = gameRoundTimer.ToString() + " secs";
+                matchTime.text = gameRoundTimer.ToString("0.00") + " secs";
         }
     }
 }

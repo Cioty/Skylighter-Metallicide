@@ -22,7 +22,7 @@ public class Ball_Movement : MonoBehaviour
     public float maxSpeed = 10.0f;
     //private float acceleration = 0.0f;
 
-    private float smooth = 1.0f;
+    //private float smooth = 1.0f;
 
     Vector3 currentVelocity;
     Vector3 direction;
@@ -54,7 +54,7 @@ public class Ball_Movement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && IsGrounded() && playerHandler.IsControllable)
         {
             isJumping = true;
         }

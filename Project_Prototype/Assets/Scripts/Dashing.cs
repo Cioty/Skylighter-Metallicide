@@ -45,7 +45,7 @@ public class Dashing : MonoBehaviour
     [Header("Ramming")]
     public float ramForce = 10.0f;
     public int ramDamage = 10;
-    private bool justRammed = false;
+    private bool hasRammedThisDash = false;
   
     private void Awake()
     {
@@ -90,7 +90,7 @@ public class Dashing : MonoBehaviour
             {  
                 dashTrig = false;
                 thrusterTimer = zero;
-                justRammed = false;
+                hasRammedThisDash = false;
             }
         }
                   
@@ -101,10 +101,11 @@ public class Dashing : MonoBehaviour
         isDashing();
     }
 
+    /* Ramming function: */
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         // If the collided object is a player:
-        if (dashTrig && hit.gameObject.tag == "Player" && !justRammed)
+        if (!hasRammedThisDash && hit.gameObject.tag == "Player")
         {
             // Grab the playerHandler component from the parent object:
             PlayerHandler hit_playerHandler = hit.gameObject.GetComponentInParent<PlayerHandler>();
@@ -119,7 +120,7 @@ public class Dashing : MonoBehaviour
                 hit_playerHandler.Mech_TakeDamage(ramDamage);
 
                 // Enabling the just rammed flag to prevent constant hits:
-                justRammed = true;
+                hasRammedThisDash = true;
             }
         }
     }
