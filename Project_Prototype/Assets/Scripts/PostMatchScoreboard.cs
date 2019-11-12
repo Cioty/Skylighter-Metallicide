@@ -29,10 +29,10 @@ public class PostMatchScoreboard : MonoBehaviour
     {
         if(gameManager.gameRoundTimer <= 0 && !hasUpdated)
         {
-            List<GameObject> activePlayers = LoadPlayers.instance.ActivePlayers;
+            List<PlayerHandler> activePlayers = PlayerManager.instance.ActivePlayers;
             for(int i = 0; i < activePlayers.Count; ++i)
             {
-                PlayerHandler handler = activePlayers[i].GetComponent<PlayerHandler>();
+                PlayerHandler handler = activePlayers[i];
                 Scoreboard_PlayerPanel playerPanel = playerPanels[i];
                 playerPanel.AdjustStatValue(0, handler.PlayerStats.TotalMechKills);
                 playerPanel.AdjustStatValue(1, handler.PlayerStats.TotalCoreKills);

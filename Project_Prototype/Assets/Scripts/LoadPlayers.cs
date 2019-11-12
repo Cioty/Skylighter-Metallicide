@@ -2,14 +2,16 @@
  * Game:        Metallicide
  * Version:     Beta
  * 
- * Class:       LoadPlayers.cs
+ * Class:       LoadPlayers.cs *DEPRECATED*
  * Purpose:     Loads the players into the game either active with the contollers,
  *              or in debug mode. (All players movement disabled besides player0)
+
  * 
  * Author:      Lachlan Wernert
  * Team:        Skylighter
  * 
- * Deficiences:
+ * Deficiences: Re-worked this class into the PlayerManager.cs class for a
+ *              preformance boost.
  * 
  *===========================================================================*/
 using System.Collections.Generic;

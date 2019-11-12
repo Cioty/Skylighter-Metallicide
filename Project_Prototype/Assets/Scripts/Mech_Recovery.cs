@@ -29,7 +29,7 @@ public class Mech_Recovery : MonoBehaviour
         {
             // Getting the player's handler from the collided game object.
             PlayerHandler playerHandler = collidedObject.GetComponentInParent<PlayerHandler>();
-            if (respawnTrigger.IsEnabled() && playerHandler.CurrentState == StateManager.PLAYER_STATE.Core)
+            if (respawnTrigger.IsEnabled() && playerHandler && playerHandler.CurrentState == StateManager.PLAYER_STATE.Core)
             {
                 // Adding a point for respawning.
                 playerHandler.PlayerStats.HasEscaped();

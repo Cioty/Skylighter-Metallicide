@@ -44,11 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280649b5fe2692c42abf412d05c3682f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameRoundTimer: 300
-  playerManager: {fileID: 8092648218993778478, guid: 975b72abc7a45894492188539c0e380b,
-    type: 3}
-  postMatchScoreBoard: {fileID: 4082760171598792080, guid: 9cd8ee928cf923f4082a6953405dbed0,
-    type: 3}
+  gameRoundTimer: 10
+  playerManager: {fileID: 0}
+  postMatchScoreBoard: {fileID: 0}
+  gametimeCanvasObject: {fileID: 8398798592755809049}
   matchTime: {fileID: 2552316119765774197}
 --- !u!1 &3266222009471255719
 GameObject:

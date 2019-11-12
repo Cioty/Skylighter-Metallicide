@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     public GameObject playerManager;
     public GameObject postMatchScoreBoard;
+    public GameObject gametimeCanvasObject;
     public TextMeshProUGUI matchTime;
 
     // Private:
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
             if(gameRoundTimer <= 0)
             {
                 playerManager.SetActive(false);
+                gametimeCanvasObject.SetActive(false);
                 postMatchScoreBoard.SetActive(true);
                 shouldTime = false;
             }

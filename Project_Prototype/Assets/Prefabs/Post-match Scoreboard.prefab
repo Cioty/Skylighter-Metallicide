@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2912e7bb255b1ca438a9030fe8ef75b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenFreezeTimer: 15
+  screenFreezeTimer: 7.5
   gameManager: {fileID: 0}
   playerPanels:
   - {fileID: 4082760171768613550}
@@ -319,6 +319,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5418991954306973244, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+        type: 3}
+      propertyPath: m_Name
+      value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418991954330883360, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+        type: 3}
+      propertyPath: m_Name
+      value: Player4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418991953960992059, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+        type: 3}
+      propertyPath: m_Name
+      value: Player3
+      objectReference: {fileID: 0}
     - target: {fileID: 5418991954781223428, guid: aa3089afe2ca80b40ad6eae80f0c603f,
         type: 3}
       propertyPath: m_RenderMode
@@ -334,20 +349,65 @@ PrefabInstance:
       propertyPath: m_PlaneDistance
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5418991953960992059, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+    - target: {fileID: 5418991955508420107, guid: aa3089afe2ca80b40ad6eae80f0c603f,
         type: 3}
       propertyPath: m_Name
-      value: Player3
+      value: Header
       objectReference: {fileID: 0}
-    - target: {fileID: 5418991954306973244, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+    - target: {fileID: 5418991955530377232, guid: aa3089afe2ca80b40ad6eae80f0c603f,
         type: 3}
       propertyPath: m_Name
-      value: Player2
+      value: ballKills
       objectReference: {fileID: 0}
-    - target: {fileID: 5418991954330883360, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+    - target: {fileID: 5418991955592465904, guid: aa3089afe2ca80b40ad6eae80f0c603f,
         type: 3}
       propertyPath: m_Name
-      value: Player4
+      value: escaped
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418991954633091873, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+        type: 3}
+      propertyPath: m_Name
+      value: mechKills
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418991954668798448, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+        type: 3}
+      propertyPath: m_Name
+      value: escaped
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418991954899797086, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+        type: 3}
+      propertyPath: m_Name
+      value: mechKills
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418991954899703883, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+        type: 3}
+      propertyPath: m_Name
+      value: Header
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418991955043720760, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+        type: 3}
+      propertyPath: m_Name
+      value: mechKills
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418991954111223070, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+        type: 3}
+      propertyPath: m_Name
+      value: ballKills
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418991954107470667, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+        type: 3}
+      propertyPath: m_Name
+      value: mechKills
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418991954171196028, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+        type: 3}
+      propertyPath: m_Name
+      value: Header
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418991954321950725, guid: aa3089afe2ca80b40ad6eae80f0c603f,
+        type: 3}
+      propertyPath: m_Name
+      value: ballKills
       objectReference: {fileID: 0}
     - target: {fileID: 5418991953552426671, guid: aa3089afe2ca80b40ad6eae80f0c603f,
         type: 3}
@@ -388,66 +448,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ballKills
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418991954107470667, guid: aa3089afe2ca80b40ad6eae80f0c603f,
-        type: 3}
-      propertyPath: m_Name
-      value: mechKills
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418991954111223070, guid: aa3089afe2ca80b40ad6eae80f0c603f,
-        type: 3}
-      propertyPath: m_Name
-      value: ballKills
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418991954171196028, guid: aa3089afe2ca80b40ad6eae80f0c603f,
-        type: 3}
-      propertyPath: m_Name
-      value: Header
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418991954321950725, guid: aa3089afe2ca80b40ad6eae80f0c603f,
-        type: 3}
-      propertyPath: m_Name
-      value: ballKills
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418991954633091873, guid: aa3089afe2ca80b40ad6eae80f0c603f,
-        type: 3}
-      propertyPath: m_Name
-      value: mechKills
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418991954668798448, guid: aa3089afe2ca80b40ad6eae80f0c603f,
-        type: 3}
-      propertyPath: m_Name
-      value: escaped
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418991954899703883, guid: aa3089afe2ca80b40ad6eae80f0c603f,
-        type: 3}
-      propertyPath: m_Name
-      value: Header
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418991954899797086, guid: aa3089afe2ca80b40ad6eae80f0c603f,
-        type: 3}
-      propertyPath: m_Name
-      value: mechKills
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418991955043720760, guid: aa3089afe2ca80b40ad6eae80f0c603f,
-        type: 3}
-      propertyPath: m_Name
-      value: mechKills
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418991955508420107, guid: aa3089afe2ca80b40ad6eae80f0c603f,
-        type: 3}
-      propertyPath: m_Name
-      value: Header
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418991955530377232, guid: aa3089afe2ca80b40ad6eae80f0c603f,
-        type: 3}
-      propertyPath: m_Name
-      value: ballKills
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418991955592465904, guid: aa3089afe2ca80b40ad6eae80f0c603f,
-        type: 3}
-      propertyPath: m_Name
-      value: escaped
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa3089afe2ca80b40ad6eae80f0c603f, type: 3}

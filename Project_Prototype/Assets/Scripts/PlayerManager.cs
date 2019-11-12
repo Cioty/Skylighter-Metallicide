@@ -1,4 +1,16 @@
-﻿using System.Collections;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Beta
+ * 
+ * Class:       PlayerManager.cs
+ * Purpose:     Manages the loading of players into the game scene.
+ * 
+ * Author:      Lachlan Wernert
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
@@ -21,7 +33,7 @@ public class PlayerManager : MonoBehaviour
     // Private variables:
     private PlayerData.SplitScreenMode splitScreenMode;
     private GamemodeHandler currentGameMode;
-    private List<PlayerHandler> activePlayers;
+    private List<PlayerHandler> activePlayers = new List<PlayerHandler>();
     private List<PlayerContainer> playerContainers;
     private int playerCount = 0;
     private bool containersValid = false;
@@ -118,11 +130,13 @@ public class PlayerManager : MonoBehaviour
                     playerHandler.IsControllable = false;
             }
 
-            // Adding the player to the active players list:
-            activePlayers.Add(playerHandler);
-
             // Spawning the player in.
             playerHandler.RandomSpawn_Unactive();
         }
+    }
+
+    public List<PlayerHandler> ActivePlayers
+    {
+        get { return activePlayers; }
     }
 }
