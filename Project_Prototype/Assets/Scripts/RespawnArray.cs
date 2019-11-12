@@ -17,9 +17,6 @@ public class RespawnArray : MonoBehaviour
     // Respawn timer
     public float deathTimer = 3;
 
-    // For the Ball/Player dies
-    private PlayerHandler playerHandler;
-
     // Keeps track of all the spawn points
     public List<Mech_Recovery> mechRespawnStations = new List<Mech_Recovery>();
 
@@ -44,7 +41,6 @@ public class RespawnArray : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MechRespawn();
         ResetOccupiedMechStations();
     }
 
@@ -62,49 +58,6 @@ public class RespawnArray : MonoBehaviour
             // Turning off the should resetMechStations flag.
             shouldResetMechStations = false;
         }
-    }
-
-    // A function to handle respawning the player in their mech.
-    void MechRespawn()
-    {
-        foreach (GameObject player in playerLoader.ActivePlayers)
-        {
-            playerHandler = player.GetComponent<PlayerHandler>();
-
-
-            if (playerHandler.mechHealth <= 0)
-            {
-                if (playerHandler.mechHealth < 0)
-                    playerHandler.mechHealth = 0;
-
-                if (deathTimer <= 0)
-                {
-                    Spawn(player);
-                }
-                else if (deathTimer > 0)
-                {
-                    deathTimer -= 1 * Time.deltaTime;
-                    Debug.Log("Time til respawn " + deathTimer.ToString());
-                }
-            }
-        }
-    }
-
-    // The batch of code that handles respawning players
-    void Spawn(GameObject playerObject)
-    {
-        Debug.Log("Start");
-        randNumber = Random.Range(0, mechRespawnStations.Count);
-        playerHandler.CurrentState = StateManager.PLAYER_STATE.Mech;
-
-        Vector3 random = mechRespawnStations[randNumber].transform.position;
-        random.y += 2.5f;
-
-        playerHandler.mechObject.transform.position = random;
-        playerHandler.mechObject.transform.rotation = mechRespawnStations[randNumber].transform.rotation;
-        playerHandler.MechHealth = playerHandler.MaxMechHealth;
-        deathTimer = 3;
-        Debug.Log("End");
     }
 
     // A function to get a random spawn point.

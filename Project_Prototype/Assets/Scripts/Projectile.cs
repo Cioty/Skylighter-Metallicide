@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
     [Header("References")]
     public GameObject explosionEffect;
     public Rigidbody rigidBody;
+    public GameObject projectileModel;
 
     [Header("Debug Options")]
     public bool showGizmos = true;
@@ -34,6 +35,7 @@ public class Projectile : MonoBehaviour
     // Player that fires the projectile:
     private PlayerHandler shooterHandler;
     private bool hasExploded = false;
+    private List<PlayerHandler> hitPlayers = new List<PlayerHandler>();
 
     // Assigns the shooter variable and the correct layermask.
     public void Setup(GameObject shooter)
@@ -44,17 +46,23 @@ public class Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Timer to destory the object after a certain time.
-        timer += Time.deltaTime;
+        if(!hasExploded)
+        {
+            // Timer to destory the object after a certain time.
+            timer += Time.deltaTime;
 
-        if (timer > lifeLength)
-            Explode();
+            if (timer > lifeLength)
+                Explode();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!hasExploded)
+        if (!hasExploded)
         {
+            // Playing particle effect:
+            Explode();
+
             if (other.gameObject.tag == "Player")
             {
                 // Handler of the other player.
@@ -75,11 +83,8 @@ public class Projectile : MonoBehaviour
                     // Dealing damage to the player, then checking if their health is 0:
                     if (handler.Core_TakeDamage(directHitDamage) == 0)
                     {
-                        // Killing the player:
+                        // Killing the victim:
                         handler.IsAlive = false;
-
-                        // Adjusting the other players score on death:
-                        handler.PlayerStats.HasDied();
 
                         // Adding a kill to the core stats:
                         shooterHandler.PlayerStats.KilledCore();
@@ -87,20 +92,24 @@ public class Projectile : MonoBehaviour
                 }
             }
 
-            // Explode:
-            Explode();
-            hasExploded = true;
+            // Checking for splash damage:
+            CheckForSplashDamage();
+
+            // Destroying this object:
+            Destroy(this.gameObject, 2f);
         }
     }
 
     private void CheckForSplashDamage()
     {
-        // Getting all the colliders within the sphere:
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, splashDamageRadius); ;
-        List<PlayerHandler> hitPlayers = new List<PlayerHandler>();
+        // Clearing the hit players list:
+        hitPlayers.Clear();
 
-        int i = 0;
-        while (i < hitColliders.Length)
+        // Getting all the colliders within the sphere:
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, splashDamageRadius);
+
+        // Looping through the hit colliders:
+        for(int i = 0; i < hitColliders.Length; ++i)
         {
             GameObject hitObject = hitColliders[i].gameObject;
             if (LayerMask.LayerToName(hitObject.layer).Contains("Player"))
@@ -109,41 +118,40 @@ public class Projectile : MonoBehaviour
                 PlayerHandler player = hitObject.GetComponentInParent<PlayerHandler>();
 
                 // Checking if the player is already in the array.
-                if (!player.HasBeenAddedToSplashCheck)
+                if (player && player.ID != shooterHandler.ID && !player.HasBeenAddedToSplashCheck)
                 {
                     // Adding the player to the array.
                     hitPlayers.Add(player);
                     player.HasBeenAddedToSplashCheck = true;
                 }
             }
-            i++;
         }
 
         foreach(PlayerHandler handler in hitPlayers)
         {
-            // Making that mech take damage.
-            handler.Mech_TakeDamage(splashDamage);
-            Debug.Log("Dealing " + splashDamage + " splash damage to player" + handler.ID + "'s mech!");
+            // Dealing damage to the player, then checking if their health is 0:
+            if (handler.Mech_TakeDamage(splashDamage) == 0)
+            {
+                // Adding a mech kill to the player stats:
+                shooterHandler.PlayerStats.KilledMech();
+            }
         }
     }
 
     private void Explode()
-    {
+    {   
         // Create particle effect at hit position:
         GameObject explosionObject = Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(explosionObject, 1.9f);
-        
-        // Checking for splash damage.
-        CheckForSplashDamage();
-
-        // Last:
-        Destroy(this.gameObject);
+        this.rigidBody.velocity = Vector3.zero;
+        projectileModel.SetActive(false);
+        hasExploded = true;
     }
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
         // Draw a sphere at the transform's position to show splash damage radius.
-        Gizmos.color = color;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, splashDamageRadius);
     }
 

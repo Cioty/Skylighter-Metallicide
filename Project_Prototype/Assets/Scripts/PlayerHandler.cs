@@ -19,6 +19,7 @@ public class PlayerHandler : MonoBehaviour
     [Header("Attributes")]
     public int mechHealth;
     public int coreHealth;
+    public float invulnerableAfterSpawnTime = 3f;
 
     [Header("Object References")]
     public GameObject mechObject;
@@ -33,6 +34,9 @@ public class PlayerHandler : MonoBehaviour
     public RocketJump rocketJump;
     public string playerViewMask;
 
+    [SerializeField]
+    private int playerID;
+
     [Header("Screen Shake")]
     public float shakeDuration = 0.5f;
     public float shakeForce = 0.1f;
@@ -46,15 +50,14 @@ public class PlayerHandler : MonoBehaviour
     private ImpactReceiver impactReceiver;
     private Rigidbody coreRB;
     private Transform mechTransform, coreTransform;
-    private int playerID;
     private bool isAlive;
     private bool isGrounded;
     private bool isInvulnerable = false;
     private StateManager stateManager;
     private PlayerStatistics playerStats;
     private bool isControllable = true;
-    private int randomStationIndex = 0;
     private bool hasBeenAddedToSplashCheck = false;
+    private float afterSpawnTimer = 0.0f;
     // ----------------------------------------------- //
 
     [Header("Boost Meter")]
@@ -86,18 +89,29 @@ public class PlayerHandler : MonoBehaviour
 
     private void Update()
     {
+        if(isInvulnerable)
+        {
+            if(afterSpawnTimer < invulnerableAfterSpawnTime)
+                afterSpawnTimer += Time.deltaTime;
+            else
+            {
+                afterSpawnTimer = 0.0f;
+                isInvulnerable = false;
+                Debug.Log("Player" + ID + " is no longer invulnerable!");
+            }
+        }
+
         // Checking the mechs health:
         if (mechHealth <= 0)
         {
             // Changing the state of the player to the core:
             stateManager.SetState(StateManager.PLAYER_STATE.Core);
 
-            // Resetting the mech's health:
             mechHealth = mechMaxHealth;
         }
 
-        // Checking the balls health:
-        if (coreHealth <= 0)
+        // Checking the cores health:
+        if (!IsAlive)
         {
             // Respawning player at random location.
             RandomSpawn_FromDeath();
@@ -117,28 +131,21 @@ public class PlayerHandler : MonoBehaviour
 
     public void RandomSpawn_Unactive()
     {
-        // Getting the random mech station.
-        randomStationIndex = Random.Range(0, RespawnArray.instance.mechRespawnStations.Count);
-
-        // Spawning the player at that location.
-        RespawnArray.instance.mechRespawnStations[randomStationIndex].SpawnPlayer(this);
+        // Spawning in the player.
+        RespawnArray.instance.GetRandomSpawnPoint().GetComponent<Mech_Recovery>().SpawnPlayer(this);
     }
 
     // A function to respawn the player at a random respawn staion.
     public void RandomSpawn_FromDeath()
     {
+        // Setting the player to be invulnerable.
+        isInvulnerable = true;
+
         // Setting the core to the death state.
         playerStats.HasDied();
 
-        // Resetting player's health.
-        this.mechHealth = MaxMechHealth;
-        this.coreHealth = MaxCoreHealth;
-
-        // Getting the random mech station.
-        randomStationIndex = Random.Range(0, RespawnArray.instance.mechRespawnStations.Count);
-
-        // Spawning the player at that location.
-        RespawnArray.instance.mechRespawnStations[randomStationIndex].SpawnPlayer(this);
+        // Spawning in the player.
+        RespawnArray.instance.GetRandomSpawnPoint().GetComponent<Mech_Recovery>().SpawnPlayer(this);
     }
 
     public StateManager.PLAYER_STATE CurrentState

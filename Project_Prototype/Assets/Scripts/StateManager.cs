@@ -31,6 +31,7 @@ public class StateManager : MonoBehaviour
     public GameObject coreGraphic;
     public GameObject mechEjectEffect;
     public PlayerHandler playerHandler;
+    public Canvas hudCanvas;
 
     [Header("Eject Properties")]
     public KeyCode debugEjectKey;
@@ -111,7 +112,7 @@ public class StateManager : MonoBehaviour
     public void SetState(PLAYER_STATE state)
     {
         currentState = state;
-        switch (state)
+        switch (currentState)
         {
             case PLAYER_STATE.Core:
                 //Playing particle effect.
@@ -126,6 +127,8 @@ public class StateManager : MonoBehaviour
                 coreManager.transform.position = mechObject.transform.position;
                 mechObject.SetActive(false);
                 playerHandler.CoreRigidbody.AddForce(Vector3.up * ejectForce, ForceMode.Impulse);
+                hudCanvas.worldCamera = playerHandler.ThirdPersonCamera;
+
                 break;
 
             case PLAYER_STATE.Mech:
@@ -135,10 +138,7 @@ public class StateManager : MonoBehaviour
                 // Updating the mechs postion.
                 mechObject.SetActive(true);
 
-                //playerHandler.MechCharacterController.enabled = false;
-                mechObject.transform.position = coreGraphic.transform.position;
-                //playerHandler.MechCharacterController.enabled = true;
-
+                hudCanvas.worldCamera = playerHandler.FirstPersonCamera;
                 break;
         }
     }

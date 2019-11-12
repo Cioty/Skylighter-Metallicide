@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2400752963215135383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5333788134678056665}
+  m_Layer: 0
+  m_Name: Rocket Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5333788134678056665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400752963215135383}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.53626025, y: 0.4719863, z: 1.0135331}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 905049037995029899}
+  - {fileID: 8348947244899171915}
+  m_Father: {fileID: 8200958712033532134}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4331911252703462937
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +62,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8200958712033532134}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
 --- !u!136 &683128513274495306
 CapsuleCollider:
@@ -66,7 +98,7 @@ Rigidbody:
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 6881256644416040759}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -82,7 +114,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 6881256644416040759}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6579796632221102684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -91,13 +123,13 @@ Transform:
   m_Children:
   - {fileID: 7764965633002130482}
   m_Father: {fileID: 8200958712033532134}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7036415246333729624
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 6881256644416040759}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -112,9 +144,8 @@ GameObject:
 --- !u!4 &7764965633002130482
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6881256644416040759}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7036415246333729624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -154,8 +185,7 @@ Transform:
   m_LocalPosition: {x: -0.014, y: 2.344, z: 2.495}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 905049037995029899}
-  - {fileID: 8348947244899171915}
+  - {fileID: 5333788134678056665}
   - {fileID: 2917159165874756203}
   - {fileID: 4207934408023142521}
   m_Father: {fileID: 0}
@@ -175,12 +205,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directHitDamage: 20
   splashDamage: 10
-  splashDamageRadius: 250
+  splashDamageRadius: 1.5
   lifeLength: 2.5
   explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
   rigidBody: {fileID: 1720737915752188110}
-  showGizmos: 0
+  projectileModel: {fileID: 2400752963215135383}
+  showGizmos: 1
   color: {r: 1, g: 0, b: 0, a: 0}
 --- !u!136 &8492234093809181069
 CapsuleCollider:
@@ -217,23 +248,35 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8200958712033532134}
+    m_TransformParent: {fileID: 5333788134678056665}
     m_Modifications:
+    - target: {fileID: 100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
+      propertyPath: m_Name
+      value: Rocket_Projectile_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
+      propertyPath: m_TagString
+      value: Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.881784e-18
+      value: -0.53626025
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.4719863
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.11756195
+      value: -1.1310952
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
       propertyPath: m_LocalRotation.y
@@ -275,14 +318,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.018462636
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
-      propertyPath: m_Name
-      value: Rocket_Projectile_Mesh
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
-      propertyPath: m_TagString
-      value: Projectile
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e00b65f9b19ceb4a913c5839a3e7dd3, type: 3}
 --- !u!4 &905049037995029899 stripped
@@ -296,7 +331,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8200958712033532134}
+    m_TransformParent: {fileID: 5333788134678056665}
     m_Modifications:
     - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
         type: 3}
@@ -305,28 +340,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
         type: 3}
-      propertyPath: m_TagString
-      value: Projectile
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4150931063429688018, guid: e38fc447f9857c04192d04b0ad3c2d86,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.53626025
       objectReference: {fileID: 0}
     - target: {fileID: 4150931063429688018, guid: e38fc447f9857c04192d04b0ad3c2d86,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.4719863
       objectReference: {fileID: 0}
     - target: {fileID: 4150931063429688018, guid: e38fc447f9857c04192d04b0ad3c2d86,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.0135331
       objectReference: {fileID: 0}
     - target: {fileID: 4150931063429688018, guid: e38fc447f9857c04192d04b0ad3c2d86,
         type: 3}
@@ -376,80 +411,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5352099930073502873}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6881256644416040759
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8200958712033532134}
-    m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_TagString
-      value: Projectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.5000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.49999973
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.4999996
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.50000036
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800353570298241797, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -90.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800353570298241818, guid: cc71e27e7832c254abfe7dfdd30d577e,
-        type: 3}
-      propertyPath: m_Name
-      value: PS_Rocket_Flame_003
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cc71e27e7832c254abfe7dfdd30d577e, type: 3}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -398,7 +398,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16624
+  m_Name: pb_Mesh20186
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1658,7 +1658,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16610
+  m_Name: pb_Mesh20172
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1818,7 +1818,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16662
+  m_Name: pb_Mesh20204
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1978,7 +1978,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16558
+  m_Name: pb_Mesh20130
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2156,7 +2156,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16674
+  m_Name: pb_Mesh20216
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3631,7 +3631,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16590
+  m_Name: pb_Mesh20158
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -4697,17 +4697,9 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_IsSelectable: 1
-  m_SelectedFaces: 04000000
-  m_SelectedEdges:
-  - a: 16
-    b: 17
-  - a: 18
-    b: 16
-  - a: 17
-    b: 19
-  - a: 19
-    b: 18
-  m_SelectedVertices: 10000000110000001200000013000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!23 &1488907992
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4773,7 +4765,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16692
+  m_Name: pb_Mesh20230
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -5616,95 +5608,5 @@ PrefabInstance:
       propertyPath: respawnArray
       value: 
       objectReference: {fileID: 1918920950}
-    - target: {fileID: 9187262083911835582, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: debugPlayerCount
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187262083911835582, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: forceDebugMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5554915539794472910, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: playerViewMask
-      value: Player1View
-      objectReference: {fileID: 0}
-    - target: {fileID: 5554915539951872298, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: playerViewMask
-      value: Player2View
-      objectReference: {fileID: 0}
-    - target: {fileID: 5554915540817048217, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: playerViewMask
-      value: Player1View
-      objectReference: {fileID: 0}
-    - target: {fileID: 5554915540462748403, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: playerViewMask
-      value: Player2View
-      objectReference: {fileID: 0}
-    - target: {fileID: 5554915540421728370, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: playerViewMask
-      value: Player3View
-      objectReference: {fileID: 0}
-    - target: {fileID: 5554915541420479435, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: playerViewMask
-      value: Player1View
-      objectReference: {fileID: 0}
-    - target: {fileID: 2380393936570379636, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2380393936707998921, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2380393936663301704, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2380393936849550683, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2380393936034347508, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2380393936059236112, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2380393935513519601, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2380393934891589058, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2380393935207400659, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2380393935313790115, guid: 4262946694cd31d4e9c4189c9a3f2ead,
-        type: 3}
-      propertyPath: Volume
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4262946694cd31d4e9c4189c9a3f2ead, type: 3}

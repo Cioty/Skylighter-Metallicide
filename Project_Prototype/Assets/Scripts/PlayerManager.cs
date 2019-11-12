@@ -54,6 +54,9 @@ public class PlayerManager : MonoBehaviour
     {
         ActivateCorrectScreenView();
         ActivateAndPositionAllPlayers();
+        
+        // Resets the occupancy of the mech station:
+        RespawnArray.instance.ResetMechRespawnStations = true;
 
         // Destroys the transferd data.
         if (!forceDebugMode && PlayerData.instance != null)

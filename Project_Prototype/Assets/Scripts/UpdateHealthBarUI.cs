@@ -18,6 +18,6 @@ public class UpdateHealthBarUI : MonoBehaviour
         if (playerHandler.CurrentState == StateManager.PLAYER_STATE.Mech)
             healthBar.sizeDelta = new Vector2(playerHandler.mechHealth * 2, healthBar.rect.height);
         else
-            healthBar.sizeDelta.Set(playerHandler.coreHealth * 2, healthBar.sizeDelta.x);
+            healthBar.sizeDelta = new Vector2(playerHandler.coreHealth * 2, healthBar.rect.height);
     }
 }
