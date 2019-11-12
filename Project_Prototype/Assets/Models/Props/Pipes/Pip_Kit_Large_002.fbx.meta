@@ -1,0 +1,174 @@
+fileFormatVersion: 2
+guid: 5cad97d2d4f4dcb40ac327fb60dc4bf0
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Pipe_30_Degree
+    100004: Pipe_30_Degree1
+    100006: Pipe_30_Degree2
+    100008: Pipe_30_Degree3
+    100010: Pipe_75_Degree
+    100012: Pipe_75_Degree1
+    100014: Pipe_75_Degree2
+    100016: Pipe_75_Degree3
+    100018: Pipe_90_Degrees
+    100020: Pipe_90_Degrees1
+    100022: Pipe_90_Degrees2
+    100024: Pipe_90_Degrees3
+    100026: Pipe_Length
+    100028: Pipe_Length1
+    100030: Pipe_Length2
+    100032: Pipe_Length3
+    400000: //RootNode
+    400002: Pipe_30_Degree
+    400004: Pipe_30_Degree1
+    400006: Pipe_30_Degree2
+    400008: Pipe_30_Degree3
+    400010: Pipe_75_Degree
+    400012: Pipe_75_Degree1
+    400014: Pipe_75_Degree2
+    400016: Pipe_75_Degree3
+    400018: Pipe_90_Degrees
+    400020: Pipe_90_Degrees1
+    400022: Pipe_90_Degrees2
+    400024: Pipe_90_Degrees3
+    400026: Pipe_Length
+    400028: Pipe_Length1
+    400030: Pipe_Length2
+    400032: Pipe_Length3
+    2100000: lambert1
+    2300000: Pipe_30_Degree
+    2300002: Pipe_30_Degree1
+    2300004: Pipe_30_Degree2
+    2300006: Pipe_30_Degree3
+    2300008: Pipe_75_Degree
+    2300010: Pipe_75_Degree1
+    2300012: Pipe_75_Degree2
+    2300014: Pipe_75_Degree3
+    2300016: Pipe_90_Degrees
+    2300018: Pipe_90_Degrees1
+    2300020: Pipe_90_Degrees2
+    2300022: Pipe_90_Degrees3
+    2300024: Pipe_Length
+    2300026: Pipe_Length1
+    2300028: Pipe_Length2
+    2300030: Pipe_Length3
+    3300000: Pipe_30_Degree
+    3300002: Pipe_30_Degree1
+    3300004: Pipe_30_Degree2
+    3300006: Pipe_30_Degree3
+    3300008: Pipe_75_Degree
+    3300010: Pipe_75_Degree1
+    3300012: Pipe_75_Degree2
+    3300014: Pipe_75_Degree3
+    3300016: Pipe_90_Degrees
+    3300018: Pipe_90_Degrees1
+    3300020: Pipe_90_Degrees2
+    3300022: Pipe_90_Degrees3
+    3300024: Pipe_Length
+    3300026: Pipe_Length1
+    3300028: Pipe_Length2
+    3300030: Pipe_Length3
+    4300000: Pipe_75_Degree
+    4300002: Pipe_30_Degree
+    4300004: Pipe_90_Degrees
+    4300006: Pipe_Length
+    4300008: Pipe_75_Degree1
+    4300010: Pipe_75_Degree2
+    4300012: Pipe_75_Degree3
+    4300014: Pipe_90_Degrees1
+    4300016: Pipe_90_Degrees2
+    4300018: Pipe_90_Degrees3
+    4300020: Pipe_Length1
+    4300022: Pipe_Length2
+    4300024: Pipe_Length3
+    4300026: Pipe_30_Degree1
+    4300028: Pipe_30_Degree2
+    4300030: Pipe_30_Degree3
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

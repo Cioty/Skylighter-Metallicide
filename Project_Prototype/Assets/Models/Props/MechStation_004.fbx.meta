@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: 3f0eac25cec2e434395f852b849c0d0c
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: barrier
+    100002: //RootNode
+    100004: root
+    100006: ballDoorA
+    100008: ballDoorB
+    100010: ceiling
+    100012: ceilingGear
+    100014: charger_Extend
+    100016: charger_Module
+    100018: charger_Turn
+    100020: elevator
+    100022: gear1A
+    100024: gear1B
+    100026: gear2A
+    100028: mechStation
+    100030: mechStationGeo
+    100032: refuelerA_Base
+    100034: refuelerA_Probe
+    100036: refuelerB_Base
+    100038: refuelerB_Probe
+    400000: barrier
+    400002: //RootNode
+    400004: root
+    400006: ballDoorA
+    400008: ballDoorB
+    400010: ceiling
+    400012: ceilingGear
+    400014: charger_Extend
+    400016: charger_Module
+    400018: charger_Turn
+    400020: elevator
+    400022: gear1A
+    400024: gear1B
+    400026: gear2A
+    400028: mechStation
+    400030: mechStationGeo
+    400032: refuelerA_Base
+    400034: refuelerA_Probe
+    400036: refuelerB_Base
+    400038: refuelerB_Probe
+    2100000: lambert6
+    2100002: lambert3
+    2100004: lambert4
+    2100006: lambert9
+    2100008: lambert5
+    2100010: lambert1
+    2100012: lambert2
+    2100014: lambert8
+    4300000: mechStationGeo
+    7400000: Hatch_Close
+    7400002: Refuling
+    7400004: Elevater_GoingUP
+    7400006: Barrier_GoingUP
+    9500000: //RootNode
+    13700000: mechStationGeo
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 8175182e34ee3864a847e80173150e72, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 8175182e34ee3864a847e80173150e72, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3
+    second: {fileID: 2100000, guid: 8175182e34ee3864a847e80173150e72, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

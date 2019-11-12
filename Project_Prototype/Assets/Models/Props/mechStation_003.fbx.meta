@@ -46,7 +46,12 @@ ModelImporter:
     7400000: Take 001
     9500000: //RootNode
     13700000: mechStationGeo
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Respawn_Station
+    second: {fileID: 2100000, guid: 8175182e34ee3864a847e80173150e72, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
