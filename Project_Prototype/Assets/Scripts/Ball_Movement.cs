@@ -20,7 +20,7 @@ public class Ball_Movement : MonoBehaviour
     private float currentSpeed;
     public float movementSpeed = 5.0f;
     public float maxSpeed = 10.0f;
-    private float acceleration = 0.0f;
+    //private float acceleration = 0.0f;
 
     private float smooth = 1.0f;
 
@@ -126,11 +126,10 @@ public class Ball_Movement : MonoBehaviour
         }
 
         currentVelocity = direction * currentSpeed;
-        coreCage.transform.localRotation = coreCage.transform.localRotation * Quaternion.AngleAxis(coreCage.transform.localRotation.x + currentSpeed, Vector3.right);
+        coreCage.transform.localRotation = coreCage.transform.localRotation * Quaternion.AngleAxis(coreCage.transform.localRotation.x + currentSpeed/movementSpeed, Vector3.right);
 
         // Translate position
-        rb.AddForce(currentVelocity);
-        
+        rb.AddForce(currentVelocity); 
     }
 
     void coreDirection()

@@ -195,12 +195,12 @@ public class PlayerHandler : MonoBehaviour
 
     public int MaxMechHealth
     {
-        get { return mechHealth; }
+        get { return mechMaxHealth; }
     }
 
     public int MaxCoreHealth
     {
-        get { return coreHealth; }
+        get { return coreMaxHealth; }
     }
 
     public bool IsAlive

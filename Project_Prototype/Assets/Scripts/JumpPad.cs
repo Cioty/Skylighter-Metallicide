@@ -52,9 +52,9 @@ public class JumpPad : MonoBehaviour
                 if (hasLaunched)
                 {
                     if (playerHandler.CurrentState == StateManager.PLAYER_STATE.Mech)
-                        playerHandler.MechImpactRecevier.AddImpact(forceDirection.eulerAngles, (launchForce * 16));
+                        playerHandler.MechImpactRecevier.AddImpact(forceDirection.transform.up, (launchForce * 16));
                     else
-                        playerHandler.CoreRigidbody.AddForce((forceDirection.eulerAngles.normalized) * launchForce, ForceMode.Impulse);
+                        playerHandler.CoreRigidbody.AddForce((forceDirection.transform.up) * launchForce, ForceMode.Impulse);
 
                     hasLaunched = false;
                     canLaunch = false;

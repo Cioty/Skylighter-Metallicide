@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Editor\EditorShortCutKeys.cs" />
     <Compile Include="Assets\Editor\ObjExporter.cs" />
+    <Compile Include="Assets\Third Party\MultiAudioListener\Editor\MultiAudioSourceEditorScript.cs" />
     <Reference Include="Unity.ProBuilder">
       <HintPath>C:/Users/s191187/Desktop/Metallicide/Skylighter-Metallicide/trunk/Project_Prototype/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
     </Reference>

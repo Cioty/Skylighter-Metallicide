@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Repair_Kit : MonoBehaviour
 {   
-    public Transform platform;
-
     private PlayerHandler playerHandler;
    
     LoadPlayers players;
@@ -15,7 +13,7 @@ public class Repair_Kit : MonoBehaviour
    
     bool isInteractable = true;
 
-    public float coolDown;
+    public float coolDown = 5.0f;
     private float coolDownCounter;
 
     private float timerReset = 0.0f;
@@ -23,11 +21,6 @@ public class Repair_Kit : MonoBehaviour
     private void Awake()
     {
         thisBox = GetComponent<Renderer>();
-
-        platform = GetComponent<Transform>();
-
-        transform.localPosition = platform.localPosition;
-    
         coolDownCounter = timerReset;
     }
 

@@ -48,10 +48,11 @@ public class ViewmodelControl : MonoBehaviour
     Vector3 viewModelDirNormal;
 
     // View model sway variables
-    float maxSwayX = 30.0f;
-    float sway = 4.0f;
-    float smooth = 3.0f;
-    float maxSwayY = 5.0f;
+    [Header("Sway Stuff")]
+    public float maxSwayX = 30.0f;
+    public float sway = 4.0f;
+    public float smooth = 3.0f;
+    public float maxSwayY = 3.0f;
 
 
     // Get the first person Camera script
@@ -157,41 +158,11 @@ public class ViewmodelControl : MonoBehaviour
 
         // New rotation to lerp towards || Rotation Y is used to set the Vertical axis.
         // Horizontal rotation uses rotation difference to slowly iter back to normal
-        Quaternion rotateView = Quaternion.Euler(0.0f, viewModelTransform.localRotation.x + -rotationDifference.x, 0.0f) * (Quaternion.AngleAxis(-newRotation.y + -rotationDifference.y, Vector3.right));
+        Quaternion rotateView = Quaternion.Euler(0.0f, viewModelTransform.localRotation.x + -rotationDifference.x, 0.0f) * (Quaternion.AngleAxis(viewModelTransform.localRotation.y + (-newRotation.y - rotationDifference.y), Vector3.right));
       
         viewModelTransform.localRotation = Quaternion.Slerp(viewModelTransform.localRotation, rotateView, Time.deltaTime * smooth);       
 
         // Store this frame's rotation for the next frame.
         lastRotation = newRotation;
     }
-
-    /*
-     * Keep track of what mouseLook.y was last frame
-     * Every frame: get the mouseLook.y from camera
-     * //Work out difference : turning velocity
-     */
-
-
-    // Ever been in a car that accelerated too fast?
-    // Your head gets blown back
-    //void CameraDrag()
-    //{
-    //    // The current velocity
-    //    currentVelocity = playerStats.CurrentVelocity;
-
-    //    // The direction the camera is thrown back (always opposite of where you're heading)
-    //    directionThrowBack = -(currentVelocity - lastVelocity).normalized;
-
-    //    // Scale the normalised vector by a set distance.
-    //    directionThrowBack = directionThrowBack * 2;
-
-    //    Vector3 tempPosition = camTransform.position - directionThrowBack;
-
-    //    // Lerp towards the new position at the rate of the speed.
-    //    camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, tempPosition, Time.deltaTime * (currentVelocity - lastVelocity).magnitude);
-
-
-    //    // The last frame's velocity
-    //    lastVelocity = currentVelocity;
-    //}
 }

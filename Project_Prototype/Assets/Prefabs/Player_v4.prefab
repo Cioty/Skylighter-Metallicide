@@ -626,7 +626,7 @@ Rigidbody:
   m_GameObject: {fileID: 1655391331665797396}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebe882f5a289ed4085d13bcab5f6225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostJumpSpeed: 10
+  boostJumpSpeed: 5
   boostJumpDuration: 0.7
 --- !u!114 &9133398737514959469
 MonoBehaviour:
@@ -1208,6 +1208,10 @@ MonoBehaviour:
   viewModel: {fileID: 8069721040885430030}
   player: {fileID: 7559876464515234039}
   Camera: {fileID: 8403142718193516435}
+  maxSwayX: 30
+  sway: 4
+  smooth: 3
+  maxSwayY: 30
 --- !u!114 &2597064449129609466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1668,8 +1672,8 @@ MonoBehaviour:
   sphereObject: {fileID: 1655391331665797396}
   coreObject: {fileID: 1655391331665797396}
   coreCage: {fileID: 975377813915519720}
-  movementSpeed: 5
-  maxSpeed: 20
+  movementSpeed: 2.5
+  maxSpeed: 10
   jumpForce: 5
   distanceToGround: 0.5
 --- !u!1 &6262758074424456493
@@ -14625,6 +14629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mechHealth: 100
   coreHealth: 100
+  invulnerableAfterSpawnTime: 3
   mechObject: {fileID: 3232240920207562883}
   coreObject: {fileID: 6058193631313180481}
   crosshairTransform: {fileID: 3108767545566631501}
@@ -14972,7 +14977,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -15014,9 +15019,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1655391331665797396}
   playerHandler: {fileID: 3632347098732778909}
-  rotationSpeed: 5
-  minY: -35
+  rotationSpeed: 60
+  minY: -60
   maxY: 60
+  smooth: 0
+  nearClip: 0.5
+  farClip: 5
 --- !u!1 &8634713630340020092
 GameObject:
   m_ObjectHideFlags: 0
@@ -15269,16 +15277,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6637014968880545895}
     m_Modifications:
-    - target: {fileID: 1704986933197131412, guid: e30ad2f4a4c9bf24890db82915e05147,
-        type: 3}
-      propertyPath: m_Name
-      value: RocketLauncher
-      objectReference: {fileID: 0}
-    - target: {fileID: 1704986933197131412, guid: e30ad2f4a4c9bf24890db82915e05147,
-        type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 1704986933196903092, guid: e30ad2f4a4c9bf24890db82915e05147,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15333,6 +15331,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704986933197131412, guid: e30ad2f4a4c9bf24890db82915e05147,
+        type: 3}
+      propertyPath: m_Name
+      value: RocketLauncher
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704986933197131412, guid: e30ad2f4a4c9bf24890db82915e05147,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1704986933197131420, guid: e30ad2f4a4c9bf24890db82915e05147,
         type: 3}
@@ -15495,16 +15503,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6637014968880545901}
     m_Modifications:
-    - target: {fileID: 2590526715233487572, guid: da70ae6fccddb4d448a9b68858392e03,
-        type: 3}
-      propertyPath: m_Name
-      value: BurstRifle
-      objectReference: {fileID: 0}
-    - target: {fileID: 2590526715233487572, guid: da70ae6fccddb4d448a9b68858392e03,
-        type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2590526715233130292, guid: da70ae6fccddb4d448a9b68858392e03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15559,6 +15557,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590526715233487572, guid: da70ae6fccddb4d448a9b68858392e03,
+        type: 3}
+      propertyPath: m_Name
+      value: BurstRifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590526715233487572, guid: da70ae6fccddb4d448a9b68858392e03,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5770379588099202748, guid: da70ae6fccddb4d448a9b68858392e03,
         type: 3}
