@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Core
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: 4800000, guid: f94533c237f74c043ad7607050c4a79a, type: 3}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -19,6 +19,34 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_3C5CC97E:
+        m_Texture: {fileID: 2800000, guid: b84a420e0c6be0b4c88d3772813c178d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_60B7AAEB:
+        m_Texture: {fileID: 2800000, guid: d7bfce80e1f3055419407a2f2aaf1d1e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_869D0645:
+        m_Texture: {fileID: 2800000, guid: 50e37191ab1a09d4091a130383800539, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_86BA6528:
+        m_Texture: {fileID: 2800000, guid: 4e473e3c28d408b4d90e7a1f089da81d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_8BEA5507:
+        m_Texture: {fileID: 2800000, guid: c57cf67ad9b04644d87c501cc456b8eb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AAD4F709:
+        m_Texture: {fileID: 2800000, guid: 5ec0839788711ad46bf9b0d98ac8504a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_F871B31B:
+        m_Texture: {fileID: 2800000, guid: 94ce8130b38b90343b840457c4a900e3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 50e37191ab1a09d4091a130383800539, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -44,6 +72,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_2A3F096B: 0
+    - Vector1_3C96C21A: 1
+    - Vector1_6D796076: 0.01
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -53,6 +84,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Health_Level: -1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _ReceiveShadows: 1
@@ -63,6 +95,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_33059D4A: {r: 4, g: 0.6492146, b: 0, a: 0}
+    - Color_6D0052DF: {r: 7.999999, g: 3.39267, b: 0, a: 0}
+    - Color_8E5D2085: {r: 1, g: 0, b: 0, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Primary_Colour: {r: 1, g: 0.34509805, b: 0, a: 1}
+    - _Secondary_Colour: {r: 0.7176471, g: 0.0627451, b: 0.16862746, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _Tertiary_Colour: {r: 0.039215688, g: 0.047058824, b: 0.20784314, a: 1}
