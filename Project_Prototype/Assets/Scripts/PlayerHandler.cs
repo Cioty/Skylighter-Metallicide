@@ -11,6 +11,7 @@
  * Deficiences:
  * 
  *===========================================================================*/
+using TMPro;
 using UnityEngine;
 using XboxCtrlrInput;
 
@@ -19,23 +20,27 @@ public class PlayerHandler : MonoBehaviour
     [Header("Attributes")]
     public int mechHealth;
     public int coreHealth;
+    public float timeToRespawn = 3f;
     public float invulnerableAfterSpawnTime = 3f;
+    public string playerViewMask;
+    [SerializeField]
+    private int playerID;
 
     [Header("Object References")]
     public GameObject mechObject;
     public GameObject coreObject;
-    public RectTransform crosshairTransform;
     public Camera firstPersonCamera;
     public Camera thirdPersonCamera;
     public GameObject viewModelObject;
     public GameObject mechModelObject;
     public GameManager gameManager;
+    public GameObject respawnTimerUI;
+
+    [Header("Component References")]
+    public RectTransform crosshairTransform;
     public ScreenShake firstPersonScreenShake;
     public RocketJump rocketJump;
-    public string playerViewMask;
-
-    [SerializeField]
-    private int playerID;
+    public TextMeshProUGUI respawnTimerTMP;
 
     [Header("Screen Shake")]
     public float shakeDuration = 0.5f;
@@ -56,8 +61,9 @@ public class PlayerHandler : MonoBehaviour
     private StateManager stateManager;
     private PlayerStatistics playerStats;
     private bool isControllable = true;
-    private bool hasBeenAddedToSplashCheck = false;
+    private bool addToSplashCheck = false;
     private float afterSpawnTimer = 0.0f;
+    private float respawnTimer = 0.0f;
     // ----------------------------------------------- //
 
     [Header("Boost Meter")]
@@ -87,11 +93,43 @@ public class PlayerHandler : MonoBehaviour
         impactReceiver = mechObject.GetComponent<ImpactReceiver>();
     }
 
+    private void Start()
+    {
+        // Setting up the respawn timer:
+        respawnTimer = timeToRespawn;
+    }
+
     private void Update()
     {
-        if(isInvulnerable)
+        // Timing the invulnerablity after spawn:
+        InvulnerableAfterSpawnTimer();
+        
+        // Checking the health of mech & core:
+        CheckHealth();
+
+        // Boost regen timer:
+        BoostRegen();
+    }
+    
+    private bool ReadyToRespawn()
+    {
+        respawnTimer -= Time.deltaTime;
+        respawnTimerTMP.text = respawnTimer.ToString("0.00") + " secs";
+
+        bool result = (respawnTimer <= 0) ? true : false;
+        if (result)
         {
-            if(afterSpawnTimer < invulnerableAfterSpawnTime)
+            respawnTimer = timeToRespawn;
+            return result;
+        }
+        return false;
+    }
+
+    private void InvulnerableAfterSpawnTimer()
+    {
+        if (isInvulnerable)
+        {
+            if (afterSpawnTimer < invulnerableAfterSpawnTime)
                 afterSpawnTimer += Time.deltaTime;
             else
             {
@@ -100,7 +138,10 @@ public class PlayerHandler : MonoBehaviour
                 Debug.Log("Player" + ID + " is no longer invulnerable!");
             }
         }
+    }
 
+    public void CheckHealth()
+    {
         // Checking the mechs health:
         if (mechHealth <= 0)
         {
@@ -111,12 +152,16 @@ public class PlayerHandler : MonoBehaviour
         }
 
         // Checking the cores health:
-        if (!IsAlive)
+        if (!IsAlive || coreHealth <= 0)
         {
             // Respawning player at random location.
             RandomSpawn_FromDeath();
         }
 
+    }
+
+    public void BoostRegen()
+    {
         // Regenerate Boost Meter:
         if (boostPoints < 3)
         {
@@ -138,14 +183,28 @@ public class PlayerHandler : MonoBehaviour
     // A function to respawn the player at a random respawn staion.
     public void RandomSpawn_FromDeath()
     {
-        // Setting the player to be invulnerable.
-        isInvulnerable = true;
+        // Turning off the players controls:
+        isControllable = false;
 
-        // Setting the core to the death state.
-        playerStats.HasDied();
 
-        // Spawning in the player.
-        RespawnArray.instance.GetRandomSpawnPoint().GetComponent<Mech_Recovery>().SpawnPlayer(this);
+        // Enabling the respawn timer UI:
+        respawnTimerUI.SetActive(true);
+
+        // Starting the respawn timer:
+        if(ReadyToRespawn())
+        {
+            // Spawning in the player:
+            RespawnArray.instance.GetRandomSpawnPoint().GetComponent<Mech_Recovery>().SpawnPlayer(this);
+            
+            // Enabling the players controls:
+            isControllable = true;
+
+            // Disabling the respawn timer UI:
+            respawnTimerUI.SetActive(false);
+
+            // Turning on invulnerablity:
+            isInvulnerable = true;
+        }
     }
 
     public StateManager.PLAYER_STATE CurrentState
@@ -295,8 +354,11 @@ public class PlayerHandler : MonoBehaviour
     // Returns mech health:
     public int Mech_TakeDamage(int damage)
     {
-        StartCoroutine(firstPersonScreenShake.Shake(shakeDuration, shakeForce));
-        this.mechHealth -= damage;
+        if(!isInvulnerable)
+        {
+            StartCoroutine(firstPersonScreenShake.Shake(shakeDuration, shakeForce));
+            this.mechHealth -= damage;
+        }
         return this.mechHealth;
     }
 
@@ -326,9 +388,9 @@ public class PlayerHandler : MonoBehaviour
         get { return rocketJump; }
     }
 
-    public bool HasBeenAddedToSplashCheck
+    public bool AddToSplashCheck
     {
-        get { return hasBeenAddedToSplashCheck; }
-        set { hasBeenAddedToSplashCheck = value; }
+        get { return addToSplashCheck; }
+        set { addToSplashCheck = value; }
     }
 }

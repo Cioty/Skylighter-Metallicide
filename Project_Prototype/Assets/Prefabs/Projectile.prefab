@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directHitDamage: 20
   splashDamage: 10
-  splashDamageRadius: 1.5
+  splashDamageRadius: 2
   lifeLength: 2.5
   explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
@@ -213,7 +213,6 @@ MonoBehaviour:
   projectileMesh: {fileID: 905049037995452843}
   rigidBody: {fileID: 1720737915752188110}
   showGizmos: 1
-  color: {r: 1, g: 0, b: 0, a: 0}
 --- !u!136 &8492234093809181069
 CapsuleCollider:
   m_ObjectHideFlags: 0

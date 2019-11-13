@@ -16,6 +16,7 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
+    // Player state enum:
     public enum PLAYER_STATE
     {
         Mech,
@@ -24,25 +25,32 @@ public class StateManager : MonoBehaviour
     }
 
     [Header("References")]
-    public GameObject firstPersonCameraPos;
-    public GameObject thirdPersonCameraPos;
-    public GameObject mechObject;
-    public GameObject coreManager;
-    public GameObject coreGraphic;
-    public GameObject mechEjectEffect;
     public PlayerHandler playerHandler;
+    public GameObject mechEjectEffect;
     public Canvas hudCanvas;
+
+    // Unused atm:
+    private GameObject firstPersonCameraPos;
+    private GameObject thirdPersonCameraPos;
 
     [Header("Eject Properties")]
     public KeyCode debugEjectKey;
     public float ejectHeight = 5.0f, ejectForce = 10.0f;
 
-    // Private variables.
+    // Private references & variables.
+    private GameObject mechObject;
+    private GameObject coreObject;
     private Vector3 targetPos = new Vector3();
     private Vector3 currentPos = new Vector3();
     private bool moveCamera = false;
     private float cameraSmoothTime = 0;
     private PLAYER_STATE currentState;
+
+    private void Awake()
+    {
+        mechObject = playerHandler.mechObject;
+        coreObject = playerHandler.coreObject;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -77,7 +85,7 @@ public class StateManager : MonoBehaviour
                 if (cameraSmoothTime > 1)
                     cameraSmoothTime = 1;
 
-                bool result = LerpCamera(coreManager, currentPos, targetPos, cameraSmoothTime);
+                bool result = LerpCamera(coreObject, currentPos, targetPos, cameraSmoothTime);
                 if (result)
                 {
                     Debug.Log("Completed camera transition.");
@@ -123,8 +131,8 @@ public class StateManager : MonoBehaviour
 
                 // Updating the core postion.
                 //playerHandler.CoreRigidbody.velocity = playerHandler.MechCharacterController.velocity;
-                coreManager.SetActive(true);
-                coreManager.transform.position = mechObject.transform.position;
+                coreObject.SetActive(true);
+                coreObject.transform.position = mechObject.transform.position;
                 mechObject.SetActive(false);
                 playerHandler.CoreRigidbody.AddForce(Vector3.up * ejectForce, ForceMode.Impulse);
                 hudCanvas.worldCamera = playerHandler.ThirdPersonCamera;
@@ -133,7 +141,7 @@ public class StateManager : MonoBehaviour
 
             case PLAYER_STATE.Mech:
                 // Swapping active objects.
-                coreManager.SetActive(false);
+                coreObject.SetActive(false);
 
                 // Updating the mechs postion.
                 mechObject.SetActive(true);

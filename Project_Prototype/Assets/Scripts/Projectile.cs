@@ -31,7 +31,6 @@ public class Projectile : MonoBehaviour
 
     [Header("Debug Options")]
     public bool showGizmos = true;
-    public Color color;
 
     // Player that fires the projectile:
     private PlayerHandler shooterHandler;
@@ -70,7 +69,7 @@ public class Projectile : MonoBehaviour
                 PlayerHandler handler = other.gameObject.GetComponentInParent<PlayerHandler>();
 
                 // Check what state the player is in:
-                if (handler.CurrentState == StateManager.PLAYER_STATE.Mech && !handler.IsInvulnerable)
+                if (handler.CurrentState == StateManager.PLAYER_STATE.Mech)
                 {
                     // Dealing damage to the player, then checking if their health is 0:
                     if (handler.Mech_TakeDamage(directHitDamage) == 0)
@@ -119,11 +118,13 @@ public class Projectile : MonoBehaviour
                 PlayerHandler player = hitObject.GetComponentInParent<PlayerHandler>();
 
                 // Checking if the player is already in the array.
-                if (player && player.ID != shooterHandler.ID && !player.HasBeenAddedToSplashCheck)
+                if (player && player.ID != shooterHandler.ID && !player.AddToSplashCheck)
                 {
+                    // Toggling the splash check flag in the player:
+                    player.AddToSplashCheck = true;
+
                     // Adding the player to the array.
                     hitPlayers.Add(player);
-                    player.HasBeenAddedToSplashCheck = true;
                 }
             }
         }
@@ -131,11 +132,24 @@ public class Projectile : MonoBehaviour
         foreach(PlayerHandler handler in hitPlayers)
         {
             // Dealing damage to the player, then checking if their health is 0:
-            if (handler.Mech_TakeDamage(splashDamage) == 0)
+            //Debug.Log("Dealing splash damage to player" + handler.ID);
+            if(handler.IsInMech())
             {
-                // Adding a mech kill to the player stats:
-                shooterHandler.PlayerStats.KilledMech();
+                if (handler.Mech_TakeDamage(splashDamage) == 0)
+                {
+                    // Adding a mech kill to the player stats:
+                    shooterHandler.PlayerStats.KilledMech();
+                }
             }
+            else
+            {
+                if (handler.Core_TakeDamage(splashDamage) == 0)
+                {
+                    // Adding a core kill to the player stats:
+                    shooterHandler.PlayerStats.KilledCore();
+                }
+            }
+            handler.AddToSplashCheck = false;
         }
     }
 
@@ -154,9 +168,12 @@ public class Projectile : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        // Draw a sphere at the transform's position to show splash damage radius.
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, splashDamageRadius);
+        if(showGizmos)
+        {
+            // Draw a sphere at the transform's position to show splash damage radius.
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, splashDamageRadius);
+        }
     }
 
     public Rigidbody RigidBody
