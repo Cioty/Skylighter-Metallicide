@@ -6,7 +6,7 @@ AvatarMask:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hatch
+  m_Name: Refuel and Elevator
   m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   m_Elements:
   - m_Path: 
@@ -18,35 +18,35 @@ AvatarMask:
   - m_Path: JNT/root/barrier
     m_Weight: 0
   - m_Path: JNT/root/ceiling
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: JNT/root/ceiling/ceilingGear
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: JNT/root/charger_Module
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: JNT/root/charger_Module/charger_Extend
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: JNT/root/charger_Module/charger_Extend/charger_Turn
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: JNT/root/elevator
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: JNT/root/elevator/ballDoorA
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: JNT/root/elevator/ballDoorB
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: JNT/root/elevator/gear1A
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: JNT/root/elevator/gear1B
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: JNT/root/elevator/gear2A
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: JNT/root/refuelerA_Base
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: JNT/root/refuelerA_Base/refuelerA_Probe
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: JNT/root/refuelerB_Base
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: JNT/root/refuelerB_Base/refuelerB_Probe
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: mechStation
     m_Weight: 0
   - m_Path: mechStation/mechStationGeo
