@@ -69,10 +69,7 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void FireProjectile()
     {
-        if (RLAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dormant"))
-        {
-            RLAnimator.SetTrigger("Fire");
-        }
+        RLAnimator.SetTrigger("Fire");
         //SFX_RocketFire.Play();
 
         Ray ray = firstPersonCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
