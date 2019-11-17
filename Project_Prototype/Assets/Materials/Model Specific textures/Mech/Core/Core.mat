@@ -75,6 +75,8 @@ Material:
     - Vector1_2A3F096B: 0
     - Vector1_3C96C21A: 1
     - Vector1_6D796076: 0.01
+    - Vector1_C002E064: 1
+    - Vector1_F9DD169F: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -97,10 +99,10 @@ Material:
     m_Colors:
     - Color_33059D4A: {r: 4, g: 0.6492146, b: 0, a: 0}
     - Color_6D0052DF: {r: 7.999999, g: 3.39267, b: 0, a: 0}
-    - Color_8E5D2085: {r: 1, g: 0, b: 0, a: 0}
+    - Color_8E5D2085: {r: 0, g: 0.9999995, b: 1, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Primary_Colour: {r: 1, g: 0.34509805, b: 0, a: 1}
-    - _Secondary_Colour: {r: 0.7176471, g: 0.0627451, b: 0.16862746, a: 1}
+    - _Primary_Colour: {r: 1, g: 0.25882354, b: 0.11764706, a: 1}
+    - _Secondary_Colour: {r: 0.9607843, g: 0.42352942, b: 0.42352942, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _Tertiary_Colour: {r: 0.039215688, g: 0.047058824, b: 0.20784314, a: 1}
+    - _Tertiary_Colour: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}

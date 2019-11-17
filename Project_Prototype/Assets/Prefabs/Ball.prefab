@@ -122,6 +122,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thirdPersonCamera: {fileID: 0}
+  sphereObject: {fileID: 0}
+  coreObject: {fileID: 0}
+  coreCage: {fileID: 0}
   movementSpeed: 10
+  maxSpeed: 10
   jumpForce: 7
   distanceToGround: 0.8

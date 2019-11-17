@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_869D0645:
-        m_Texture: {fileID: 2800000, guid: 57d8850ed9cefed46adad2644f843d85, type: 3}
+        m_Texture: {fileID: 2800000, guid: a13be5f9a062d6b46be2c2c2502781ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_86BA6528:
@@ -51,15 +51,17 @@ Material:
     - Vector1_2A3F096B: 0.03
     - Vector1_3C96C21A: 200
     - Vector1_6D796076: 0.02
+    - Vector1_C002E064: 1
     - Vector1_F9505E1A: -1
+    - Vector1_F9DD169F: 0.787
     - _Health_Level: -1
     m_Colors:
     - Color_33059D4A: {r: 7.999999, g: 2.297573, b: 0, a: 0}
     - Color_698C3D7E: {r: 1, g: 0, b: 0, a: 1}
     - Color_6D0052DF: {r: 1.9999998, g: 0, b: 0, a: 0}
-    - Color_8E5D2085: {r: 1, g: 0, b: 0, a: 0}
+    - Color_8E5D2085: {r: 0, g: 1, b: 0.9380336, a: 0}
     - Color_C812449D: {r: 0, g: 1, b: 0, a: 1}
     - Color_FEA0B2D3: {r: 0, g: 0, b: 1, a: 1}
-    - _Primary_Colour: {r: 1, g: 0.3431788, b: 0, a: 1}
-    - _Secondary_Colour: {r: 0.7169812, g: 0.064257726, b: 0.1687992, a: 1}
-    - _Tertiary_Colour: {r: 0.038180854, g: 0.046993565, b: 0.20754719, a: 1}
+    - _Primary_Colour: {r: 1, g: 0.26068217, b: 0.11792451, a: 1}
+    - _Secondary_Colour: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+    - _Tertiary_Colour: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}

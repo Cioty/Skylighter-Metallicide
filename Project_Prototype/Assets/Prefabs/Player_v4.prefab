@@ -1932,8 +1932,8 @@ MonoBehaviour:
   sphereObject: {fileID: 1655391331665797396}
   coreObject: {fileID: 1655391331665797396}
   coreCage: {fileID: 975377813915519720}
-  movementSpeed: 2.5
-  maxSpeed: 10
+  movementSpeed: 4
+  maxSpeed: 13
   jumpForce: 5
   distanceToGround: 0.5
 --- !u!1 &6262758074424456493
@@ -9403,7 +9403,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6637014968880651051}
-  m_LocalRotation: {x: 0.6878172, y: -0.15795262, z: -0.1255443, w: 0.69727844}
+  m_LocalRotation: {x: 0.68781716, y: -0.1579526, z: -0.12554428, w: 0.6972784}
   m_LocalPosition: {x: 7.163307, y: -2.9671326, z: -2.8335614}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -9613,7 +9613,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6637014968880651065}
-  m_LocalRotation: {x: 0.576661, y: -0.4079784, z: -0.3808665, w: 0.5966208}
+  m_LocalRotation: {x: 0.57666105, y: -0.40797842, z: -0.38086653, w: 0.59662086}
   m_LocalPosition: {x: 2.9671555, y: -7.1632996, z: -2.8335614}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -11420,7 +11420,7 @@ Animator:
   m_GameObject: {fileID: 6637014968880651173}
   m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 5c430c3549c8b084f8bfdc5d0242b951, type: 3}
-  m_Controller: {fileID: 9100000, guid: 282e754109bf4734d8d67ad0c10d6920, type: 2}
+  m_Controller: {fileID: 9100000, guid: 412564bc576cf594197070bad22fcbfb, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
