@@ -99,7 +99,7 @@ Material:
     m_Colors:
     - Color_33059D4A: {r: 4, g: 0.6492146, b: 0, a: 0}
     - Color_6D0052DF: {r: 7.999999, g: 3.39267, b: 0, a: 0}
-    - Color_8E5D2085: {r: 0, g: 0.9999995, b: 1, a: 0}
+    - Color_8E5D2085: {r: 0, g: 1.0592737, b: 1.0155585, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Primary_Colour: {r: 1, g: 0.25882354, b: 0.11764706, a: 1}

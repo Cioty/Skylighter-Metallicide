@@ -59,7 +59,7 @@ Material:
     - Color_33059D4A: {r: 7.999999, g: 2.297573, b: 0, a: 0}
     - Color_698C3D7E: {r: 1, g: 0, b: 0, a: 1}
     - Color_6D0052DF: {r: 1.9999998, g: 0, b: 0, a: 0}
-    - Color_8E5D2085: {r: 0, g: 1, b: 0.9380336, a: 0}
+    - Color_8E5D2085: {r: 0, g: 1.0592737, b: 1.0204521, a: 0}
     - Color_C812449D: {r: 0, g: 1, b: 0, a: 1}
     - Color_FEA0B2D3: {r: 0, g: 0, b: 1, a: 1}
     - _Primary_Colour: {r: 1, g: 0.26068217, b: 0.11792451, a: 1}
