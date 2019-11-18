@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceDirection: {fileID: 7604026374976697515}
-  maxCooldown: 2
+  maxCooldown: 0.1
   launchForce: 25
 --- !u!1 &982625573293186454
 GameObject:
@@ -162,6 +162,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: jumpPad_003
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -206,10 +222,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
-      propertyPath: m_Controller
+    - target: {fileID: 2300000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 9100000, guid: 3e2ec5d7517c8194ca4a5eb810391ffc, type: 2}
+      objectReference: {fileID: 2100000, guid: f9aa17149996a724db55a5947a00ea54, type: 2}
+    - target: {fileID: 2300000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9aa17149996a724db55a5947a00ea54, type: 2}
+    - target: {fileID: 2300000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9aa17149996a724db55a5947a00ea54, type: 2}
+    - target: {fileID: 2300000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9aa17149996a724db55a5947a00ea54, type: 2}
     - target: {fileID: 2300002, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -234,26 +262,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f9aa17149996a724db55a5947a00ea54, type: 2}
-    - target: {fileID: 2300000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f9aa17149996a724db55a5947a00ea54, type: 2}
-    - target: {fileID: 2300000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: f9aa17149996a724db55a5947a00ea54, type: 2}
-    - target: {fileID: 2300000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: f9aa17149996a724db55a5947a00ea54, type: 2}
-    - target: {fileID: 2300000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: f9aa17149996a724db55a5947a00ea54, type: 2}
     - target: {fileID: 2300006, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f9aa17149996a724db55a5947a00ea54, type: 2}
+    - target: {fileID: 9500000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3e2ec5d7517c8194ca4a5eb810391ffc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
 --- !u!1 &2995147651073044956 stripped
@@ -275,16 +291,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8107975139026662339}
     m_Modifications:
-    - target: {fileID: 2806576318601194803, guid: c6f86be16414c3c4abcc8cc4a204fd0d,
-        type: 3}
-      propertyPath: m_Name
-      value: Greybox Jumppad
-      objectReference: {fileID: 0}
-    - target: {fileID: 2806576318601194803, guid: c6f86be16414c3c4abcc8cc4a204fd0d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5872084341398231156, guid: c6f86be16414c3c4abcc8cc4a204fd0d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -338,6 +344,16 @@ PrefabInstance:
     - target: {fileID: 5872084341398231156, guid: c6f86be16414c3c4abcc8cc4a204fd0d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806576318601194803, guid: c6f86be16414c3c4abcc8cc4a204fd0d,
+        type: 3}
+      propertyPath: m_Name
+      value: Greybox Jumppad
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806576318601194803, guid: c6f86be16414c3c4abcc8cc4a204fd0d,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7278011005395159952, guid: c6f86be16414c3c4abcc8cc4a204fd0d,

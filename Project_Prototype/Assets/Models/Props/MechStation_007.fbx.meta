@@ -58,7 +58,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Respawn_Station1
-    second: {fileID: 2100000, guid: 8175182e34ee3864a847e80173150e72, type: 2}
+    second: {fileID: 2100000, guid: cf43c3cbf777d3844aebafe6344b3d50, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
