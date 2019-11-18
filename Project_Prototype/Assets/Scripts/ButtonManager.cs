@@ -53,7 +53,6 @@ public class ButtonManager : MonoBehaviour
                 {
                     if (hit.collider.gameObject == startButton)
                         MoveToConnectControllers();
-                    //SceneManager.LoadScene("Map01", LoadSceneMode.Single);
 
                     else if (hit.collider.gameObject == exitButton)
                         Application.Quit();

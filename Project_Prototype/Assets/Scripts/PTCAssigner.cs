@@ -24,6 +24,8 @@ public class PTCAssigner : MonoBehaviour
     [Header("References")]
     public GameObject playerContainersGroup;
     public GameObject allControllersConnectedScreen;
+    public GameObject gameInstance;
+    public FadePanel fadePanel;
 
     [Header("Debug Mode")]
     [Tooltip("Keep this off to start game normally!")]
@@ -110,10 +112,6 @@ public class PTCAssigner : MonoBehaviour
                         this.RemoveController(xboxController);
                     }
 
-                    //// If the container already has a player, then skip:
-                    //if (playerContainers[c].HasPlayer)
-                    //    continue;
-
                     // Listening to avalible controllers that have yet to be connected:
                     if (XCI.GetButtonUp(XboxButton.A, xboxController))
                     {
@@ -137,8 +135,9 @@ public class PTCAssigner : MonoBehaviour
 
     private void StartGame()
     {
-        PlayerData.instance.Save();
-        SceneManager.LoadScene("Map02", LoadSceneMode.Single);
+        //PlayerData.instance.Save();
+        //SceneManager.LoadScene("Map02", LoadSceneMode.Single);
+        fadePanel.FadeOut();
     }
 
     private PlayerContainer GetContainerByID(int ID)
@@ -171,7 +170,12 @@ public class PTCAssigner : MonoBehaviour
         GameObject containerGO = this.GetContainerByID(id).gameObject;
         if (containerGO)
         {
+            // Getting the container and checking if it already has a player
             PlayerContainer container = containerGO.GetComponent<PlayerContainer>();
+            if (container.HasPlayer)
+                return;
+
+            // Setting up the container:
             container.ID = id;
             container.Controller = controller;
             container.HasPlayer = true;
@@ -180,7 +184,7 @@ public class PTCAssigner : MonoBehaviour
         }
         else
         {
-            Debug.Log("Can't find an empty container.");
+            Debug.Log("Can't find container.");
         }
     }
 
@@ -199,7 +203,7 @@ public class PTCAssigner : MonoBehaviour
         }
         else
         {
-            Debug.Log("Can't find an empty container.");
+            Debug.Log("Can't find container.");
         }
     }
 
