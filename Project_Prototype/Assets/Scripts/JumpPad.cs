@@ -17,8 +17,9 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour
 {
     public Transform forceDirection;
-    public float maxCooldown = 2.0f;
-    public float launchForce;
+    public float maxCooldown = 0.1f;
+    public float coreLaunchForce;
+    public float mechLaunchForce;
     private bool hasLaunched = false;
     private Trigger trigger;
     private Animator animator;
@@ -41,25 +42,33 @@ public class JumpPad : MonoBehaviour
                 PlayerHandler playerHandler = collidedObject.GetComponentInParent<PlayerHandler>();
 
                 if (playerHandler.IsGrounded)
+                {
                     hasLaunched = false;
+                }
 
                 if (trigger.IsEnabled())
                 {
                     hasLaunched = true;
                     animator.SetTrigger("Jump");
                 }
+                else
+                    hasLaunched = false;
 
                 if (hasLaunched)
                 {
                     if (playerHandler.CurrentState == StateManager.PLAYER_STATE.Mech)
-                        playerHandler.MechImpactRecevier.AddImpact(forceDirection.transform.up, (launchForce * 16));
+                    {
+                        playerHandler.MechController.ResetGravity();
+                        playerHandler.MechImpactRecevier.AddImpact(forceDirection.transform.up, mechLaunchForce);
+                    }
                     else
-                        playerHandler.CoreRigidbody.AddForce((forceDirection.transform.up) * launchForce, ForceMode.Impulse);
+                    {
+                        playerHandler.CoreRigidbody.AddForce(forceDirection.transform.up * coreLaunchForce, ForceMode.Impulse);
+                    }
 
                     hasLaunched = false;
                     canLaunch = false;
                 }
-                //playerHandler.GetCurrentRigidBody().AddForce((forceDirection.eulerAngles.normalized) * launchForce, ForceMode.Impulse);
             }
         }
         else

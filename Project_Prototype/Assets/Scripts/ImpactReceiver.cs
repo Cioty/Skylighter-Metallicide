@@ -24,9 +24,9 @@ public class ImpactReceiver : MonoBehaviour
     {
         // Applying the impact force:
         if (impact.magnitude > 0.2F)
-        {
             character.Move(impact * Time.deltaTime);
-        }
+        else
+            impact = Vector3.zero;
 
         // Consumes the impact energy each cycle:
         impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);

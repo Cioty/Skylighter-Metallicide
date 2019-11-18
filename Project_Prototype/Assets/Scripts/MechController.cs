@@ -38,7 +38,9 @@ public class MechController : MonoBehaviour
     private Vector3 deceleration = Vector3.zero;
     private Vector3 moveDirection = Vector3.zero;
     private Vector3 lastDirection = Vector3.zero;
-    private Vector3 currentVelocity;
+    private Vector3 gravityVector = Vector3.zero;
+    private Vector3 currentVelocity = Vector3.zero;
+    private bool shouldResetGravity = false;
     private float horizontalAxis, verticalAxis;
     private float accelTimer, deccelTimer, directionalTimer;
     private bool justBoosted = false;
@@ -137,11 +139,18 @@ public class MechController : MonoBehaviour
         else
         {
             // Calculating gravity.
-            Vector3 gravityVector = Vector3.zero;
             if (!playerHandler.Mech_RocketJump.IsBoosting)
             {
-                gravityVector = Vector3.down* gravity *Time.deltaTime;
-                currentVelocity += gravityVector;
+                if (!shouldResetGravity)
+                {
+                    gravityVector = Vector3.down * gravity * Time.deltaTime;
+                    currentVelocity += gravityVector;
+                }
+                else
+                {
+                    currentVelocity.y = 0.0f;
+                    shouldResetGravity = false;
+                }
             }
 
             // Calculating the in air movement.
@@ -174,6 +183,11 @@ public class MechController : MonoBehaviour
 
         // Making the rigid bodies velocity equal the calculated velocity.
         controller.Move(currentVelocity * Time.deltaTime);
+    }
+
+    public void ResetGravity()
+    {
+        shouldResetGravity = true;
     }
 
     private bool IsGrounded()

@@ -35,6 +35,7 @@ public class StateManager : MonoBehaviour
 
     [Header("Eject Properties")]
     public KeyCode debugEjectKey;
+    public Transform ejectDirection;
     public float ejectHeight = 5.0f, ejectForce = 10.0f;
 
     // Private references & variables.
@@ -127,14 +128,13 @@ public class StateManager : MonoBehaviour
                 GameObject explosionObject = Instantiate(mechEjectEffect, mechObject.transform.position, mechObject.transform.rotation);
                 Destroy(explosionObject, 1.9f);
 
-                // Swapping active objects.
 
+                // Swapping active objects.
                 // Updating the core postion.
-                //playerHandler.CoreRigidbody.velocity = playerHandler.MechCharacterController.velocity;
                 coreObject.SetActive(true);
-                coreObject.transform.position = mechObject.transform.position;
+                playerHandler.coreModelObject.transform.position = ejectDirection.position;
                 mechObject.SetActive(false);
-                playerHandler.CoreRigidbody.AddForce(Vector3.up * ejectForce, ForceMode.Impulse);
+                playerHandler.CoreRigidbody.AddForce(ejectDirection.forward * ejectForce, ForceMode.Impulse);
                 hudCanvas.worldCamera = playerHandler.ThirdPersonCamera;
 
                 break;

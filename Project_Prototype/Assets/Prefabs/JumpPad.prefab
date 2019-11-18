@@ -106,7 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forceDirection: {fileID: 7604026374976697515}
   maxCooldown: 0.1
-  launchForce: 25
+  coreLaunchForce: 25
+  mechLaunchForce: 80
 --- !u!1 &982625573293186454
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,22 +162,6 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
       propertyPath: m_Name
       value: jumpPad_003
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8d7e0d2f79eaf51479fd1dbed6ab096d, type: 3}
       propertyPath: m_LocalPosition.x

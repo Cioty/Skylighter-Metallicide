@@ -33,6 +33,7 @@ public class PlayerHandler : MonoBehaviour
     public Camera thirdPersonCamera;
     public GameObject viewModelObject;
     public GameObject mechModelObject;
+    public GameObject coreModelObject;
     public GameManager gameManager;
     public GameObject respawnTimerUI;
 
