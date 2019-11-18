@@ -204,6 +204,7 @@ Transform:
   - {fileID: 7981681720606484915}
   - {fileID: 4088426138646985471}
   - {fileID: 6213450024245696877}
+  - {fileID: 3897568340947208869}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -422,6 +423,81 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20.135832, y: 24.258896, z: 73.006584}
   m_Center: {x: -0.054759905, y: -6.5685673, z: 15.0305395}
+--- !u!1001 &2177294065236999648
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2590526715233130292}
+    m_Modifications:
+    - target: {fileID: 2891799878977189702, guid: 79da065f4997baa4da9684cde8ebedca,
+        type: 3}
+      propertyPath: m_Name
+      value: PS_MuzzleFlash
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891799878977189701, guid: 79da065f4997baa4da9684cde8ebedca,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891799878977189701, guid: 79da065f4997baa4da9684cde8ebedca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891799878977189701, guid: 79da065f4997baa4da9684cde8ebedca,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 216.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891799878977189701, guid: 79da065f4997baa4da9684cde8ebedca,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891799878977189701, guid: 79da065f4997baa4da9684cde8ebedca,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891799878977189701, guid: 79da065f4997baa4da9684cde8ebedca,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891799878977189701, guid: 79da065f4997baa4da9684cde8ebedca,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891799878977189701, guid: 79da065f4997baa4da9684cde8ebedca,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891799878977189701, guid: 79da065f4997baa4da9684cde8ebedca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891799878977189701, guid: 79da065f4997baa4da9684cde8ebedca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891799878977189701, guid: 79da065f4997baa4da9684cde8ebedca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 79da065f4997baa4da9684cde8ebedca, type: 3}
+--- !u!4 &3897568340947208869 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2891799878977189701, guid: 79da065f4997baa4da9684cde8ebedca,
+    type: 3}
+  m_PrefabInstance: {fileID: 2177294065236999648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3973244424107368585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -488,6 +564,14 @@ PrefabInstance:
     - target: {fileID: 400180, guid: b33f092f6194f214db6687d4e8019627, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400064, guid: b33f092f6194f214db6687d4e8019627, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 56.117237
+      objectReference: {fileID: 0}
+    - target: {fileID: 400086, guid: b33f092f6194f214db6687d4e8019627, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 56.117237
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33f092f6194f214db6687d4e8019627, type: 3}
