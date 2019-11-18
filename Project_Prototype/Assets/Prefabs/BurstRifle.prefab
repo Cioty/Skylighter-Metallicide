@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7981681720606484915}
   - component: {fileID: 4267199556463197474}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BurstRifle Collider 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6213450024245696877}
   - component: {fileID: 1526309153974378617}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BurstRifle Collider 2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4088426138646985471}
   - component: {fileID: 4863396215760012433}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BurstRifle Collider 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
