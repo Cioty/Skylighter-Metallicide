@@ -203,8 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf0adbc06d4fb044a18a3e47ea2a933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directHitDamage: 20
-  splashDamage: 10
+  directHitDamage: 40
+  splashDamage: 27
   splashDamageRadius: 2
   lifeLength: 2.5
   explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
@@ -347,21 +347,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5333788134678056665}
     m_Modifications:
-    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
-        type: 3}
-      propertyPath: m_Name
-      value: PS_Rocket_Flame_002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
-        type: 3}
-      propertyPath: m_TagString
-      value: Projectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4150931063429688018, guid: e38fc447f9857c04192d04b0ad3c2d86,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -416,6 +401,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
+        type: 3}
+      propertyPath: m_Name
+      value: PS_Rocket_Flame_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e38fc447f9857c04192d04b0ad3c2d86, type: 3}

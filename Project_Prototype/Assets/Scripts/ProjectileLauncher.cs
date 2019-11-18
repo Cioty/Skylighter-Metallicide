@@ -25,7 +25,7 @@ public class ProjectileLauncher : MonoBehaviour
     private float fireTimer = 0.0f;
     private const float MAX_TRG_SCL = 1.21f;
 
-    public GameObject rocketLauncher;
+    public GameObject rocketLauncherMesh;
     private Animator RLAnimator;
 
     //public AudioSource SFX_RocketFire;
@@ -41,7 +41,7 @@ public class ProjectileLauncher : MonoBehaviour
     private void Awake()
     {
         playerObject = this.gameObject.transform.parent.gameObject;
-        RLAnimator = rocketLauncher.GetComponent<Animator>();
+        RLAnimator = rocketLauncherMesh.GetComponent<Animator>();
     }
 
     private void Update()
