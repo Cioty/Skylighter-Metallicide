@@ -1435,7 +1435,7 @@ GameObject:
   - component: {fileID: 5418991954781223429}
   - component: {fileID: 5418991954781223546}
   m_Layer: 5
-  m_Name: Post-match Scoreboard
+  m_Name: Canvas (Post-match)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

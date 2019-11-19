@@ -31,7 +31,6 @@ public class Ball_Movement : MonoBehaviour
     Quaternion currentCageRotX;
     Quaternion newCageRotX;
 
-
     // Jumping 
     public float jumpForce = 5.0f;
     private bool isJumping = false;
@@ -49,7 +48,7 @@ public class Ball_Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentCageRotX = new Quaternion(coreCage.transform.localRotation.x, 0.0f, 0.0f, 0.0f);
+        //currentCageRotX = new Quaternion(coreCage.transform.localRotation.x, 0.0f, 0.0f, 0.0f);
     }
 
     private void Update()
@@ -126,7 +125,7 @@ public class Ball_Movement : MonoBehaviour
         }
 
         currentVelocity = direction * currentSpeed;
-        coreCage.transform.localRotation = coreCage.transform.localRotation * Quaternion.AngleAxis(coreCage.transform.localRotation.x + currentSpeed/movementSpeed, Vector3.right);
+        // coreCage.transform.localRotation = coreCage.transform.localRotation * Quaternion.AngleAxis(coreCage.transform.localRotation.x + currentSpeed/movementSpeed, Vector3.right);
 
         // Translate position
         rb.AddForce(currentVelocity); 

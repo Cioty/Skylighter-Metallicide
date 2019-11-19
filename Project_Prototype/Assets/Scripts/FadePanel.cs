@@ -5,58 +5,65 @@ using UnityEngine.UI;
 
 public class FadePanel : MonoBehaviour
 {
-    public Image panel;
+    [Header("Attributes")]
+    private Image panel;
     public float timeToFadeIn;
+    public float timeTillFadeOut;
     public float timeToFadeOut;
+    public bool fadeIn = true;
+    public bool fadeOut = true;
+    public bool shouldWait = true;
+    private bool hasFinished = false;
 
-    private bool fadeOut, fadeIn;
+    private void Awake()
+    {
+        panel = this.GetComponent<Image>();
+    }
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
-        panel.canvasRenderer.SetAlpha(0.0f);
-    }
-
-    public void Fade()
-    {
-
-    }
-
-    IEnumerator DoFade()
-    {
-        CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
-        while (canvasGroup.alpha < 0)
+        if(fadeIn)
         {
-            canvasGroup.alpha += Time.deltaTime / 2;
-            yield return null;
+            panel.canvasRenderer.SetAlpha(0.0f);
+            FadeIn();
         }
-        canvasGroup.interactable = false;
-        yield return null;
+
+        else if(fadeOut)
+            panel.canvasRenderer.SetAlpha(1.0f);
+
+        if(shouldWait)
+            yield return new WaitForSeconds(timeTillFadeOut);
+
+        if(fadeOut)
+            FadeOut();
     }
 
     private void Update()
     {
-        if(fadeIn)
+        if(panel.canvasRenderer.GetAlpha() == 1.0f && fadeIn)
         {
-            panel.CrossFadeAlpha(1.0f, timeToFadeIn, false);
-            if (panel.material.color.a >= 1.0f)
-                fadeIn = false;
+            hasFinished = true;
         }
-        else if (fadeOut)
+
+        if (panel.canvasRenderer.GetAlpha() == 0.0f && fadeOut)
         {
-            panel.CrossFadeAlpha(0.0f, timeToFadeOut, false);
-            if (panel.material.color.a <= 0.0f)
-                fadeOut = false;
+            hasFinished = false;
         }
     }
 
-    public void FadeIn()
+    void FadeIn()
     {
-        fadeIn = true;
+        panel.CrossFadeAlpha(1.0f, timeToFadeIn, false);
     }
 
-    public void FadeOut()
+    void FadeOut()
     {
-        fadeOut = true;
+        panel.CrossFadeAlpha(0.0f, timeToFadeOut, false);
+    }
+
+    public bool HasFinished()
+    {
+        return hasFinished;
     }
 }

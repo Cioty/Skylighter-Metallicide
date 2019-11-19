@@ -40,9 +40,6 @@ public class PlayerData : MonoBehaviour
         instance = this;
 
         currentSplitScreenMode = SplitScreenMode.SINGLE;
-
-        // Making sure we don't destory the data on load of the game.
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public void Save()
@@ -55,7 +52,6 @@ public class PlayerData : MonoBehaviour
         {
             transferedPlayerContainers.Add(playerContainers[i]);
         }
-
     }
 
     public List<PlayerContainer> GetTransferedPlayerContainers()

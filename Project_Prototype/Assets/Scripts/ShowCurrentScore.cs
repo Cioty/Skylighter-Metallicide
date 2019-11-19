@@ -25,6 +25,13 @@ public class ShowCurrentScore : MonoBehaviour
     public KeyCode keybind;
     public XboxButton buttonBind;
     public Text score;
+    public GameObject panel;
+    private FadePanel fadePanel;
+
+    private void Awake()
+    {
+        fadePanel = panel.GetComponent<FadePanel>();
+    }
 
     // Update is called once per frame
     void Update()

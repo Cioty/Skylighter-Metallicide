@@ -25,7 +25,8 @@ public class PTCAssigner : MonoBehaviour
     public GameObject playerContainersGroup;
     public GameObject allControllersConnectedScreen;
     public GameObject gameInstance;
-    public FadePanel fadePanel;
+    public GameObject fadePanel;
+    public GameObject menuManager;
 
     [Header("Debug Mode")]
     [Tooltip("Keep this off to start game normally!")]
@@ -41,6 +42,8 @@ public class PTCAssigner : MonoBehaviour
     private List<XboxController> connectedControllerList = new List<XboxController>();
     private List<PlayerContainer> playerContainers = new List<PlayerContainer>();
     public static bool controllerFound = false;
+    private bool canStart = false;
+    private FadePanel panel;
 
     // Start is called before the first frame update
     void Start()
@@ -81,6 +84,9 @@ public class PTCAssigner : MonoBehaviour
 
             connectedControllerList.Add(xboxController);
         }
+
+        // Getting the fade panel.
+        panel = fadePanel.GetComponent<FadePanel>();
     }
 
     // Update is called once per frame
@@ -91,6 +97,12 @@ public class PTCAssigner : MonoBehaviour
         {
             PlayerData.instance.DebugPlayerCount = debugPlayerCount;
             PlayerData.instance.StartInDebugMode = true;
+            this.canStart = true;
+        }
+
+        // Checking if we can start the game:
+        if (canStart)
+        {
             StartGame();
         }
 
@@ -118,16 +130,17 @@ public class PTCAssigner : MonoBehaviour
                         this.AddController(xboxController);
                     }
                 }
-            }
 
-            if (assignedPlayers > 1)
-            {
-                PlayerData.instance.CurrentSplitScreenMode = ((PlayerData.SplitScreenMode)assignedPlayers - 1);
-                allControllersConnectedScreen.SetActive(true);
 
-                if (XCI.GetButtonUp(XboxButton.Start, XboxController.All))
+                if (assignedPlayers > 1)
                 {
-                    StartGame();
+                    PlayerData.instance.CurrentSplitScreenMode = ((PlayerData.SplitScreenMode)assignedPlayers - 1);
+                    allControllersConnectedScreen.SetActive(true);
+
+                    if (XCI.GetButtonUp(XboxButton.Start, XboxController.All))
+                    {
+                        this.canStart = true;
+                    }
                 }
             }
         }
@@ -135,9 +148,18 @@ public class PTCAssigner : MonoBehaviour
 
     private void StartGame()
     {
-        //PlayerData.instance.Save();
         //SceneManager.LoadScene("Map02", LoadSceneMode.Single);
-        fadePanel.FadeOut();
+
+        fadePanel.SetActive(true);
+
+        if (panel.HasFinished())
+        {
+            this.canStart = false;
+            fadePanel.SetActive(false);
+            PlayerData.instance.Save();
+            gameInstance.SetActive(true);
+            menuManager.SetActive(false);
+        }
     }
 
     private PlayerContainer GetContainerByID(int ID)
