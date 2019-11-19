@@ -1,0 +1,142 @@
+fileFormatVersion: 2
+guid: 960b52680d50958478a5599b02939fc7
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: ballDoorA
+    100002: ballDoorB
+    100004: barrier
+    100006: ceiling
+    100008: ceilingGear
+    100010: charger_Extend
+    100012: charger_Module
+    100014: charger_Turn
+    100016: elevator
+    100018: gear1A
+    100020: gear1B
+    100022: gear2A
+    100024: //RootNode
+    100026: mechStationGeo
+    100028: refuelerA_Base
+    100030: refuelerA_Probe
+    100032: refuelerB_Base
+    100034: refuelerB_Probe
+    100036: root
+    400000: ballDoorA
+    400002: ballDoorB
+    400004: barrier
+    400006: ceiling
+    400008: ceilingGear
+    400010: charger_Extend
+    400012: charger_Module
+    400014: charger_Turn
+    400016: elevator
+    400018: gear1A
+    400020: gear1B
+    400022: gear2A
+    400024: //RootNode
+    400026: mechStationGeo
+    400028: refuelerA_Base
+    400030: refuelerA_Probe
+    400032: refuelerB_Base
+    400034: refuelerB_Probe
+    400036: root
+    2100000: lambert2
+    4300000: mechStationGeo
+    7400000: door_open
+    7400002: refuling
+    7400004: elevator_up
+    7400006: barrier_up
+    9500000: //RootNode
+    13700000: mechStationGeo
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: cf43c3cbf777d3844aebafe6344b3d50, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
