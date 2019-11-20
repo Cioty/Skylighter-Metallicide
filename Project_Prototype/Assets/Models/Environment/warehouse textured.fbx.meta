@@ -1,0 +1,214 @@
+fileFormatVersion: 2
+guid: 31ca89a957cb9af478f85a52309c9cf1
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: beam
+    100002: pillar
+    100004: pillar_base
+    100006: pillar_section
+    100008: pillar_top
+    100010: pillars
+    100012: stairs_low
+    100014: straight_wall_component3
+    100016: //RootNode
+    400000: beam
+    400002: pillar
+    400004: pillar_base
+    400006: pillar_section
+    400008: pillar_top
+    400010: pillars
+    400012: stairs_low
+    400014: straight_wall_component3
+    400016: //RootNode
+    2100000: MetalSheet01
+    2100002: Stairs02
+    2100004: stairs
+    2100006: Stairs03
+    2100008: pillars1
+    2100010: Floor_1
+    2100012: Wall06
+    2100014: Ramp_4
+    2100016: room05
+    2100018: Wall08
+    2100020: Railing02
+    2100022: Railing
+    2100024: construction
+    2100026: room04
+    2100028: Wall61
+    2100030: Wall14
+    2100032: Wall15
+    2100034: Wall16
+    2100036: Wall60
+    2100038: Wall52
+    2100040: Wall51
+    2100042: Wall02
+    2100044: Wall48
+    2100046: Wall49
+    2100048: Wall50
+    2100050: Wall59
+    2100052: Wall58
+    2100054: Wall40
+    2100056: room03
+    2100058: ramp_1
+    2100060: Wall11
+    2100062: Wall01
+    2100064: Wall12
+    2100066: Wall13
+    2100068: Wall21
+    2100070: room02
+    2100072: Wall05
+    2100074: MetalSheet03
+    2100076: MetalSheet02
+    2100078: Wall22
+    2100080: Wall23
+    2100082: Wall07
+    2100084: Wall25
+    2100086: Wall26
+    2100088: Wall28
+    2100090: Wall27
+    2100092: Wall53
+    2100094: Wall54
+    2100096: Wall55
+    2100098: Wall56
+    2100100: Wall57
+    2100102: room01
+    2100104: Wall24
+    2100106: Wall19
+    2100108: Wall20
+    2100110: Wall17
+    2100112: Wall18
+    2100114: Wall04
+    2100116: Wall03
+    2100118: Wall45
+    2100120: Wall43
+    2100122: Wall44
+    2100124: Wall41
+    2100126: Wall42
+    2100128: Wall32
+    2100130: Wall30
+    2100132: Wall31
+    2100134: Wall35
+    2100136: Wall34
+    2100138: Wall33
+    2100140: Wall62
+    2100142: Wall37
+    2100144: Wall38
+    2100146: Wall36
+    2100148: Wall63
+    2100150: ramp_2
+    2100152: Wall46
+    2100154: Wall47
+    2100156: ramp3
+    2100158: boxtop
+    2100160: Wall10
+    2100162: Wall09
+    2100164: Wall39
+    2100166: Wall29
+    2300000: beam
+    2300002: pillar_base
+    2300004: pillar_section
+    2300006: pillar_top
+    2300008: pillars
+    2300010: stairs_low
+    2300012: straight_wall_component3
+    3300000: beam
+    3300002: pillar_base
+    3300004: pillar_section
+    3300006: pillar_top
+    3300008: pillars
+    3300010: stairs_low
+    3300012: straight_wall_component3
+    4300000: pillar_base
+    4300002: pillar_section
+    4300004: pillar_top
+    4300006: beam
+    4300008: stairs_low
+    4300010: pillars
+    4300012: straight_wall_component3
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
