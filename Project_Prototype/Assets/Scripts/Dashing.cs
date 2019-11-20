@@ -7,11 +7,13 @@ public class Dashing : MonoBehaviour
 {
     //public GameObject playerObject;
     public GameObject mechObject;
+
+    public List<ParticleSystem> boosters = new List<ParticleSystem>();
+
     private CharacterController characterController;
     //private Rigidbody rb;
     private MechController mechController;
     private PlayerHandler playerHandler;
-
     private RocketJump rocketJump;
 
     //private MovementController movementDir;
@@ -58,15 +60,18 @@ public class Dashing : MonoBehaviour
     // Dashing function
     private void isDashing()
     {
-        float horizontal_move = Input.GetAxis("Horizontal");
-        float vertical_move = Input.GetAxis("Vertical");
+        //float horizontal_move = Input.GetAxis("Horizontal");
+        //float vertical_move = Input.GetAxis("Vertical");
 
         float leftTrigHeight = XCI.GetAxis(XboxAxis.LeftTrigger, playerHandler.AssignedController);
         // When dashKey press, temporarily stop movement (No falling, no nothing)
         if ((Input.GetKeyDown(dashKey) || XCI.GetButtonDown(XboxButton.LeftBumper, playerHandler.AssignedController) || leftTrigHeight >= 0.5f) && playerHandler.BoostPoints > 0)
         {
             // To get the Mech's last direction
-            lastDir = transform.forward.normalized * vertical_move + transform.right.normalized * horizontal_move;
+            // lastDir = transform.forward.normalized * vertical_move + transform.right.normalized * horizontal_move;
+            lastDir = playerHandler.MechController.GetMoveVector();
+            if (lastDir == Vector3.zero)
+                lastDir = this.transform.forward;
 
             thrusterTimer = zero;
           
@@ -77,7 +82,10 @@ public class Dashing : MonoBehaviour
         }
 
         if (dashTrig)
-        {           
+        {
+            foreach(ParticleSystem booster in boosters)
+                booster.Play();
+
             if (thrusterTimer < duration)
             {
                 thrusterTimer += Time.deltaTime;
@@ -87,10 +95,12 @@ public class Dashing : MonoBehaviour
             }
 
             if (thrusterTimer >= duration)
-            {  
+            {
                 dashTrig = false;
                 thrusterTimer = zero;
                 hasRammedThisDash = false;
+                foreach (ParticleSystem booster in boosters)
+                    booster.Stop();
             }
         }
                   
