@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3919990977291590021}
   m_Layer: 0
-  m_Name: Mech_Viewmodel_Final_005 1
+  m_Name: Mech_Viewmodel_Final_005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100004, guid: 675a37aebcbcb614c829ff168472a440, type: 3}
+  - {fileID: 2100000, guid: 753bf8f4b0428084aaf62d9e663555ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -169,7 +169,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 675a37aebcbcb614c829ff168472a440, type: 3}
+  - {fileID: 2100000, guid: 753bf8f4b0428084aaf62d9e663555ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -246,7 +246,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 675a37aebcbcb614c829ff168472a440, type: 3}
+  - {fileID: 2100000, guid: 753bf8f4b0428084aaf62d9e663555ac, type: 2}
   - {fileID: 2100000, guid: 29e9c813c7b145c4cb76b7c15522fed6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -324,7 +324,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100004, guid: 675a37aebcbcb614c829ff168472a440, type: 3}
+  - {fileID: 2100000, guid: 753bf8f4b0428084aaf62d9e663555ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -588,7 +588,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.46
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
