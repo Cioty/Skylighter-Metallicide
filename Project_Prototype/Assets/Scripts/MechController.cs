@@ -17,7 +17,12 @@ using XboxCtrlrInput;
 
 public class MechController : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("Animator Properties")]
+    public Animator mech_Animator;
+    public Animator sheild_Animator;
+    public float walkingVelocityPadding = 0.2f;
+
+    [Header("Movement Attributes")]
     public float maxSpeed = 25.0f;
     public float accelerationMultiplier = 1.0f;
     public float decelerationMultiplier = 1.0f;
@@ -44,6 +49,7 @@ public class MechController : MonoBehaviour
     private float horizontalAxis, verticalAxis;
     private float accelTimer, deccelTimer, directionalTimer;
     private bool justBoosted = false;
+    private bool justJumped = false;
 
     // Double/rocket Jump
     private RocketJump rocketJump;
@@ -104,6 +110,26 @@ public class MechController : MonoBehaviour
         bool grounded = IsGrounded();
         playerHandler.IsGrounded = grounded;
 
+        //Ground impact flag:
+        if (grounded && justJumped)
+        {
+            //mech_Animator.SetTrigger("GroundImpact");
+            //sheild_Animator.SetTrigger("GroundImpact");
+            justJumped = false;
+        }
+
+        // Grounded flag:
+        mech_Animator.SetBool("Grounded", grounded);
+
+        if(playerHandler.IsInvulnerable)
+            sheild_Animator.SetBool("Grounded", grounded);
+
+        // Walking flag:
+        mech_Animator.SetBool("Walk", (moveDirection.magnitude > walkingVelocityPadding));
+
+        if (playerHandler.IsInvulnerable)
+            sheild_Animator.SetBool("Walk", (moveDirection.magnitude > walkingVelocityPadding));
+
         // If the player is on the ground:
         if (grounded)
         {
@@ -129,11 +155,35 @@ public class MechController : MonoBehaviour
             currentVelocity = Vector3.ClampMagnitude(currentVelocity, 25);
 
             // Checking for jump input.
-
-            if (XCI.GetButton(XboxButton.A, playerHandler.AssignedController) || Input.GetButton("Jump") && playerHandler.IsControllable)
+            if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump") && playerHandler.IsControllable)
             {
-                //currentVelocity = (transform.forward + moveDirection * jumpHeight) + Vector3.up * jumpHeight;
                 currentVelocity += Vector3.up * jumpHeight;
+
+                if (!justJumped)
+                {
+                    mech_Animator.SetTrigger("Jump");
+
+                    if (playerHandler.IsInvulnerable)
+                        sheild_Animator.SetTrigger("Jump");
+
+                    // Enabling just jumped flag:
+                    justJumped = true;
+                }
+                //// Jump animation:
+                //if (!mech_Animator.GetCurrentAnimatorStateInfo(0).IsName("ForwardJump_Launch"))
+                //{
+                //    if(!justJumped)
+                //    {
+                //        mech_Animator.SetTrigger("Jump");
+                //        sheild_Animator.SetTrigger("Jump");
+
+                //        // Enabling just jumped flag:
+                //        justJumped = true;
+                //    }
+                //    Debug.Log("Playing jump" + mech_Animator.GetCurrentAnimatorStateInfo(0).IsName("ForwardJump_IdleMidAir") + mech_Animator.GetCurrentAnimatorStateInfo(0).IsName("static_pose"));
+                //}
+
+                //currentVelocity = (transform.forward + moveDirection * jumpHeight) + Vector3.up * jumpHeight;
             }
         }
         else
@@ -141,6 +191,7 @@ public class MechController : MonoBehaviour
             // Calculating gravity.
             if (!playerHandler.Mech_RocketJump.IsBoosting)
             {
+                // Added in a reset gravity bool to fix the stuttering jump pad issue:
                 if (!shouldResetGravity)
                 {
                     gravityVector = Vector3.down * gravity * Time.deltaTime;
@@ -179,10 +230,13 @@ public class MechController : MonoBehaviour
         // Keeping track of the current velocity via the player handler.
         playerHandler.CurrentVelocity = currentVelocity;
 
-        //Debug.Log(currentVelocity);
-
         // Making the rigid bodies velocity equal the calculated velocity.
         controller.Move(currentVelocity * Time.deltaTime);
+    }
+
+    public Vector3 GetMoveVector()
+    {
+        return moveDirection;
     }
 
     public void ResetGravity()

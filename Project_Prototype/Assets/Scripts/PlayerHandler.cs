@@ -34,8 +34,9 @@ public class PlayerHandler : MonoBehaviour
     public GameObject viewModelObject;
     public GameObject mechModelObject;
     public GameObject coreModelObject;
-    public GameManager gameManager;
+    public GameObject shieldObject;
     public GameObject respawnTimerUI;
+    public GameManager gameManager;
 
     [Header("Component References")]
     public RectTransform crosshairTransform;
@@ -130,17 +131,21 @@ public class PlayerHandler : MonoBehaviour
     {
         if (isInvulnerable)
         {
+            shieldObject.SetActive(true);
+
             if (afterSpawnTimer < invulnerableAfterSpawnTime)
                 afterSpawnTimer += Time.deltaTime;
             else
             {
                 afterSpawnTimer = 0.0f;
                 isInvulnerable = false;
+                shieldObject.SetActive(false);
                 Debug.Log("Player" + ID + " is no longer invulnerable!");
             }
         }
     }
 
+    // Checking the health of the player:
     public void CheckHealth()
     {
         // Checking the mechs health:
@@ -148,7 +153,7 @@ public class PlayerHandler : MonoBehaviour
         {
             // Changing the state of the player to the core:
             stateManager.SetState(StateManager.PLAYER_STATE.Core);
-
+            // Resetting the mechs health:
             mechHealth = mechMaxHealth;
         }
 
