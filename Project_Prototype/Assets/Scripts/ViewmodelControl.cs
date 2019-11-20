@@ -52,7 +52,7 @@ public class ViewmodelControl : MonoBehaviour
     public float maxSwayX = 30.0f;
     public float sway = 4.0f;
     public float smooth = 3.0f;
-    public float maxSwayY = 3.0f;
+    public float maxSwayY = 30.0f;
 
 
     // Get the first person Camera script
@@ -104,28 +104,10 @@ public class ViewmodelControl : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-
-        ApplyBob();
+       
         CameraSway();        
     }
 
-    // When the Mech moves
-    void ApplyBob()
-    {
-        if (controller.velocity.magnitude > 0.3f)
-        {
-            // It's just a Sine wave the goes back and forth from -1 to +1
-            camOsillation = Mathf.Sin(timer * (2 * Mathf.PI));
-            
-            // Make the position whatever the sine wave is up to
-            calcPosition.y = camOsillation * 0.5f;            
-        }
-        else
-        {            
-            calcPosition.y = InitY;
-        }
-        camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, calcPosition, Time.deltaTime);
-    }
 
     // Camera sway
     // View Model's rotation tries to match camera rotation
@@ -158,7 +140,7 @@ public class ViewmodelControl : MonoBehaviour
 
         // New rotation to lerp towards || Rotation Y is used to set the Vertical axis.
         // Horizontal rotation uses rotation difference to slowly iter back to normal
-        Quaternion rotateView = Quaternion.Euler(0.0f, viewModelTransform.localRotation.x + -rotationDifference.x, 0.0f) * (Quaternion.AngleAxis(viewModelTransform.localRotation.y + (-newRotation.y - rotationDifference.y), Vector3.right));
+        Quaternion rotateView = Quaternion.Euler(viewModelTransform.localRotation.y + rotationDifference.y, viewModelTransform.localRotation.x + -rotationDifference.x, 0.0f);
       
         viewModelTransform.localRotation = Quaternion.Slerp(viewModelTransform.localRotation, rotateView, Time.deltaTime * smooth);       
 
