@@ -24,15 +24,10 @@ public class PTCAssigner : MonoBehaviour
     [Header("References")]
     public GameObject playerContainersGroup;
     public GameObject allControllersConnectedScreen;
-    public GameObject gameInstance;
+    public GameObject allInGameManagersPrefab;
+    public ToggleDebugMode toggleDebugMode;
     public GameObject fadePanel;
     public GameObject menuManager;
-
-    [Header("Debug Mode")]
-    [Tooltip("Keep this off to start game normally!")]
-    public bool startInDebugMode = false;
-    public KeyCode debugStartKey;
-    public int debugPlayerCount = 0;
 
     // Private variables:
     private int connectedControllers = 0;
@@ -49,7 +44,7 @@ public class PTCAssigner : MonoBehaviour
     void Start()
     {
         // Search for controllers:
-        if (!hasSearchedForControllers && !startInDebugMode)
+        if (!hasSearchedForControllers && !toggleDebugMode.startInDebugMode)
         {
             hasSearchedForControllers = true;
 
@@ -93,9 +88,9 @@ public class PTCAssigner : MonoBehaviour
     void Update()
     {
         // Quick start the game in debug mode.
-        if (Input.GetKeyDown(debugStartKey) && startInDebugMode)
+        if (Input.GetKeyDown(toggleDebugMode.debugStartKey) && toggleDebugMode.startInDebugMode)
         {
-            PlayerData.instance.DebugPlayerCount = debugPlayerCount;
+            PlayerData.instance.DebugPlayerCount = toggleDebugMode.debugPlayerCount;
             PlayerData.instance.StartInDebugMode = true;
             this.canStart = true;
         }
@@ -148,7 +143,7 @@ public class PTCAssigner : MonoBehaviour
 
     private void StartGame()
     {
-        SceneManager.LoadScene("Map02", LoadSceneMode.Single);
+        //SceneManager.LoadScene("Map02", LoadSceneMode.Single);
 
         fadePanel.SetActive(true);
 
@@ -157,7 +152,7 @@ public class PTCAssigner : MonoBehaviour
             this.canStart = false;
             fadePanel.SetActive(false);
             PlayerData.instance.Save();
-            gameInstance.SetActive(true);
+            allInGameManagersPrefab.SetActive(true);
             menuManager.SetActive(false);
         }
     }
