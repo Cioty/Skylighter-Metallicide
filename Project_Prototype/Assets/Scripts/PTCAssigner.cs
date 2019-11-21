@@ -148,7 +148,7 @@ public class PTCAssigner : MonoBehaviour
 
     private void StartGame()
     {
-        //SceneManager.LoadScene("Map02", LoadSceneMode.Single);
+        SceneManager.LoadScene("Map02", LoadSceneMode.Single);
 
         fadePanel.SetActive(true);
 

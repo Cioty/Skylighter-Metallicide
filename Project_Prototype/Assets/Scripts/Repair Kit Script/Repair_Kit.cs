@@ -10,18 +10,23 @@ public class Repair_Kit : MonoBehaviour
 
     // The actual object this script affects
     private Renderer thisBox;
+
+    //Repairkit access for animation purposes
+    public GameObject kitSpawner;
+    private Animator kitSpawnerAnimator;
    
     bool isInteractable = true;
 
-    public float coolDown = 5.0f;
+    public float coolDown = 12.5f;
     private float coolDownCounter;
 
-    private float timerReset = 0.0f;
+    private float timerReset = 12.5f;
 
     private void Awake()
     {
         thisBox = GetComponent<Renderer>();
         coolDownCounter = timerReset;
+        kitSpawnerAnimator = kitSpawner.GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,12 +78,13 @@ public class Repair_Kit : MonoBehaviour
                 thisBox.enabled = false;
 
 
-            coolDownCounter += Time.deltaTime;
+            coolDownCounter -= Time.deltaTime;
             
-            if (coolDownCounter >= coolDown)
+            if (coolDownCounter <= coolDown)
             {
                 isInteractable = true;               
-                coolDownCounter = timerReset;              
+                coolDownCounter = timerReset;
+                kitSpawnerAnimator.SetTrigger("KitSpawned");
             }
        }
        
@@ -86,5 +92,7 @@ public class Repair_Kit : MonoBehaviour
        {
             thisBox.enabled = true;
        }
+
+        kitSpawnerAnimator.SetFloat("Timer", coolDownCounter);
     }
 }
