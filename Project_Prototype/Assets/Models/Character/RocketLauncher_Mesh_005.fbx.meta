@@ -41,7 +41,37 @@ ModelImporter:
     4300010: Rocket_Projectile_Mesh
     7400000: Firing
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Highlight1
+    second: {fileID: 2100000, guid: 1f2a60572a6e70146a2ca17c86762248, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rough_metal
+    second: {fileID: 2100000, guid: 1f2a60572a6e70146a2ca17c86762248, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rough_metal3
+    second: {fileID: 2100000, guid: 1f2a60572a6e70146a2ca17c86762248, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rough_metal4
+    second: {fileID: 2100000, guid: 1f2a60572a6e70146a2ca17c86762248, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Smooth_Metal2
+    second: {fileID: 2100000, guid: 1f2a60572a6e70146a2ca17c86762248, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn2
+    second: {fileID: 2100000, guid: 1f2a60572a6e70146a2ca17c86762248, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
