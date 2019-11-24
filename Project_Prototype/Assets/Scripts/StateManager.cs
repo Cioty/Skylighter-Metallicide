@@ -29,7 +29,7 @@ public class StateManager : MonoBehaviour
     public ParticleSystem mechEjectEffect;
     public Canvas hudCanvas;
     public Animator mechAnimator;
-    public ToggleMechVisibilty mechVisibilty;
+    public ToggleMechVisibility mechVisibility;
     public Transform firstPersonCameraPos;
     public Transform thirdPersonCameraPos;
     public GameObject tempParent;
@@ -129,9 +129,9 @@ public class StateManager : MonoBehaviour
             case PLAYER_STATE.Core:
                 if (thirdPersonSwitch)
                 {
-                    if (!mechVisibilty.IsShowing)
+                    if (!mechVisibility.IsShowing)
                     {
-                        mechVisibilty.Toggle();
+                        mechVisibility.Toggle();
                     }
                     playerHandler.FirstPersonCamera.transform.parent = tempParent.transform;
                     playerHandler.coreModelObject.transform.position = ejectDirection.position;
@@ -148,9 +148,9 @@ public class StateManager : MonoBehaviour
             case PLAYER_STATE.Mech:
                 if(thirdPersonSwitch)
                 {
-                    if (mechVisibilty.IsShowing)
+                    if (mechVisibility.IsShowing)
                     {
-                        mechVisibilty.Toggle();
+                        mechVisibility.Toggle();
                     }
                     playerHandler.FirstPersonCamera.transform.parent = originalParent.transform;
                     playerHandler.FirstPersonCamera.transform.position = firstPersonCameraPos.position;

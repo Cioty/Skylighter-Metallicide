@@ -22,6 +22,7 @@ public class MechController : MonoBehaviour
     public Animator sheild_Animator;
     public float walkingVelocityPadding = 0.2f;
     public float walkSpeedMultiplier = 1.0f;
+    public float timeToMaxWalkSpeed = 2.0f;
 
     [Header("Movement Attributes")]
     public float maxSpeed = 25.0f;
@@ -30,6 +31,7 @@ public class MechController : MonoBehaviour
     public float gravity = 10.0f;
     public float jumpHeight = 6.0f;
     public float airAccelerationSpeed = 1.0f;
+    public float maxVelocity = 25f;
 
     [Header("Curves")]
     public AnimationCurve accelerationRate;
@@ -125,7 +127,10 @@ public class MechController : MonoBehaviour
             if (playerHandler.IsInvulnerable)
                 sheild_Animator.SetBool("Walk", (currentVelocity.magnitude > walkingVelocityPadding));
 
-            mech_Animator.SetFloat("WalkSpeed", currentVelocity.normalized.magnitude * walkSpeedMultiplier);
+            float walkingSpeed = (currentVelocity.magnitude / timeToMaxWalkSpeed * walkSpeedMultiplier) * 0.1f;
+            Debug.Log(walkingSpeed);
+
+            mech_Animator.SetFloat("WalkSpeed", walkingSpeed);
         }
         else
             mech_Animator.SetBool("Walk", false);
@@ -166,7 +171,7 @@ public class MechController : MonoBehaviour
 
             // Applying direction and acceleration to the current velocity.
             currentVelocity = acceleration;
-            currentVelocity = Vector3.ClampMagnitude(currentVelocity, 25);
+            currentVelocity = Vector3.ClampMagnitude(currentVelocity, maxVelocity);
 
             // Checking for jump input.
             if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump") && playerHandler.IsControllable)
@@ -245,7 +250,7 @@ public class MechController : MonoBehaviour
     private bool IsGrounded()
     {
         Vector3 startPos = controller.bounds.center;
-        Vector3 endPos = new Vector3(controller.bounds.center.x, controller.bounds.min.y + 1.1f, controller.bounds.center.z);
+        Vector3 endPos = new Vector3(controller.bounds.center.x, controller.bounds.min.y + 1.0f, controller.bounds.center.z);
         return Physics.CheckCapsule(startPos, endPos, 1.45f, this.gameObject.layer);
     }
 }

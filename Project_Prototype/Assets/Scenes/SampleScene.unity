@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1398,7 +1398,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2646
+  m_Name: pb_Mesh-346836
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -21540,7 +21540,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22998
+  m_Name: pb_Mesh154938
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -29392,6 +29392,21 @@ PrefabInstance:
         type: 3}
       propertyPath: walkSpeedMultiplier
       value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915511765910600466, guid: 4f10cac025bfbbf41a01e41df3d533a5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915511765910600466, guid: 4f10cac025bfbbf41a01e41df3d533a5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915511766101957850, guid: 4f10cac025bfbbf41a01e41df3d533a5,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f10cac025bfbbf41a01e41df3d533a5, type: 3}
