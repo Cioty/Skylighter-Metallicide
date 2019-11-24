@@ -23,7 +23,6 @@ public class PlayerManager : MonoBehaviour
     [Header("References")]
     public GameObject playerPrefab;
     public List<GamemodeHandler> splitScreenModeArray = new List<GamemodeHandler>();
-    public RespawnArray respawnArray;
 
     [Header("Debug Options")]
     public bool forceDebugMode = false;
@@ -71,8 +70,8 @@ public class PlayerManager : MonoBehaviour
         RespawnArray.instance.ResetOccupiedMechStations();
 
         // Destroys the transferd data.
-        if (!forceDebugMode && PlayerData.instance != null)
-            Destroy(PlayerData.instance.gameObject);
+        //if (!forceDebugMode && PlayerData.instance != null)
+        //    Destroy(PlayerData.instance.gameObject);
     }
     
     private void ActivateCorrectScreenView()
@@ -127,7 +126,10 @@ public class PlayerManager : MonoBehaviour
             {
                 // If not player0
                 if (i > 0)
+                {
+                    playerHandler.IsTestDummy = true;
                     playerHandler.IsControllable = false;
+                }
             }
 
             // Spawning the player in.

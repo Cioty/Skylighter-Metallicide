@@ -63,6 +63,7 @@ public class PlayerHandler : MonoBehaviour
     private StateManager stateManager;
     private PlayerStatistics playerStats;
     private bool isControllable = true;
+    private bool isTestDummy = false;
     private bool addToSplashCheck = false;
     private float afterSpawnTimer = 0.0f;
     private float respawnTimer = 0.0f;
@@ -203,7 +204,8 @@ public class PlayerHandler : MonoBehaviour
             RespawnArray.instance.GetRandomSpawnPoint().GetComponent<Mech_Recovery>().SpawnPlayer(this);
             
             // Enabling the players controls:
-            isControllable = true;
+            if(!isTestDummy)
+                isControllable = true;
 
             // Disabling the respawn timer UI:
             respawnTimerUI.SetActive(false);
@@ -398,5 +400,11 @@ public class PlayerHandler : MonoBehaviour
     {
         get { return addToSplashCheck; }
         set { addToSplashCheck = value; }
+    }
+
+    public bool IsTestDummy
+    {
+        get { return isTestDummy; }
+        set { isTestDummy = value; }
     }
 }

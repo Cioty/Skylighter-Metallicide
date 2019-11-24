@@ -47,7 +47,7 @@ public class ProjectileLauncher : MonoBehaviour
     private void Update()
     {
         float rightTrigHeight = XCI.GetAxis(XboxAxis.RightTrigger, playerHandler.AssignedController);
-        if (Input.GetMouseButtonDown(0) || rightTrigHeight >= 0.5f)
+        if (Input.GetMouseButtonDown(0) || rightTrigHeight >= 0.5f && playerHandler.IsControllable)
         {
             if (readyToFire)
             {

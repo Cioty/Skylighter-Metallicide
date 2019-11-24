@@ -26,24 +26,35 @@ public class StateManager : MonoBehaviour
 
     [Header("References")]
     public PlayerHandler playerHandler;
-    public GameObject mechEjectEffect;
+    public ParticleSystem mechEjectEffect;
     public Canvas hudCanvas;
-
-    // Unused atm:
-    private GameObject firstPersonCameraPos;
-    private GameObject thirdPersonCameraPos;
+    public Animator mechAnimator;
+    public ToggleMechVisibilty mechVisibilty;
+    public Transform firstPersonCameraPos;
+    public Transform thirdPersonCameraPos;
+    public GameObject tempParent;
+    public GameObject originalParent;
 
     [Header("Eject Properties")]
     public KeyCode debugEjectKey;
     public Transform ejectDirection;
     public float ejectHeight = 5.0f, ejectForce = 10.0f;
 
+    [Header("Eject Camera Transition")]
+    public bool thirdPersonSwitch = false;
+    public float cameraMoveTime = 1.0f;
+    public float timeToEject = 7.0f;
+
     // Private references & variables.
     private GameObject mechObject;
     private GameObject coreObject;
-    private Vector3 targetPos = new Vector3();
-    private Vector3 currentPos = new Vector3();
-    private bool moveCamera = false;
+    private Vector3 targetPos = Vector3.zero;
+    private Vector3 currentPos = Vector3.zero;
+    private Quaternion targetRot = Quaternion.identity;
+    private Quaternion currentRot = Quaternion.identity;
+    private bool shouldCameraMove = false;
+    private bool startEjectTimer = false;
+    private float ejectTimer = 0.0f;
     private float cameraSmoothTime = 0;
     private PLAYER_STATE currentState;
 
@@ -74,46 +85,38 @@ public class StateManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (moveCamera)
+        if (shouldCameraMove)
         {
-            // Lerping camera to 3rd person perspective.
-            if (currentState == PLAYER_STATE.Mech)
+            currentPos = playerHandler.FirstPersonCamera.transform.position;
+            targetPos = thirdPersonCameraPos.position;
+
+            currentRot = playerHandler.FirstPersonCamera.transform.rotation;
+            targetRot = thirdPersonCameraPos.rotation;
+
+            cameraSmoothTime += Time.deltaTime;
+            if (cameraSmoothTime > 1)
+                cameraSmoothTime = 1;
+
+            playerHandler.FirstPersonCamera.transform.position = Vector3.Lerp(currentPos, targetPos, cameraSmoothTime / cameraMoveTime);
+            playerHandler.FirstPersonCamera.transform.rotation = Quaternion.Slerp(currentRot, targetRot, cameraSmoothTime / cameraMoveTime);
+            playerHandler.FirstPersonCamera.transform.LookAt(playerHandler.mechObject.transform);
+            if ((playerHandler.FirstPersonCamera.transform.position - targetPos).magnitude <= 0)
             {
-                targetPos = thirdPersonCameraPos.transform.position;
-                currentPos = firstPersonCameraPos.transform.position;
-
-                cameraSmoothTime += Time.deltaTime;
-                if (cameraSmoothTime > 1)
-                    cameraSmoothTime = 1;
-
-                bool result = LerpCamera(coreObject, currentPos, targetPos, cameraSmoothTime);
-                if (result)
-                {
-                    Debug.Log("Completed camera transition.");
-                    moveCamera = false;
-                }
-
-                SetState(PLAYER_STATE.Core);
-
+                cameraSmoothTime = 0f;
+                shouldCameraMove = false;
+                startEjectTimer = true;
+                Debug.Log("Completed camera transition.");
             }
-            // Going back to first person.
-            else if (currentState == PLAYER_STATE.Core)
+        }
+
+        if(startEjectTimer)
+        {
+            ejectTimer += Time.deltaTime;
+            if(ejectTimer > timeToEject)
             {
-                targetPos = firstPersonCameraPos.transform.position;
-                currentPos = thirdPersonCameraPos.transform.position;
-
-                // If the current pos is the target pos, then we want to exit out of the function.
-                if (currentPos == targetPos)
-                {
-                    moveCamera = false;
-                    return;
-                }
-
-                cameraSmoothTime -= Time.deltaTime;
-                if (cameraSmoothTime < 0)
-                    cameraSmoothTime = 0;
-
-                this.LerpCamera(mechObject, thirdPersonCameraPos.transform.position, firstPersonCameraPos.transform.position, cameraSmoothTime);
+                EjectCore();
+                ejectTimer = 0.0f;
+                startEjectTimer = false;
             }
         }
     }
@@ -124,22 +127,36 @@ public class StateManager : MonoBehaviour
         switch (currentState)
         {
             case PLAYER_STATE.Core:
-                //Playing particle effect.
-                GameObject explosionObject = Instantiate(mechEjectEffect, mechObject.transform.position, mechObject.transform.rotation);
-                Destroy(explosionObject, 1.9f);
+                if (thirdPersonSwitch)
+                {
+                    if (!mechVisibilty.IsShowing)
+                    {
+                        mechVisibilty.Toggle();
+                    }
+                    playerHandler.FirstPersonCamera.transform.parent = tempParent.transform;
+                    playerHandler.coreModelObject.transform.position = ejectDirection.position;
+                    shouldCameraMove = true;
+                }
+                else
+                    startEjectTimer = true;
 
-
-                // Swapping active objects.
-                // Updating the core postion.
-                coreObject.SetActive(true);
-                playerHandler.coreModelObject.transform.position = ejectDirection.position;
-                mechObject.SetActive(false);
-                playerHandler.CoreRigidbody.AddForce(ejectDirection.forward * ejectForce, ForceMode.Impulse);
-                hudCanvas.worldCamera = playerHandler.ThirdPersonCamera;
-
+                playerHandler.IsControllable = false;
+                mechEjectEffect.Play();
+                mechAnimator.SetTrigger("Death");
                 break;
 
             case PLAYER_STATE.Mech:
+                if(thirdPersonSwitch)
+                {
+                    if (mechVisibilty.IsShowing)
+                    {
+                        mechVisibilty.Toggle();
+                    }
+                    playerHandler.FirstPersonCamera.transform.parent = originalParent.transform;
+                    playerHandler.FirstPersonCamera.transform.position = firstPersonCameraPos.position;
+                    playerHandler.FirstPersonCamera.transform.rotation = firstPersonCameraPos.rotation;
+                }
+
                 // Swapping active objects.
                 coreObject.SetActive(false);
 
@@ -151,14 +168,14 @@ public class StateManager : MonoBehaviour
         }
     }
 
-    // Moving camera between the two positions.
-    private bool LerpCamera(GameObject target, Vector3 posA, Vector3 posB, float time)
+    private void EjectCore()
     {
-        Vector3 smoothedPosition = Vector3.Lerp(posA, posB, time);
-        if ((smoothedPosition - posB).magnitude <= 0)
-            return true;
-        else
-            return false;
+        playerHandler.coreModelObject.transform.position = ejectDirection.position;
+        coreObject.SetActive(true);
+        mechObject.SetActive(false);
+        playerHandler.CoreRigidbody.AddForce(ejectDirection.forward * ejectForce, ForceMode.Impulse);
+        hudCanvas.worldCamera = playerHandler.ThirdPersonCamera;
+        playerHandler.IsControllable = true;
     }
 
     public PLAYER_STATE CurrentState

@@ -21,6 +21,7 @@ public class MechController : MonoBehaviour
     public Animator mech_Animator;
     public Animator sheild_Animator;
     public float walkingVelocityPadding = 0.2f;
+    public float walkSpeedMultiplier = 1.0f;
 
     [Header("Movement Attributes")]
     public float maxSpeed = 25.0f;
@@ -101,34 +102,47 @@ public class MechController : MonoBehaviour
         moveDirection.Normalize();
     }
 
+    private void UpdateAnimations(bool grounded)
+    {
+        //Ground impact flag:
+        if (grounded && justJumped)
+        {
+            mech_Animator.SetTrigger("GroundImpact");
+            if(playerHandler.IsInvulnerable)
+                sheild_Animator.SetTrigger("GroundImpact");
+            justJumped = false;
+        }
+
+        // Grounded flag:
+        mech_Animator.SetBool("Grounded", grounded);
+        if(playerHandler.IsInvulnerable)
+            sheild_Animator.SetBool("Grounded", grounded);
+
+        // Walking flag:
+        if(grounded)
+        {
+            mech_Animator.SetBool("Walk", (currentVelocity.magnitude > walkingVelocityPadding));
+            if (playerHandler.IsInvulnerable)
+                sheild_Animator.SetBool("Walk", (currentVelocity.magnitude > walkingVelocityPadding));
+
+            mech_Animator.SetFloat("WalkSpeed", currentVelocity.normalized.magnitude * walkSpeedMultiplier);
+        }
+        else
+            mech_Animator.SetBool("Walk", false);
+    }
+
     private void FixedUpdate()
     {
         // Update the move vector.
         if(playerHandler.IsControllable)
             this.UpdateMoveVector();
 
+        // Checking if the player is grounded:
         bool grounded = IsGrounded();
         playerHandler.IsGrounded = grounded;
 
-        //Ground impact flag:
-        if (grounded && justJumped)
-        {
-            //mech_Animator.SetTrigger("GroundImpact");
-            //sheild_Animator.SetTrigger("GroundImpact");
-            justJumped = false;
-        }
-
-        // Grounded flag:
-        mech_Animator.SetBool("Grounded", grounded);
-
-        if(playerHandler.IsInvulnerable)
-            sheild_Animator.SetBool("Grounded", grounded);
-
-        // Walking flag:
-        mech_Animator.SetBool("Walk", (moveDirection.magnitude > walkingVelocityPadding));
-
-        if (playerHandler.IsInvulnerable)
-            sheild_Animator.SetBool("Walk", (moveDirection.magnitude > walkingVelocityPadding));
+        // Updating the animations:
+        UpdateAnimations(grounded);
 
         // If the player is on the ground:
         if (grounded)
@@ -158,7 +172,6 @@ public class MechController : MonoBehaviour
             if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump") && playerHandler.IsControllable)
             {
                 currentVelocity += Vector3.up * jumpHeight;
-
                 if (!justJumped)
                 {
                     mech_Animator.SetTrigger("Jump");
@@ -169,21 +182,6 @@ public class MechController : MonoBehaviour
                     // Enabling just jumped flag:
                     justJumped = true;
                 }
-                //// Jump animation:
-                //if (!mech_Animator.GetCurrentAnimatorStateInfo(0).IsName("ForwardJump_Launch"))
-                //{
-                //    if(!justJumped)
-                //    {
-                //        mech_Animator.SetTrigger("Jump");
-                //        sheild_Animator.SetTrigger("Jump");
-
-                //        // Enabling just jumped flag:
-                //        justJumped = true;
-                //    }
-                //    Debug.Log("Playing jump" + mech_Animator.GetCurrentAnimatorStateInfo(0).IsName("ForwardJump_IdleMidAir") + mech_Animator.GetCurrentAnimatorStateInfo(0).IsName("static_pose"));
-                //}
-
-                //currentVelocity = (transform.forward + moveDirection * jumpHeight) + Vector3.up * jumpHeight;
             }
         }
         else

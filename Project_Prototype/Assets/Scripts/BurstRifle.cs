@@ -34,7 +34,7 @@ public class BurstRifle : MonoBehaviour
     void Update()
     {
         float leftTrigHeight = XCI.GetAxis(XboxAxis.LeftTrigger, playerHandler.AssignedController);
-        if (Input.GetButton("Fire2") || leftTrigHeight >= 0.5f && gunCharge == 0.0f)
+        if (Input.GetButton("Fire2") || leftTrigHeight >= 0.5f && gunCharge == 0.0f && playerHandler.IsControllable)
         {
             isGunShooting = true;
         }
