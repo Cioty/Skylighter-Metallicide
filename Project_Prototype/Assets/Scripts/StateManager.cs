@@ -158,6 +158,8 @@ public class StateManager : MonoBehaviour
                     playerHandler.FirstPersonCamera.transform.rotation = firstPersonCameraPos.rotation;
                 }
 
+                playerHandler.mechHealth = playerHandler.MaxMechHealth;
+
                 // Swapping active objects.
                 coreObject.SetActive(false);
 

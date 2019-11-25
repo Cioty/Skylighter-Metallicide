@@ -105,6 +105,8 @@ public class PlayerHandler : MonoBehaviour
     {
         // Setting up the respawn timer:
         respawnTimer = timeToRespawn;
+
+        isAlive = true;
     }
 
     private void Update()
@@ -155,13 +157,10 @@ public class PlayerHandler : MonoBehaviour
     public void CheckHealth()
     {
         // Checking the mechs health:
-        if (mechHealth <= 0)
+        if (mechHealth <= 0 && IsInMech())
         {
             // Changing the state of the player to the core:
             stateManager.SetState(StateManager.PLAYER_STATE.Core);
-
-            // Resetting the mechs health: THIS IS RESETTING THE UI BAR!
-            mechHealth = mechMaxHealth;
         }
 
         // Checking the cores health:
