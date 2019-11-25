@@ -1,4 +1,17 @@
-﻿using System.Collections;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Gold
+ * 
+ * Class:       Burst Rifle.cs
+ * Purpose:     Represents a burst rifle
+ * 
+ * Author:      Daniel Cox
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
@@ -9,16 +22,20 @@ public class BurstRifleSpin : MonoBehaviour
 
     public BurstRifle burstRifle;
 
-    public GameObject barrel_Spinning;
+    public GameObject barrelSpinning;
 
-    public GameObject bullet_Belt;
+    public GameObject bulletBelt;
+    public GameObject bulletRing;
 
     public float barrelAcceleration = 70;
     public float barrelDeceleration = 70;
     public float maxBarrelSpeed = 360;
-    //public float speed2 = 10;
     public float barrelSpeed;
-    //public float beltSpeed;
+
+    public float beltSpeed;
+    public float beltAcceleration = 80;
+    public float beltDeceleration = 80;
+    public float maxBeltSpeed = 360;
 
     // Update is called once per frame
     void Update()
@@ -26,22 +43,27 @@ public class BurstRifleSpin : MonoBehaviour
         float leftTrigHeight = XCI.GetAxis(XboxAxis.LeftTrigger, playerHandler.AssignedController);
         if (Input.GetButton("Fire2") || leftTrigHeight >= 0.5f)
         {
-            //if(zAngle == 1f)
-            {
-               // zAngle++;
-                if (barrelSpeed<maxBarrelSpeed)
-                {
-                    barrelSpeed += barrelAcceleration * Time.deltaTime;
-                } else
-                {
-                    barrelSpeed = maxBarrelSpeed;
-                }
+           if (barrelSpeed<maxBarrelSpeed)
+           {
+               barrelSpeed += barrelAcceleration * Time.deltaTime;
+           }
+           else
+           {
+               barrelSpeed = maxBarrelSpeed;
+           }
 
-                //zAngle2 += speed2;
-                
-                //bullet_Belt.transform.Rotate(0, 0, zAngle2, Space.Self);
-            }
-        } else
+           
+        
+           if (beltSpeed < maxBeltSpeed)
+           {
+              beltSpeed += beltAcceleration * Time.deltaTime;
+           }
+           else
+           {
+              barrelSpeed = maxBeltSpeed;
+           }
+        }
+       else
         {
             if(barrelSpeed > 0)
             {
@@ -50,8 +72,18 @@ public class BurstRifleSpin : MonoBehaviour
             {
                 barrelSpeed = 0;
             }
+            if (beltSpeed > 0)
+            {
+                beltSpeed -= beltDeceleration * Time.deltaTime;
+            }
+            else
+            {
+                beltSpeed = 0;
+            }
         }
-
-        barrel_Spinning.transform.Rotate(0, 0, barrelSpeed * Time.deltaTime, Space.Self);
+       
+        barrelSpinning.transform.Rotate(0, 0, barrelSpeed * Time.deltaTime, Space.Self);
+        bulletBelt.transform.Rotate(0, 0, beltSpeed * Time.deltaTime, Space.Self);
+        bulletRing.transform.Rotate(0, 0, beltSpeed * Time.deltaTime, Space.Self);
     }
 }
