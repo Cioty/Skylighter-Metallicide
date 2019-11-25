@@ -1,0 +1,270 @@
+fileFormatVersion: 2
+guid: ae96922110febfa41a21d8ef79a1ccf1
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: BoltDoor1
+    100002: BoltDoor2
+    100004: BoltDoor3
+    100006: BoltDoor4
+    100008: ConnectorDoor1
+    100010: ConnectorDoor2
+    100012: ConnectorDoor3
+    100014: ConnectorDoor4
+    100016: Pistons_Rods1
+    100018: Pistons_Rods2
+    100020: Pistons_Rods3
+    100022: Pistons_Rods4
+    100024: //RootNode
+    100026: ShippingContainerBase1
+    400000: BoltDoor1
+    400002: BoltDoor2
+    400004: BoltDoor3
+    400006: BoltDoor4
+    400008: ConnectorDoor1
+    400010: ConnectorDoor2
+    400012: ConnectorDoor3
+    400014: ConnectorDoor4
+    400016: Pistons_Rods1
+    400018: Pistons_Rods2
+    400020: Pistons_Rods3
+    400022: Pistons_Rods4
+    400024: //RootNode
+    400026: ShippingContainerBase1
+    2100000: PaintedMetal
+    2100002: RoughDarkGrey
+    2100004: MachinedSteel
+    2100006: HazardLights
+    2300000: BoltDoor1
+    2300002: BoltDoor2
+    2300004: BoltDoor3
+    2300006: BoltDoor4
+    2300008: ConnectorDoor1
+    2300010: ConnectorDoor2
+    2300012: ConnectorDoor3
+    2300014: ConnectorDoor4
+    2300016: Pistons_Rods1
+    2300018: Pistons_Rods2
+    2300020: Pistons_Rods3
+    2300022: Pistons_Rods4
+    2300024: ShippingContainerBase1
+    3300000: BoltDoor1
+    3300002: BoltDoor2
+    3300004: BoltDoor3
+    3300006: BoltDoor4
+    3300008: ConnectorDoor1
+    3300010: ConnectorDoor2
+    3300012: ConnectorDoor3
+    3300014: ConnectorDoor4
+    3300016: Pistons_Rods1
+    3300018: Pistons_Rods2
+    3300020: Pistons_Rods3
+    3300022: Pistons_Rods4
+    3300024: ShippingContainerBase1
+    4300000: ShippingContainerBase1
+    4300002: ConnectorDoor1
+    4300004: ConnectorDoor2
+    4300006: ConnectorDoor3
+    4300008: ConnectorDoor4
+    4300010: Pistons_Rods1
+    4300012: BoltDoor1
+    4300014: Pistons_Rods2
+    4300016: BoltDoor2
+    4300018: Pistons_Rods3
+    4300020: BoltDoor3
+    4300022: Pistons_Rods4
+    4300024: BoltDoor4
+    7400000: Door Opening
+    7400002: Door Closed
+    7400004: Door Opened
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HazardLights
+    second: {fileID: 2100000, guid: 3aba84d6870e99e4ab09548af9bdeb32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MachinedSteel
+    second: {fileID: 2100000, guid: 3aba84d6870e99e4ab09548af9bdeb32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PaintedMetal
+    second: {fileID: 2100000, guid: 3aba84d6870e99e4ab09548af9bdeb32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RoughDarkGrey
+    second: {fileID: 2100000, guid: 3aba84d6870e99e4ab09548af9bdeb32, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Door Opening
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Door Closed
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Door Opened
+      takeName: Take 001
+      firstFrame: 50
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

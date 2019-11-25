@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BurstRifle
-  m_Shader: {fileID: 4800000, guid: f94533c237f74c043ad7607050c4a79a, type: 3}
+  m_Shader: {fileID: 4800000, guid: d56b25cd45467d748a4dc72c29d526d7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
