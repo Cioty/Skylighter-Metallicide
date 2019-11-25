@@ -1721,7 +1721,122 @@ ModelImporter:
     4300616: light5
     4300618: light
     4300620: light4
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: constructionRed
+    second: {fileID: 2100000, guid: 8619d34c2dd4fae4e87607f815a9e6b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: constructionYellow
+    second: {fileID: 2100000, guid: 15fc7fc17819dd843982085ddf973515, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkGreyA1
+    second: {fileID: 2100000, guid: 138163b174fa3c04b91af3488a534c6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkGreyA2
+    second: {fileID: 2100000, guid: 946d720755e38754a9d41f1a38edd3b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkGreyB1
+    second: {fileID: 2100000, guid: a7645e1f8422bb6449d220bdc835faee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkGreyB2
+    second: {fileID: 2100000, guid: 52dc1ada45b43964e8d7fea740e0d006, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkGreyC1
+    second: {fileID: 2100000, guid: d569372d04b18ad44972b5ddf3834121, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkGreyC2
+    second: {fileID: 2100000, guid: 8a5786e2ccccfec4cbffa9976b4aa242, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkGreyC3
+    second: {fileID: 2100000, guid: 10535d960feb1604bbc7fcca4dd858ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkGreyC4
+    second: {fileID: 2100000, guid: 3a685931b10bea44db94b41dace559c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass1
+    second: {fileID: 2100000, guid: 6b5630d474045f546aef9dbfddc68c03, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass2
+    second: {fileID: 2100000, guid: 61c7c3e6d7a2e3d41a86322fac9a69c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glossyBlack
+    second: {fileID: 2100000, guid: 9e4cc79405509e04398b6f33dffc1ed4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glossyDarkGrey
+    second: {fileID: 2100000, guid: 0d8ce826b7fa59142b93194d2531dd44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glossyGrey
+    second: {fileID: 2100000, guid: 8619d34c2dd4fae4e87607f815a9e6b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glossyWhite
+    second: {fileID: 2100000, guid: c4c80c06eb42ecf48b6899dbf4c72452, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lightEmissive
+    second: {fileID: 2100000, guid: e87e47cf47f75e142a93777f93caac62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lightEmissive2
+    second: {fileID: 2100000, guid: d1a0707976e1c0446bd743319a3a4f1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: transparentGreen
+    second: {fileID: 2100000, guid: 6951143b288eb4746bc638fb0d998503, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: transparentRed
+    second: {fileID: 2100000, guid: 14b3569a578b97745bfe5ec0b4b60bf3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: transparentRed1
+    second: {fileID: 2100000, guid: 245b764b00f62cb48a5fdf407be7c814, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: transparentWhite
+    second: {fileID: 2100000, guid: 46334370d7199e140a47c3cecae89369, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: turbineColour
+    second: {fileID: 2100000, guid: 824c70140cb2fa745859f5a83c78d4bc, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -1761,7 +1876,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

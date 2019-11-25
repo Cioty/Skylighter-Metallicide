@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BurstRifle
-  m_Shader: {fileID: 4800000, guid: d56b25cd45467d748a4dc72c29d526d7, type: 3}
+  m_Shader: {fileID: 4800000, guid: f94533c237f74c043ad7607050c4a79a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_869D0645:
-        m_Texture: {fileID: 2800000, guid: a13be5f9a062d6b46be2c2c2502781ca, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5a599c3849abe4447b5c72eb077aba65, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_86BA6528:
