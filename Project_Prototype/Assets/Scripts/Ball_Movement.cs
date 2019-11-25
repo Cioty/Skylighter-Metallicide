@@ -20,20 +20,29 @@ public class Ball_Movement : MonoBehaviour
     private float currentSpeed;
     public float movementSpeed = 5.0f;
     public float maxSpeed = 10.0f;
+    public float maxAngularVelocity = 25.0f;
+    private Vector3 gravity = new Vector3(0.0f, -9.8f);
     //private float acceleration = 0.0f;
 
     //private float smooth = 1.0f;
 
+    // For steering behaviour
+    Vector3 desiredVelocity;
     Vector3 currentVelocity;
-    Vector3 direction;
+
+    Vector3 desiredDirection = Vector3.zero;
+    Vector3 currentDirection = Vector3.zero;
 
     // Cage rotation
-    Quaternion currentCageRotX;
-    Quaternion newCageRotX;
+    Quaternion currentCageRot;
+    Quaternion newCageRot;
+
 
     // Jumping 
     public float jumpForce = 5.0f;
     private bool isJumping = false;
+
+    private bool isGrounded;
 
     // Collider variables
     public float distanceToGround = 0.5f;
@@ -41,14 +50,16 @@ public class Ball_Movement : MonoBehaviour
     private void Awake()
     {
         rb = sphereObject.GetComponent<Rigidbody>();
+        rb.maxAngularVelocity = maxAngularVelocity;
         sphereCollider = sphereObject.GetComponent<SphereCollider>();
         playerHandler = GetComponentInParent<PlayerHandler>();
     }
 
     // Start is called before the first frame update
     void Start()
-    {
-        //currentCageRotX = new Quaternion(coreCage.transform.localRotation.x, 0.0f, 0.0f, 0.0f);
+    {        
+        currentVelocity = Vector3.zero;
+        currentCageRot = new Quaternion(coreCage.transform.localRotation.x, 0.0f, 0.0f, 0.0f);
     }
 
     private void Update()
@@ -56,6 +67,11 @@ public class Ball_Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded() && playerHandler.IsControllable)
         {
             isJumping = true;
+        }
+
+        if (!IsGrounded())
+        {
+            rb.AddForce(-Vector3.up * 10.0f, ForceMode.Acceleration);
         }
     }
 
@@ -94,69 +110,102 @@ public class Ball_Movement : MonoBehaviour
         Vector3 cam_right = thirdPersonCamera.transform.right;
 
         // Locking camera's y rotation to 0, so it doesn't tilt away from the forward axis.
-        cam_forward.y = 0.0f;
         cam_right.y = 0.0f;
-        cam_forward = cam_forward.normalized;
-        cam_right = cam_right.normalized;
+        cam_forward.y = 0.0f;
+       
 
         // The direction
-        direction = (cam_forward * vertical_move + cam_right * horizontal_move);
+        desiredDirection = (cam_forward * vertical_move + cam_right * horizontal_move).normalized;
 
         // Check if there's input
-        if (direction.magnitude != 0.0f)
-        {
-            // Acceleration achieved through dividing
-            currentSpeed = Mathf.Lerp(currentSpeed, maxSpeed, movementSpeed/maxSpeed);
+        if (desiredDirection.magnitude != 0.0f)
+        {           
+                // Acceleration achieved through dividing
+                currentSpeed = Mathf.Lerp(currentSpeed, maxSpeed, currentSpeed + movementSpeed / maxSpeed);
 
-            if (currentSpeed > maxSpeed)
-            {
-                currentSpeed = maxSpeed;
-            }
+                if (currentSpeed > maxSpeed)
+                {
+                    currentSpeed = maxSpeed;
+                }          
         }
         else
-        {           
-            // Deceleration achieved through dividing current speed by max speed
-            currentSpeed = Mathf.Lerp(currentSpeed, 0.0f, movementSpeed/maxSpeed);
-
-            if (currentSpeed < 0.0f)
-            {
-                currentSpeed = 0.0f;
-            }
+        {
+            currentSpeed = 0.0f;
         }
 
-        currentVelocity = direction * currentSpeed;
-        // coreCage.transform.localRotation = coreCage.transform.localRotation * Quaternion.AngleAxis(coreCage.transform.localRotation.x + currentSpeed/movementSpeed, Vector3.right);
+        //coreSteer(currentDirection, desiredDirection, currentSpeed);
+        currentVelocity = (desiredDirection) * currentSpeed;
+
+        // Setting the core's cage to the direction of the camera
+        if (vertical_move != 0.0f)
+            coreCage.transform.localRotation = coreCage.transform.localRotation * Quaternion.AngleAxis(coreCage.transform.localRotation.x + currentSpeed, Vector3.right);
 
         // Translate position
-        rb.AddForce(currentVelocity); 
+        rb.AddForce(currentVelocity );
+
+        // Will always be where the player faces.        
     }
 
     void coreDirection()
     {
-        // The core's inner rotation from Camera
-        coreObject.transform.localRotation = thirdPersonCamera.transform.localRotation;
+        // Get the new direction the player is facing
+        newCageRot = thirdPersonCamera.transform.rotation;
+
+        // The core's inner rotation equal to Camera
+        coreObject.transform.localRotation = Quaternion.Slerp(currentCageRot, newCageRot, Time.deltaTime * 10.0f);
+
+        currentCageRot = coreObject.transform.rotation;
+    }
+
+
+    /// <summary>
+    /// Takes time for the Core steer in the desired direction
+    /// </summary>
+    /// <param name="currentDir"> They direction the ball moves in for that frame </param>
+    /// <param name="desiredDir"> Where the Core should go </param>
+    /// <param name="speed"> Makes the Core move at this speed </param>
+    void coreSteer(Vector3 currentDir, Vector3 desiredDir, float speed)
+    {
+        // Desired velocity that the Core will move to
+        desiredVelocity = desiredDir * speed;
+
+        // Get the difference between the desired and current velocity
+        Vector3 steeringForce = desiredVelocity - currentVelocity;
+
+        // Current velocity slowly becomes the desired velocity
+        currentVelocity = (currentDir + steeringForce) * speed;
     }
 
     private bool IsGrounded()
     {
         RaycastHit hit;
-        Ray ray = new Ray(transform.position, -Vector3.up);
+        Ray ray = new Ray(sphereCollider.transform.position, -Vector3.up);
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, distanceToGround))
         {
-            GameObject targetHit = hit.transform.gameObject;
-            if (targetHit && targetHit.tag == "Ground" && hit.distance <= distanceToGround)
-            {
-                Debug.Log("hit: " + hit.distance);
-                return true;
-            }
-            else
-            {
-                Debug.Log("no: " + hit.distance);
-                return false;
-            }
+            return true;
         }
         else
+        {
             return false;
+        }
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Debug.Log("Entered");
+    //    if (collision.gameObject.CompareTag("Ground"))
+    //    {
+    //        isGrounded = true;
+    //    }
+    //}
+
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    Debug.Log("Exit");
+    //    if (collision.gameObject.CompareTag("Ground"))
+    //    {
+    //        isGrounded = false;
+    //    }
+    //}
 }

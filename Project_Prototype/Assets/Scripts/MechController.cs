@@ -148,6 +148,11 @@ public class MechController : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            playerHandler.MechHealth -= 10;
+        }
     }
 
     private void FixedUpdate()

@@ -8,10 +8,12 @@
  * Author:      Nixon Sok & Lachlan Wernert
  * Team:        Skylighter
  * 
- * Deficiences:
+ * Deficiences: Doesn't do animations just yet or activate the player's needed scripts
+ *              You can still shoot and Dash
  * 
  *===========================================================================*/
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Mech_Recovery : MonoBehaviour
 {
@@ -19,12 +21,29 @@ public class Mech_Recovery : MonoBehaviour
     [SerializeField]
     private bool isOccupied = false;
     private bool isActive = true;
+    private bool mechElevate = false;
+    private PlayerHandler playerHandlerStation = null;
 
     // A trigger to detect the ball collision.
     public Trigger respawnTrigger;
 
     // A trigger to detect a player ontop of the station.
     public Trigger occupiedTrigger;
+
+    // A empty Game object's transform to spawn the player
+    public Transform playerRefuelTransform;
+
+    // Mech Station's animation
+    // public Animation stationAnimation;
+    public Animator animatorStation;
+
+    //private Animator animatorStation;
+
+    private void Start()
+    {
+        // Animation clips
+        
+    }
 
     private void Update()
     {
@@ -44,6 +63,16 @@ public class Mech_Recovery : MonoBehaviour
             }
         }
 
+        // Check to see if respawn is in progress
+        if (playerHandlerStation != null)
+        {
+            // Is it respawning?
+            if (playerHandlerStation.IsSpawning)
+            {
+                MechStationAnimation(playerHandlerStation);
+            }
+        }
+
         // Checking if a player is ontop of the station:
         GameObject occupied = occupiedTrigger.CollidedGameObject();
 
@@ -52,19 +81,87 @@ public class Mech_Recovery : MonoBehaviour
     }
 
     // A function to spawn a player at this stations location.
+
+        /* UPDATES */
+        // Player's are set to Mech first
+        // All player's movement and weapons are disabled(not yet finished)
+        // The animation will be done via another function
     public void SpawnPlayer(PlayerHandler playerHandler)
     {
-        // Resetting the player's stats.
-        playerHandler.MechHealth = playerHandler.MaxMechHealth;
-        playerHandler.CoreHealth = playerHandler.MaxCoreHealth;
-        playerHandler.MechCharacterController.enabled = false;
-        playerHandler.mechObject.transform.position = this.transform.position;
-        playerHandler.mechObject.transform.rotation = this.transform.rotation;
-        playerHandler.MechCharacterController.enabled = true;
-        playerHandler.IsAlive = true;
+        // Remember which player is spawning here
+        playerHandlerStation = playerHandler;
 
         // Setting the player's state to the mech state.
-        playerHandler.StateManager.SetState(StateManager.PLAYER_STATE.Mech);
+        playerHandlerStation.StateManager.SetState(StateManager.PLAYER_STATE.Mech);
+
+        // Resetting the player's stats.
+        playerHandlerStation.MechHealth = playerHandler.MaxMechHealth;
+        playerHandlerStation.CoreHealth = playerHandler.MaxCoreHealth;
+
+        playerHandlerStation.MechCharacterController.enabled = false;
+
+        // Prevent Player from looking around the Mech Station
+        playerHandlerStation.MechCamera.enabled = false;
+
+        // Testing spawning player at the new spawn point
+        playerHandlerStation.mechObject.transform.position = playerRefuelTransform.TransformPoint(playerRefuelTransform.localPosition);
+        playerHandlerStation.mechObject.transform.forward = playerRefuelTransform.forward;
+
+        playerHandlerStation.IsSpawning = true;
+    }
+
+    // When SpawnPlayer has ended, this plays
+    public void MechStationAnimation(PlayerHandler playerHandler)
+    {
+        // Close Hatch, regardless if the ball has entered
+        if (!animatorStation.GetBool("Close_Hatch"))
+            animatorStation.SetBool("Close_Hatch", playerHandler.IsSpawning);
+
+        // When the Hatch is closed
+        if (animatorStation.GetBool("Close_Hatch"))
+        {
+            // Start the animation.
+            animatorStation.SetTrigger("Respawn");
+        }
+
+        // When it gets to Elevate
+        if (animatorStation.GetCurrentAnimatorStateInfo(0).IsName("Elevate"))
+        {
+            // Set Player's position to where ever the elevator's spawn point is now
+            playerHandler.mechObject.transform.position = playerRefuelTransform.TransformPoint(playerRefuelTransform.localPosition);
+        }
+
+        // Now when it's now elevated, the barrier goes down. Give control back to the player
+        if (animatorStation.GetCurrentAnimatorStateInfo(0).IsName("Barrier Down"))
+        {
+            playerHandler.MechCharacterController.enabled = true;
+            playerHandler.MechCamera.enabled = true;
+            playerHandler.IsSpawning = false;
+            playerHandler.IsAlive = true;
+
+            
+            playerHandler.IsControllable = true;
+
+            playerHandlerStation = null;
+
+            animatorStation.ResetTrigger("Barrier_Down");
+            animatorStation.ResetTrigger("Respawn");
+            animatorStation.SetBool("Close_Hatch", false);
+        }
+    }
+
+    public void MechElevatorMove(int start)
+    {
+        if(start == 1)
+        {
+            //Start setting position
+
+
+        } else
+        {
+            //Stop setting position
+
+        }
     }
 
     // A property for the occupied boolean.

@@ -124,4 +124,8 @@ public class FirstPersonCamera : MonoBehaviour
     {
         get { return mouseLook; }        
     }
+    public Transform CoreTransform
+    {
+        get { return mechCoreTransform; }
+    }
 }

@@ -67,6 +67,9 @@ public class PlayerHandler : MonoBehaviour
     private bool addToSplashCheck = false;
     private float afterSpawnTimer = 0.0f;
     private float respawnTimer = 0.0f;
+    Mech_Recovery station = null;
+    private bool isSpawning = false;
+    private FirstPersonCamera mechCamera;
     // ----------------------------------------------- //
 
     [Header("Boost Meter")]
@@ -94,6 +97,8 @@ public class PlayerHandler : MonoBehaviour
         characterController = mechObject.GetComponent<CharacterController>();
         mechTransform = mechObject.GetComponent<Transform>();
         impactReceiver = mechObject.GetComponent<ImpactReceiver>();
+
+        mechCamera = mechObject.GetComponent<FirstPersonCamera>();
     }
 
     private void Start()
@@ -185,7 +190,8 @@ public class PlayerHandler : MonoBehaviour
     public void RandomSpawn_Unactive()
     {
         // Spawning in the player.
-        RespawnArray.instance.GetRandomSpawnPoint().GetComponent<Mech_Recovery>().SpawnPlayer(this);
+        station = RespawnArray.instance.GetRandomSpawnPoint().GetComponent<Mech_Recovery>();
+        station.SpawnPlayer(this);
     }
 
     // A function to respawn the player at a random respawn staion.
@@ -194,6 +200,9 @@ public class PlayerHandler : MonoBehaviour
         // Turning off the players controls:
         isControllable = false;
 
+        // Remembers the Mech Station/ Respawn point that the player will spawn at
+        if (station == null)
+            station = RespawnArray.instance.GetRandomSpawnPoint().GetComponent<Mech_Recovery>();
 
         // Enabling the respawn timer UI:
         respawnTimerUI.SetActive(true);
@@ -202,7 +211,7 @@ public class PlayerHandler : MonoBehaviour
         if(ReadyToRespawn())
         {
             // Spawning in the player:
-            RespawnArray.instance.GetRandomSpawnPoint().GetComponent<Mech_Recovery>().SpawnPlayer(this);
+            station.SpawnPlayer(this);
             
             // Enabling the players controls:
             if(!isTestDummy)
@@ -287,6 +296,7 @@ public class PlayerHandler : MonoBehaviour
     {
         get { return firstPersonCamera; }
     }
+
 
     public Vector3 CurrentVelocity
     {
@@ -407,5 +417,20 @@ public class PlayerHandler : MonoBehaviour
     {
         get { return isTestDummy; }
         set { isTestDummy = value; }
+    }
+
+    /// <summary>
+    /// The trigger for the player to spawn and start animations
+    /// </summary>
+    public bool IsSpawning
+    {
+        get { return isSpawning; }
+        set { isSpawning = value; }
+    }
+
+    // So we can disable the camera during respawn
+    public FirstPersonCamera MechCamera
+    {
+        get { return mechCamera; }
     }
 }

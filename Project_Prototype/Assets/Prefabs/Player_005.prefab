@@ -2132,7 +2132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mechHealth: 100
   coreHealth: 41
-  timeToRespawn: 3
+  timeToRespawn: 20
   invulnerableAfterSpawnTime: 2
   playerViewMask: Player0View
   playerID: 0
@@ -5813,6 +5813,31 @@ PrefabInstance:
       propertyPath: playerHandler
       value: 
       objectReference: {fileID: 7684074976315746024}
+    - target: {fileID: 667438155711559473, guid: 9ac7b435b6db6e14f8fa6dc8f283a24c,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311458262045493835, guid: 9ac7b435b6db6e14f8fa6dc8f283a24c,
+        type: 3}
+      propertyPath: maxAngularVelocity
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311458262045493835, guid: 9ac7b435b6db6e14f8fa6dc8f283a24c,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311458262045493835, guid: 9ac7b435b6db6e14f8fa6dc8f283a24c,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609255717718675825, guid: 9ac7b435b6db6e14f8fa6dc8f283a24c,
+        type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ac7b435b6db6e14f8fa6dc8f283a24c, type: 3}
 --- !u!4 &5201032683813398551 stripped

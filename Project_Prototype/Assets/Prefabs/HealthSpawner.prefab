@@ -114,8 +114,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ce837d8c986a64ca6e3281005b9f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitSpawner: {fileID: 0}
-  coolDown: 0
+  animator: {fileID: 8907026761546254563}
+  isInteractable: 1
+  coolDown: 10
+  timerReset: 10
+  bobbing: 0.005
+  spinSpeed: 2
 --- !u!1001 &1710374985675783333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -213,14 +217,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4678351595830704573}
     m_Modifications:
-    - target: {fileID: 100074, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
-      propertyPath: m_Name
-      value: HealthSpawner_002
-      objectReference: {fileID: 0}
-    - target: {fileID: 100074, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400074, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -263,6 +259,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400074, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100074, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
+      propertyPath: m_Name
+      value: HealthSpawner_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 100074, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
@@ -466,6 +470,12 @@ PrefabInstance:
 --- !u!4 &8907026761536644937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400074, guid: e2bee9a7b88c6d749b0dc5e6b08c5502,
+    type: 3}
+  m_PrefabInstance: {fileID: 8907026761536781699}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8907026761546254563 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: e2bee9a7b88c6d749b0dc5e6b08c5502,
     type: 3}
   m_PrefabInstance: {fileID: 8907026761536781699}
   m_PrefabAsset: {fileID: 0}

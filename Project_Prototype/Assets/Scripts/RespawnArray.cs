@@ -55,9 +55,9 @@ public class RespawnArray : MonoBehaviour
 
         // Checking if it is occupied.
         if (!randomSpawnPoint.IsOccupied)
-        {
+        {           
             randomSpawnPoint.IsOccupied = true;
-            return randomSpawnPoint.transform;
+            return randomSpawnPoint.transform;           
         }
 
         // Recursively searching for an avaliable mech station.
