@@ -154,7 +154,8 @@ public class PlayerHandler : MonoBehaviour
         {
             // Changing the state of the player to the core:
             stateManager.SetState(StateManager.PLAYER_STATE.Core);
-            // Resetting the mechs health:
+
+            // Resetting the mechs health: THIS IS RESETTING THE UI BAR!
             mechHealth = mechMaxHealth;
         }
 

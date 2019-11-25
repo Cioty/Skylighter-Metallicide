@@ -214,26 +214,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2057684919921809358}
     m_Modifications:
-    - target: {fileID: 952179769996764465, guid: 84035bbb54fb543439053a4f6287e399,
-        type: 3}
-      propertyPath: m_Name
-      value: Respawn-Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 952179769996764464, guid: 84035bbb54fb543439053a4f6287e399,
-        type: 3}
-      propertyPath: mechRespawnStations.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 952179769996764464, guid: 84035bbb54fb543439053a4f6287e399,
-        type: 3}
-      propertyPath: playerManager
-      value: 
-      objectReference: {fileID: 2057684920551763544}
-    - target: {fileID: 952179769996764464, guid: 84035bbb54fb543439053a4f6287e399,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 821392333437493139}
     - target: {fileID: 952179769996764467, guid: 84035bbb54fb543439053a4f6287e399,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -289,6 +269,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 952179769996764465, guid: 84035bbb54fb543439053a4f6287e399,
+        type: 3}
+      propertyPath: m_Name
+      value: Respawn-Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 952179769996764464, guid: 84035bbb54fb543439053a4f6287e399,
+        type: 3}
+      propertyPath: mechRespawnStations.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 952179769996764464, guid: 84035bbb54fb543439053a4f6287e399,
+        type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 2057684920551763544}
+    - target: {fileID: 952179769996764464, guid: 84035bbb54fb543439053a4f6287e399,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 821392333437493139}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84035bbb54fb543439053a4f6287e399, type: 3}
 --- !u!4 &5057120542697808208 stripped
@@ -7664,6 +7664,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951791770681987142, guid: 4262946694cd31d4e9c4189c9a3f2ead,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4262946694cd31d4e9c4189c9a3f2ead, type: 3}

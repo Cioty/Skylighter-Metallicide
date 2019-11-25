@@ -43,7 +43,7 @@ public class ToggleMechControls : MonoBehaviour
             firstPersonCamera.enabled = false;
             projectileLauncher.enabled = false;
             dashing.enabled = false;
-            viewModelControl.enabled = false;
+            //viewModelControl.enabled = false;
         }
     }
 }

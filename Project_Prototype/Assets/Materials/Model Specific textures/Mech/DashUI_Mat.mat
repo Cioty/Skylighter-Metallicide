@@ -56,9 +56,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_68ECF916: 1
-    - Vector1_7DF71F34: 1
-    - Vector1_B232810B: 1
+    - Vector1_68ECF916: 0
+    - Vector1_7DF71F34: 0
+    - Vector1_B232810B: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -68,6 +68,9 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Light1: 1
+    - _Light2: 1
+    - _Light3: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _ReceiveShadows: 1

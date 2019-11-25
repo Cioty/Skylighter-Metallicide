@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ViewmodelControl : MonoBehaviour
 {   
@@ -15,7 +16,7 @@ public class ViewmodelControl : MonoBehaviour
 
     // Camera info and speed
     //FirstPersonCamera MechCamera;
-    PlayerHandler playerStats;
+    public PlayerHandler playerStats;
 
     // The camera's position and rotation
     Transform camTransform;
@@ -54,6 +55,11 @@ public class ViewmodelControl : MonoBehaviour
     public float smooth = 3.0f;
     public float maxSwayY = 30.0f;
 
+    [Header("UI")]
+    public Image healthBar;
+    public Renderer dashChargeRenderer;
+    private Material dashMat;
+    private float lastHealthChecked = 0f;
 
     // Get the first person Camera script
     FirstPersonCamera mouseRotation;
@@ -69,9 +75,6 @@ public class ViewmodelControl : MonoBehaviour
     private void Awake()
     {
         mouseRotation = GetComponent<FirstPersonCamera>();
-
-        //rb = GetComponent<Rigidbody>();
-        playerStats = player.GetComponent<PlayerHandler>();
         controller = this.GetComponent<CharacterController>();
 
         // Camera's transform
@@ -98,6 +101,9 @@ public class ViewmodelControl : MonoBehaviour
 
         origX = viewModelRotation.x;
         origY = viewModelRotation.y;
+
+        dashMat = dashChargeRenderer.materials[1];
+        dashMat.shader = Shader.Find("Shader Graphs/Dash_Shader");
     }
 
     // Update is called once per frame
@@ -105,7 +111,42 @@ public class ViewmodelControl : MonoBehaviour
     {
         timer += Time.deltaTime;
        
-        CameraSway();        
+        CameraSway();
+
+        if(lastHealthChecked != playerStats.mechHealth)
+        {
+            if(playerStats.mechHealth > 0)
+                healthBar.fillAmount = playerStats.mechHealth / 100f;
+            else
+                healthBar.fillAmount = 0f;
+
+            lastHealthChecked = playerStats.mechHealth;
+        }
+        switch (playerStats.BoostPoints)
+        {
+            case 0:
+                dashMat.SetFloat("_Light1", 0.0f);
+                dashMat.SetFloat("_Light2", 0.0f);
+                dashMat.SetFloat("_Light3", 0.0f);
+                break;
+            case 1:
+                dashMat.SetFloat("_Light1", 1.0f);
+                dashMat.SetFloat("_Light2", 0.0f);
+                dashMat.SetFloat("_Light3", 0.0f);
+                break;
+
+            case 2:
+                dashMat.SetFloat("_Light1", 1.0f);
+                dashMat.SetFloat("_Light2", 1.0f);
+                dashMat.SetFloat("_Light3", 0.0f);
+                break;
+
+            case 3:
+                dashMat.SetFloat("_Light1", 1.0f);
+                dashMat.SetFloat("_Light2", 1.0f);
+                dashMat.SetFloat("_Light3", 1.0f);
+                break;
+        }
     }
 
 
