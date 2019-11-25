@@ -25,8 +25,10 @@ public class ProjectileLauncher : MonoBehaviour
     private float fireTimer = 0.0f;
     private const float MAX_TRG_SCL = 1.21f;
 
-    public GameObject rocketLauncherMesh;
-    private Animator RLAnimator;
+    public GameObject rocketLauncherMesh_mech;
+    public GameObject rocketLauncherMesh_view;
+    private Animator RLAnimator_mech;
+    private Animator RLAnimator_view;
 
     //public AudioSource SFX_RocketFire;
     public MultiAudioSource SFX_RocketFire;
@@ -41,7 +43,8 @@ public class ProjectileLauncher : MonoBehaviour
     private void Awake()
     {
         playerObject = this.gameObject.transform.parent.gameObject;
-        RLAnimator = rocketLauncherMesh.GetComponent<Animator>();
+        RLAnimator_mech = rocketLauncherMesh_mech.GetComponent<Animator>();
+        RLAnimator_view = rocketLauncherMesh_view.GetComponent<Animator>();
     }
 
     private void Update()
@@ -69,7 +72,8 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void FireProjectile()
     {
-        RLAnimator.SetTrigger("Fire");
+        RLAnimator_mech.SetTrigger("Fire");
+        RLAnimator_view.SetTrigger("Fire");
         //SFX_RocketFire.Play();
 
         Ray ray = firstPersonCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));

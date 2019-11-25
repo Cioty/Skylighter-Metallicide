@@ -4,6 +4,9 @@ using XboxCtrlrInput;
 public class PlayerContainer : MonoBehaviour
 {
     public GameObject mechModel;
+    public GameObject aButton;
+    public GameObject bButton;
+    public Animator animator;
     private bool isActive = false;
 
     private int id;
@@ -18,6 +21,19 @@ public class PlayerContainer : MonoBehaviour
     public void ToggleMech()
     {
         isActive = !isActive;
-        mechModel.SetActive(isActive);
+        animator.SetBool("DoorOpen", isActive);
+
+        if(isActive)
+        {
+            aButton.SetActive(false);
+            bButton.SetActive(true);
+        }
+        else
+        {
+            aButton.SetActive(true);
+            bButton.SetActive(false);
+        }
     }
+
+    
 }

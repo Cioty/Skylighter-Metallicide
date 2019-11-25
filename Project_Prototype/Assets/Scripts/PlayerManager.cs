@@ -63,15 +63,14 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        // Set up correct screen view:
         ActivateCorrectScreenView();
+
+        // Position all players:
         ActivateAndPositionAllPlayers();
 
         // Resets the occupancy of the mech station:
         RespawnArray.instance.ResetOccupiedMechStations();
-
-        // Destroys the transferd data.
-        //if (!forceDebugMode && PlayerData.instance != null)
-        //    Destroy(PlayerData.instance.gameObject);
     }
     
     private void ActivateCorrectScreenView()
@@ -118,12 +117,10 @@ public class PlayerManager : MonoBehaviour
                 }
             }
             else
+            {
                 // Converting index 'i' into an xbox controller, then setting it to the indexed player handler:
                 playerHandler.AssignedController = ((XboxController)i);
 
-            //Deactivating controls from all players other than player0:
-            if (forceDebugMode)
-            {
                 // If not player0
                 if (i > 0)
                 {

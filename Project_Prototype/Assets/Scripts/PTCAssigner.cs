@@ -130,7 +130,7 @@ public class PTCAssigner : MonoBehaviour
                 if (assignedPlayers > 1)
                 {
                     PlayerData.instance.CurrentSplitScreenMode = ((PlayerData.SplitScreenMode)assignedPlayers - 1);
-                    allControllersConnectedScreen.SetActive(true);
+                    //allControllersConnectedScreen.SetActive(true);
 
                     if (XCI.GetButtonUp(XboxButton.Start, XboxController.All))
                     {

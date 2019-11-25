@@ -134,9 +134,9 @@ public class MechController : MonoBehaviour
 
 
         // Checking if the player can jump.
-        if (isGrounded)
+        if (isGrounded && playerHandler.IsControllable)
         {
-            if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump") && playerHandler.IsControllable)
+            if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump"))
             {
                 playerHandler.MechImpactRecevier.AddImpact(Vector3.up, jumpHeight);
 
@@ -230,7 +230,8 @@ public class MechController : MonoBehaviour
         playerHandler.CurrentVelocity = currentVelocity;
 
         // Making the rigid bodies velocity equal the calculated velocity.
-        controller.Move(currentVelocity * Time.deltaTime);
+        if(controller.enabled)
+            controller.Move(currentVelocity * Time.deltaTime);
     }
 
     public Vector3 GetMoveVector()
