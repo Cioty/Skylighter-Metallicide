@@ -2178,7 +2178,7 @@ MonoBehaviour:
   ejectForce: 10
   thirdPersonSwitch: 0
   cameraMoveTime: 1
-  timeToEject: 7
+  timeToEject: 4
 --- !u!114 &7684074976315746022
 MonoBehaviour:
   m_ObjectHideFlags: 0

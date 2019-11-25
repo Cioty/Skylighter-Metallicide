@@ -72,15 +72,18 @@ public class TP_MouseLook : MonoBehaviour
     void Mouse_aiming()
     {
         // controller only atm:
-        if (playerHandler.HasAssignedController && playerHandler.IsControllable)
+        if(playerHandler.IsControllable)
         {
-            mouse_x = XCI.GetAxis(XboxAxis.RightStickX, playerHandler.AssignedController) * rotationSpeed;
-            mouse_y = XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController) * rotationSpeed;
-        }
-        else
-        {
-            mouse_x = Input.GetAxis("Mouse X") * rotationSpeed;
-            mouse_y = Input.GetAxis("Mouse Y") * rotationSpeed;
+            if (playerHandler.HasAssignedController)
+            {
+                mouse_x = XCI.GetAxis(XboxAxis.RightStickX, playerHandler.AssignedController) * rotationSpeed;
+                mouse_y = XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController) * rotationSpeed;
+            }
+            else
+            {
+                mouse_x = Input.GetAxis("Mouse X") * rotationSpeed;
+                mouse_y = Input.GetAxis("Mouse Y") * rotationSpeed;
+            }
         }
 
         mouse_y = Mathf.Clamp(mouse_y, minY, maxY); // This keeps the Y-rotation between that angles to prevent full 360 degrees orbit in the Y-Axis

@@ -68,23 +68,7 @@ public class MechController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        // Setting the cursors lock state.
-        Cursor.lockState = CursorLockMode.Locked;
         distanceToGround = controller.bounds.extents.y;
-        //distanceToGround = capsuleCollider.bounds.extents.y;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Checking if we want to unlock the mouse.
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (Cursor.lockState == CursorLockMode.Locked)
-                Cursor.lockState = CursorLockMode.None;
-            else
-                Cursor.lockState = CursorLockMode.Locked;
-        }
     }
 
     // Gets the axis values then applys it to the movement vector with the players direction.
@@ -128,20 +112,37 @@ public class MechController : MonoBehaviour
                 sheild_Animator.SetBool("Walk", (currentVelocity.magnitude > walkingVelocityPadding));
 
             float walkingSpeed = (currentVelocity.magnitude / timeToMaxWalkSpeed * walkSpeedMultiplier) * 0.1f;
-            Debug.Log(walkingSpeed);
-
             mech_Animator.SetFloat("WalkSpeed", walkingSpeed);
         }
         else
             mech_Animator.SetBool("Walk", false);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         // Update the move vector.
-        if(playerHandler.IsControllable)
+        if (playerHandler.IsControllable)
             this.UpdateMoveVector();
 
+        if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump") && playerHandler.IsControllable)
+        {
+            //playerHandler.MechImpactRecevier.AddImpact(Vector3.up, 100);
+            currentVelocity += Vector3.up * jumpHeight;
+            if (!justJumped)
+            {
+                mech_Animator.SetTrigger("Jump");
+
+                if (playerHandler.IsInvulnerable)
+                    sheild_Animator.SetTrigger("Jump");
+
+                // Enabling just jumped flag:
+                justJumped = true;
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
         // Checking if the player is grounded:
         bool grounded = IsGrounded();
         playerHandler.IsGrounded = grounded;
@@ -172,22 +173,6 @@ public class MechController : MonoBehaviour
             // Applying direction and acceleration to the current velocity.
             currentVelocity = acceleration;
             currentVelocity = Vector3.ClampMagnitude(currentVelocity, maxVelocity);
-
-            // Checking for jump input.
-            if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump") && playerHandler.IsControllable)
-            {
-                currentVelocity += Vector3.up * jumpHeight;
-                if (!justJumped)
-                {
-                    mech_Animator.SetTrigger("Jump");
-
-                    if (playerHandler.IsInvulnerable)
-                        sheild_Animator.SetTrigger("Jump");
-
-                    // Enabling just jumped flag:
-                    justJumped = true;
-                }
-            }
         }
         else
         {
@@ -221,7 +206,7 @@ public class MechController : MonoBehaviour
             // Check for jump boost
             if(!justBoosted)
             {
-                if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump") && playerHandler.IsControllable)
+                if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump") && playerHandler.IsControllable && justJumped)
                 {
                     rocketJump.IsBoosting = true;
                     justBoosted = true;

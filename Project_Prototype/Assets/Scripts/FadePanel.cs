@@ -18,6 +18,9 @@ public class FadePanel : MonoBehaviour
     private void Awake()
     {
         panel = this.GetComponent<Image>();
+        
+        // Setting the cursors lock state.
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Start is called before the first frame update
@@ -49,6 +52,15 @@ public class FadePanel : MonoBehaviour
         if (panel.canvasRenderer.GetAlpha() == 0.0f && fadeOut)
         {
             hasFinished = false;
+        }
+
+        // Checking if we want to unlock the mouse.
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
         }
     }
 

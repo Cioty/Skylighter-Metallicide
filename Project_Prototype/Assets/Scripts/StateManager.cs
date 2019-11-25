@@ -114,6 +114,7 @@ public class StateManager : MonoBehaviour
             ejectTimer += Time.deltaTime;
             if(ejectTimer > timeToEject)
             {
+                mechEjectEffect.Stop();
                 EjectCore();
                 ejectTimer = 0.0f;
                 startEjectTimer = false;
