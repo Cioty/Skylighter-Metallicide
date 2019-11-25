@@ -53,6 +53,7 @@ public class MechController : MonoBehaviour
     private float accelTimer, deccelTimer, directionalTimer;
     private bool justBoosted = false;
     private bool justJumped = false;
+    private bool isGrounded = false;
 
     // Double/rocket Jump
     private RocketJump rocketJump;
@@ -120,38 +121,42 @@ public class MechController : MonoBehaviour
 
     private void Update()
     {
-        // Update the move vector.
+        // Checking if the player is grounded:
+        isGrounded = IsGrounded();
+        playerHandler.IsGrounded = isGrounded;
+
+        // Updating the movement vector:
         if (playerHandler.IsControllable)
             this.UpdateMoveVector();
 
-        if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump") && playerHandler.IsControllable)
+        // Checking if the player can jump.
+        if(isGrounded)
         {
-            //playerHandler.MechImpactRecevier.AddImpact(Vector3.up, 100);
-            currentVelocity += Vector3.up * jumpHeight;
-            if (!justJumped)
+            if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump") && playerHandler.IsControllable)
             {
-                mech_Animator.SetTrigger("Jump");
+                playerHandler.MechImpactRecevier.AddImpact(Vector3.up, jumpHeight);
 
-                if (playerHandler.IsInvulnerable)
-                    sheild_Animator.SetTrigger("Jump");
+                if (!justJumped)
+                {
+                    mech_Animator.SetTrigger("Jump");
 
-                // Enabling just jumped flag:
-                justJumped = true;
+                    if (playerHandler.IsInvulnerable)
+                        sheild_Animator.SetTrigger("Jump");
+
+                    // Enabling just jumped flag:
+                    justJumped = true;
+                }
             }
         }
     }
 
     private void FixedUpdate()
     {
-        // Checking if the player is grounded:
-        bool grounded = IsGrounded();
-        playerHandler.IsGrounded = grounded;
-
         // Updating the animations:
-        UpdateAnimations(grounded);
+        UpdateAnimations(isGrounded);
 
         // If the player is on the ground:
-        if (grounded)
+        if (isGrounded)
         {
             justBoosted = false;
 
@@ -166,7 +171,7 @@ public class MechController : MonoBehaviour
             {
                 // If there is no user input, then lerp the acceleration to 0 by the deceleration rate.
                 accelTimer = 0.0f;
-                deccelTimer += accelerationRate.Evaluate(decelerationMultiplier * Time.fixedDeltaTime);
+                deccelTimer += decelerationRate.Evaluate(decelerationMultiplier * Time.fixedDeltaTime);
                 acceleration = Vector3.Lerp(acceleration, new Vector3(0, 0, 0), deccelTimer / 1.0f);
             }
 

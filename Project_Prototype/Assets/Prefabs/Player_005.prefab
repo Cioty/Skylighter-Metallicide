@@ -1331,7 +1331,7 @@ MonoBehaviour:
   accelerationMultiplier: 6
   decelerationMultiplier: 3
   gravity: 25
-  jumpHeight: 12
+  jumpHeight: 75
   airAccelerationSpeed: 1.5
   maxVelocity: 25
   accelerationRate:

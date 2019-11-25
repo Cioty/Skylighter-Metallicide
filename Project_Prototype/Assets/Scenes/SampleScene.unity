@@ -29408,5 +29408,10 @@ PrefabInstance:
       propertyPath: m_PixelPerfect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1439612977934793870, guid: 4f10cac025bfbbf41a01e41df3d533a5,
+        type: 3}
+      propertyPath: timeToEject
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f10cac025bfbbf41a01e41df3d533a5, type: 3}
