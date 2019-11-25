@@ -1,0 +1,1809 @@
+fileFormatVersion: 2
+guid: 88fea81a4798391418b469262675e5a0
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: backgroundElements
+    100002: block5
+    100004: bockIII
+    100006: centralCeiling
+    100008: centralCorridor
+    100010: corridor_2ndFloor
+    100012: corridor_bridge
+    100014: corridor_groundFloor
+    100016: corridor_walls
+    100018: crane
+    100020: electricGenerator
+    100022: electrolysisPlant
+    100024: electrolysisPump
+    100026: ePlant_beams
+    100028: ePlant_Centerpiece
+    100030: ePlant_corner
+    100032: ePlant_cover
+    100034: ePlant_cover1
+    100036: ePlant_dehumidifier
+    100038: ePlant_Details
+    100040: ePLant_expansionJoint
+    100042: ePlant_filter
+    100044: ePlant_floodGate
+    100046: ePlant_floor
+    100048: ePlant_gate
+    100050: ePlant_girderSet
+    100052: ePlant_grateCover
+    100054: ePlant_grateCover2
+    100056: ePlant_Joint
+    100058: ePlant_lights
+    100060: ePlant_overhang
+    100062: ePlant_pipeBridge
+    100064: ePlant_pipeExit
+    100066: ePlant_pipeExposed
+    100068: ePlant_pipeSet
+    100070: ePlant_Ramp
+    100072: ePlant_rampLower
+    100074: ePlant_rampUpper
+    100076: ePlant_resovoirWall
+    100078: ePlant_turbineDoor
+    100080: ePlant_wall
+    100082: ePlant_wallDetail
+    100084: ePlant_wallDetail1
+    100086: ePlant_wallDetail2
+    100088: ePlant_wallDetail3
+    100090: ePlant_Walls
+    100092: ePllant_damSide
+    100094: freightTerminal
+    100096: frtTmnl_2ndCeiling
+    100098: frtTmnl_2ndFloor
+    100100: frtTmnl_2ndFloorDetail
+    100102: frtTmnl_3rdFloor
+    100104: frtTmnl_3rdFloorCeilng
+    100106: frtTmnl_cautionTape
+    100108: frtTmnl_ceiling
+    100110: frtTmnl_ceilingSupport
+    100112: frtTmnl_ceilingSupport1
+    100114: frtTmnl_Centerpiece
+    100116: frtTmnl_centralWallBottom
+    100118: frtTmnl_centralWallTop
+    100120: frtTmnl_containers
+    100122: frtTmnl_corridorFloor
+    100124: frtTmnl_crashBarrier
+    100126: frtTmnl_crashBarrier1
+    100128: frtTmnl_curveWall
+    100130: frtTmnl_decal
+    100132: frtTmnl_Details
+    100134: frtTmnl_door
+    100136: frtTmnl_elevator
+    100138: frtTmnl_exteriorCeiling
+    100140: frtTmnl_exteriorWall1
+    100142: frtTmnl_floorDetail
+    100144: frtTmnl_floorLift
+    100146: frtTmnl_freightDoor
+    100148: frtTmnl_gantry
+    100150: frtTmnl_glass
+    100152: frtTmnl_groundFloor
+    100154: frtTmnl_groundRamp
+    100156: frtTmnl_innerWall
+    100158: frtTmnl_jumpWall
+    100160: frtTmnl_ledgeBarrier
+    100162: frtTmnl_Lights
+    100164: frtTmnl_obsDeck
+    100166: frtTmnl_outerWall
+    100168: frtTmnl_outsideCorner
+    100170: frtTmnl_pipeSet
+    100172: frtTmnl_pipeSet1
+    100174: frtTmnl_pipeSet2
+    100176: frtTmnl_rampFloor
+    100178: frtTmnl_reactorDoor
+    100180: frtTmnl_reactorSideDoor
+    100182: frtTmnl_sidePillar
+    100184: frtTmnl_turbineDoor
+    100186: frtTmnl_ventPipe
+    100188: frtTmnl_ventWall
+    100190: frtTmnl_ventWall 1
+    100192: frtTmnl_wall
+    100194: frtTmnl_wallDetail1
+    100196: frtTmnl_Walls
+    100198: frtTmnl_wallSurface
+    100200: frtTmnl_warehouseWall
+    100202: frtTmnl_warehouseWall2
+    100204: frtTmnl_windowWall
+    100206: gasInjector
+    100208: group23
+    100210: group29
+    100212: group29 1
+    100214: group30
+    100216: group30 1
+    100218: group30 2
+    100220: group31
+    100222: group31 1
+    100224: group31 2
+    100226: group32
+    100228: group32 1
+    100230: group32 2
+    100232: group33
+    100234: group34
+    100236: group35
+    100238: group36
+    100240: group37
+    100242: group38
+    100244: jumpHole7
+    100246: light
+    100248: light 1
+    100250: light 2
+    100252: light 3
+    100254: light2
+    100256: light3
+    100258: light4
+    100260: light5
+    100262: light6
+    100264: light7
+    100266: Main
+    100268: //RootNode
+    100270: pCube298
+    100272: pCube299
+    100274: pCube349
+    100276: pCube349 1
+    100278: pCube349 10
+    100280: pCube349 11
+    100282: pCube349 2
+    100284: pCube349 3
+    100286: pCube349 4
+    100288: pCube349 5
+    100290: pCube349 6
+    100292: pCube349 7
+    100294: pCube349 8
+    100296: pCube349 9
+    100298: pCube350
+    100300: pCube351
+    100302: pCube352
+    100304: pCube353
+    100306: pCube358
+    100308: pCube359
+    100310: pCube426
+    100312: pCube427
+    100314: pCube430
+    100316: pCube431
+    100318: pCube432
+    100320: pCube433
+    100322: pCube434
+    100324: pCube435
+    100326: pCube436
+    100328: pCube446
+    100330: pCube462
+    100332: pCube477
+    100334: pCube481
+    100336: pCube678
+    100338: pCube700
+    100340: pCube701
+    100342: pCube702
+    100344: pCylinder125
+    100346: pCylinder125 1
+    100348: pCylinder125 2
+    100350: pCylinder132
+    100352: pCylinder132 1
+    100354: pCylinder132 2
+    100356: pCylinder136
+    100358: pCylinder136 1
+    100360: pCylinder136 2
+    100362: pCylinder136 3
+    100364: pCylinder136 4
+    100366: pCylinder136 5
+    100368: pCylinder136 6
+    100370: pCylinder136 7
+    100372: pCylinder136 8
+    100374: pCylinder137
+    100376: pCylinder137 1
+    100378: pCylinder137 2
+    100380: pCylinder137 3
+    100382: pCylinder137 4
+    100384: pCylinder137 5
+    100386: pCylinder137 6
+    100388: pCylinder137 7
+    100390: pCylinder137 8
+    100392: pCylinder138
+    100394: pCylinder139
+    100396: pCylinder140
+    100398: pCylinder141
+    100400: pCylinder221
+    100402: pCylinder222
+    100404: pCylinder223
+    100406: pCylinder226
+    100408: pCylinder227
+    100410: pCylinder228
+    100412: pCylinder229
+    100414: pCylinder230
+    100416: pCylinder231
+    100418: pCylinder232
+    100420: plantCeiling
+    100422: polySurface159
+    100424: railway
+    100426: railwayBeam
+    100428: railwayStalk
+    100430: rctrRm_2ndFloor
+    100432: rctrRm_2ndFloor2
+    100434: rctrRm_2ndFloor5
+    100436: rctrRm_bars
+    100438: rctrRm_ceiling
+    100440: rctrRm_ceilingTiles
+    100442: rctrRm_centerpiece
+    100444: rctrRm_centralWall
+    100446: rctrRm_column
+    100448: rctrRm_column 1
+    100450: rctrRm_column1
+    100452: rctrRm_columnPillars
+    100454: rctrRm_coolingTower
+    100456: rctrRm_curvePanel
+    100458: rctrRm_curvePath
+    100460: rctrRm_details
+    100462: rctrRm_floor
+    100464: rctrRm_floorDetail
+    100466: rctrRm_floorDetail1
+    100468: rctrRm_floorPlatform
+    100470: rctrRm_floorStairs
+    100472: rctrRm_freightDoor
+    100474: rctrRm_freightDoor 1
+    100476: rctrRm_glass
+    100478: rctrRm_innerCurveWall
+    100480: rctrRm_jumpGroove
+    100482: rctrRm_largePipes
+    100484: rctrRm_ledge1
+    100486: rctrRm_lights
+    100488: rctrRm_outerCurveWall
+    100490: rctrRm_panel
+    100492: rctrRm_pillar
+    100494: rctrRm_pillar 1
+    100496: rctrRm_pillar1
+    100498: rctrRm_pillar2
+    100500: rctrRm_pillar3
+    100502: rctrRm_pillar4
+    100504: rctrRm_pillars
+    100506: rctrRm_ramp
+    100508: rctrRm_reactorSupport
+    100510: rctrRm_sideBars
+    100512: rctrRm_sideDoor
+    100514: rctrRm_sidePath
+    100516: rctrRm_sideWindow
+    100518: rctrRm_sideWindow1
+    100520: rctrRm_skylight
+    100522: rctrRm_skylight10
+    100524: rctrRm_skylight2
+    100526: rctrRm_skylight4
+    100528: rctrRm_skylight5
+    100530: rctrRm_skylight6
+    100532: rctrRm_skylight7
+    100534: rctrRm_skylight8
+    100536: rctrRm_skylight9
+    100538: rctrRm_skylights
+    100540: rctrRm_smallPipes
+    100542: rctrRm_turbineWall
+    100544: rctrRm_walls
+    100546: reactorCenter
+    100548: reactorRoom
+    100550: reactorRooms36
+    100552: reactorRooms51
+    100554: reactorSegmentA
+    100556: reactorSegmentB
+    100558: reactorSegmentC
+    100560: reactorSegmentD
+    100562: reactorSegmentE
+    100564: reactorSegmentF
+    100566: respawnHole6
+    100568: respawnHole7
+    100570: rigColumn
+    100572: rigColumn1
+    100574: rigColumn2
+    100576: rigColumn3
+    100578: steamTurbine
+    100580: submarinePipes
+    100582: tbHll_bottomWall
+    100584: tbHll_ceiliingBeams
+    100586: tbHll_ceiling
+    100588: tbHll_ceiling 1
+    100590: tbHll_ceilingBlocks
+    100592: tbHll_centerBridge
+    100594: TbHll_Centerpiece
+    100596: tbHll_centralWall
+    100598: tbHll_centralWallDetail
+    100600: tbHll_cornerCeiling
+    100602: tbHll_cornerDetail
+    100604: tbHll_cornerPanel
+    100606: tbHll_corridorPillar
+    100608: TbHll_Details
+    100610: TbHll_door
+    100612: tbHll_ElectrolysisWall
+    100614: tbHll_exteriorWall
+    100616: tbHll_floor
+    100618: tbHll_girderSet
+    100620: tbHll_glass
+    100622: tbHll_glass 1
+    100624: TbHll_lights
+    100626: tbHll_lights
+    100628: TbHll_lowerRamp
+    100630: tbHll_mainCeilingBeamA
+    100632: tbHll_mainCeilingBeamB
+    100634: tbHll_mainPillars
+    100636: tbHll_mainWall
+    100638: tbHll_observation
+    100640: tbHll_outerWall
+    100642: tbHll_platformFloors
+    100644: tbHll_ramp
+    100646: tbHll_rampPath
+    100648: tbHll_rampWallDetail
+    100650: tbHll_reactorWall
+    100652: TbHll_sealedDoor
+    100654: tbHll_sideBridge
+    100656: tbHll_sideWall
+    100658: tbHll_transformer
+    100660: tbHll_transformer1
+    100662: tbHll_transformer2
+    100664: tbHll_transformerFence
+    100666: tbHll_transformerGlass
+    100668: tbHll_transformers
+    100670: tbHll_upperRamp
+    100672: tbHll_verticalBeams
+    100674: tbHll_wallReinforcement
+    100676: tbHll_wallReinforcement1
+    100678: tbHll_wallReinforcements
+    100680: TbHll_Walls
+    100682: tbHll_wallTurbineA
+    100684: tbHll_wallTurbineB
+    100686: tbHll_wallTurbineC
+    100688: tbHll_wallTurbineD
+    100690: tbHll_wallTurbines
+    100692: tbHll_window
+    100694: tbHll_windowReinforcement
+    100696: tbHll_windowReinforcement1
+    100698: tbHll_windowReinforcement2
+    100700: tbHll_windowReinforcement3
+    100702: tbHll_windowWall
+    100704: trainCabin
+    100706: trainCargo
+    100708: trainCarry
+    100710: trainCatwalk
+    100712: trainEngine
+    100714: trainHull
+    100716: trainRailrunner
+    100718: trainRailrunner1
+    100720: trainRailrunner2
+    100722: trainRailrunner3
+    100724: trainStabilizer
+    100726: turbineHall
+    100728: turbineHall2_TbHll_trash_window_pCube307
+    100730: turbineHall2_TbHll_trash_window_pCube308
+    100732: turbineHall_pCube274
+    100734: turbineHall_TbHll_Centerpiece_turbineSupports_group34_pCylinder140
+    100736: turbineHall_TbHll_Centerpiece_turbineSupports_group34_pCylinder141
+    100738: turbineSupports
+    100740: windTurbineProp
+    100742: windTurbineProp 1
+    100744: windTurbineProp 2
+    100746: windTurbineProp 3
+    100748: windTurbines
+    100750: windTurbineStalk
+    100752: windTurbineStalk1
+    100754: windTurbineStalk2
+    100756: windTurbineStalk3
+    100758: WIP
+    100760: worldLights
+    400000: backgroundElements
+    400002: block5
+    400004: bockIII
+    400006: centralCeiling
+    400008: centralCorridor
+    400010: corridor_2ndFloor
+    400012: corridor_bridge
+    400014: corridor_groundFloor
+    400016: corridor_walls
+    400018: crane
+    400020: electricGenerator
+    400022: electrolysisPlant
+    400024: electrolysisPump
+    400026: ePlant_beams
+    400028: ePlant_Centerpiece
+    400030: ePlant_corner
+    400032: ePlant_cover
+    400034: ePlant_cover1
+    400036: ePlant_dehumidifier
+    400038: ePlant_Details
+    400040: ePLant_expansionJoint
+    400042: ePlant_filter
+    400044: ePlant_floodGate
+    400046: ePlant_floor
+    400048: ePlant_gate
+    400050: ePlant_girderSet
+    400052: ePlant_grateCover
+    400054: ePlant_grateCover2
+    400056: ePlant_Joint
+    400058: ePlant_lights
+    400060: ePlant_overhang
+    400062: ePlant_pipeBridge
+    400064: ePlant_pipeExit
+    400066: ePlant_pipeExposed
+    400068: ePlant_pipeSet
+    400070: ePlant_Ramp
+    400072: ePlant_rampLower
+    400074: ePlant_rampUpper
+    400076: ePlant_resovoirWall
+    400078: ePlant_turbineDoor
+    400080: ePlant_wall
+    400082: ePlant_wallDetail
+    400084: ePlant_wallDetail1
+    400086: ePlant_wallDetail2
+    400088: ePlant_wallDetail3
+    400090: ePlant_Walls
+    400092: ePllant_damSide
+    400094: freightTerminal
+    400096: frtTmnl_2ndCeiling
+    400098: frtTmnl_2ndFloor
+    400100: frtTmnl_2ndFloorDetail
+    400102: frtTmnl_3rdFloor
+    400104: frtTmnl_3rdFloorCeilng
+    400106: frtTmnl_cautionTape
+    400108: frtTmnl_ceiling
+    400110: frtTmnl_ceilingSupport
+    400112: frtTmnl_ceilingSupport1
+    400114: frtTmnl_Centerpiece
+    400116: frtTmnl_centralWallBottom
+    400118: frtTmnl_centralWallTop
+    400120: frtTmnl_containers
+    400122: frtTmnl_corridorFloor
+    400124: frtTmnl_crashBarrier
+    400126: frtTmnl_crashBarrier1
+    400128: frtTmnl_curveWall
+    400130: frtTmnl_decal
+    400132: frtTmnl_Details
+    400134: frtTmnl_door
+    400136: frtTmnl_elevator
+    400138: frtTmnl_exteriorCeiling
+    400140: frtTmnl_exteriorWall1
+    400142: frtTmnl_floorDetail
+    400144: frtTmnl_floorLift
+    400146: frtTmnl_freightDoor
+    400148: frtTmnl_gantry
+    400150: frtTmnl_glass
+    400152: frtTmnl_groundFloor
+    400154: frtTmnl_groundRamp
+    400156: frtTmnl_innerWall
+    400158: frtTmnl_jumpWall
+    400160: frtTmnl_ledgeBarrier
+    400162: frtTmnl_Lights
+    400164: frtTmnl_obsDeck
+    400166: frtTmnl_outerWall
+    400168: frtTmnl_outsideCorner
+    400170: frtTmnl_pipeSet
+    400172: frtTmnl_pipeSet1
+    400174: frtTmnl_pipeSet2
+    400176: frtTmnl_rampFloor
+    400178: frtTmnl_reactorDoor
+    400180: frtTmnl_reactorSideDoor
+    400182: frtTmnl_sidePillar
+    400184: frtTmnl_turbineDoor
+    400186: frtTmnl_ventPipe
+    400188: frtTmnl_ventWall
+    400190: frtTmnl_ventWall 1
+    400192: frtTmnl_wall
+    400194: frtTmnl_wallDetail1
+    400196: frtTmnl_Walls
+    400198: frtTmnl_wallSurface
+    400200: frtTmnl_warehouseWall
+    400202: frtTmnl_warehouseWall2
+    400204: frtTmnl_windowWall
+    400206: gasInjector
+    400208: group23
+    400210: group29
+    400212: group29 1
+    400214: group30
+    400216: group30 1
+    400218: group30 2
+    400220: group31
+    400222: group31 1
+    400224: group31 2
+    400226: group32
+    400228: group32 1
+    400230: group32 2
+    400232: group33
+    400234: group34
+    400236: group35
+    400238: group36
+    400240: group37
+    400242: group38
+    400244: jumpHole7
+    400246: light
+    400248: light 1
+    400250: light 2
+    400252: light 3
+    400254: light2
+    400256: light3
+    400258: light4
+    400260: light5
+    400262: light6
+    400264: light7
+    400266: Main
+    400268: //RootNode
+    400270: pCube298
+    400272: pCube299
+    400274: pCube349
+    400276: pCube349 1
+    400278: pCube349 10
+    400280: pCube349 11
+    400282: pCube349 2
+    400284: pCube349 3
+    400286: pCube349 4
+    400288: pCube349 5
+    400290: pCube349 6
+    400292: pCube349 7
+    400294: pCube349 8
+    400296: pCube349 9
+    400298: pCube350
+    400300: pCube351
+    400302: pCube352
+    400304: pCube353
+    400306: pCube358
+    400308: pCube359
+    400310: pCube426
+    400312: pCube427
+    400314: pCube430
+    400316: pCube431
+    400318: pCube432
+    400320: pCube433
+    400322: pCube434
+    400324: pCube435
+    400326: pCube436
+    400328: pCube446
+    400330: pCube462
+    400332: pCube477
+    400334: pCube481
+    400336: pCube678
+    400338: pCube700
+    400340: pCube701
+    400342: pCube702
+    400344: pCylinder125
+    400346: pCylinder125 1
+    400348: pCylinder125 2
+    400350: pCylinder132
+    400352: pCylinder132 1
+    400354: pCylinder132 2
+    400356: pCylinder136
+    400358: pCylinder136 1
+    400360: pCylinder136 2
+    400362: pCylinder136 3
+    400364: pCylinder136 4
+    400366: pCylinder136 5
+    400368: pCylinder136 6
+    400370: pCylinder136 7
+    400372: pCylinder136 8
+    400374: pCylinder137
+    400376: pCylinder137 1
+    400378: pCylinder137 2
+    400380: pCylinder137 3
+    400382: pCylinder137 4
+    400384: pCylinder137 5
+    400386: pCylinder137 6
+    400388: pCylinder137 7
+    400390: pCylinder137 8
+    400392: pCylinder138
+    400394: pCylinder139
+    400396: pCylinder140
+    400398: pCylinder141
+    400400: pCylinder221
+    400402: pCylinder222
+    400404: pCylinder223
+    400406: pCylinder226
+    400408: pCylinder227
+    400410: pCylinder228
+    400412: pCylinder229
+    400414: pCylinder230
+    400416: pCylinder231
+    400418: pCylinder232
+    400420: plantCeiling
+    400422: polySurface159
+    400424: railway
+    400426: railwayBeam
+    400428: railwayStalk
+    400430: rctrRm_2ndFloor
+    400432: rctrRm_2ndFloor2
+    400434: rctrRm_2ndFloor5
+    400436: rctrRm_bars
+    400438: rctrRm_ceiling
+    400440: rctrRm_ceilingTiles
+    400442: rctrRm_centerpiece
+    400444: rctrRm_centralWall
+    400446: rctrRm_column
+    400448: rctrRm_column 1
+    400450: rctrRm_column1
+    400452: rctrRm_columnPillars
+    400454: rctrRm_coolingTower
+    400456: rctrRm_curvePanel
+    400458: rctrRm_curvePath
+    400460: rctrRm_details
+    400462: rctrRm_floor
+    400464: rctrRm_floorDetail
+    400466: rctrRm_floorDetail1
+    400468: rctrRm_floorPlatform
+    400470: rctrRm_floorStairs
+    400472: rctrRm_freightDoor
+    400474: rctrRm_freightDoor 1
+    400476: rctrRm_glass
+    400478: rctrRm_innerCurveWall
+    400480: rctrRm_jumpGroove
+    400482: rctrRm_largePipes
+    400484: rctrRm_ledge1
+    400486: rctrRm_lights
+    400488: rctrRm_outerCurveWall
+    400490: rctrRm_panel
+    400492: rctrRm_pillar
+    400494: rctrRm_pillar 1
+    400496: rctrRm_pillar1
+    400498: rctrRm_pillar2
+    400500: rctrRm_pillar3
+    400502: rctrRm_pillar4
+    400504: rctrRm_pillars
+    400506: rctrRm_ramp
+    400508: rctrRm_reactorSupport
+    400510: rctrRm_sideBars
+    400512: rctrRm_sideDoor
+    400514: rctrRm_sidePath
+    400516: rctrRm_sideWindow
+    400518: rctrRm_sideWindow1
+    400520: rctrRm_skylight
+    400522: rctrRm_skylight10
+    400524: rctrRm_skylight2
+    400526: rctrRm_skylight4
+    400528: rctrRm_skylight5
+    400530: rctrRm_skylight6
+    400532: rctrRm_skylight7
+    400534: rctrRm_skylight8
+    400536: rctrRm_skylight9
+    400538: rctrRm_skylights
+    400540: rctrRm_smallPipes
+    400542: rctrRm_turbineWall
+    400544: rctrRm_walls
+    400546: reactorCenter
+    400548: reactorRoom
+    400550: reactorRooms36
+    400552: reactorRooms51
+    400554: reactorSegmentA
+    400556: reactorSegmentB
+    400558: reactorSegmentC
+    400560: reactorSegmentD
+    400562: reactorSegmentE
+    400564: reactorSegmentF
+    400566: respawnHole6
+    400568: respawnHole7
+    400570: rigColumn
+    400572: rigColumn1
+    400574: rigColumn2
+    400576: rigColumn3
+    400578: steamTurbine
+    400580: submarinePipes
+    400582: tbHll_bottomWall
+    400584: tbHll_ceiliingBeams
+    400586: tbHll_ceiling
+    400588: tbHll_ceiling 1
+    400590: tbHll_ceilingBlocks
+    400592: tbHll_centerBridge
+    400594: TbHll_Centerpiece
+    400596: tbHll_centralWall
+    400598: tbHll_centralWallDetail
+    400600: tbHll_cornerCeiling
+    400602: tbHll_cornerDetail
+    400604: tbHll_cornerPanel
+    400606: tbHll_corridorPillar
+    400608: TbHll_Details
+    400610: TbHll_door
+    400612: tbHll_ElectrolysisWall
+    400614: tbHll_exteriorWall
+    400616: tbHll_floor
+    400618: tbHll_girderSet
+    400620: tbHll_glass
+    400622: tbHll_glass 1
+    400624: TbHll_lights
+    400626: tbHll_lights
+    400628: TbHll_lowerRamp
+    400630: tbHll_mainCeilingBeamA
+    400632: tbHll_mainCeilingBeamB
+    400634: tbHll_mainPillars
+    400636: tbHll_mainWall
+    400638: tbHll_observation
+    400640: tbHll_outerWall
+    400642: tbHll_platformFloors
+    400644: tbHll_ramp
+    400646: tbHll_rampPath
+    400648: tbHll_rampWallDetail
+    400650: tbHll_reactorWall
+    400652: TbHll_sealedDoor
+    400654: tbHll_sideBridge
+    400656: tbHll_sideWall
+    400658: tbHll_transformer
+    400660: tbHll_transformer1
+    400662: tbHll_transformer2
+    400664: tbHll_transformerFence
+    400666: tbHll_transformerGlass
+    400668: tbHll_transformers
+    400670: tbHll_upperRamp
+    400672: tbHll_verticalBeams
+    400674: tbHll_wallReinforcement
+    400676: tbHll_wallReinforcement1
+    400678: tbHll_wallReinforcements
+    400680: TbHll_Walls
+    400682: tbHll_wallTurbineA
+    400684: tbHll_wallTurbineB
+    400686: tbHll_wallTurbineC
+    400688: tbHll_wallTurbineD
+    400690: tbHll_wallTurbines
+    400692: tbHll_window
+    400694: tbHll_windowReinforcement
+    400696: tbHll_windowReinforcement1
+    400698: tbHll_windowReinforcement2
+    400700: tbHll_windowReinforcement3
+    400702: tbHll_windowWall
+    400704: trainCabin
+    400706: trainCargo
+    400708: trainCarry
+    400710: trainCatwalk
+    400712: trainEngine
+    400714: trainHull
+    400716: trainRailrunner
+    400718: trainRailrunner1
+    400720: trainRailrunner2
+    400722: trainRailrunner3
+    400724: trainStabilizer
+    400726: turbineHall
+    400728: turbineHall2_TbHll_trash_window_pCube307
+    400730: turbineHall2_TbHll_trash_window_pCube308
+    400732: turbineHall_pCube274
+    400734: turbineHall_TbHll_Centerpiece_turbineSupports_group34_pCylinder140
+    400736: turbineHall_TbHll_Centerpiece_turbineSupports_group34_pCylinder141
+    400738: turbineSupports
+    400740: windTurbineProp
+    400742: windTurbineProp 1
+    400744: windTurbineProp 2
+    400746: windTurbineProp 3
+    400748: windTurbines
+    400750: windTurbineStalk
+    400752: windTurbineStalk1
+    400754: windTurbineStalk2
+    400756: windTurbineStalk3
+    400758: WIP
+    400760: worldLights
+    2100000: constructionYellow
+    2100002: darkGreyA1
+    2100004: glossyBlack
+    2100006: darkGreyC1
+    2100008: glossyWhite
+    2100010: transparentRed
+    2100012: darkGreyB1
+    2100014: darkGreyC2
+    2100016: darkGreyC3
+    2100018: darkGreyA2
+    2100020: glass2
+    2100022: darkGreyC4
+    2100024: transparentWhite
+    2100026: glossyGrey
+    2100028: transparentGreen
+    2100030: lightEmissive2
+    2100032: turbineColour
+    2100034: transparentRed1
+    2100036: darkGreyB2
+    2100038: glossyDarkGrey
+    2100040: constructionRed
+    2100042: glass1
+    2100044: lightEmissive
+    2300000: block5
+    2300002: bockIII
+    2300004: centralCeiling
+    2300006: corridor_2ndFloor
+    2300008: corridor_bridge
+    2300010: corridor_groundFloor
+    2300012: corridor_walls
+    2300014: crane
+    2300016: electricGenerator
+    2300018: electrolysisPump
+    2300020: ePlant_beams
+    2300022: ePlant_corner
+    2300024: ePlant_cover
+    2300026: ePlant_cover1
+    2300028: ePlant_dehumidifier
+    2300030: ePLant_expansionJoint
+    2300032: ePlant_filter
+    2300034: ePlant_floodGate
+    2300036: ePlant_floor
+    2300038: ePlant_gate
+    2300040: ePlant_girderSet
+    2300042: ePlant_grateCover
+    2300044: ePlant_grateCover2
+    2300046: ePlant_Joint
+    2300048: ePlant_overhang
+    2300050: ePlant_pipeBridge
+    2300052: ePlant_pipeExit
+    2300054: ePlant_pipeExposed
+    2300056: ePlant_pipeSet
+    2300058: ePlant_Ramp
+    2300060: ePlant_rampLower
+    2300062: ePlant_rampUpper
+    2300064: ePlant_resovoirWall
+    2300066: ePlant_turbineDoor
+    2300068: ePlant_wall
+    2300070: ePlant_wallDetail
+    2300072: ePlant_wallDetail1
+    2300074: ePlant_wallDetail2
+    2300076: ePlant_wallDetail3
+    2300078: ePllant_damSide
+    2300080: frtTmnl_2ndCeiling
+    2300082: frtTmnl_2ndFloor
+    2300084: frtTmnl_2ndFloorDetail
+    2300086: frtTmnl_3rdFloor
+    2300088: frtTmnl_3rdFloorCeilng
+    2300090: frtTmnl_cautionTape
+    2300092: frtTmnl_ceiling
+    2300094: frtTmnl_ceilingSupport
+    2300096: frtTmnl_ceilingSupport1
+    2300098: frtTmnl_centralWallBottom
+    2300100: frtTmnl_centralWallTop
+    2300102: frtTmnl_corridorFloor
+    2300104: frtTmnl_crashBarrier
+    2300106: frtTmnl_crashBarrier1
+    2300108: frtTmnl_curveWall
+    2300110: frtTmnl_decal
+    2300112: frtTmnl_door
+    2300114: frtTmnl_elevator
+    2300116: frtTmnl_exteriorCeiling
+    2300118: frtTmnl_exteriorWall1
+    2300120: frtTmnl_floorDetail
+    2300122: frtTmnl_floorLift
+    2300124: frtTmnl_freightDoor
+    2300126: frtTmnl_gantry
+    2300128: frtTmnl_glass
+    2300130: frtTmnl_groundFloor
+    2300132: frtTmnl_groundRamp
+    2300134: frtTmnl_innerWall
+    2300136: frtTmnl_jumpWall
+    2300138: frtTmnl_ledgeBarrier
+    2300140: frtTmnl_obsDeck
+    2300142: frtTmnl_outerWall
+    2300144: frtTmnl_outsideCorner
+    2300146: frtTmnl_pipeSet
+    2300148: frtTmnl_pipeSet1
+    2300150: frtTmnl_pipeSet2
+    2300152: frtTmnl_rampFloor
+    2300154: frtTmnl_reactorDoor
+    2300156: frtTmnl_reactorSideDoor
+    2300158: frtTmnl_sidePillar
+    2300160: frtTmnl_turbineDoor
+    2300162: frtTmnl_ventPipe
+    2300164: frtTmnl_ventWall
+    2300166: frtTmnl_ventWall 1
+    2300168: frtTmnl_wall
+    2300170: frtTmnl_wallDetail1
+    2300172: frtTmnl_wallSurface
+    2300174: frtTmnl_warehouseWall
+    2300176: frtTmnl_warehouseWall2
+    2300178: frtTmnl_windowWall
+    2300180: gasInjector
+    2300182: jumpHole7
+    2300184: light
+    2300186: light 1
+    2300188: light 2
+    2300190: light 3
+    2300192: light2
+    2300194: light3
+    2300196: light4
+    2300198: light5
+    2300200: light6
+    2300202: light7
+    2300204: pCube298
+    2300206: pCube299
+    2300208: pCube349
+    2300210: pCube349 1
+    2300212: pCube349 2
+    2300214: pCube349 3
+    2300216: pCube349 4
+    2300218: pCube349 5
+    2300220: pCube349 6
+    2300222: pCube349 7
+    2300224: pCube350
+    2300226: pCube351
+    2300228: pCube352
+    2300230: pCube353
+    2300232: pCube426
+    2300234: pCube427
+    2300236: pCube430
+    2300238: pCube431
+    2300240: pCube432
+    2300242: pCube433
+    2300244: pCube434
+    2300246: pCube435
+    2300248: pCube436
+    2300250: pCube446
+    2300252: pCube462
+    2300254: pCube477
+    2300256: pCube481
+    2300258: pCube678
+    2300260: pCube700
+    2300262: pCube701
+    2300264: pCube702
+    2300266: pCylinder125
+    2300268: pCylinder125 1
+    2300270: pCylinder125 2
+    2300272: pCylinder132
+    2300274: pCylinder132 1
+    2300276: pCylinder132 2
+    2300278: pCylinder136
+    2300280: pCylinder136 1
+    2300282: pCylinder136 2
+    2300284: pCylinder136 3
+    2300286: pCylinder136 4
+    2300288: pCylinder136 5
+    2300290: pCylinder136 6
+    2300292: pCylinder136 7
+    2300294: pCylinder136 8
+    2300296: pCylinder137
+    2300298: pCylinder137 1
+    2300300: pCylinder137 2
+    2300302: pCylinder137 3
+    2300304: pCylinder137 4
+    2300306: pCylinder137 5
+    2300308: pCylinder137 6
+    2300310: pCylinder137 7
+    2300312: pCylinder137 8
+    2300314: pCylinder138
+    2300316: pCylinder139
+    2300318: pCylinder221
+    2300320: pCylinder222
+    2300322: pCylinder223
+    2300324: pCylinder226
+    2300326: pCylinder227
+    2300328: pCylinder228
+    2300330: pCylinder229
+    2300332: pCylinder230
+    2300334: pCylinder231
+    2300336: pCylinder232
+    2300338: plantCeiling
+    2300340: polySurface159
+    2300342: railway
+    2300344: railwayBeam
+    2300346: railwayStalk
+    2300348: rctrRm_2ndFloor
+    2300350: rctrRm_2ndFloor2
+    2300352: rctrRm_2ndFloor5
+    2300354: rctrRm_bars
+    2300356: rctrRm_ceiling
+    2300358: rctrRm_centralWall
+    2300360: rctrRm_column
+    2300362: rctrRm_column 1
+    2300364: rctrRm_column1
+    2300366: rctrRm_coolingTower
+    2300368: rctrRm_curvePanel
+    2300370: rctrRm_curvePath
+    2300372: rctrRm_floor
+    2300374: rctrRm_floorDetail
+    2300376: rctrRm_floorDetail1
+    2300378: rctrRm_floorPlatform
+    2300380: rctrRm_floorStairs
+    2300382: rctrRm_freightDoor
+    2300384: rctrRm_freightDoor 1
+    2300386: rctrRm_glass
+    2300388: rctrRm_innerCurveWall
+    2300390: rctrRm_jumpGroove
+    2300392: rctrRm_largePipes
+    2300394: rctrRm_ledge1
+    2300396: rctrRm_outerCurveWall
+    2300398: rctrRm_panel
+    2300400: rctrRm_pillar
+    2300402: rctrRm_pillar 1
+    2300404: rctrRm_pillar1
+    2300406: rctrRm_pillar2
+    2300408: rctrRm_pillar3
+    2300410: rctrRm_pillar4
+    2300412: rctrRm_ramp
+    2300414: rctrRm_reactorSupport
+    2300416: rctrRm_sideBars
+    2300418: rctrRm_sideDoor
+    2300420: rctrRm_sidePath
+    2300422: rctrRm_sideWindow
+    2300424: rctrRm_sideWindow1
+    2300426: rctrRm_skylight
+    2300428: rctrRm_skylight10
+    2300430: rctrRm_skylight2
+    2300432: rctrRm_skylight4
+    2300434: rctrRm_skylight5
+    2300436: rctrRm_skylight6
+    2300438: rctrRm_skylight7
+    2300440: rctrRm_skylight8
+    2300442: rctrRm_skylight9
+    2300444: rctrRm_smallPipes
+    2300446: rctrRm_turbineWall
+    2300448: reactorCenter
+    2300450: reactorRooms36
+    2300452: reactorRooms51
+    2300454: reactorSegmentA
+    2300456: reactorSegmentB
+    2300458: reactorSegmentC
+    2300460: reactorSegmentD
+    2300462: reactorSegmentE
+    2300464: reactorSegmentF
+    2300466: respawnHole6
+    2300468: respawnHole7
+    2300470: rigColumn
+    2300472: rigColumn1
+    2300474: rigColumn2
+    2300476: rigColumn3
+    2300478: steamTurbine
+    2300480: submarinePipes
+    2300482: tbHll_bottomWall
+    2300484: tbHll_ceiliingBeams
+    2300486: tbHll_ceiling
+    2300488: tbHll_ceiling 1
+    2300490: tbHll_centerBridge
+    2300492: tbHll_centralWall
+    2300494: tbHll_centralWallDetail
+    2300496: tbHll_cornerCeiling
+    2300498: tbHll_cornerDetail
+    2300500: tbHll_cornerPanel
+    2300502: tbHll_corridorPillar
+    2300504: TbHll_door
+    2300506: tbHll_ElectrolysisWall
+    2300508: tbHll_exteriorWall
+    2300510: tbHll_floor
+    2300512: tbHll_girderSet
+    2300514: tbHll_glass
+    2300516: tbHll_glass 1
+    2300518: TbHll_lowerRamp
+    2300520: tbHll_mainCeilingBeamA
+    2300522: tbHll_mainCeilingBeamB
+    2300524: tbHll_mainWall
+    2300526: tbHll_observation
+    2300528: tbHll_outerWall
+    2300530: tbHll_platformFloors
+    2300532: tbHll_rampPath
+    2300534: tbHll_rampWallDetail
+    2300536: tbHll_reactorWall
+    2300538: TbHll_sealedDoor
+    2300540: tbHll_sideBridge
+    2300542: tbHll_transformer
+    2300544: tbHll_transformer1
+    2300546: tbHll_transformer2
+    2300548: tbHll_transformerFence
+    2300550: tbHll_transformerGlass
+    2300552: tbHll_upperRamp
+    2300554: tbHll_verticalBeams
+    2300556: tbHll_wallReinforcement
+    2300558: tbHll_wallReinforcement1
+    2300560: tbHll_wallTurbineA
+    2300562: tbHll_wallTurbineB
+    2300564: tbHll_wallTurbineC
+    2300566: tbHll_wallTurbineD
+    2300568: tbHll_windowReinforcement
+    2300570: tbHll_windowReinforcement1
+    2300572: tbHll_windowReinforcement2
+    2300574: tbHll_windowReinforcement3
+    2300576: tbHll_windowWall
+    2300578: trainCabin
+    2300580: trainCarry
+    2300582: trainCatwalk
+    2300584: trainEngine
+    2300586: trainHull
+    2300588: trainRailrunner
+    2300590: trainRailrunner1
+    2300592: trainRailrunner2
+    2300594: trainRailrunner3
+    2300596: trainStabilizer
+    2300598: turbineHall2_TbHll_trash_window_pCube307
+    2300600: turbineHall2_TbHll_trash_window_pCube308
+    2300602: turbineHall_TbHll_Centerpiece_turbineSupports_group34_pCylinder140
+    2300604: turbineHall_TbHll_Centerpiece_turbineSupports_group34_pCylinder141
+    2300606: windTurbineProp
+    2300608: windTurbineProp 1
+    2300610: windTurbineProp 2
+    2300612: windTurbineProp 3
+    2300614: windTurbineStalk
+    2300616: windTurbineStalk1
+    2300618: windTurbineStalk2
+    2300620: windTurbineStalk3
+    3300000: block5
+    3300002: bockIII
+    3300004: centralCeiling
+    3300006: corridor_2ndFloor
+    3300008: corridor_bridge
+    3300010: corridor_groundFloor
+    3300012: corridor_walls
+    3300014: crane
+    3300016: electricGenerator
+    3300018: electrolysisPump
+    3300020: ePlant_beams
+    3300022: ePlant_corner
+    3300024: ePlant_cover
+    3300026: ePlant_cover1
+    3300028: ePlant_dehumidifier
+    3300030: ePLant_expansionJoint
+    3300032: ePlant_filter
+    3300034: ePlant_floodGate
+    3300036: ePlant_floor
+    3300038: ePlant_gate
+    3300040: ePlant_girderSet
+    3300042: ePlant_grateCover
+    3300044: ePlant_grateCover2
+    3300046: ePlant_Joint
+    3300048: ePlant_overhang
+    3300050: ePlant_pipeBridge
+    3300052: ePlant_pipeExit
+    3300054: ePlant_pipeExposed
+    3300056: ePlant_pipeSet
+    3300058: ePlant_Ramp
+    3300060: ePlant_rampLower
+    3300062: ePlant_rampUpper
+    3300064: ePlant_resovoirWall
+    3300066: ePlant_turbineDoor
+    3300068: ePlant_wall
+    3300070: ePlant_wallDetail
+    3300072: ePlant_wallDetail1
+    3300074: ePlant_wallDetail2
+    3300076: ePlant_wallDetail3
+    3300078: ePllant_damSide
+    3300080: frtTmnl_2ndCeiling
+    3300082: frtTmnl_2ndFloor
+    3300084: frtTmnl_2ndFloorDetail
+    3300086: frtTmnl_3rdFloor
+    3300088: frtTmnl_3rdFloorCeilng
+    3300090: frtTmnl_cautionTape
+    3300092: frtTmnl_ceiling
+    3300094: frtTmnl_ceilingSupport
+    3300096: frtTmnl_ceilingSupport1
+    3300098: frtTmnl_centralWallBottom
+    3300100: frtTmnl_centralWallTop
+    3300102: frtTmnl_corridorFloor
+    3300104: frtTmnl_crashBarrier
+    3300106: frtTmnl_crashBarrier1
+    3300108: frtTmnl_curveWall
+    3300110: frtTmnl_decal
+    3300112: frtTmnl_door
+    3300114: frtTmnl_elevator
+    3300116: frtTmnl_exteriorCeiling
+    3300118: frtTmnl_exteriorWall1
+    3300120: frtTmnl_floorDetail
+    3300122: frtTmnl_floorLift
+    3300124: frtTmnl_freightDoor
+    3300126: frtTmnl_gantry
+    3300128: frtTmnl_glass
+    3300130: frtTmnl_groundFloor
+    3300132: frtTmnl_groundRamp
+    3300134: frtTmnl_innerWall
+    3300136: frtTmnl_jumpWall
+    3300138: frtTmnl_ledgeBarrier
+    3300140: frtTmnl_obsDeck
+    3300142: frtTmnl_outerWall
+    3300144: frtTmnl_outsideCorner
+    3300146: frtTmnl_pipeSet
+    3300148: frtTmnl_pipeSet1
+    3300150: frtTmnl_pipeSet2
+    3300152: frtTmnl_rampFloor
+    3300154: frtTmnl_reactorDoor
+    3300156: frtTmnl_reactorSideDoor
+    3300158: frtTmnl_sidePillar
+    3300160: frtTmnl_turbineDoor
+    3300162: frtTmnl_ventPipe
+    3300164: frtTmnl_ventWall
+    3300166: frtTmnl_ventWall 1
+    3300168: frtTmnl_wall
+    3300170: frtTmnl_wallDetail1
+    3300172: frtTmnl_wallSurface
+    3300174: frtTmnl_warehouseWall
+    3300176: frtTmnl_warehouseWall2
+    3300178: frtTmnl_windowWall
+    3300180: gasInjector
+    3300182: jumpHole7
+    3300184: light
+    3300186: light 1
+    3300188: light 2
+    3300190: light 3
+    3300192: light2
+    3300194: light3
+    3300196: light4
+    3300198: light5
+    3300200: light6
+    3300202: light7
+    3300204: pCube298
+    3300206: pCube299
+    3300208: pCube349
+    3300210: pCube349 1
+    3300212: pCube349 2
+    3300214: pCube349 3
+    3300216: pCube349 4
+    3300218: pCube349 5
+    3300220: pCube349 6
+    3300222: pCube349 7
+    3300224: pCube350
+    3300226: pCube351
+    3300228: pCube352
+    3300230: pCube353
+    3300232: pCube426
+    3300234: pCube427
+    3300236: pCube430
+    3300238: pCube431
+    3300240: pCube432
+    3300242: pCube433
+    3300244: pCube434
+    3300246: pCube435
+    3300248: pCube436
+    3300250: pCube446
+    3300252: pCube462
+    3300254: pCube477
+    3300256: pCube481
+    3300258: pCube678
+    3300260: pCube700
+    3300262: pCube701
+    3300264: pCube702
+    3300266: pCylinder125
+    3300268: pCylinder125 1
+    3300270: pCylinder125 2
+    3300272: pCylinder132
+    3300274: pCylinder132 1
+    3300276: pCylinder132 2
+    3300278: pCylinder136
+    3300280: pCylinder136 1
+    3300282: pCylinder136 2
+    3300284: pCylinder136 3
+    3300286: pCylinder136 4
+    3300288: pCylinder136 5
+    3300290: pCylinder136 6
+    3300292: pCylinder136 7
+    3300294: pCylinder136 8
+    3300296: pCylinder137
+    3300298: pCylinder137 1
+    3300300: pCylinder137 2
+    3300302: pCylinder137 3
+    3300304: pCylinder137 4
+    3300306: pCylinder137 5
+    3300308: pCylinder137 6
+    3300310: pCylinder137 7
+    3300312: pCylinder137 8
+    3300314: pCylinder138
+    3300316: pCylinder139
+    3300318: pCylinder221
+    3300320: pCylinder222
+    3300322: pCylinder223
+    3300324: pCylinder226
+    3300326: pCylinder227
+    3300328: pCylinder228
+    3300330: pCylinder229
+    3300332: pCylinder230
+    3300334: pCylinder231
+    3300336: pCylinder232
+    3300338: plantCeiling
+    3300340: polySurface159
+    3300342: railway
+    3300344: railwayBeam
+    3300346: railwayStalk
+    3300348: rctrRm_2ndFloor
+    3300350: rctrRm_2ndFloor2
+    3300352: rctrRm_2ndFloor5
+    3300354: rctrRm_bars
+    3300356: rctrRm_ceiling
+    3300358: rctrRm_centralWall
+    3300360: rctrRm_column
+    3300362: rctrRm_column 1
+    3300364: rctrRm_column1
+    3300366: rctrRm_coolingTower
+    3300368: rctrRm_curvePanel
+    3300370: rctrRm_curvePath
+    3300372: rctrRm_floor
+    3300374: rctrRm_floorDetail
+    3300376: rctrRm_floorDetail1
+    3300378: rctrRm_floorPlatform
+    3300380: rctrRm_floorStairs
+    3300382: rctrRm_freightDoor
+    3300384: rctrRm_freightDoor 1
+    3300386: rctrRm_glass
+    3300388: rctrRm_innerCurveWall
+    3300390: rctrRm_jumpGroove
+    3300392: rctrRm_largePipes
+    3300394: rctrRm_ledge1
+    3300396: rctrRm_outerCurveWall
+    3300398: rctrRm_panel
+    3300400: rctrRm_pillar
+    3300402: rctrRm_pillar 1
+    3300404: rctrRm_pillar1
+    3300406: rctrRm_pillar2
+    3300408: rctrRm_pillar3
+    3300410: rctrRm_pillar4
+    3300412: rctrRm_ramp
+    3300414: rctrRm_reactorSupport
+    3300416: rctrRm_sideBars
+    3300418: rctrRm_sideDoor
+    3300420: rctrRm_sidePath
+    3300422: rctrRm_sideWindow
+    3300424: rctrRm_sideWindow1
+    3300426: rctrRm_skylight
+    3300428: rctrRm_skylight10
+    3300430: rctrRm_skylight2
+    3300432: rctrRm_skylight4
+    3300434: rctrRm_skylight5
+    3300436: rctrRm_skylight6
+    3300438: rctrRm_skylight7
+    3300440: rctrRm_skylight8
+    3300442: rctrRm_skylight9
+    3300444: rctrRm_smallPipes
+    3300446: rctrRm_turbineWall
+    3300448: reactorCenter
+    3300450: reactorRooms36
+    3300452: reactorRooms51
+    3300454: reactorSegmentA
+    3300456: reactorSegmentB
+    3300458: reactorSegmentC
+    3300460: reactorSegmentD
+    3300462: reactorSegmentE
+    3300464: reactorSegmentF
+    3300466: respawnHole6
+    3300468: respawnHole7
+    3300470: rigColumn
+    3300472: rigColumn1
+    3300474: rigColumn2
+    3300476: rigColumn3
+    3300478: steamTurbine
+    3300480: submarinePipes
+    3300482: tbHll_bottomWall
+    3300484: tbHll_ceiliingBeams
+    3300486: tbHll_ceiling
+    3300488: tbHll_ceiling 1
+    3300490: tbHll_centerBridge
+    3300492: tbHll_centralWall
+    3300494: tbHll_centralWallDetail
+    3300496: tbHll_cornerCeiling
+    3300498: tbHll_cornerDetail
+    3300500: tbHll_cornerPanel
+    3300502: tbHll_corridorPillar
+    3300504: TbHll_door
+    3300506: tbHll_ElectrolysisWall
+    3300508: tbHll_exteriorWall
+    3300510: tbHll_floor
+    3300512: tbHll_girderSet
+    3300514: tbHll_glass
+    3300516: tbHll_glass 1
+    3300518: TbHll_lowerRamp
+    3300520: tbHll_mainCeilingBeamA
+    3300522: tbHll_mainCeilingBeamB
+    3300524: tbHll_mainWall
+    3300526: tbHll_observation
+    3300528: tbHll_outerWall
+    3300530: tbHll_platformFloors
+    3300532: tbHll_rampPath
+    3300534: tbHll_rampWallDetail
+    3300536: tbHll_reactorWall
+    3300538: TbHll_sealedDoor
+    3300540: tbHll_sideBridge
+    3300542: tbHll_transformer
+    3300544: tbHll_transformer1
+    3300546: tbHll_transformer2
+    3300548: tbHll_transformerFence
+    3300550: tbHll_transformerGlass
+    3300552: tbHll_upperRamp
+    3300554: tbHll_verticalBeams
+    3300556: tbHll_wallReinforcement
+    3300558: tbHll_wallReinforcement1
+    3300560: tbHll_wallTurbineA
+    3300562: tbHll_wallTurbineB
+    3300564: tbHll_wallTurbineC
+    3300566: tbHll_wallTurbineD
+    3300568: tbHll_windowReinforcement
+    3300570: tbHll_windowReinforcement1
+    3300572: tbHll_windowReinforcement2
+    3300574: tbHll_windowReinforcement3
+    3300576: tbHll_windowWall
+    3300578: trainCabin
+    3300580: trainCarry
+    3300582: trainCatwalk
+    3300584: trainEngine
+    3300586: trainHull
+    3300588: trainRailrunner
+    3300590: trainRailrunner1
+    3300592: trainRailrunner2
+    3300594: trainRailrunner3
+    3300596: trainStabilizer
+    3300598: turbineHall2_TbHll_trash_window_pCube307
+    3300600: turbineHall2_TbHll_trash_window_pCube308
+    3300602: turbineHall_TbHll_Centerpiece_turbineSupports_group34_pCylinder140
+    3300604: turbineHall_TbHll_Centerpiece_turbineSupports_group34_pCylinder141
+    3300606: windTurbineProp
+    3300608: windTurbineProp 1
+    3300610: windTurbineProp 2
+    3300612: windTurbineProp 3
+    3300614: windTurbineStalk
+    3300616: windTurbineStalk1
+    3300618: windTurbineStalk2
+    3300620: windTurbineStalk3
+    4300000: crane
+    4300002: plantCeiling
+    4300004: railwayBeam
+    4300006: rigColumn
+    4300008: rigColumn1
+    4300010: rigColumn2
+    4300012: submarinePipes
+    4300014: windTurbineStalk
+    4300016: windTurbineProp
+    4300018: windTurbineStalk1
+    4300020: windTurbineProp
+    4300022: windTurbineStalk2
+    4300024: windTurbineProp
+    4300026: windTurbineStalk3
+    4300028: windTurbineProp
+    4300030: rigColumn3
+    4300032: railwayStalk
+    4300034: corridor_walls
+    4300036: corridor_groundFloor
+    4300038: corridor_2ndFloor
+    4300040: corridor_bridge
+    4300042: centralCeiling
+    4300044: frtTmnl_warehouseWall
+    4300046: frtTmnl_warehouseWall2
+    4300048: frtTmnl_exteriorWall1
+    4300050: frtTmnl_centralWallBottom
+    4300052: frtTmnl_3rdFloorCeilng
+    4300054: frtTmnl_centralWallTop
+    4300056: frtTmnl_groundRamp
+    4300058: frtTmnl_2ndFloor
+    4300060: frtTmnl_groundFloor
+    4300062: frtTmnl_innerWall
+    4300064: frtTmnl_outerWall
+    4300066: frtTmnl_exteriorCeiling
+    4300068: frtTmnl_3rdFloor
+    4300070: frtTmnl_ventWall
+    4300072: frtTmnl_glass
+    4300074: frtTmnl_ceiling
+    4300076: frtTmnl_corridorFloor
+    4300078: railway
+    4300080: trainRailrunner3
+    4300082: trainRailrunner2
+    4300084: trainRailrunner1
+    4300086: trainRailrunner
+    4300088: trainStabilizer
+    4300090: trainCatwalk
+    4300092: trainCarry
+    4300094: trainCabin
+    4300096: trainHull
+    4300098: trainEngine
+    4300100: pCube435
+    4300102: pCube434
+    4300104: pCube436
+    4300106: pCube700
+    4300108: pCube701
+    4300110: pCube702
+    4300112: frtTmnl_decal
+    4300114: frtTmnl_floorDetail
+    4300116: frtTmnl_wallSurface
+    4300118: frtTmnl_crashBarrier
+    4300120: frtTmnl_crashBarrier1
+    4300122: frtTmnl_wallDetail1
+    4300124: frtTmnl_pipeSet1
+    4300126: frtTmnl_wall
+    4300128: frtTmnl_jumpWall
+    4300130: frtTmnl_ventWall
+    4300132: frtTmnl_gantry
+    4300134: frtTmnl_elevator
+    4300136: frtTmnl_reactorDoor
+    4300138: frtTmnl_ventPipe
+    4300140: frtTmnl_ledgeBarrier
+    4300142: frtTmnl_2ndCeiling
+    4300144: frtTmnl_pipeSet
+    4300146: frtTmnl_turbineDoor
+    4300148: frtTmnl_floorLift
+    4300150: frtTmnl_door
+    4300152: frtTmnl_cautionTape
+    4300154: frtTmnl_rampFloor
+    4300156: frtTmnl_curveWall
+    4300158: frtTmnl_freightDoor
+    4300160: frtTmnl_obsDeck
+    4300162: frtTmnl_pipeSet2
+    4300164: frtTmnl_windowWall
+    4300166: frtTmnl_outsideCorner
+    4300168: frtTmnl_reactorSideDoor
+    4300170: frtTmnl_2ndFloorDetail
+    4300172: frtTmnl_sidePillar
+    4300174: frtTmnl_ceilingSupport
+    4300176: frtTmnl_ceilingSupport1
+    4300178: pCube462
+    4300180: pCube426
+    4300182: pCube427
+    4300184: pCube430
+    4300186: pCube431
+    4300188: pCube432
+    4300190: pCube433
+    4300192: light2
+    4300194: light
+    4300196: tbHll_centralWall
+    4300198: tbHll_outerWall
+    4300200: tbHll_reactorWall
+    4300202: tbHll_ElectrolysisWall
+    4300204: tbHll_bottomWall
+    4300206: tbHll_mainWall
+    4300208: tbHll_exteriorWall
+    4300210: tbHll_ceiling
+    4300212: tbHll_floor
+    4300214: tbHll_platformFloors
+    4300216: pCylinder136
+    4300218: pCube349
+    4300220: pCylinder137
+    4300222: pCylinder136
+    4300224: pCube349
+    4300226: pCylinder137
+    4300228: pCylinder132
+    4300230: pCylinder125
+    4300232: pCylinder136
+    4300234: pCube349
+    4300236: pCylinder137
+    4300238: pCube353
+    4300240: pCylinder136
+    4300242: pCube349
+    4300244: pCylinder137
+    4300246: pCube350
+    4300248: pCylinder136
+    4300250: pCube349
+    4300252: pCylinder137
+    4300254: pCube351
+    4300256: pCylinder136
+    4300258: pCube349
+    4300260: pCylinder137
+    4300262: pCube352
+    4300264: pCylinder132
+    4300266: pCylinder125
+    4300268: pCylinder138
+    4300270: pCylinder139
+    4300272: turbineHall_TbHll_Centerpiece_turbineSupports_group34_pCylinder140
+    4300274: pCylinder136
+    4300276: pCube349
+    4300278: pCylinder137
+    4300280: pCylinder136
+    4300282: pCube349
+    4300284: pCylinder137
+    4300286: pCylinder136
+    4300288: pCylinder137
+    4300290: pCylinder132
+    4300292: pCylinder125
+    4300294: turbineHall_TbHll_Centerpiece_turbineSupports_group34_pCylinder141
+    4300296: gasInjector
+    4300298: electricGenerator
+    4300300: steamTurbine
+    4300302: tbHll_transformer
+    4300304: tbHll_transformer1
+    4300306: tbHll_transformer2
+    4300308: tbHll_transformerFence
+    4300310: tbHll_transformerGlass
+    4300312: tbHll_wallTurbineA
+    4300314: tbHll_wallTurbineB
+    4300316: tbHll_wallTurbineC
+    4300318: tbHll_wallTurbineD
+    4300320: tbHll_glass
+    4300322: tbHll_windowReinforcement
+    4300324: tbHll_windowReinforcement1
+    4300326: tbHll_windowReinforcement2
+    4300328: tbHll_windowReinforcement3
+    4300330: tbHll_windowWall
+    4300332: light
+    4300334: light3
+    4300336: TbHll_lowerRamp
+    4300338: tbHll_rampPath
+    4300340: tbHll_upperRamp
+    4300342: TbHll_sealedDoor
+    4300344: tbHll_rampWallDetail
+    4300346: TbHll_door
+    4300348: tbHll_mainCeilingBeamA
+    4300350: tbHll_mainCeilingBeamB
+    4300352: tbHll_wallReinforcement
+    4300354: tbHll_wallReinforcement1
+    4300356: tbHll_verticalBeams
+    4300358: tbHll_ceiling
+    4300360: tbHll_ceiliingBeams
+    4300362: tbHll_cornerPanel
+    4300364: tbHll_cornerCeiling
+    4300366: tbHll_sideBridge
+    4300368: tbHll_centralWallDetail
+    4300370: tbHll_observation
+    4300372: tbHll_girderSet
+    4300374: tbHll_centerBridge
+    4300376: tbHll_corridorPillar
+    4300378: tbHll_cornerDetail
+    4300380: tbHll_glass
+    4300382: pCube678
+    4300384: rctrRm_freightDoor
+    4300386: rctrRm_turbineWall
+    4300388: rctrRm_reactorSupport
+    4300390: rctrRm_curvePanel
+    4300392: rctrRm_curvePath
+    4300394: rctrRm_innerCurveWall
+    4300396: rctrRm_jumpGroove
+    4300398: rctrRm_floorPlatform
+    4300400: rctrRm_2ndFloor
+    4300402: rctrRm_centralWall
+    4300404: rctrRm_glass
+    4300406: rctrRm_floor
+    4300408: rctrRm_ceiling
+    4300410: rctrRm_coolingTower
+    4300412: rctrRm_outerCurveWall
+    4300414: reactorCenter
+    4300416: reactorSegmentB
+    4300418: reactorSegmentC
+    4300420: reactorSegmentD
+    4300422: reactorSegmentE
+    4300424: reactorSegmentF
+    4300426: reactorSegmentA
+    4300428: pCylinder221
+    4300430: pCylinder222
+    4300432: pCylinder223
+    4300434: pCylinder226
+    4300436: pCylinder227
+    4300438: pCylinder228
+    4300440: pCylinder229
+    4300442: pCylinder230
+    4300444: pCylinder231
+    4300446: pCylinder232
+    4300448: rctrRm_column1
+    4300450: rctrRm_column
+    4300452: rctrRm_pillar
+    4300454: rctrRm_pillar1
+    4300456: rctrRm_floorDetail1
+    4300458: rctrRm_column
+    4300460: rctrRm_sidePath
+    4300462: rctrRm_ramp
+    4300464: rctrRm_floorStairs
+    4300466: rctrRm_largePipes
+    4300468: rctrRm_bars
+    4300470: rctrRm_sideWindow
+    4300472: rctrRm_freightDoor
+    4300474: rctrRm_smallPipes
+    4300476: rctrRm_panel
+    4300478: rctrRm_skylight
+    4300480: rctrRm_skylight2
+    4300482: rctrRm_skylight4
+    4300484: rctrRm_skylight5
+    4300486: rctrRm_skylight6
+    4300488: rctrRm_skylight7
+    4300490: rctrRm_skylight8
+    4300492: rctrRm_skylight9
+    4300494: rctrRm_skylight10
+    4300496: rctrRm_pillar4
+    4300498: rctrRm_pillar3
+    4300500: rctrRm_pillar2
+    4300502: rctrRm_pillar
+    4300504: rctrRm_floorDetail
+    4300506: rctrRm_ledge1
+    4300508: rctrRm_sideDoor
+    4300510: rctrRm_sideBars
+    4300512: rctrRm_sideWindow1
+    4300514: rctrRm_2ndFloor2
+    4300516: rctrRm_2ndFloor5
+    4300518: light
+    4300520: pCube481
+    4300522: pCube477
+    4300524: turbineHall2_TbHll_trash_window_pCube307
+    4300526: block5
+    4300528: respawnHole7
+    4300530: pCube298
+    4300532: pCube299
+    4300534: pCube446
+    4300536: polySurface159
+    4300538: jumpHole7
+    4300540: respawnHole6
+    4300542: ePlant_corner
+    4300544: ePlant_floor
+    4300546: ePlant_overhang
+    4300548: bockIII
+    4300550: reactorRooms36
+    4300552: ePlant_Joint
+    4300554: turbineHall2_TbHll_trash_window_pCube308
+    4300556: electrolysisPump
+    4300558: ePlant_pipeBridge
+    4300560: ePlant_pipeExposed
+    4300562: ePLant_expansionJoint
+    4300564: ePlant_resovoirWall
+    4300566: ePlant_cover1
+    4300568: ePlant_pipeSet
+    4300570: ePlant_Ramp
+    4300572: ePlant_turbineDoor
+    4300574: ePlant_dehumidifier
+    4300576: ePlant_floodGate
+    4300578: ePlant_grateCover2
+    4300580: ePlant_grateCover
+    4300582: ePlant_girderSet
+    4300584: reactorRooms51
+    4300586: ePlant_wall
+    4300588: ePlant_cover
+    4300590: ePlant_rampUpper
+    4300592: ePlant_rampLower
+    4300594: ePlant_wallDetail1
+    4300596: ePlant_pipeExit
+    4300598: ePlant_wallDetail
+    4300600: ePllant_damSide
+    4300602: ePlant_wallDetail3
+    4300604: ePlant_beams
+    4300606: ePlant_wallDetail2
+    4300608: ePlant_gate
+    4300610: ePlant_filter
+    4300612: light7
+    4300614: light6
+    4300616: light5
+    4300618: light
+    4300620: light4
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
