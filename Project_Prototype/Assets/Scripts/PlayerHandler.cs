@@ -148,7 +148,7 @@ public class PlayerHandler : MonoBehaviour
                 afterSpawnTimer = 0.0f;
                 isInvulnerable = false;
                 shieldObject.SetActive(false);
-                Debug.Log("Player" + ID + " is no longer invulnerable!");
+                //Debug.Log("Player" + ID + " is no longer invulnerable!");
             }
         }
     }
