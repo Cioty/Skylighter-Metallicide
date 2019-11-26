@@ -34,11 +34,11 @@ public class ButtonManager : MonoBehaviour
             // Checking for controller input.
             if (PTCAssigner.controllerFound)
             {
-                if (XCI.GetButton(XboxButton.A, XboxController.First))
+                if (XCI.GetButton(XboxButton.A, XboxController.All))
                 {
                     MoveToConnectControllers();
                 }
-                else if (XCI.GetButton(XboxButton.B, XboxController.First))
+                else if (XCI.GetButton(XboxButton.B, XboxController.All))
                 {
                     Application.Quit();
                 }

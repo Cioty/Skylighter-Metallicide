@@ -49,23 +49,26 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void Update()
     {
-        float rightTrigHeight = XCI.GetAxis(XboxAxis.RightTrigger, playerHandler.AssignedController);
-        if (Input.GetMouseButtonDown(0) || rightTrigHeight >= 0.5f && playerHandler.IsControllable)
+        if(playerHandler.IsControllable)
         {
-            if (readyToFire)
+            float rightTrigHeight = XCI.GetAxis(XboxAxis.RightTrigger, playerHandler.AssignedController);
+            if (Input.GetMouseButtonDown(0) || rightTrigHeight >= 0.5f)
             {
-                FireProjectile();
-                readyToFire = false;
+                if (readyToFire)
+                {
+                    FireProjectile();
+                    readyToFire = false;
+                }
             }
-        }
 
-        if(!readyToFire)
-        {
-            fireTimer += Time.deltaTime;
-            if (fireTimer >= fireThreshold)
+            if (!readyToFire)
             {
-                fireTimer = 0.0f;
-                readyToFire = true;
+                fireTimer += Time.deltaTime;
+                if (fireTimer >= fireThreshold)
+                {
+                    fireTimer = 0.0f;
+                    readyToFire = true;
+                }
             }
         }
     }
@@ -87,7 +90,7 @@ public class ProjectileLauncher : MonoBehaviour
 
         Quaternion rotation = Quaternion.FromToRotation(projectilePrefab.transform.forward, direction);
         Projectile projectile = Instantiate(projectilePrefab, projectileStartPoint.position, rotation).GetComponent<Projectile>();
-        projectile.Setup(playerObject);
+        projectile.Setup(playerHandler);
         projectile.RigidBody.AddForce(direction * projectileSpeed, ForceMode.Impulse);
     }
 

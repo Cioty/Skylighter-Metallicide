@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce3bc0c8db81cf49b831936dc19a5eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startInDebugMode: 0
+  startInDebugMode: 1
   debugStartKey: 13
   debugPlayerCount: 4
 --- !u!1 &5225950139108388605
@@ -724,11 +724,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 2.91
       objectReference: {fileID: 0}
+    - target: {fileID: 2322360468280347961, guid: 40707075a9839a947812a1cd1bf04a56,
+        type: 3}
+      propertyPath: startButton
+      value: 
+      objectReference: {fileID: 8034082285864123877}
+    - target: {fileID: 2322360468280347961, guid: 40707075a9839a947812a1cd1bf04a56,
+        type: 3}
+      propertyPath: exitButton
+      value: 
+      objectReference: {fileID: 1988853384511373040}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40707075a9839a947812a1cd1bf04a56, type: 3}
 --- !u!4 &1915511765128252161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2322360469253850490, guid: 40707075a9839a947812a1cd1bf04a56,
+    type: 3}
+  m_PrefabInstance: {fileID: 4228859468244586107}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8034082285864123877 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6183765553941083038, guid: 40707075a9839a947812a1cd1bf04a56,
+    type: 3}
+  m_PrefabInstance: {fileID: 4228859468244586107}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1988853384511373040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2393169359358275723, guid: 40707075a9839a947812a1cd1bf04a56,
     type: 3}
   m_PrefabInstance: {fileID: 4228859468244586107}
   m_PrefabAsset: {fileID: 0}

@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 8555086974658267439}
   - component: {fileID: 8216878617729132329}
   - component: {fileID: 6632700671749252609}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: OccupiedTrig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -649,21 +649,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6609533633998122061}
     m_Modifications:
-    - target: {fileID: 4476850020594446990, guid: a906d1442492e604083ff28b8ed7e277,
-        type: 3}
-      propertyPath: m_Name
-      value: Greybox Mechstation
-      objectReference: {fileID: 0}
-    - target: {fileID: 4476850020594446990, guid: a906d1442492e604083ff28b8ed7e277,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4476850020594446990, guid: a906d1442492e604083ff28b8ed7e277,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 19
-      objectReference: {fileID: 0}
     - target: {fileID: 5915465673536671149, guid: a906d1442492e604083ff28b8ed7e277,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -718,6 +703,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476850020594446990, guid: a906d1442492e604083ff28b8ed7e277,
+        type: 3}
+      propertyPath: m_Name
+      value: Greybox Mechstation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476850020594446990, guid: a906d1442492e604083ff28b8ed7e277,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476850020594446990, guid: a906d1442492e604083ff28b8ed7e277,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6178444349702740501, guid: a906d1442492e604083ff28b8ed7e277,
         type: 3}

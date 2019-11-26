@@ -136,7 +136,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh242324
+  m_Name: pb_Mesh2800978
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -14814,7 +14814,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh242424
+  m_Name: pb_Mesh2801072
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -29086,6 +29086,11 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1915511766101957845, guid: 4f10cac025bfbbf41a01e41df3d533a5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2916495287140236603, guid: 4f10cac025bfbbf41a01e41df3d533a5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -29186,5 +29191,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 23353ac239b834842b3c909ec14899ef, type: 2}
+    - target: {fileID: 4968184312046580004, guid: 4f10cac025bfbbf41a01e41df3d533a5,
+        type: 3}
+      propertyPath: startInDebugMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f10cac025bfbbf41a01e41df3d533a5, type: 3}

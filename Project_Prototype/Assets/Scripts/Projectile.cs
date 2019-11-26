@@ -38,9 +38,9 @@ public class Projectile : MonoBehaviour
     private List<PlayerHandler> hitPlayers = new List<PlayerHandler>();
 
     // Assigns the shooter variable and the correct layermask.
-    public void Setup(GameObject shooter)
+    public void Setup(PlayerHandler shooter)
     {
-        shooterHandler = shooter.GetComponent<PlayerHandler>();
+        shooterHandler = shooter;
         gameObject.layer = LayerMask.NameToLayer(shooterHandler.playerViewMask);
     }
 
@@ -61,7 +61,8 @@ public class Projectile : MonoBehaviour
         if (!hasExploded)
         {
             // Playing particle effect:
-            Explode();
+            if(other.gameObject.layer != LayerMask.NameToLayer("Triggers"))
+                Explode();
 
             if (other.gameObject.tag == "Player")
             {

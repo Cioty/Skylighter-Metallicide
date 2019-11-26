@@ -107,24 +107,37 @@ public class PTCAssigner : MonoBehaviour
         {
             if (connectedControllerList.Count > 0)
             {
-                for (int c = 0; c < connectedControllerList.Count; ++c)
+                if(!canStart)
                 {
-                    XboxController xboxController = connectedControllerList[c];
-
-                    // If xbox controller is all then skip:
-                    if (xboxController == XboxController.All)
-                        continue;
-
-                    // Listening to avalible controllers that have yet to be connected:
-                    if (XCI.GetButtonUp(XboxButton.B, xboxController))
+                    for (int c = 0; c < connectedControllerList.Count; ++c)
                     {
-                        this.RemoveController(xboxController);
+                        XboxController xboxController = connectedControllerList[c];
+
+                        // If xbox controller is all then skip:
+                        if (xboxController == XboxController.All)
+                            continue;
+
+                        // Listening to avalible controllers that have yet to be connected:
+                        if (XCI.GetButtonUp(XboxButton.B, xboxController))
+                        {
+                            this.RemoveController(xboxController);
+                        }
+
+                        // Listening to avalible controllers that have yet to be connected:
+                        if (XCI.GetButtonUp(XboxButton.A, xboxController))
+                        {
+                            this.AddController(xboxController);
+                        }
                     }
-
+                }
+                else
+                {
                     // Listening to avalible controllers that have yet to be connected:
-                    if (XCI.GetButtonUp(XboxButton.A, xboxController))
+                    if (XCI.GetButtonUp(XboxButton.B, XboxController.All))
                     {
-                        this.AddController(xboxController);
+                        canStart = false;
+                        gameStartTimer = maxGameStartTimer;
+                        gameStartText.text = startingGameInText + gameStartTimer.ToString("0.00");
                     }
                 }
 

@@ -21,7 +21,7 @@ public class Mech_Recovery : MonoBehaviour
     [SerializeField]
     private bool isOccupied = false;
     private bool isActive = true;
-    private bool mechElevate = false;
+    //private bool mechElevate = false;
     private PlayerHandler playerHandlerStation = null;
 
     // A trigger to detect the ball collision.
