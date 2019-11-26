@@ -136,7 +136,7 @@ public class BurstRifle : MonoBehaviour
         RaycastHit hit;
 
         bulletPool[gunAmmoShot].SetActive(true);
-        bulletPool[gunAmmoShot].GetComponent<BurstRifleBullet>().Setup(playerHandler, firePoint2.transform.position, forwardVector, 100f);
+        // bulletPool[gunAmmoShot].GetComponent<BurstRifleBullet>().Setup(playerHandler, firePoint2.transform.position, forwardVector, 100f);
 
         Debug.DrawLine(ray.origin, ray.origin + ray.direction * 1000, Color.red, 0.1f);
         if (Physics.Raycast(ray, out hit, gunRange))

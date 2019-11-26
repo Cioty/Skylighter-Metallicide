@@ -18,16 +18,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PTCAssigner : MonoBehaviour
 {
     [Header("References")]
     public GameObject playerContainersGroup;
-    public GameObject allControllersConnectedScreen;
     public GameObject allInGameManagersPrefab;
     public ToggleDebugMode toggleDebugMode;
     public GameObject fadePanel;
     public GameObject menuManager;
+    public TextMeshPro gameStartText;
+    public float maxGameStartTimer = 3f;
+    public string startingGameInText = "Starting game in: ";
 
     // Private variables:
     private int connectedControllers = 0;
@@ -39,6 +42,7 @@ public class PTCAssigner : MonoBehaviour
     public static bool controllerFound = false;
     private bool canStart = false;
     private FadePanel panel;
+    private float gameStartTimer = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +86,10 @@ public class PTCAssigner : MonoBehaviour
 
         // Getting the fade panel.
         panel = fadePanel.GetComponent<FadePanel>();
+
+        // Setting up the timer.
+        gameStartTimer = maxGameStartTimer;
+        gameStartText.text = startingGameInText + gameStartTimer.ToString("0.00");
     }
 
     // Update is called once per frame
@@ -93,12 +101,6 @@ public class PTCAssigner : MonoBehaviour
             PlayerData.instance.DebugPlayerCount = toggleDebugMode.debugPlayerCount;
             PlayerData.instance.StartInDebugMode = true;
             this.canStart = true;
-        }
-
-        // Checking if we can start the game:
-        if (canStart)
-        {
-            StartGame();
         }
 
         if (isAtConnectScreen)
@@ -126,7 +128,7 @@ public class PTCAssigner : MonoBehaviour
                     }
                 }
 
-
+                // Checking if enough players are connected:
                 if (assignedPlayers > 1)
                 {
                     PlayerData.instance.CurrentSplitScreenMode = ((PlayerData.SplitScreenMode)assignedPlayers - 1);
@@ -137,21 +139,36 @@ public class PTCAssigner : MonoBehaviour
                         this.canStart = true;
                     }
                 }
+
+                // Checking if we can start the game:
+                if (canStart)
+                {
+                    if(gameStartTimer <= maxGameStartTimer)
+                    {
+                        gameStartTimer -= Time.deltaTime;
+                        gameStartText.text = startingGameInText + gameStartTimer.ToString("0.00");
+                        if (gameStartTimer <= 0f)
+                        {
+                            gameStartTimer = 0f;
+                            StartGame();
+
+                        }
+                    }
+                }
             }
         }
     }
 
     private void StartGame()
     {
-        //SceneManager.LoadScene("Map02", LoadSceneMode.Single);
-
         fadePanel.SetActive(true);
 
         if (panel.HasFinished())
         {
+            gameStartTimer = maxGameStartTimer;
+            PlayerData.instance.Save();
             this.canStart = false;
             fadePanel.SetActive(false);
-            PlayerData.instance.Save();
             allInGameManagersPrefab.SetActive(true);
             menuManager.SetActive(false);
         }
@@ -212,6 +229,8 @@ public class PTCAssigner : MonoBehaviour
         if (containerGO)
         {
             PlayerContainer container = containerGO.GetComponent<PlayerContainer>();
+            if (!container.HasPlayer)
+                return;
             container.ID = -1;
             container.Controller = ((XboxController)0);
             container.HasPlayer = false;
