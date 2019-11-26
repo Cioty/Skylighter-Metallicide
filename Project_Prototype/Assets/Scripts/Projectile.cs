@@ -60,9 +60,10 @@ public class Projectile : MonoBehaviour
     {
         if (!hasExploded)
         {
+            Debug.Log(other.gameObject.name);
+            other.gameObject.name = "ITS HITTING THIS";
             // Playing particle effect:
-            if(other.gameObject.layer != LayerMask.NameToLayer("Triggers"))
-                Explode();
+            Explode();
 
             if (other.gameObject.tag == "Player")
             {

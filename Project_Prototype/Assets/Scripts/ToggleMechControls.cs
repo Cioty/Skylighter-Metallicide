@@ -38,7 +38,7 @@ public class ToggleMechControls : MonoBehaviour
     {
         if (!playerHandler.IsControllable)
         {
-            Debug.Log("Switching off player " + playerHandler.ID +"'s mech control components.");
+            //Debug.Log("Switching off player " + playerHandler.ID +"'s mech control components.");
             //mechController.enabled = false;
             //firstPersonCamera.enabled = false;
             //projectileLauncher.enabled = false;
