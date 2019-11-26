@@ -102,6 +102,7 @@ public class Mech_Recovery : MonoBehaviour
         playerHandlerStation.IsControllable = false;
 
         // Prevent Player from looking around the Mech Station
+        playerHandlerStation.transform.forward = playerRefuelTransform.forward;
         playerHandlerStation.MechCamera.transform.forward = playerRefuelTransform.forward;
         //playerHandler.mechObject;
         playerHandlerStation.MechCamera.enabled = false;

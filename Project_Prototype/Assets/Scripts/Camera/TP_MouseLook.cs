@@ -117,12 +117,12 @@ public class TP_MouseLook : MonoBehaviour
             if (playerHandler.HasAssignedController)
             {
                 mouse_x = XCI.GetAxis(XboxAxis.RightStickX, playerHandler.AssignedController) * rotationSpeed;
-                mouse_y = XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController) * rotationSpeed;
+                mouse_y = XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController) * 1200.0f;
             }
             else
             {
                 mouse_x = Input.GetAxis("Mouse X") * rotationSpeed;
-                mouse_y = Input.GetAxis("Mouse Y") * rotationSpeed;
+                mouse_y = Input.GetAxis("Mouse Y") * 1200f;
             }
         }
 
