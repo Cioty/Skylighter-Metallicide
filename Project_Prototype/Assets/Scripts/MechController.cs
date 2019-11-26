@@ -133,7 +133,7 @@ public class MechController : MonoBehaviour
         UpdateAnimations(isGrounded);
 
         // Checking if the player can jump.
-        if (isGrounded && !playerHandler.IsTestDummy)
+        if (isGrounded && !playerHandler.IsTestDummy && playerHandler.IsControllable)
         {
             if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump"))
             {

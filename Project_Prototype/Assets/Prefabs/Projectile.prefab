@@ -351,6 +351,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5333788134678056665}
     m_Modifications:
+    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
+        type: 3}
+      propertyPath: m_Name
+      value: PS_Rocket_Flame_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4150931063429688018, guid: e38fc447f9857c04192d04b0ad3c2d86,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -405,26 +425,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
-        type: 3}
-      propertyPath: m_Name
-      value: PS_Rocket_Flame_002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
-        type: 3}
-      propertyPath: m_TagString
-      value: Projectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4150931063429688013, guid: e38fc447f9857c04192d04b0ad3c2d86,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4150931062792545058, guid: e38fc447f9857c04192d04b0ad3c2d86,
         type: 3}
