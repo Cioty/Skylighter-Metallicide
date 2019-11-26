@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 2799b55e59fa3764eaab0b010a0c4512, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
@@ -495,7 +495,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9415de95a764e9c4b8cba13b63582806, type: 2}
-  - {fileID: 2100002, guid: 0ecac01c9c4bf314aa56e79405d50f35, type: 3}
+  - {fileID: 2100000, guid: 78448cbdd85c9b94eb60c4e0ca0f93ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
