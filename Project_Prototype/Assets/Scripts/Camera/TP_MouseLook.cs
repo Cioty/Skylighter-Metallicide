@@ -128,10 +128,10 @@ public class TP_MouseLook : MonoBehaviour
 
         mouse_y = Mathf.Clamp(mouse_y, minY, maxY); // This keeps the Y-rotation between that angles to prevent full 360 degrees orbit in the Y-Axis
 
-        rotation.x += mouse_y * Time.deltaTime;
+        rotation.x -= mouse_y * Time.deltaTime;
         rotation.y += mouse_x * Time.deltaTime;
 
-        Quaternion localRotation = Quaternion.Euler(-rotation.x, rotation.y, 0.0f);
+        Quaternion localRotation = Quaternion.Euler(rotation.x, rotation.y, 0.0f);
 
         transform.position = player.transform.position + (localRotation * offset);
     }

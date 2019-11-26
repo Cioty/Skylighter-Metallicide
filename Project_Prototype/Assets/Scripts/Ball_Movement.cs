@@ -148,13 +148,15 @@ public class Ball_Movement : MonoBehaviour
 
     void coreDirection()
     {
+        
+
         // Get the new direction the player is facing
-        newCageRot = thirdPersonCamera.transform.rotation;
+        newCageRot = thirdPersonCamera.transform.localRotation;
 
         // The core's inner rotation equal to Camera
         coreObject.transform.localRotation = Quaternion.Slerp(currentCageRot, newCageRot, Time.deltaTime * 10.0f);
 
-        currentCageRot = coreObject.transform.rotation;
+        currentCageRot = coreObject.transform.localRotation;
     }
 
 
