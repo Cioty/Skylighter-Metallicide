@@ -40,50 +40,54 @@ public class BurstRifleSpin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float leftTrigHeight = XCI.GetAxis(XboxAxis.LeftTrigger, playerHandler.AssignedController);
-        if (Input.GetButton("Fire2") || leftTrigHeight >= 0.5f)
+        if (playerHandler.IsControllable)
         {
-           if (barrelSpeed<maxBarrelSpeed)
-           {
-               barrelSpeed += barrelAcceleration * Time.deltaTime;
-           }
-           else
-           {
-               barrelSpeed = maxBarrelSpeed;
-           }
+            float leftTrigHeight = XCI.GetAxis(XboxAxis.LeftTrigger, playerHandler.AssignedController);
+            if (Input.GetButton("Fire2") || leftTrigHeight >= 0.5f)
+            {
+                if (barrelSpeed < maxBarrelSpeed)
+                {
+                    barrelSpeed += barrelAcceleration * Time.deltaTime;
+                }
+                else
+                {
+                    barrelSpeed = maxBarrelSpeed;
+                }
 
-           
-        
-           if (beltSpeed < maxBeltSpeed)
-           {
-              beltSpeed += beltAcceleration * Time.deltaTime;
-           }
-           else
-           {
-              barrelSpeed = maxBeltSpeed;
-           }
-        }
-       else
-        {
-            if(barrelSpeed > 0)
-            {
-                barrelSpeed -= barrelDeceleration * Time.deltaTime;
-            } else
-            {
-                barrelSpeed = 0;
-            }
-            if (beltSpeed > 0)
-            {
-                beltSpeed -= beltDeceleration * Time.deltaTime;
+
+
+                if (beltSpeed < maxBeltSpeed)
+                {
+                    beltSpeed += beltAcceleration * Time.deltaTime;
+                }
+                else
+                {
+                    barrelSpeed = maxBeltSpeed;
+                }
             }
             else
             {
-                beltSpeed = 0;
+                if (barrelSpeed > 0)
+                {
+                    barrelSpeed -= barrelDeceleration * Time.deltaTime;
+                }
+                else
+                {
+                    barrelSpeed = 0;
+                }
+                if (beltSpeed > 0)
+                {
+                    beltSpeed -= beltDeceleration * Time.deltaTime;
+                }
+                else
+                {
+                    beltSpeed = 0;
+                }
             }
+
+            barrelSpinning.transform.Rotate(0, 0, barrelSpeed * Time.deltaTime, Space.Self);
+            bulletBelt.transform.Rotate(0, 0, beltSpeed * Time.deltaTime, Space.Self);
+            bulletRing.transform.Rotate(0, 0, beltSpeed * Time.deltaTime, Space.Self);
         }
-       
-        barrelSpinning.transform.Rotate(0, 0, barrelSpeed * Time.deltaTime, Space.Self);
-        bulletBelt.transform.Rotate(0, 0, beltSpeed * Time.deltaTime, Space.Self);
-        bulletRing.transform.Rotate(0, 0, beltSpeed * Time.deltaTime, Space.Self);
     }
 }
