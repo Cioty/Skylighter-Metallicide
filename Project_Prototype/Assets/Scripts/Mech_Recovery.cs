@@ -99,6 +99,7 @@ public class Mech_Recovery : MonoBehaviour
         playerHandlerStation.CoreHealth = playerHandler.MaxCoreHealth;
 
         playerHandlerStation.MechCharacterController.enabled = false;
+        playerHandlerStation.IsControllable = false;
 
         // Prevent Player from looking around the Mech Station
         playerHandlerStation.MechCamera.enabled = false;
@@ -128,7 +129,7 @@ public class Mech_Recovery : MonoBehaviour
         if (animatorStation.GetCurrentAnimatorStateInfo(0).IsName("Elevate"))
         {
             // Set Player's position to where ever the elevator's spawn point is now
-            playerHandler.mechObject.transform.position = playerRefuelTransform.TransformPoint(playerRefuelTransform.localPosition);
+            playerHandler.mechObject.transform.position = (playerRefuelTransform.TransformPoint(playerRefuelTransform.localPosition) + new Vector3(0, 1f, 0));
         }
 
         // Now when it's now elevated, the barrier goes down. Give control back to the player
