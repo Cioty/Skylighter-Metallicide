@@ -216,7 +216,7 @@ PrefabInstance:
     - target: {fileID: 4968184312046580004, guid: 4f10cac025bfbbf41a01e41df3d533a5,
         type: 3}
       propertyPath: debugPlayerCount
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1915511766101957845, guid: 4f10cac025bfbbf41a01e41df3d533a5,
         type: 3}
@@ -237,6 +237,11 @@ PrefabInstance:
         type: 3}
       propertyPath: forceDebugMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228859467589439781, guid: 4f10cac025bfbbf41a01e41df3d533a5,
+        type: 3}
+      propertyPath: debugPlayerCount
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4228859467805571868, guid: 4f10cac025bfbbf41a01e41df3d533a5,
         type: 3}
@@ -306,17 +311,17 @@ PrefabInstance:
     - target: {fileID: 262924799103576643, guid: 4f10cac025bfbbf41a01e41df3d533a5,
         type: 3}
       propertyPath: jumpForce
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 262924799103576643, guid: 4f10cac025bfbbf41a01e41df3d533a5,
         type: 3}
       propertyPath: maxSpeed
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 262924799103576643, guid: 4f10cac025bfbbf41a01e41df3d533a5,
         type: 3}
       propertyPath: maxAngularVelocity
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 262924799103576643, guid: 4f10cac025bfbbf41a01e41df3d533a5,
         type: 3}
@@ -392,6 +397,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902804067728224633, guid: 4f10cac025bfbbf41a01e41df3d533a5,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f10cac025bfbbf41a01e41df3d533a5, type: 3}
@@ -2995,6 +3005,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817748084}
     m_Modifications:
+    - target: {fileID: 1722757088147933496, guid: 1b8046e5e00e58a48acc737f5b86b7e8,
+        type: 3}
+      propertyPath: m_Name
+      value: Game-Manager
+      objectReference: {fileID: 0}
     - target: {fileID: 1722757088147933495, guid: 1b8046e5e00e58a48acc737f5b86b7e8,
         type: 3}
       propertyPath: playerManager
@@ -3009,11 +3024,6 @@ PrefabInstance:
         type: 3}
       propertyPath: gameRoundTimer
       value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 1722757088147933496, guid: 1b8046e5e00e58a48acc737f5b86b7e8,
-        type: 3}
-      propertyPath: m_Name
-      value: Game-Manager
       objectReference: {fileID: 0}
     - target: {fileID: 8398798592755809049, guid: 1b8046e5e00e58a48acc737f5b86b7e8,
         type: 3}
@@ -7718,6 +7728,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2322360469253850493, guid: 40707075a9839a947812a1cd1bf04a56,
+        type: 3}
+      propertyPath: m_Name
+      value: Menu-Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322360469253850493, guid: 40707075a9839a947812a1cd1bf04a56,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322360467811635886, guid: 40707075a9839a947812a1cd1bf04a56,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2322360469253850490, guid: 40707075a9839a947812a1cd1bf04a56,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7773,16 +7798,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2322360469253850493, guid: 40707075a9839a947812a1cd1bf04a56,
-        type: 3}
-      propertyPath: m_Name
-      value: Menu-Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2322360469253850493, guid: 40707075a9839a947812a1cd1bf04a56,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2322360469799340387, guid: 40707075a9839a947812a1cd1bf04a56,
         type: 3}
       propertyPath: fadePanel
@@ -7808,11 +7823,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2322360467811635886, guid: 40707075a9839a947812a1cd1bf04a56,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2322360467811635874, guid: 40707075a9839a947812a1cd1bf04a56,
         type: 3}

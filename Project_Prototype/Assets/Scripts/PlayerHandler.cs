@@ -209,15 +209,16 @@ public class PlayerHandler : MonoBehaviour
         // Starting the respawn timer:
         if(ReadyToRespawn())
         {
+
+            // Disabling the respawn timer UI:
+            respawnTimerUI.SetActive(false);
+
             // Spawning in the player:
             station.SpawnPlayer(this);
             
             // Enabling the players controls:
             if(!isTestDummy)
                 isControllable = true;
-
-            // Disabling the respawn timer UI:
-            respawnTimerUI.SetActive(false);
 
             // Turning on invulnerablity:
             isInvulnerable = true;

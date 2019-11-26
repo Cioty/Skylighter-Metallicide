@@ -1,9 +1,23 @@
-﻿using System.Collections;
+﻿/*=============================================================================
+ * Game:        Metallicide
+ * Version:     Gold
+ * 
+ * Class:       TP_MouseLook.cs
+ * Purpose:     Third Person view for the Core mode. Has completed camera clipping check
+ * 
+ * Author:      Nixon Sok
+ * Team:        Skylighter
+ * 
+ * Deficiences:
+ * 
+ *===========================================================================*/
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 using XboxCtrlrInput;
-
 
 public class TP_MouseLook : MonoBehaviour
 {
