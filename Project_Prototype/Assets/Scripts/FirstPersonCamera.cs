@@ -94,9 +94,11 @@ public class FirstPersonCamera : MonoBehaviour
             mouseLook.y = Mathf.Clamp(mouseLook.y, minY, maxY);
 
             // Applying rotation to the neck transform, and correcting the angle.
-            mechCoreTransform.localRotation = (Quaternion.AngleAxis(-mouseLook.y, Vector3.right));
-            rightArmSwing.localRotation = (Quaternion.AngleAxis(-mouseLook.y, Vector3.right));
-            leftArmSwing.localRotation = (Quaternion.AngleAxis(-mouseLook.y, Vector3.right));
+            Quaternion yAxis = (Quaternion.AngleAxis(-mouseLook.y, Vector3.right));
+
+            mechCoreTransform.localRotation = yAxis;
+            rightArmSwing.localRotation = yAxis;
+            leftArmSwing.localRotation = yAxis;
 
             // Applying rotation to the player transform.
             mechObjectTransform.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, playerObject.transform.up);

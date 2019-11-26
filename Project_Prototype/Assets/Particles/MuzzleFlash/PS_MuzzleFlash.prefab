@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2891799878977189701}
   - component: {fileID: 2891799878977189700}
   - component: {fileID: 2891799878977189703}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: PS_MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}

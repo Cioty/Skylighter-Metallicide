@@ -118,6 +118,9 @@ public class Mech_Recovery : MonoBehaviour
     // When SpawnPlayer has ended, this plays
     public void MechStationAnimation(PlayerHandler playerHandler)
     {
+        if(playerHandlerStation.IsControllable)
+            playerHandlerStation.IsControllable = false;
+
         // Close Hatch, regardless if the ball has entered
         if (!animatorStation.GetBool("Close_Hatch"))
             animatorStation.SetBool("Close_Hatch", playerHandler.IsSpawning);

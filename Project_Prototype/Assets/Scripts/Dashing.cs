@@ -61,45 +61,47 @@ public class Dashing : MonoBehaviour
     private void isDashing()
     {    
         // When dashKey press, temporarily stop movement (No falling, no nothing)
-        if ((Input.GetKeyDown(dashKey) || XCI.GetButtonDown(XboxButton.LeftBumper, playerHandler.AssignedController)) && playerHandler.BoostPoints > 0 && playerHandler.IsControllable)
+        if(playerHandler.IsControllable && !playerHandler.IsTestDummy)
         {
-            // To get the Mech's last direction
-            // lastDir = transform.forward.normalized * vertical_move + transform.right.normalized * horizontal_move;
-            lastDir = playerHandler.MechController.GetMoveVector();
-            if (lastDir == Vector3.zero)
-                lastDir = this.transform.forward;
-
-            thrusterTimer = zero;
-          
-            dashTrig = true;
-            rocketJump.IsBoosting = false;
-
-            --playerHandler.BoostPoints;
-        }
-
-        if (dashTrig)
-        {
-            foreach(ParticleSystem booster in boosters)
-                booster.Play();
-
-            if (thrusterTimer < duration)
+            if ((Input.GetKeyDown(dashKey) || XCI.GetButtonDown(XboxButton.LeftBumper, playerHandler.AssignedController)) && playerHandler.BoostPoints > 0)
             {
-                thrusterTimer += Time.deltaTime;
+                // To get the Mech's last direction
+                // lastDir = transform.forward.normalized * vertical_move + transform.right.normalized * horizontal_move;
+                lastDir = playerHandler.MechController.GetMoveVector();
+                if (lastDir == Vector3.zero)
+                    lastDir = this.transform.forward;
 
-                playerHandler.MechImpactRecevier.AddImpact(lastDir * speedGraph.Evaluate(thrusterTimer / duration), speed);
-                //rb.AddForce(lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed, ForceMode.Impulse);
-            }
-
-            if (thrusterTimer >= duration)
-            {
-                dashTrig = false;
                 thrusterTimer = zero;
-                hasRammedThisDash = false;
-                foreach (ParticleSystem booster in boosters)
-                    booster.Stop();
+
+                dashTrig = true;
+                rocketJump.IsBoosting = false;
+
+                --playerHandler.BoostPoints;
             }
-        }
-                  
+
+            if (dashTrig)
+            {
+                foreach (ParticleSystem booster in boosters)
+                    booster.Play();
+
+                if (thrusterTimer < duration)
+                {
+                    thrusterTimer += Time.deltaTime;
+
+                    playerHandler.MechImpactRecevier.AddImpact(lastDir * speedGraph.Evaluate(thrusterTimer / duration), speed);
+                    //rb.AddForce(lastDir * speedGraph.Evaluate(thrusterTimer / duration) * speed, ForceMode.Impulse);
+                }
+
+                if (thrusterTimer >= duration)
+                {
+                    dashTrig = false;
+                    thrusterTimer = zero;
+                    hasRammedThisDash = false;
+                    foreach (ParticleSystem booster in boosters)
+                        booster.Stop();
+                }
+            }
+        }           
     }
 
     private void Update()

@@ -180,6 +180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2590526715233130292}
+  - component: {fileID: 6902662343067376654}
   m_Layer: 0
   m_Name: BurstRifle
   m_TagString: Untagged
@@ -209,6 +210,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6902662343067376654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590526715233487572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1c4e9612001c2e4084fabf8bf92e35f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHandler: {fileID: 0}
+  BurstFireRifle: {fileID: 0}
+  fpsCamBr: {fileID: 0}
+  firePoint2: {fileID: 0}
+  gunDamage: 10
+  gunRange: 100
+  gunAmmo: 30
+  gunCharge: 0.6
+  gunDelay: 0.5
+  randXRange: 0.1
+  randYRange: 0.1
+  randZRange: 0.1
+  halfAngle: 0.5
 --- !u!1 &3973001013449251102
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,8 +21,11 @@ public class ProjectileLauncher : MonoBehaviour
 {
     private GameObject playerObject;
     public PlayerHandler playerHandler;
+    public int projectilePoolCount = 20;
+    public Transform projectileAmmoClip;
     private bool readyToFire = true;
     private float fireTimer = 0.0f;
+    private int shotCount = 0;
     private const float MAX_TRG_SCL = 1.21f;
 
     public GameObject rocketLauncherMesh_mech;
@@ -32,6 +35,8 @@ public class ProjectileLauncher : MonoBehaviour
 
     //public AudioSource SFX_RocketFire;
     public MultiAudioSource SFX_RocketFire;
+
+    private List<Projectile> projectilePool = new List<Projectile>();
 
     [Header("Attributes")]
     public Camera firstPersonCamera;
@@ -45,6 +50,13 @@ public class ProjectileLauncher : MonoBehaviour
         playerObject = this.gameObject.transform.parent.gameObject;
         RLAnimator_mech = rocketLauncherMesh_mech.GetComponent<Animator>();
         RLAnimator_view = rocketLauncherMesh_view.GetComponent<Animator>();
+
+        for(int i = 0; i < projectilePoolCount; ++i)
+        {
+            GameObject projectile = Instantiate(projectilePrefab, projectileAmmoClip);
+            projectile.SetActive(false);
+            projectilePool.Add(projectile.GetComponent<Projectile>());
+        }
     }
 
     private void Update()
@@ -57,6 +69,7 @@ public class ProjectileLauncher : MonoBehaviour
                 if (readyToFire)
                 {
                     FireProjectile();
+                    shotCount++;
                     readyToFire = false;
                 }
             }
@@ -71,6 +84,16 @@ public class ProjectileLauncher : MonoBehaviour
                 }
             }
         }
+    }
+
+    private Projectile GetNextProjectile()
+    {
+        if(shotCount >= projectilePoolCount)
+        {
+            shotCount = 0;
+        }
+
+        return projectilePool[shotCount];
     }
 
     private void FireProjectile()
@@ -89,7 +112,9 @@ public class ProjectileLauncher : MonoBehaviour
             direction = ray.direction;
 
         Quaternion rotation = Quaternion.FromToRotation(projectilePrefab.transform.forward, direction);
-        Projectile projectile = Instantiate(projectilePrefab, projectileStartPoint.position, rotation).GetComponent<Projectile>();
+        Projectile projectile = GetNextProjectile();
+        projectile.transform.position = projectileStartPoint.position;
+        projectile.transform.rotation = rotation;
         projectile.Setup(playerHandler);
         projectile.RigidBody.AddForce(direction * projectileSpeed, ForceMode.Impulse);
     }

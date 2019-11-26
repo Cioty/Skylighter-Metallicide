@@ -20,7 +20,7 @@ public class BurstRifleSpin : MonoBehaviour
 {
     public PlayerHandler playerHandler;
 
-    public BurstRifle burstRifle;
+    //public BurstRifle burstRifle;
 
     public GameObject barrelSpinning;
 

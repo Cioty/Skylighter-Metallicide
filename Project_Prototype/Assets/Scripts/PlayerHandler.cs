@@ -164,7 +164,7 @@ public class PlayerHandler : MonoBehaviour
         }
 
         // Checking the cores health:
-        if (!IsAlive || coreHealth <= 0)
+        if (!isAlive || coreHealth <= 0)
         {
             // Respawning player at random location.
             RandomSpawn_FromDeath();
@@ -196,6 +196,10 @@ public class PlayerHandler : MonoBehaviour
     // A function to respawn the player at a random respawn staion.
     public void RandomSpawn_FromDeath()
     {
+        // Setting player to death incase they get here and they're not.
+        if (isAlive)
+            isAlive = false;
+
         // Turning off the players controls:
         isControllable = false;
 

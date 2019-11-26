@@ -42,6 +42,7 @@ public class Projectile : MonoBehaviour
     {
         shooterHandler = shooter;
         gameObject.layer = LayerMask.NameToLayer(shooterHandler.playerViewMask);
+        this.gameObject.SetActive(true);
     }
 
     private void FixedUpdate()
@@ -52,7 +53,11 @@ public class Projectile : MonoBehaviour
             timer += Time.deltaTime;
 
             if (timer > lifeLength)
+            {
                 Explode();
+                this.gameObject.SetActive(false);
+                hasExploded = false;
+            }
         }
     }
 
@@ -97,8 +102,9 @@ public class Projectile : MonoBehaviour
             // Checking for splash damage:
             CheckForSplashDamage();
 
-            // Destroying this object:
-            Destroy(this.gameObject, 2f);
+            // Setting the object inactive.
+            this.gameObject.SetActive(false);
+            hasExploded = false;
         }
     }
 

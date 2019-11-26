@@ -19,6 +19,7 @@ using System.Collections.Generic;
 public class BurstRifle : MonoBehaviour
 {
     public PlayerHandler playerHandler;
+    public ParticleSystem muzzleFlash;
 
     public GameObject BurstFireRifle;
 
@@ -28,7 +29,7 @@ public class BurstRifle : MonoBehaviour
 
     public GameObject bulletPrefab;
     public GameObject bulletParent;
-    private List<GameObject> bulletPool = new List<GameObject>();
+    private List<BurstRifleBullet> bulletPool = new List<BurstRifleBullet>();
 
     //Gun
     public float gunDamage = 10;
@@ -56,7 +57,7 @@ public class BurstRifle : MonoBehaviour
             {
                 GameObject bullet = Instantiate(bulletPrefab, bulletParent.transform);
                 bullet.SetActive(false);
-                bulletPool.Add(bullet);
+                bulletPool.Add(bullet.GetComponent<BurstRifleBullet>());
             }
         }
     }
@@ -89,7 +90,6 @@ public class BurstRifle : MonoBehaviour
                     }
                     else
                     {
-
                         isGunShooting = false;
                         gunCharge = 0.0f;
                         gunAmmoShot = 0;
@@ -98,20 +98,21 @@ public class BurstRifle : MonoBehaviour
             }
             else
             {
+                muzzleFlash.Stop();
                 gunCharge = 0;
                 gunAmmoShot = 0;
             }
-
-            // if shooting 
-            // get the amount of shots taken
-            // for those shots taken
-            // active & pos bullet
-            // translate bullet from origin to dest
         }
     }
 
     void Shoot()
     {
+        // Playing the muzzle flash
+        if (!muzzleFlash.isPlaying)
+        {
+            muzzleFlash.Play();
+        }
+
         //yield return new WaitForSeconds(delay);
 
         float rand = Random.Range(-halfAngle, halfAngle) + Random.Range(-halfAngle, halfAngle);
@@ -135,21 +136,22 @@ public class BurstRifle : MonoBehaviour
 
         RaycastHit hit;
 
-        bulletPool[gunAmmoShot].SetActive(true);
-        bulletPool[gunAmmoShot].GetComponent<BurstRifleBullet>().Setup(playerHandler, firePoint2.transform.position, forwardVector, 100f);
+        bulletPool[gunAmmoShot].gameObject.SetActive(true);
+        bulletPool[gunAmmoShot].Setup(playerHandler, firePoint2.transform.position, forwardVector, 100f);
+
         if (playerHandler.IsControllable)
         {
             Debug.DrawLine(ray.origin, ray.origin + ray.direction * 1000, Color.red, 0.1f);
             if (Physics.Raycast(ray, out hit, gunRange))
             {
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player" + playerHandler.ID) && hit.transform.gameObject.tag != "Player")
+                if (hit.transform.gameObject.tag == "Player")
                 {
                     PlayerHandler otherPlayerHandler = GetComponentInParent<PlayerHandler>();
 
                     if (otherPlayerHandler.CurrentState == StateManager.PLAYER_STATE.Mech)
                     {
                         Debug.Log("Hit mech!");
-                        if (playerHandler.Mech_TakeDamage((int)gunDamage) == 0)
+                        if (playerHandler.Mech_TakeDamage((int) gunDamage) == 0)
                         {
                             playerHandler.PlayerStats.KilledMech();
                         }
