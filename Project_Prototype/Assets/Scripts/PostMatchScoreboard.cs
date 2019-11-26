@@ -45,6 +45,6 @@ public class PostMatchScoreboard : MonoBehaviour
 
         screenFreezeTimer -= Time.deltaTime;
         if (screenFreezeTimer <= 0)
-            SceneManager.LoadScene("Main-Menu", LoadSceneMode.Single);
+            SceneManager.LoadScene(this.gameObject.scene.name, LoadSceneMode.Single);
     }
 }

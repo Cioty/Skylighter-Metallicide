@@ -60,8 +60,8 @@ public class Projectile : MonoBehaviour
     {
         if (!hasExploded)
         {
-            Debug.Log(other.gameObject.name);
-            other.gameObject.name = "ITS HITTING THIS";
+            //Debug.Log(other.gameObject.name);
+            //other.gameObject.name = "ITS HITTING THIS";
             // Playing particle effect:
             Explode();
 

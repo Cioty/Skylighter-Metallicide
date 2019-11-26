@@ -28946,6 +28946,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4228859467792617674, guid: 4f10cac025bfbbf41a01e41df3d533a5,
+        type: 3}
+      propertyPath: m_Name
+      value: Game Instance
+      objectReference: {fileID: 0}
     - target: {fileID: 5881976441393278929, guid: 4f10cac025bfbbf41a01e41df3d533a5,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -28975,11 +28980,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4228859467792617674, guid: 4f10cac025bfbbf41a01e41df3d533a5,
-        type: 3}
-      propertyPath: m_Name
-      value: Game Instance
       objectReference: {fileID: 0}
     - target: {fileID: 6921804587091910191, guid: 4f10cac025bfbbf41a01e41df3d533a5,
         type: 3}
@@ -29201,5 +29201,27 @@ PrefabInstance:
       propertyPath: gameRoundTimer
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 8651058257299740055, guid: 4f10cac025bfbbf41a01e41df3d533a5,
+        type: 3}
+      propertyPath: screenFreezeTimer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651058257299740055, guid: 4f10cac025bfbbf41a01e41df3d533a5,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 4228859466543237831}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f10cac025bfbbf41a01e41df3d533a5, type: 3}
+--- !u!114 &4228859466543237831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3262747111557980399, guid: 4f10cac025bfbbf41a01e41df3d533a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4228859466543237830}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280649b5fe2692c42abf412d05c3682f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
