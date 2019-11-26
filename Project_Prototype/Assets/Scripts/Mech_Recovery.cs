@@ -21,7 +21,7 @@ public class Mech_Recovery : MonoBehaviour
     [SerializeField]
     private bool isOccupied = false;
     private bool isActive = true;
-    private bool mechElevate = false;
+    //private bool mechElevate = false;
     private PlayerHandler playerHandlerStation = null;
 
     // A trigger to detect the ball collision.
@@ -102,15 +102,16 @@ public class Mech_Recovery : MonoBehaviour
         playerHandlerStation.IsControllable = false;
 
         // Prevent Player from looking around the Mech Station
-        playerHandlerStation.transform.forward = playerRefuelTransform.forward;
-        
-        //playerHandlerStation.MechCamera.enabled = false;
+        playerHandlerStation.MechCamera.transform.forward = playerRefuelTransform.forward;
+        //playerHandler.mechObject;
+        playerHandlerStation.MechCamera.enabled = false;
 
         // Testing spawning player at the new spawn point
         playerHandlerStation.mechObject.transform.position = playerRefuelTransform.TransformPoint(playerRefuelTransform.localPosition);
-        // playerHandlerStation.mechObject.transform.forward = playerRefuelTransform.forward;
+        playerHandlerStation.mechObject.transform.forward = playerRefuelTransform.forward;
 
         playerHandlerStation.IsSpawning = true;
+        playerHandler.IsAlive = true;
     }
 
     // When SpawnPlayer has ended, this plays
@@ -140,14 +141,8 @@ public class Mech_Recovery : MonoBehaviour
             playerHandler.MechCharacterController.enabled = true;
             playerHandler.MechCamera.enabled = true;
             playerHandler.IsSpawning = false;
-
-            playerHandler.IsAlive = true;
-
-            
             playerHandler.IsControllable = true;
-
             playerHandlerStation = null;
-
             animatorStation.ResetTrigger("Barrier_Down");
             animatorStation.ResetTrigger("Respawn");
             animatorStation.SetBool("Close_Hatch", false);

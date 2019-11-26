@@ -49,7 +49,7 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void Update()
     {
-        if(playerHandler.IsControllable)
+        if(playerHandler.IsControllable && !playerHandler.IsTestDummy)
         {
             float rightTrigHeight = XCI.GetAxis(XboxAxis.RightTrigger, playerHandler.AssignedController);
             if (Input.GetMouseButtonDown(0) || rightTrigHeight >= 0.5f)
@@ -83,7 +83,7 @@ public class ProjectileLauncher : MonoBehaviour
         RaycastHit hit;
         Vector3 direction = Vector3.zero;
 
-        if(Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out hit, 1000f, LayerMask.NameToLayer(playerHandler.playerViewMask)))
             direction = (hit.point - projectileStartPoint.position).normalized;
         else
             direction = ray.direction;

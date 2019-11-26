@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5418991953552426664}
   - component: {fileID: 5418991953552426665}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: escaped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 5418991953640063708}
   - component: {fileID: 5418991953640063709}
   m_Layer: 5
-  m_Name: Text (4)
+  m_Name: deaths
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 5418991953666011122}
   - component: {fileID: 5418991953666011123}
   m_Layer: 5
-  m_Name: Text (4)
+  m_Name: deaths
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 5418991953839833343}
   - component: {fileID: 5418991953839833340}
   m_Layer: 5
-  m_Name: Text (4)
+  m_Name: deaths
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 5418991953882734877}
   - component: {fileID: 5418991953882734866}
   m_Layer: 5
-  m_Name: Text (4)
+  m_Name: deaths
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -564,6 +564,7 @@ GameObject:
   - component: {fileID: 5418991953960992058}
   - component: {fileID: 5418991953960991940}
   - component: {fileID: 5418991953960991941}
+  - component: {fileID: 8492570416742210693}
   m_Layer: 5
   m_Name: Player1 (2)
   m_TagString: Untagged
@@ -632,6 +633,18 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &8492570416742210693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418991953960992059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536ce824f3ebb564f950ebfea77aed9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5418991953990300217
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +657,7 @@ GameObject:
   - component: {fileID: 5418991953990300218}
   - component: {fileID: 5418991953990300219}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: escaped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,7 +736,7 @@ GameObject:
   - component: {fileID: 5418991954044528404}
   - component: {fileID: 5418991954044528405}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: ballKills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -802,7 +815,7 @@ GameObject:
   - component: {fileID: 5418991954107470676}
   - component: {fileID: 5418991954107470677}
   m_Layer: 5
-  m_Name: Text
+  m_Name: mechKills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -881,7 +894,7 @@ GameObject:
   - component: {fileID: 5418991954111223067}
   - component: {fileID: 5418991954111223064}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: ballKills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1038,6 +1051,7 @@ GameObject:
   - component: {fileID: 5418991954306973247}
   - component: {fileID: 5418991954306973241}
   - component: {fileID: 5418991954306973246}
+  - component: {fileID: 1094807196817453899}
   m_Layer: 5
   m_Name: Player1 (1)
   m_TagString: Untagged
@@ -1106,6 +1120,18 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &1094807196817453899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418991954306973244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536ce824f3ebb564f950ebfea77aed9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5418991954321950725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,7 +1144,7 @@ GameObject:
   - component: {fileID: 5418991954321950726}
   - component: {fileID: 5418991954321950727}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: ballKills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1196,6 +1222,7 @@ GameObject:
   - component: {fileID: 5418991954330883363}
   - component: {fileID: 5418991954330883373}
   - component: {fileID: 5418991954330883362}
+  - component: {fileID: 7210582314523252619}
   m_Layer: 5
   m_Name: Player1 (3)
   m_TagString: Untagged
@@ -1264,6 +1291,18 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &7210582314523252619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418991954330883360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536ce824f3ebb564f950ebfea77aed9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5418991954633091873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,7 +1315,7 @@ GameObject:
   - component: {fileID: 5418991954633091874}
   - component: {fileID: 5418991954633091875}
   m_Layer: 5
-  m_Name: Text
+  m_Name: mechKills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1355,7 +1394,7 @@ GameObject:
   - component: {fileID: 5418991954668798461}
   - component: {fileID: 5418991954668798450}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: escaped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1434,6 +1473,7 @@ GameObject:
   - component: {fileID: 5418991954781223428}
   - component: {fileID: 5418991954781223429}
   - component: {fileID: 5418991954781223546}
+  - component: {fileID: 690588517762388628}
   m_Layer: 5
   m_Name: Canvas (Post-match)
   m_TagString: Untagged
@@ -1521,6 +1561,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &690588517762388628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418991954781223547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2912e7bb255b1ca438a9030fe8ef75b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenFreezeTimer: 15
+  gameManager: {fileID: 0}
+  playerPanels:
+  - {fileID: 5799871696893362539}
+  - {fileID: 1094807196817453899}
+  - {fileID: 8492570416742210693}
+  - {fileID: 7210582314523252619}
 --- !u!1 &5418991954899703883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,7 +1671,7 @@ GameObject:
   - component: {fileID: 5418991954899797083}
   - component: {fileID: 5418991954899797080}
   m_Layer: 5
-  m_Name: Text
+  m_Name: mechKills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1691,7 +1750,7 @@ GameObject:
   - component: {fileID: 5418991955043719621}
   - component: {fileID: 5418991955043720762}
   m_Layer: 5
-  m_Name: Text
+  m_Name: mechKills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1769,6 +1828,7 @@ GameObject:
   - component: {fileID: 5418991955334762490}
   - component: {fileID: 5418991955334762372}
   - component: {fileID: 5418991955334762373}
+  - component: {fileID: 5799871696893362539}
   m_Layer: 5
   m_Name: Player1
   m_TagString: Untagged
@@ -1837,6 +1897,18 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &5799871696893362539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418991955334762491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536ce824f3ebb564f950ebfea77aed9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5418991955415787676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,7 +2079,7 @@ GameObject:
   - component: {fileID: 5418991955530377245}
   - component: {fileID: 5418991955530377234}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: ballKills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2086,7 +2158,7 @@ GameObject:
   - component: {fileID: 5418991955592465917}
   - component: {fileID: 5418991955592465906}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: escaped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

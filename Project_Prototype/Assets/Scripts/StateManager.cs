@@ -74,7 +74,7 @@ public class StateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(debugEjectKey) && playerHandler.IsControllable)
+        if (Input.GetKeyUp(debugEjectKey) && playerHandler.IsControllable && !playerHandler.IsTestDummy)
         {
             if (currentState == PLAYER_STATE.Core)
                 SetState(PLAYER_STATE.Mech);

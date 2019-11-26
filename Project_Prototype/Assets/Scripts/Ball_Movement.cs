@@ -64,7 +64,7 @@ public class Ball_Movement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && IsGrounded() && playerHandler.IsControllable)
+        if (Input.GetButtonDown("Jump") && IsGrounded() && playerHandler.IsControllable && !playerHandler.IsTestDummy)
         {
             isJumping = true;
         }

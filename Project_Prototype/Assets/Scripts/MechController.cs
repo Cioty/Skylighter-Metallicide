@@ -126,15 +126,14 @@ public class MechController : MonoBehaviour
         playerHandler.IsGrounded = isGrounded;
 
         // Updating the movement vector:
-        if (playerHandler.IsControllable)
+        if (playerHandler.IsControllable && !playerHandler.IsTestDummy)
             this.UpdateMoveVector();
 
         // Updating the animations:
         UpdateAnimations(isGrounded);
 
-
         // Checking if the player can jump.
-        if (isGrounded && playerHandler.IsControllable)
+        if (isGrounded && !playerHandler.IsTestDummy)
         {
             if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump"))
             {
@@ -215,7 +214,7 @@ public class MechController : MonoBehaviour
             acceleration = currentVelocity;
 
             // Check for jump boost
-            if(!justBoosted && justJumped && playerHandler.IsControllable)
+            if(!justBoosted && justJumped && playerHandler.IsControllable && !playerHandler.IsTestDummy)
             {
                 if (XCI.GetButtonDown(XboxButton.A, playerHandler.AssignedController) || Input.GetButtonDown("Jump"))
                 {

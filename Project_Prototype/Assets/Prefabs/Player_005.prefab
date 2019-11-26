@@ -2663,7 +2663,7 @@ MonoBehaviour:
   mechHealth: 100
   coreHealth: 41
   timeToRespawn: 3
-  invulnerableAfterSpawnTime: 2
+  invulnerableAfterSpawnTime: 5
   playerViewMask: Player0View
   playerID: 0
   mechObject: {fileID: 4785149452494955667}
