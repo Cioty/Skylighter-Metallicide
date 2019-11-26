@@ -249,7 +249,7 @@ MonoBehaviour:
   maxY: 60
   clipSmooth: 0.05
   returnTime: 0.4
-  defaultDistance: 4
+  defaultDistance: 5
   nearClip: 0.5
   farClip: 5
   sphereCastRadius: 0.1
@@ -260,6 +260,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 96934784585085}
     m_Modifications:
+    - target: {fileID: 100008, guid: 89e5f022c862edc4bb8f1cb1ae1f482a, type: 3}
+      propertyPath: m_Name
+      value: Mech_core_Mesh_002
+      objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 89e5f022c862edc4bb8f1cb1ae1f482a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -303,10 +307,6 @@ PrefabInstance:
     - target: {fileID: 400008, guid: 89e5f022c862edc4bb8f1cb1ae1f482a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 89e5f022c862edc4bb8f1cb1ae1f482a, type: 3}
-      propertyPath: m_Name
-      value: Mech_core_Mesh_002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89e5f022c862edc4bb8f1cb1ae1f482a, type: 3}

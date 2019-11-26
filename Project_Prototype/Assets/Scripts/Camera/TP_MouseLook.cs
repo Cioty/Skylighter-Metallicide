@@ -10,7 +10,7 @@ public class TP_MouseLook : MonoBehaviour
     public GameObject player;
     public PlayerHandler playerHandler;
 
-    public float rotationSpeed = 30.0f;
+    public float rotationSpeed = 100.0f;
     // For Clamping 
     public float minY = -35.0f, maxY = 60.0f;
 
@@ -50,13 +50,14 @@ public class TP_MouseLook : MonoBehaviour
     private void Awake()
     {
         // Default Camera position is always opposite the core forward transform
-        cameraPosDef = player.transform.position - (player.transform.forward * defaultDistance);
+        cameraPosDef = player.transform.position + (-player.transform.forward * defaultDistance);
         Cursor.lockState = CursorLockMode.Locked;
         offset = cameraPosDef;
         distance = cameraPosDef.magnitude;
 
         // Get this game object for camera clipping security
         self = player;
+       
     }
 
     private void Start()
@@ -68,6 +69,8 @@ public class TP_MouseLook : MonoBehaviour
 
         // Ray Hits comparer
         rayHitComparer = new RayHitComparer();
+
+        GetComponent<Camera>().transform.position = offset;
     }
 
 
@@ -87,8 +90,8 @@ public class TP_MouseLook : MonoBehaviour
     {
         // transform.position = player.transform.position + cameraPosDef;
         transform.LookAt(player.transform.position);
-        CameraClipping();
-        //wallClip();
+        // CameraClipping();
+        wallClip();
     }
 
     // Purpose: Handles the X & Y axis rotation for camera orbit around the player
@@ -100,12 +103,12 @@ public class TP_MouseLook : MonoBehaviour
             if (playerHandler.HasAssignedController)
             {
                 mouse_x = XCI.GetAxis(XboxAxis.RightStickX, playerHandler.AssignedController) * rotationSpeed;
-                mouse_y = XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController) * rotationSpeed;
+                mouse_y = XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController) * -rotationSpeed;
             }
             else
             {
                 mouse_x = Input.GetAxis("Mouse X") * rotationSpeed;
-                mouse_y = Input.GetAxis("Mouse Y") * rotationSpeed;
+                mouse_y = Input.GetAxis("Mouse Y") * -rotationSpeed;
             }
         }
 
@@ -127,12 +130,12 @@ public class TP_MouseLook : MonoBehaviour
         // Initially set the target distance
         float targetDist = defaultDistance;
 
-        direction = (transform.position - player.transform.position).normalized;
+        direction = (player.transform.position - player.transform.forward).normalized;
         Vector3 oldOffset = Vector3.zero;
 
         // Ray cast
-        ray.origin = transform.position + transform.forward*sphereCastRadius;
-        ray.direction = -transform.forward;
+        ray.origin = GetComponent<Camera>().transform.position + GetComponent<Camera>().transform.forward * sphereCastRadius;
+        ray.direction = -GetComponent<Camera>().transform.forward;
 
         // Create a bunch of colliders
         Collider[] cols = Physics.OverlapSphere(ray.origin, sphereCastRadius);
@@ -153,7 +156,7 @@ public class TP_MouseLook : MonoBehaviour
 
         if (initialIntersect)
         {
-            ray.origin += transform.forward * sphereCastRadius;
+            ray.origin += -GetComponent<Camera>().transform.forward * sphereCastRadius;
 
             // do a raycast and gather all the intersections
             hits = Physics.RaycastAll(ray, defaultDistance - sphereCastRadius);
@@ -179,7 +182,7 @@ public class TP_MouseLook : MonoBehaviour
             {
                 // Changes the nearest distance to the smaller distance
                 nearest = hits[i].distance;
-                targetDist = -transform.InverseTransformPoint(hits[i].point).z;
+                targetDist = -GetComponent<Camera>().transform.InverseTransformPoint(hits[i].point).z;
                 hitSomething = true;
             }
         }
@@ -187,30 +190,39 @@ public class TP_MouseLook : MonoBehaviour
         // For debugging purposes in the editor
         if (hitSomething)
         {
-            Debug.DrawRay(ray.origin, -transform.forward * (targetDist + sphereCastRadius), Color.red);
+            Debug.DrawRay(ray.origin, -GetComponent<Camera>().transform.forward * (targetDist + sphereCastRadius), Color.red);
         }
+
+        Debug.DrawRay(ray.origin, -GetComponent<Camera>().transform.forward * (targetDist + sphereCastRadius), Color.red);
 
         // hit something so the camera moves to a better position
         protecting = hitSomething;
         distance = Mathf.SmoothDamp(distance, targetDist, ref moveVelocity,
             distance > targetDist ? clipSmooth : returnTime);
         distance = Mathf.Clamp(distance, nearClip, defaultDistance);
-        offset = -Vector3.forward * distance;     
+        offset = -Vector3.forward * distance;
+        // Debug.DrawRay(ray.origin, -transform.forward * (targetDist + sphereCastRadius), Color.red);
     }
 
     public void wallClip()
     {
-        ray.origin = transform.position;
-        ray.direction = -transform.forward;
+        // Ray cast
+        ray.origin = player.transform.position;
+        ray.direction =  GetComponent<Camera>().transform.position - player.transform.position;
 
-        if(Physics.Raycast(ray, out hit, defaultDistance))
+        Debug.DrawRay(ray.origin, ray.direction);
+       
+        if (Physics.Raycast(ray, defaultDistance))
         {
-            float targetDist = -transform.InverseTransformDirection(hit.point).z;
-            distance = Mathf.SmoothDamp(distance, targetDist, ref moveVelocity,
-                distance > targetDist ? clipSmooth : returnTime);
-            distance = Mathf.Clamp(distance, nearClip, defaultDistance);
-            offset = -Vector3.forward * distance;
+            // Where the Raycast hit
+            distance = Mathf.Clamp(hit.distance * 0.9f, nearClip, defaultDistance);
+            offset = offset * (distance / defaultDistance);            
         }
+        else
+        {
+            offset = cameraPosDef;
+        }
+    
     }
 
     public class RayHitComparer : IComparer

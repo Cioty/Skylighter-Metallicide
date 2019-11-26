@@ -109,12 +109,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4570391326229775271}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0ce837d8c986a64ca6e3281005b9f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 7280585381626541663}
   isInteractable: 1
   coolDown: 10
   timerReset: 10
@@ -217,14 +217,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4678351595830704573}
     m_Modifications:
-    - target: {fileID: 100074, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
-      propertyPath: m_Name
-      value: HealthSpawner_002
-      objectReference: {fileID: 0}
-    - target: {fileID: 100074, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400074, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -267,6 +259,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400074, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100074, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
+      propertyPath: m_Name
+      value: HealthSpawner_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 100074, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 8f321902c5286774e812ccb312b891e1, type: 3}
@@ -326,7 +326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 8a963c52ca64fe44880c9c0e68d0663d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a963c52ca64fe44880c9c0e68d0663d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -466,6 +466,12 @@ PrefabInstance:
 --- !u!4 &7280585381619603957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400074, guid: 9f4b40c37b503ef47b598ff8ebc21f0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7280585381619204927}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7280585381626541663 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 9f4b40c37b503ef47b598ff8ebc21f0f,
     type: 3}
   m_PrefabInstance: {fileID: 7280585381619204927}
   m_PrefabAsset: {fileID: 0}

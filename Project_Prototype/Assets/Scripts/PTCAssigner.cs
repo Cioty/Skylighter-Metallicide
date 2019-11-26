@@ -139,20 +139,27 @@ public class PTCAssigner : MonoBehaviour
                         this.canStart = true;
                     }
                 }
+            }
+        }
 
-                // Checking if we can start the game:
-                if (canStart)
+        // Checking if we can start the game:
+        if (canStart)
+        {
+            if (toggleDebugMode.startInDebugMode)
+            {
+                StartGame();
+            }
+            else
+            {
+                if (gameStartTimer <= maxGameStartTimer)
                 {
-                    if(gameStartTimer <= maxGameStartTimer)
+                    gameStartTimer -= Time.deltaTime;
+                    gameStartText.text = startingGameInText + gameStartTimer.ToString("0.00");
+                    if (gameStartTimer <= 0f)
                     {
-                        gameStartTimer -= Time.deltaTime;
-                        gameStartText.text = startingGameInText + gameStartTimer.ToString("0.00");
-                        if (gameStartTimer <= 0f)
-                        {
-                            gameStartTimer = 0f;
-                            StartGame();
+                        gameStartTimer = 0f;
+                        StartGame();
 
-                        }
                     }
                 }
             }
