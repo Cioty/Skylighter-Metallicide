@@ -23,7 +23,8 @@ public class BurstRifleBullet : MonoBehaviour
     private float maxTimer = 2f;
     private Vector3 xPos;
     private Vector3 zPos;
-    private GameObject PS_Bullet_003;
+    private GameObject PS_Bullet_004;
+    private bool firing = false;
 
     public void Setup(PlayerHandler playerHandler, Vector3 origin, Vector3 direction, float speed, float maxTimer = 2f)
     {
@@ -57,8 +58,16 @@ public class BurstRifleBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(PS_Bullet_004 != true)
+        {
+            PS_Bullet_004.SetActive(firing);
+        }
         // reference the particle system
-        // PS_Bullet_003;
+        else
+        {
+            firing = false;
+            PS_Bullet_004.SetActive(firing);
+        }
         // play on fire
 
         // stop here and check particles then set unactive

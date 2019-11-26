@@ -104,7 +104,7 @@ public class Mech_Recovery : MonoBehaviour
         // Prevent Player from looking around the Mech Station
         playerHandlerStation.transform.forward = playerRefuelTransform.forward;
         playerHandlerStation.MechCamera.transform.forward = playerRefuelTransform.forward;
-        //playerHandler.mechObject;
+        //wwplayerHandler.mechObject;
         playerHandlerStation.MechCamera.enabled = false;
 
         // Testing spawning player at the new spawn point
@@ -177,4 +177,5 @@ public class Mech_Recovery : MonoBehaviour
         set { isActive = value;}
         get { return isActive; }
     }
+   
 }

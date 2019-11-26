@@ -136,34 +136,36 @@ public class BurstRifle : MonoBehaviour
         RaycastHit hit;
 
         bulletPool[gunAmmoShot].SetActive(true);
-        // bulletPool[gunAmmoShot].GetComponent<BurstRifleBullet>().Setup(playerHandler, firePoint2.transform.position, forwardVector, 100f);
-
-        Debug.DrawLine(ray.origin, ray.origin + ray.direction * 1000, Color.red, 0.1f);
-        if (Physics.Raycast(ray, out hit, gunRange))
+        bulletPool[gunAmmoShot].GetComponent<BurstRifleBullet>().Setup(playerHandler, firePoint2.transform.position, forwardVector, 100f);
+        if (playerHandler.IsControllable)
         {
-            if(hit.transform.gameObject.layer != LayerMask.NameToLayer("Player" + playerHandler.ID) && hit.transform.gameObject.tag == "Player")
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * 1000, Color.red, 0.1f);
+            if (Physics.Raycast(ray, out hit, gunRange))
             {
-                PlayerHandler otherPlayerHandler = GetComponentInParent<PlayerHandler>();
-                
-                if(otherPlayerHandler.CurrentState == StateManager.PLAYER_STATE.Mech)
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player" + playerHandler.ID) && hit.transform.gameObject.tag != "Player")
                 {
-                    Debug.Log("Hit mech!");
-                    if(playerHandler.Mech_TakeDamage((int) gunDamage) == 0)
-                    {
-                        playerHandler.PlayerStats.KilledMech();
-                    }
-                }
-                else
-                {
-                    // Dealing damage to the player, then checking if their health is 0:
-                    if (playerHandler.Core_TakeDamage((int) gunDamage) == 0)
-                    {
-                        Debug.Log("Hit core!");
-                        // Killing the victim:
-                        otherPlayerHandler.IsAlive = false;
+                    PlayerHandler otherPlayerHandler = GetComponentInParent<PlayerHandler>();
 
-                        // Adding a kill to the core stats:
-                        playerHandler.PlayerStats.KilledCore();
+                    if (otherPlayerHandler.CurrentState == StateManager.PLAYER_STATE.Mech)
+                    {
+                        Debug.Log("Hit mech!");
+                        if (playerHandler.Mech_TakeDamage((int)gunDamage) == 0)
+                        {
+                            playerHandler.PlayerStats.KilledMech();
+                        }
+                    }
+                    else
+                    {
+                        // Dealing damage to the player, then checking if their health is 0:
+                        if (playerHandler.Core_TakeDamage((int)gunDamage) == 0)
+                        {
+                            Debug.Log("Hit core!");
+                            // Killing the victim:
+                            otherPlayerHandler.IsAlive = false;
+
+                            // Adding a kill to the core stats:
+                            playerHandler.PlayerStats.KilledCore();
+                        }
                     }
                 }
             }
