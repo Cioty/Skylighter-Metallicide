@@ -102,6 +102,8 @@ public class Mech_Recovery : MonoBehaviour
         playerHandlerStation.IsControllable = false;
 
         // Prevent Player from looking around the Mech Station
+        playerHandlerStation.MechCamera.transform.forward = playerRefuelTransform.forward;
+        playerHandler.mechObject.
         playerHandlerStation.MechCamera.enabled = false;
 
         // Testing spawning player at the new spawn point
@@ -138,6 +140,7 @@ public class Mech_Recovery : MonoBehaviour
             playerHandler.MechCharacterController.enabled = true;
             playerHandler.MechCamera.enabled = true;
             playerHandler.IsSpawning = false;
+
             playerHandler.IsAlive = true;
 
             

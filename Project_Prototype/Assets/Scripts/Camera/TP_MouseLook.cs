@@ -90,8 +90,8 @@ public class TP_MouseLook : MonoBehaviour
     {
         // transform.position = player.transform.position + cameraPosDef;
         transform.LookAt(player.transform.position);
-        // CameraClipping();
-        wallClip();
+        CameraClipping();
+        // wallClip();
     }
 
     // Purpose: Handles the X & Y axis rotation for camera orbit around the player
@@ -103,12 +103,12 @@ public class TP_MouseLook : MonoBehaviour
             if (playerHandler.HasAssignedController)
             {
                 mouse_x = XCI.GetAxis(XboxAxis.RightStickX, playerHandler.AssignedController) * rotationSpeed;
-                mouse_y = XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController) * -rotationSpeed;
+                mouse_y = XCI.GetAxis(XboxAxis.RightStickY, playerHandler.AssignedController) * rotationSpeed;
             }
             else
             {
                 mouse_x = Input.GetAxis("Mouse X") * rotationSpeed;
-                mouse_y = Input.GetAxis("Mouse Y") * -rotationSpeed;
+                mouse_y = Input.GetAxis("Mouse Y") * rotationSpeed;
             }
         }
 
@@ -147,7 +147,7 @@ public class TP_MouseLook : MonoBehaviour
         for (int i = 0; i < cols.Length; i++)
         {
             if ((!cols[i].isTrigger) &&
-                !(cols[i].attachedRigidbody != null && cols[i].attachedRigidbody.gameObject == self))
+                cols[i].gameObject != null && cols[i].gameObject != self)
             {
                 initialIntersect = true;
                 break;
@@ -156,7 +156,7 @@ public class TP_MouseLook : MonoBehaviour
 
         if (initialIntersect)
         {
-            ray.origin += -GetComponent<Camera>().transform.forward * sphereCastRadius;
+            ray.origin += GetComponent<Camera>().transform.forward * sphereCastRadius;
 
             // do a raycast and gather all the intersections
             hits = Physics.RaycastAll(ray, defaultDistance - sphereCastRadius);
@@ -178,7 +178,7 @@ public class TP_MouseLook : MonoBehaviour
         {
             // only change the nearest distance if the next one is smaller than the last one
             if (hits[i].distance < nearest && (!hits[i].collider.isTrigger) &&
-                hits[i].collider.attachedRigidbody.gameObject != self)
+                hits[i].collider.gameObject != self)
             {
                 // Changes the nearest distance to the smaller distance
                 nearest = hits[i].distance;
