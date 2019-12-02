@@ -1036,8 +1036,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -21}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: -0.5}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7162719028745393255
 CanvasRenderer:
@@ -1492,13 +1492,13 @@ MonoBehaviour:
   barrelSpinning: {fileID: 739069243934252622}
   bulletBelt: {fileID: 739069243934253018}
   bulletRing: {fileID: 739069243934253040}
-  barrelAcceleration: 70
-  barrelDeceleration: 70
-  maxBarrelSpeed: 360
-  barrelSpeed: 50
-  beltSpeed: 50
-  beltAcceleration: 80
-  beltDeceleration: 80
+  barrelAcceleration: 240
+  barrelDeceleration: 320
+  maxBarrelSpeed: 500
+  barrelSpeed: 200
+  beltSpeed: 200
+  beltAcceleration: 140
+  beltDeceleration: 140
   maxBeltSpeed: 360
 --- !u!114 &4785149452494955670
 MonoBehaviour:
@@ -1597,7 +1597,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  speed: 16
+  speed: 14.5
   dashKey: 304
   duration: 0.2
   ramForce: 100
@@ -1614,7 +1614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebe882f5a289ed4085d13bcab5f6225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostJumpSpeed: 7
+  boostJumpSpeed: 10
   boostJumpDuration: 0.3
 --- !u!114 &4785149452494955674
 MonoBehaviour:
@@ -2755,8 +2755,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f82b1ff80adb494a9c191531f7c8aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mechHealth: 100
-  coreHealth: 41
+  mechHealth: 60
+  coreHealth: 11
   timeToRespawn: 3
   invulnerableAfterSpawnTime: 5
   playerViewMask: Player0View

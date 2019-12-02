@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!4 &4656296457780262718
 Transform:
@@ -1140,7 +1140,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!4 &6283612383739332400
 Transform:
@@ -1215,7 +1215,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3445404048201453021
 Transform:
@@ -1244,6 +1244,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6d546133ed428194580c335761fbe80b, type: 3}
       propertyPath: m_Name
       value: Pipe Join
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6d546133ed428194580c335761fbe80b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6d546133ed428194580c335761fbe80b, type: 3}
       propertyPath: m_LocalPosition.x
